@@ -28,6 +28,8 @@ apis:
         type: API Reference
       - url: https://developers.miro.com/reference/overview
         type: Documentation
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Create, read, update, copy, and delete Miro boards. Boards are the top-level container for whiteboard content within a team or workspace.
   - aid: miro:miro-board-items-api
@@ -42,6 +44,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/items
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Generic and per-type endpoints for board items: sticky notes, cards, shapes, text, frames, images, documents, embeds, and app cards. CRUD on items, with type-specific create/update endpoints for each item kind.
   - aid: miro:miro-connectors-api
@@ -55,6 +59,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/connectors
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Create and manage connectors (lines/arrows) between board items, including style and shape options for diagramming workflows.
   - aid: miro:miro-tags-api
@@ -68,6 +74,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/tags
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Create, attach, and remove tags on board items for searching, filtering, and grouping.
   - aid: miro:miro-mind-map-api
@@ -81,6 +89,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/mindmap-nodes
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Create and manage mind-map nodes and parent-child relationships on a board.
   - aid: miro:miro-board-members-api
@@ -95,6 +105,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/board-members
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Manage who has access to a board and what role (owner, editor, commenter, viewer) they hold.
   - aid: miro:miro-webhooks-api
@@ -108,6 +120,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/webhooks
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Subscribe to board events (item created/updated/deleted, board events) and receive HTTP callbacks at your endpoint.
   - aid: miro:miro-organization-api
@@ -121,6 +135,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/enterprise-organization
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Enterprise-only endpoints to manage the organization, list members, and inspect organization-wide membership and licensing.
   - aid: miro:miro-teams-api
@@ -134,6 +150,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/enterprise-teams
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Manage teams, team members, team settings, and default team roles within an organization.
   - aid: miro:miro-audit-logs-api
@@ -148,6 +166,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/audit-logs
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Enterprise audit-log endpoints. Query user, board, and admin actions for compliance and security monitoring.
   - aid: miro:miro-scim-api
@@ -162,6 +182,8 @@ apis:
     properties:
       - url: https://developers.miro.com/reference/scim-api
         type: API Reference
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       SCIM 2.0 provisioning for Enterprise customers. Automate user/group lifecycle from Okta, Azure AD, OneLogin, and other IdPs.
   - aid: miro:miro-web-sdk
@@ -178,6 +200,8 @@ apis:
         type: Documentation
       - url: https://github.com/miroapp
         type: GitHub
+      - url: openapi/miro-openapi.json
+        type: OpenAPI
     description: >-
       Build apps that run inside the Miro board UI. The Web SDK lets your app create and modify board items, react to events, render custom panels, and integrate with the user's workspace.
 common:
