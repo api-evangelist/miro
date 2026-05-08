@@ -5,7 +5,7 @@ provider: Miro
 providerId: miro
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Productivity
 - Whiteboard
@@ -15,11 +15,13 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Miro. Pipeline will replace with the provider's
-  real billing-model details once researched.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: FOCUS-aligned FinOps profile for Miro. Miro bills as a per-Member monthly
+  subscription across Free, Starter, Business, and Enterprise tiers. AI usage is metered
+  via per-member monthly AI credit allowances; overage requires plan upgrade or enterprise
+  contract terms. Visitors and Guests are free on paid tiers.
 sources:
-- https://miro.com/
+- https://miro.com/pricing/
+- https://developers.miro.com/reference/overview
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -30,11 +32,10 @@ alignedWith:
 publisherName: Miro
 serviceCategory: Productivity
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: Subscription (Per Seat)
+  billingFrequency: Monthly or Annual
   billingCurrency: USD
   chargeCategories:
-  - Usage
   - Purchase
   - Adjustment
 focusColumns:
@@ -44,24 +45,39 @@ focusColumns:
   PublisherName: Miro
   InvoiceIssuerName: Miro
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation against the provider's published metering.
-  unit: varies
+- name: member_seats
+  description: Per-Member subscription. Starter $8/$10, Business $20/$25, Enterprise
+    contract.
+  unit: seat
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - workspace
+  - team
+  - plan
+- name: ai_credits
+  description: Monthly AI credits per member; Free 10/team, Starter 25/member,
+    Business 50/member, Enterprise custom.
+  unit: credit
+  aggregation: sum
+  dimensions:
+  - workspace
+  - member
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Use Miro admin reports to inventory active members per workspace and team;
+    AI credit usage per member.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate seats by team membership; tag enterprise contracts to procuring
+    business units.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Reclaim seats from inactive members; choose annual billing for the discount;
+    exploit free Visitors/Guests for read-only collaborators; right-size plan tier to AI
+    credit needs.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign workspace and organization owners; review quarterly seat counts
+    against active-user reports.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

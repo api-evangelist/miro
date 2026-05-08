@@ -5,7 +5,7 @@ provider: Miro
 providerId: miro
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Productivity
 - Whiteboard
@@ -15,22 +15,52 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Miro. Replace with real limits once the pipeline
-  researches the provider's rate-limit documentation.
-notes: Initial scaffold — limits have not yet been reconciled against the provider's documentation.
+description: Miro REST API enforces per-OAuth-app rate limits. Free apps share a default
+  ceiling; certified apps and verified apps receive higher limits. 429 responses include a
+  Retry-After header. SCIM and audit-log endpoints have their own limits scoped to the
+  enterprise organization.
+notes: Miro does not publish a single global per-second number; limits are tiered by app
+  certification status. Always honor Retry-After. Use the per-board item batching where
+  available to reduce request volume.
 sources:
-- https://miro.com/
+- https://developers.miro.com/reference/ratelimiting
+- https://developers.miro.com/reference/overview
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Default OAuth App
+  scope: oauth_app
+  metric: request
+  limit: published per-app
+  timeFrame: per-minute
+  notes: Default per-app rate ceiling on the REST API; raise by getting the app verified
+    or certified.
+- name: Verified/Certified App
+  scope: oauth_app
+  metric: request
+  limit: published per-app
+  timeFrame: per-minute
+  notes: Verified or certified apps in the Miro Marketplace receive higher per-minute
+    rate limits.
+- name: SCIM
+  scope: organization
+  metric: request
+  limit: published per-org
+  notes: Enterprise SCIM endpoint has its own per-org limit.
+- name: Audit Logs
+  scope: organization
+  metric: request
+  limit: published per-org
+  notes: Audit log queries are limited per organization; paginate with cursor and avoid
+    re-querying.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Exponential backoff with jitter; honor Retry-After on 429.
+- name: Use Webhooks for Change Detection
+  description: Subscribe to board webhooks rather than polling list endpoints.
+- name: Get App Certified
+  description: Submit your app for verification/certification to raise rate ceilings if
+    you operate at scale.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

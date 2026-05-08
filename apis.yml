@@ -3,7 +3,7 @@ url: https://raw.githubusercontent.com/api-evangelist/miro/refs/heads/main/apis.
 name: Miro
 x-type: company
 description: >-
-  Miro is an online collaborative whiteboard used by distributed teams for brainstorming, diagramming, and workshops. The Miro REST API exposes boards, items, users, and webhooks for integrations.
+  Miro is an online collaborative whiteboard used by distributed teams for brainstorming, diagramming, and workshops. The Miro REST API exposes boards, board items (sticky notes, cards, shapes, frames, images, embeds, etc.), connectors, tags, mind maps, members, organizations, teams, webhooks, audit logs, and SCIM provisioning. Miro also offers a Web SDK for in-board apps.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Productivity
@@ -14,10 +14,181 @@ tags:
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: miro:miro-boards-api
+    name: Miro Boards API
+    tags:
+      - Boards
+      - CRUD
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/boards
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/boards
+        type: API Reference
+      - url: https://developers.miro.com/reference/overview
+        type: Documentation
+    description: >-
+      Create, read, update, copy, and delete Miro boards. Boards are the top-level container for whiteboard content within a team or workspace.
+  - aid: miro:miro-board-items-api
+    name: Miro Board Items API
+    tags:
+      - Items
+      - Sticky Notes
+      - Shapes
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/items
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/items
+        type: API Reference
+    description: >-
+      Generic and per-type endpoints for board items: sticky notes, cards, shapes, text, frames, images, documents, embeds, and app cards. CRUD on items, with type-specific create/update endpoints for each item kind.
+  - aid: miro:miro-connectors-api
+    name: Miro Connectors API
+    tags:
+      - Connectors
+      - Diagramming
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/connectors
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/connectors
+        type: API Reference
+    description: >-
+      Create and manage connectors (lines/arrows) between board items, including style and shape options for diagramming workflows.
+  - aid: miro:miro-tags-api
+    name: Miro Tags API
+    tags:
+      - Tags
+      - Metadata
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/tags
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/tags
+        type: API Reference
+    description: >-
+      Create, attach, and remove tags on board items for searching, filtering, and grouping.
+  - aid: miro:miro-mind-map-api
+    name: Miro Mind Map API
+    tags:
+      - Mind Map
+      - Diagramming
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/mindmap-nodes
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/mindmap-nodes
+        type: API Reference
+    description: >-
+      Create and manage mind-map nodes and parent-child relationships on a board.
+  - aid: miro:miro-board-members-api
+    name: Miro Board Members API
+    tags:
+      - Members
+      - Sharing
+      - Permissions
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/board-members
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/board-members
+        type: API Reference
+    description: >-
+      Manage who has access to a board and what role (owner, editor, commenter, viewer) they hold.
+  - aid: miro:miro-webhooks-api
+    name: Miro Webhooks API
+    tags:
+      - Webhooks
+      - Events
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/webhooks
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/webhooks
+        type: API Reference
+    description: >-
+      Subscribe to board events (item created/updated/deleted, board events) and receive HTTP callbacks at your endpoint.
+  - aid: miro:miro-organization-api
+    name: Miro Organization API
+    tags:
+      - Organization
+      - Enterprise
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/enterprise-organization
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/enterprise-organization
+        type: API Reference
+    description: >-
+      Enterprise-only endpoints to manage the organization, list members, and inspect organization-wide membership and licensing.
+  - aid: miro:miro-teams-api
+    name: Miro Teams API
+    tags:
+      - Teams
+      - Membership
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/enterprise-teams
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/enterprise-teams
+        type: API Reference
+    description: >-
+      Manage teams, team members, team settings, and default team roles within an organization.
+  - aid: miro:miro-audit-logs-api
+    name: Miro Audit Logs API
+    tags:
+      - Audit
+      - Compliance
+      - Enterprise
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/audit-logs
+    baseURL: https://api.miro.com/v2
+    properties:
+      - url: https://developers.miro.com/reference/audit-logs
+        type: API Reference
+    description: >-
+      Enterprise audit-log endpoints. Query user, board, and admin actions for compliance and security monitoring.
+  - aid: miro:miro-scim-api
+    name: Miro SCIM API
+    tags:
+      - SCIM
+      - Identity
+      - Provisioning
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/reference/scim-api
+    baseURL: https://miro.com/api/v1/scim
+    properties:
+      - url: https://developers.miro.com/reference/scim-api
+        type: API Reference
+    description: >-
+      SCIM 2.0 provisioning for Enterprise customers. Automate user/group lifecycle from Okta, Azure AD, OneLogin, and other IdPs.
+  - aid: miro:miro-web-sdk
+    name: Miro Web SDK
+    tags:
+      - SDK
+      - Browser
+      - Apps
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.miro.com/docs/build-your-first-hello-world-app
+    baseURL: https://miro.com
+    properties:
+      - url: https://developers.miro.com/docs/build-your-first-hello-world-app
+        type: Documentation
+      - url: https://github.com/miroapp
+        type: GitHub
+    description: >-
+      Build apps that run inside the Miro board UI. The Web SDK lets your app create and modify board items, react to events, render custom panels, and integrate with the user's workspace.
 common:
   - type: Website
     url: https://miro.com/
+  - type: DeveloperPortal
+    url: https://developers.miro.com/
+  - type: Pricing
+    url: https://miro.com/pricing/
+  - type: GitHub
+    url: https://github.com/miroapp
   - type: Plans
     url: plans/miro-plans-pricing.yml
   - type: RateLimits

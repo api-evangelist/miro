@@ -5,7 +5,7 @@ provider: Miro
 providerId: miro
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Productivity
 - Whiteboard
@@ -13,30 +13,172 @@ tags:
 - Diagramming
 - SaaS
 - Plans
-description: Placeholder plans/pricing artifact for Miro. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
+description: Miro plans reconciled against the public Miro pricing page. Per-member
+  monthly subscription with significant feature gating across Free, Starter, Business,
+  and Enterprise tiers. Developer access (REST API, Web SDK) is available cross-tier;
+  SCIM, audit logs, and enterprise org/team APIs require Enterprise.
 sources:
-- https://miro.com/
+- https://miro.com/pricing/
+- https://developers.miro.com/reference/overview
 plans:
-- id: miro-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers (Free / Pro / Enterprise / pay-as-you-go,
-    etc.) once pricing is reconciled.
+- id: miro-free
+  name: Free
+  type: free
+  description: Free tier for individuals to try the product.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Per-Member
+    name: seat
     type: flat
-    metric: varies
+    metric: member
     limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: Editable Boards
+    name: editable_boards
+    type: flat
+    metric: board
+    limit: 3
     timeFrame: usage
     geo: global
     unit: 1
-    price: see https://miro.com/
+    price: 0
+    userMultiplied: false
+  - label: AI Credits
+    name: ai_credits
+    type: usage
+    metric: credit
+    limit: 10
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: One Workspace
+  - name: 5,000+ Templates
+  - name: 160+ Apps and Integrations
+  - name: 5 Talktracks
+- id: miro-starter
+  name: Starter
+  type: paid
+  description: Per-member plan unlocking unlimited boards and visitors.
+  entries:
+  - label: Per-Member (Annual)
+    name: seat_annual
+    type: flat
+    metric: member
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 8
+    userMultiplied: true
+  - label: Per-Member (Monthly)
+    name: seat_monthly
+    type: flat
+    metric: member
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 10
+    userMultiplied: true
+  - label: AI Credits per Member
+    name: ai_credits
+    type: usage
+    metric: credit
+    limit: 25
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: true
+  elements:
+  - name: Unlimited Boards
+  - name: Unlimited Workspaces
+  - name: Unlimited Visitors
+  - name: Facilitation Tools (Timer, Voting, Video Calls)
+  - name: Private Boards
+  - name: Unlimited Talktracks
+- id: miro-business
+  name: Business
+  type: paid
+  description: For larger teams that need diagramming, advanced data, AI workflows, and
+    multiple workspaces.
+  entries:
+  - label: Per-Member (Annual)
+    name: seat_annual
+    type: flat
+    metric: member
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 20
+    userMultiplied: true
+  - label: Per-Member (Monthly)
+    name: seat_monthly
+    type: flat
+    metric: member
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 25
+    userMultiplied: true
+  - label: AI Credits per Member
+    name: ai_credits
+    type: usage
+    metric: credit
+    limit: 50
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: true
+  elements:
+  - name: Multiple Workspaces with Unlimited Boards
+  - name: Unlimited Guests
+  - name: 3,900+ Diagramming Shapes and Icons
+  - name: Advanced Data Tables
+  - name: AI Workflows (Sidekicks and Flows)
+  - name: Jira and Azure DevOps Integrations
+- id: miro-enterprise
+  name: Enterprise
+  type: enterprise
+  description: For large organizations. Custom pricing; minimum 30 members.
+  entries:
+  - label: Per-Member Subscription
+    name: seat
+    type: flat
+    metric: member
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: true
+  - label: Minimum Members
+    name: min_members
+    type: flat
+    metric: member
+    limit: 30
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: All Business Features
+  - name: Flexible License Program
+  - name: SCIM Automation
+  - name: Enterprise-Grade Security
+  - name: Regional Data Hosting
+  - name: Custom Miro AI Credits
+  - name: Premium 24/7 Support
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
