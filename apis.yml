@@ -219,6 +219,10 @@ common:
     url: rate-limits/miro-rate-limits.yml
   - type: FinOps
     url: finops/miro-finops.yml
+  - type: Integrations
+    url: https://miro.com/integrations/
+integrations:
+  - name: Go to dashboard
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
