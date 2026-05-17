@@ -1,7 +1,7 @@
 aid: miro
 url: https://raw.githubusercontent.com/api-evangelist/miro/refs/heads/main/apis.yml
 name: Miro
-x-type: company
+kind: company
 description: >-
   Miro is an online collaborative whiteboard used by distributed teams for brainstorming, diagramming, and workshops. The Miro REST API exposes boards, board items (sticky notes, cards, shapes, frames, images, embeds, etc.), connectors, tags, mind maps, members, organizations, teams, webhooks, audit logs, and SCIM provisioning. Miro also offers a Web SDK for in-board apps.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -25,7 +25,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/boards
-        type: API Reference
+        type: APIReference
       - url: https://developers.miro.com/reference/overview
         type: Documentation
       - url: openapi/miro-openapi.json
@@ -43,7 +43,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/items
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -58,7 +58,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/connectors
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -73,7 +73,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/tags
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -88,7 +88,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/mindmap-nodes
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -104,7 +104,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/board-members
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -119,7 +119,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/webhooks
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -134,7 +134,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/enterprise-organization
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -149,7 +149,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/enterprise-teams
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -165,7 +165,7 @@ apis:
     baseURL: https://api.miro.com/v2
     properties:
       - url: https://developers.miro.com/reference/audit-logs
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
@@ -181,7 +181,7 @@ apis:
     baseURL: https://miro.com/api/v1/scim
     properties:
       - url: https://developers.miro.com/reference/scim-api
-        type: API Reference
+        type: APIReference
       - url: openapi/miro-openapi.json
         type: OpenAPI
     description: >-
