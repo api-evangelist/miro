@@ -1,0 +1,211 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Group
+  description: 'Miro Developer Platform — Group. 3 operations. Lead operation: List groups. Self-contained Naftiko capability
+    covering one Miro business surface.'
+  tags:
+  - Miro
+  - Group
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-group
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Group business capability. Self-contained, no shared references.
+    resources:
+    - name: Groups
+      path: /Groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: List groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: attributes
+          in: query
+          type: string
+          description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes:
+            id,displayName <br> Note</b>: It is also possible to fetch att'
+        - name: filter
+          in: query
+          type: string
+          description: You can request a subset of resources by specifying the filter query parameter containing a filter
+            expression. Attribute names and attribute operators used in f
+        - name: startIndex
+          in: query
+          type: integer
+          description: 'Use startIndex in combination with count query parameters to receive paginated results. <br><br> start
+            index is 1-based. <br><br> Example: startIndex=1'
+        - name: count
+          in: query
+          type: integer
+          description: Specifies the maximum number of query results per page. <br><br> Use count in combination with startIndex
+            query parameters to receive paginated results. <br><br
+        - name: sortBy
+          in: query
+          type: string
+          description: Specifies the attribute whose value will be used to order the response. Example sortBy=displayName
+        - name: sortOrder
+          in: query
+          type: string
+          description: 'Defines the order in which the ''sortBy'' parameter is applied. Example: sortOrder=ascending'
+    - name: Groups-id
+      path: /Groups/{id}
+      operations:
+      - name: getgroup
+        method: GET
+        description: Get group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: A server-assigned, unique identifier for this Group (team).
+          required: true
+        - name: attributes
+          in: query
+          type: string
+          description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes:
+            id,displayName <br> Note</b>: It is also possible to retrieve '
+      - name: patchgroup
+        method: PATCH
+        description: Patch group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Group (Team) ID. A server-assigned, unique identifier for this Group (team).
+          required: true
+        - name: attributes
+          in: query
+          type: string
+          description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes:
+            id,displayName <br> It is also possible to fetch attributes wi'
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-group-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Group. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/groups
+      name: groups
+      description: REST surface for Groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: List groups
+        call: miro-group.listgroups
+        with:
+          attributes: rest.attributes
+          filter: rest.filter
+          startIndex: rest.startIndex
+          count: rest.count
+          sortBy: rest.sortBy
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{id}
+      name: groups-id
+      description: REST surface for Groups-id.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Get group
+        call: miro-group.getgroup
+        with:
+          id: rest.id
+          attributes: rest.attributes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchgroup
+        description: Patch group
+        call: miro-group.patchgroup
+        with:
+          id: rest.id
+          attributes: rest.attributes
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-group-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Group. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-groups
+      description: List groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-group.listgroups
+      with:
+        attributes: tools.attributes
+        filter: tools.filter
+        startIndex: tools.startIndex
+        count: tools.count
+        sortBy: tools.sortBy
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-group
+      description: Get group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-group.getgroup
+      with:
+        id: tools.id
+        attributes: tools.attributes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-group
+      description: Patch group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-group.patchgroup
+      with:
+        id: tools.id
+        attributes: tools.attributes
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

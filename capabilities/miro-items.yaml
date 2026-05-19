@@ -1,0 +1,235 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Items
+  description: 'Miro Developer Platform — Items. 4 operations. Lead operation: Get items on board. Self-contained Naftiko
+    capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-items
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Items business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards-board_id-items
+      path: /v2/boards/{board_id}/items
+      operations:
+      - name: getitems
+        method: GET
+        description: Get items on board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+        - name: type
+          in: query
+          type: string
+        - name: cursor
+          in: query
+          type: string
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board for which you want to retrieve the list of available items.
+          required: true
+    - name: v2-boards-board_id-items-item_id
+      path: /v2/boards/{board_id}/items/{item_id}
+      operations:
+      - name: getspecificitem
+        method: GET
+        description: Get specific item on board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to retrieve a specific item.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to retrieve.
+          required: true
+      - name: updateitempositionorparent
+        method: PATCH
+        description: Update item position or parent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to update the item.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteitem
+        method: DELETE
+        description: Delete item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to delete the item.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-items-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Items. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards/{board-id}/items
+      name: v2-boards-board-id-items
+      description: REST surface for v2-boards-board_id-items.
+      operations:
+      - method: GET
+        name: getitems
+        description: Get items on board
+        call: miro-items.getitems
+        with:
+          limit: rest.limit
+          type: rest.type
+          cursor: rest.cursor
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/items/{item-id}
+      name: v2-boards-board-id-items-item-id
+      description: REST surface for v2-boards-board_id-items-item_id.
+      operations:
+      - method: GET
+        name: getspecificitem
+        description: Get specific item on board
+        call: miro-items.getspecificitem
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateitempositionorparent
+        description: Update item position or parent
+        call: miro-items.updateitempositionorparent
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteitem
+        description: Delete item
+        call: miro-items.deleteitem
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Items. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-items-board
+      description: Get items on board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-items.getitems
+      with:
+        limit: tools.limit
+        type: tools.type
+        cursor: tools.cursor
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-item-board
+      description: Get specific item on board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-items.getspecificitem
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-item-position-parent
+      description: Update item position or parent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-items.updateitempositionorparent
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-item
+      description: Delete item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-items.deleteitem
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.

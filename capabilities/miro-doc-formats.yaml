@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — doc formats
+  description: 'Miro Developer Platform — doc formats. 3 operations. Lead operation: Create doc format item. Self-contained
+    Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - doc formats
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-doc-formats
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — doc formats business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards-board_id-docs
+      path: /v2/boards/{board_id}/docs
+      operations:
+      - name: createdocformatitem
+        method: POST
+        description: Create doc format item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to create the item.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-boards-board_id-docs-item_id
+      path: /v2/boards/{board_id}/docs/{item_id}
+      operations:
+      - name: getdocformatitem
+        method: GET
+        description: Get doc format item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to retrieve a specific item.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to retrieve.
+          required: true
+        - name: textContentType
+          in: query
+          type: string
+          description: Controls the contentType of the returned doc's content.
+      - name: deletedocformatitem
+        method: DELETE
+        description: Delete doc format item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to delete the item.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-doc-formats-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — doc formats. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards/{board-id}/docs
+      name: v2-boards-board-id-docs
+      description: REST surface for v2-boards-board_id-docs.
+      operations:
+      - method: POST
+        name: createdocformatitem
+        description: Create doc format item
+        call: miro-doc-formats.createdocformatitem
+        with:
+          board_id: rest.board_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/docs/{item-id}
+      name: v2-boards-board-id-docs-item-id
+      description: REST surface for v2-boards-board_id-docs-item_id.
+      operations:
+      - method: GET
+        name: getdocformatitem
+        description: Get doc format item
+        call: miro-doc-formats.getdocformatitem
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+          textContentType: rest.textContentType
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedocformatitem
+        description: Delete doc format item
+        call: miro-doc-formats.deletedocformatitem
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-doc-formats-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — doc formats. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-doc-format-item
+      description: Create doc format item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-doc-formats.createdocformatitem
+      with:
+        board_id: tools.board_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-doc-format-item
+      description: Get doc format item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-doc-formats.getdocformatitem
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+        textContentType: tools.textContentType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-doc-format-item
+      description: Delete doc format item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-doc-formats.deletedocformatitem
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.

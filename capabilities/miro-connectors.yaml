@@ -1,0 +1,272 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Connectors
+  description: 'Miro Developer Platform — Connectors. 5 operations. Lead operation: Create connector. Self-contained Naftiko
+    capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Connectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-connectors
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Connectors business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards-board_id-connectors
+      path: /v2/boards/{board_id}/connectors
+      operations:
+      - name: createconnector
+        method: POST
+        description: Create connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board for which you want to create the connector.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getconnectors
+        method: GET
+        description: Get connectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+        - name: cursor
+          in: query
+          type: string
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to retrieve a list of connectors.
+          required: true
+    - name: v2-boards-board_id-connectors-connector_id
+      path: /v2/boards/{board_id}/connectors/{connector_id}
+      operations:
+      - name: getconnector
+        method: GET
+        description: Get specific connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to retrieve a specific connector.
+          required: true
+        - name: connector_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the connector that you want to retrieve.
+          required: true
+      - name: updateconnector
+        method: PATCH
+        description: Update connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board for which you want to update the connector.
+          required: true
+        - name: connector_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the connector that you want to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteconnector
+        method: DELETE
+        description: Delete connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to delete the connector.
+          required: true
+        - name: connector_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the connector that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-connectors-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Connectors. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards/{board-id}/connectors
+      name: v2-boards-board-id-connectors
+      description: REST surface for v2-boards-board_id-connectors.
+      operations:
+      - method: POST
+        name: createconnector
+        description: Create connector
+        call: miro-connectors.createconnector
+        with:
+          board_id: rest.board_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getconnectors
+        description: Get connectors
+        call: miro-connectors.getconnectors
+        with:
+          limit: rest.limit
+          cursor: rest.cursor
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/connectors/{connector-id}
+      name: v2-boards-board-id-connectors-connector-id
+      description: REST surface for v2-boards-board_id-connectors-connector_id.
+      operations:
+      - method: GET
+        name: getconnector
+        description: Get specific connector
+        call: miro-connectors.getconnector
+        with:
+          board_id: rest.board_id
+          connector_id: rest.connector_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateconnector
+        description: Update connector
+        call: miro-connectors.updateconnector
+        with:
+          board_id: rest.board_id
+          connector_id: rest.connector_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconnector
+        description: Delete connector
+        call: miro-connectors.deleteconnector
+        with:
+          board_id: rest.board_id
+          connector_id: rest.connector_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-connectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Connectors. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-connector
+      description: Create connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-connectors.createconnector
+      with:
+        board_id: tools.board_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connectors
+      description: Get connectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-connectors.getconnectors
+      with:
+        limit: tools.limit
+        cursor: tools.cursor
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-connector
+      description: Get specific connector
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-connectors.getconnector
+      with:
+        board_id: tools.board_id
+        connector_id: tools.connector_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-connector
+      description: Update connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-connectors.updateconnector
+      with:
+        board_id: tools.board_id
+        connector_id: tools.connector_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-connector
+      description: Delete connector
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-connectors.deleteconnector
+      with:
+        board_id: tools.board_id
+        connector_id: tools.connector_id
+      outputParameters:
+      - type: object
+        mapping: $.

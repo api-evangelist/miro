@@ -1,0 +1,436 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Board Export
+  description: 'Miro Developer Platform — Board Export. 7 operations. Lead operation: Create board export job. Self-contained
+    Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Board Export
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-board-export
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Board Export business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-boards-export-jobs
+      path: /v2/orgs/{org_id}/boards/export/jobs
+      operations:
+      - name: enterprisecreateboardexport
+        method: POST
+        description: Create board export job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: request_id
+          in: query
+          type: string
+          description: Unique identifier of the board export job.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: enterpriseboardexportjobs
+        method: GET
+        description: Get board export jobs list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: status
+          in: query
+          type: array
+          description: Status of the board export jobs that you want to retrieve, such as JOB_STATUS_CREATED, JOB_STATUS_IN_PROGRESS,
+            JOB_STATUS_CANCELLED or JOB_STATUS_FINISHED.
+        - name: creatorId
+          in: query
+          type: array
+          description: Unique identifier of the board export job creator.
+        - name: cursor
+          in: query
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the limit specified
+            and a cursor that points to the next portion of the results
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return per call. If the number of jobs in the response is greater
+            than the limit specified, the response returns the cursor par
+    - name: v2-orgs-org_id-boards-export-jobs-job_id
+      path: /v2/orgs/{org_id}/boards/export/jobs/{job_id}
+      operations:
+      - name: enterpriseboardexportjobstatus
+        method: GET
+        description: Get board export job status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: job_id
+          in: path
+          type: string
+          description: Unique identifier of the board export job.
+          required: true
+    - name: v2-orgs-org_id-boards-export-jobs-job_id-results
+      path: /v2/orgs/{org_id}/boards/export/jobs/{job_id}/results
+      operations:
+      - name: enterpriseboardexportjobresults
+        method: GET
+        description: Get results for board export job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: job_id
+          in: path
+          type: string
+          description: Unique identifier of the job.
+          required: true
+    - name: v2-orgs-org_id-boards-export-jobs-job_id-status
+      path: /v2/orgs/{org_id}/boards/export/jobs/{job_id}/status
+      operations:
+      - name: enterpriseupdateboardexportjob
+        method: PUT
+        description: Update board export job status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: job_id
+          in: path
+          type: string
+          description: Unique identifier of the board export job.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v2-orgs-org_id-boards-export-jobs-job_id-tasks
+      path: /v2/orgs/{org_id}/boards/export/jobs/{job_id}/tasks
+      operations:
+      - name: enterpriseboardexportjobtasks
+        method: GET
+        description: Get board export job tasks list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: job_id
+          in: path
+          type: string
+          description: Unique identifier of the board export job.
+          required: true
+        - name: status
+          in: query
+          type: array
+          description: 'Filters the list of board export tasks by their status. Accepts an array of statuses such as TASK_STATUS_CREATED,
+            TASK_STATUS_CANCELLED, TASK_STATUS_SCHEDULED, '
+        - name: cursor
+          in: query
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the limit specified
+            and a cursor that points to the next portion of the results
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return per call. If the number of tasks in the response is greater
+            than the limit specified, the response returns the cursor pa
+    - name: v2-orgs-org_id-boards-export-jobs-job_id-tasks-task_id-export-link
+      path: /v2/orgs/{org_id}/boards/export/jobs/{job_id}/tasks/{task_id}/export-link
+      operations:
+      - name: enterprisecreateboardexporttaskexportlink
+        method: POST
+        description: Create task export link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: job_id
+          in: path
+          type: string
+          description: Unique identifier of the board export job.
+          required: true
+        - name: task_id
+          in: path
+          type: string
+          description: Unique identifier of the board export task.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-board-export-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Board Export. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs
+      name: v2-orgs-org-id-boards-export-jobs
+      description: REST surface for v2-orgs-org_id-boards-export-jobs.
+      operations:
+      - method: POST
+        name: enterprisecreateboardexport
+        description: Create board export job
+        call: miro-board-export.enterprisecreateboardexport
+        with:
+          org_id: rest.org_id
+          request_id: rest.request_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: enterpriseboardexportjobs
+        description: Get board export jobs list
+        call: miro-board-export.enterpriseboardexportjobs
+        with:
+          org_id: rest.org_id
+          status: rest.status
+          creatorId: rest.creatorId
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs/{job-id}
+      name: v2-orgs-org-id-boards-export-jobs-job-id
+      description: REST surface for v2-orgs-org_id-boards-export-jobs-job_id.
+      operations:
+      - method: GET
+        name: enterpriseboardexportjobstatus
+        description: Get board export job status
+        call: miro-board-export.enterpriseboardexportjobstatus
+        with:
+          org_id: rest.org_id
+          job_id: rest.job_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs/{job-id}/results
+      name: v2-orgs-org-id-boards-export-jobs-job-id-results
+      description: REST surface for v2-orgs-org_id-boards-export-jobs-job_id-results.
+      operations:
+      - method: GET
+        name: enterpriseboardexportjobresults
+        description: Get results for board export job
+        call: miro-board-export.enterpriseboardexportjobresults
+        with:
+          org_id: rest.org_id
+          job_id: rest.job_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs/{job-id}/status
+      name: v2-orgs-org-id-boards-export-jobs-job-id-status
+      description: REST surface for v2-orgs-org_id-boards-export-jobs-job_id-status.
+      operations:
+      - method: PUT
+        name: enterpriseupdateboardexportjob
+        description: Update board export job status
+        call: miro-board-export.enterpriseupdateboardexportjob
+        with:
+          org_id: rest.org_id
+          job_id: rest.job_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs/{job-id}/tasks
+      name: v2-orgs-org-id-boards-export-jobs-job-id-tasks
+      description: REST surface for v2-orgs-org_id-boards-export-jobs-job_id-tasks.
+      operations:
+      - method: GET
+        name: enterpriseboardexportjobtasks
+        description: Get board export job tasks list
+        call: miro-board-export.enterpriseboardexportjobtasks
+        with:
+          org_id: rest.org_id
+          job_id: rest.job_id
+          status: rest.status
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/export/jobs/{job-id}/tasks/{task-id}/export-link
+      name: v2-orgs-org-id-boards-export-jobs-job-id-tasks-task-id-export-link
+      description: REST surface for v2-orgs-org_id-boards-export-jobs-job_id-tasks-task_id-export-link.
+      operations:
+      - method: POST
+        name: enterprisecreateboardexporttaskexportlink
+        description: Create task export link
+        call: miro-board-export.enterprisecreateboardexporttaskexportlink
+        with:
+          org_id: rest.org_id
+          job_id: rest.job_id
+          task_id: rest.task_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-board-export-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Board Export. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-board-export-job
+      description: Create board export job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-board-export.enterprisecreateboardexport
+      with:
+        org_id: tools.org_id
+        request_id: tools.request_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-board-export-jobs-list
+      description: Get board export jobs list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-board-export.enterpriseboardexportjobs
+      with:
+        org_id: tools.org_id
+        status: tools.status
+        creatorId: tools.creatorId
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-board-export-job-status
+      description: Get board export job status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-board-export.enterpriseboardexportjobstatus
+      with:
+        org_id: tools.org_id
+        job_id: tools.job_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-results-board-export-job
+      description: Get results for board export job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-board-export.enterpriseboardexportjobresults
+      with:
+        org_id: tools.org_id
+        job_id: tools.job_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-board-export-job-status
+      description: Update board export job status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-board-export.enterpriseupdateboardexportjob
+      with:
+        org_id: tools.org_id
+        job_id: tools.job_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-board-export-job-tasks
+      description: Get board export job tasks list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-board-export.enterpriseboardexportjobtasks
+      with:
+        org_id: tools.org_id
+        job_id: tools.job_id
+        status: tools.status
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-task-export-link
+      description: Create task export link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-board-export.enterprisecreateboardexporttaskexportlink
+      with:
+        org_id: tools.org_id
+        job_id: tools.job_id
+        task_id: tools.task_id
+      outputParameters:
+      - type: object
+        mapping: $.

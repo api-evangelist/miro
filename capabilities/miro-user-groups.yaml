@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — User groups
+  description: 'Miro Developer Platform — User groups. 5 operations. Lead operation: List of user groups. Self-contained Naftiko
+    capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - User groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-user-groups
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — User groups business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-groups
+      path: /v2/orgs/{org_id}/groups
+      operations:
+      - name: enterprisegetgroups
+        method: GET
+        description: List of user groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: enterprisecreategroup
+        method: POST
+        description: Create user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-orgs-org_id-groups-group_id
+      path: /v2/orgs/{org_id}/groups/{group_id}
+      operations:
+      - name: enterprisegetgroup
+        method: GET
+        description: Get user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: enterpriseupdategroup
+        method: PATCH
+        description: Update user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: enterprisedeletegroup
+        method: DELETE
+        description: Delete user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-user-groups-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — User groups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/groups
+      name: v2-orgs-org-id-groups
+      description: REST surface for v2-orgs-org_id-groups.
+      operations:
+      - method: GET
+        name: enterprisegetgroups
+        description: List of user groups
+        call: miro-user-groups.enterprisegetgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: enterprisecreategroup
+        description: Create user group
+        call: miro-user-groups.enterprisecreategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/groups/{group-id}
+      name: v2-orgs-org-id-groups-group-id
+      description: REST surface for v2-orgs-org_id-groups-group_id.
+      operations:
+      - method: GET
+        name: enterprisegetgroup
+        description: Get user group
+        call: miro-user-groups.enterprisegetgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: enterpriseupdategroup
+        description: Update user group
+        call: miro-user-groups.enterpriseupdategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: enterprisedeletegroup
+        description: Delete user group
+        call: miro-user-groups.enterprisedeletegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-user-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — User groups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-user-groups
+      description: List of user groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-user-groups.enterprisegetgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user-group
+      description: Create user group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-user-groups.enterprisecreategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-group
+      description: Get user group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-user-groups.enterprisegetgroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-group
+      description: Update user group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-user-groups.enterpriseupdategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user-group
+      description: Delete user group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-user-groups.enterprisedeletegroup
+      outputParameters:
+      - type: object
+        mapping: $.

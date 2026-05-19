@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — User group to teams
+  description: 'Miro Developer Platform — User group to teams. 2 operations. Lead operation: Get teams of a user group. Self-contained
+    Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - User group to teams
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-user-group-to-teams
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — User group to teams business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-groups-group_id-teams
+      path: /v2/orgs/{org_id}/groups/{group_id}/teams
+      operations:
+      - name: enterprisegroupsgetteams
+        method: GET
+        description: Get teams of a user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-orgs-org_id-groups-group_id-teams-team_id
+      path: /v2/orgs/{org_id}/groups/{group_id}/teams/{team_id}
+      operations:
+      - name: enterprisegroupsgetteam
+        method: GET
+        description: Get user group team
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-user-group-to-teams-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — User group to teams. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/groups/{group-id}/teams
+      name: v2-orgs-org-id-groups-group-id-teams
+      description: REST surface for v2-orgs-org_id-groups-group_id-teams.
+      operations:
+      - method: GET
+        name: enterprisegroupsgetteams
+        description: Get teams of a user group
+        call: miro-user-group-to-teams.enterprisegroupsgetteams
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/groups/{group-id}/teams/{team-id}
+      name: v2-orgs-org-id-groups-group-id-teams-team-id
+      description: REST surface for v2-orgs-org_id-groups-group_id-teams-team_id.
+      operations:
+      - method: GET
+        name: enterprisegroupsgetteam
+        description: Get user group team
+        call: miro-user-group-to-teams.enterprisegroupsgetteam
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-user-group-to-teams-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — User group to teams. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-teams-user-group
+      description: Get teams of a user group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-user-group-to-teams.enterprisegroupsgetteams
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-group-team
+      description: Get user group team
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-user-group-to-teams.enterprisegroupsgetteam
+      outputParameters:
+      - type: object
+        mapping: $.

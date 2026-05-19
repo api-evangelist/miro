@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Bulk operations
+  description: 'Miro Developer Platform — Bulk operations. 2 operations. Lead operation: Create items in bulk using file from
+    device. Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Bulk operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-bulk-operations
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Bulk operations business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards-board_id_Platformcreateitemsinbulkusingfilefromdevice-items-bulk
+      path: /v2/boards/{board_id_Platformcreateitemsinbulkusingfilefromdevice}/items/bulk
+      operations:
+      - name: createitemsinbulkusingfilefromdevice
+        method: POST
+        description: Create items in bulk using file from device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-boards-board_id-items-bulk
+      path: /v2/boards/{board_id}/items/bulk
+      operations:
+      - name: createitems
+        method: POST
+        description: Create items in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-bulk-operations-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Bulk operations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards/{board-id-platformcreateitemsinbulkusingfilefromdevice}/items/bulk
+      name: v2-boards-board-id-platformcreateitemsinbulkusingfilefromdevice-items-bulk
+      description: REST surface for v2-boards-board_id_Platformcreateitemsinbulkusingfilefromdevice-items-bulk.
+      operations:
+      - method: POST
+        name: createitemsinbulkusingfilefromdevice
+        description: Create items in bulk using file from device
+        call: miro-bulk-operations.createitemsinbulkusingfilefromdevice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/items/bulk
+      name: v2-boards-board-id-items-bulk
+      description: REST surface for v2-boards-board_id-items-bulk.
+      operations:
+      - method: POST
+        name: createitems
+        description: Create items in bulk
+        call: miro-bulk-operations.createitems
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-bulk-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Bulk operations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: create-items-bulk-using-file
+      description: Create items in bulk using file from device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-bulk-operations.createitemsinbulkusingfilefromdevice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-items-bulk
+      description: Create items in bulk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-bulk-operations.createitems
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

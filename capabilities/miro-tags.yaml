@@ -1,0 +1,485 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — tags
+  description: 'Miro Developer Platform — tags. 9 operations. Lead operation: Get items by tag. Self-contained Naftiko capability
+    covering one Miro business surface.'
+  tags:
+  - Miro
+  - tags
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-tags
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — tags business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards-board_id_PlatformTags-items
+      path: /v2/boards/{board_id_PlatformTags}/items
+      operations:
+      - name: getitemsbytag
+        method: GET
+        description: Get items by tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: string
+        - name: board_id_PlatformTags
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to retrieve a specific tag.
+          required: true
+        - name: tag_id
+          in: query
+          type: string
+          description: Unique identifier (ID) of the tag that you want to retrieve.
+          required: true
+    - name: v2-boards-board_id_PlatformTags-items-item_id
+      path: /v2/boards/{board_id_PlatformTags}/items/{item_id}
+      operations:
+      - name: attachtagtoitem
+        method: POST
+        description: Attach tag to item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id_PlatformTags
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board with the item that you want to add a tag to.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item to which you want to add a tag.
+          required: true
+        - name: tag_id
+          in: query
+          type: string
+          description: Unique identifier (ID) of the tag you want to add to the item.
+          required: true
+      - name: removetagfromitem
+        method: DELETE
+        description: Remove tag from item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id_PlatformTags
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board with the item that you want to remove a tag from.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item that you want to remove the tag from.
+          required: true
+        - name: tag_id
+          in: query
+          type: string
+          description: Unique identifier (ID) of the tag that you want to remove from the item.
+          required: true
+    - name: v2-boards-board_id-items-item_id-tags
+      path: /v2/boards/{board_id}/items/{item_id}/tags
+      operations:
+      - name: gettagsfromitem
+        method: GET
+        description: Get tags from item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board with the item whose tags you want to retrieve.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the item whose tags you want to retrieve.
+          required: true
+    - name: v2-boards-board_id-tags
+      path: /v2/boards/{board_id}/tags
+      operations:
+      - name: createtag
+        method: POST
+        description: Create tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to create the tag.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: gettagsfromboard
+        method: GET
+        description: Get tags from board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: string
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board whose tags you want to retrieve.
+          required: true
+    - name: v2-boards-board_id-tags-tag_id
+      path: /v2/boards/{board_id}/tags/{tag_id}
+      operations:
+      - name: gettag
+        method: GET
+        description: Get tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to retrieve a specific tag.
+          required: true
+        - name: tag_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the tag that you want to retrieve.
+          required: true
+      - name: updatetag
+        method: PATCH
+        description: Update tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to update a specific tag.
+          required: true
+        - name: tag_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the tag that you want to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetag
+        method: DELETE
+        description: Delete tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to delete a specific tag.
+          required: true
+        - name: tag_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the tag that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-tags-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — tags. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards/{board-id-platformtags}/items
+      name: v2-boards-board-id-platformtags-items
+      description: REST surface for v2-boards-board_id_PlatformTags-items.
+      operations:
+      - method: GET
+        name: getitemsbytag
+        description: Get items by tag
+        call: miro-tags.getitemsbytag
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          board_id_PlatformTags: rest.board_id_PlatformTags
+          tag_id: rest.tag_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id-platformtags}/items/{item-id}
+      name: v2-boards-board-id-platformtags-items-item-id
+      description: REST surface for v2-boards-board_id_PlatformTags-items-item_id.
+      operations:
+      - method: POST
+        name: attachtagtoitem
+        description: Attach tag to item
+        call: miro-tags.attachtagtoitem
+        with:
+          board_id_PlatformTags: rest.board_id_PlatformTags
+          item_id: rest.item_id
+          tag_id: rest.tag_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removetagfromitem
+        description: Remove tag from item
+        call: miro-tags.removetagfromitem
+        with:
+          board_id_PlatformTags: rest.board_id_PlatformTags
+          item_id: rest.item_id
+          tag_id: rest.tag_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/items/{item-id}/tags
+      name: v2-boards-board-id-items-item-id-tags
+      description: REST surface for v2-boards-board_id-items-item_id-tags.
+      operations:
+      - method: GET
+        name: gettagsfromitem
+        description: Get tags from item
+        call: miro-tags.gettagsfromitem
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/tags
+      name: v2-boards-board-id-tags
+      description: REST surface for v2-boards-board_id-tags.
+      operations:
+      - method: POST
+        name: createtag
+        description: Create tag
+        call: miro-tags.createtag
+        with:
+          board_id: rest.board_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: gettagsfromboard
+        description: Get tags from board
+        call: miro-tags.gettagsfromboard
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}/tags/{tag-id}
+      name: v2-boards-board-id-tags-tag-id
+      description: REST surface for v2-boards-board_id-tags-tag_id.
+      operations:
+      - method: GET
+        name: gettag
+        description: Get tag
+        call: miro-tags.gettag
+        with:
+          board_id: rest.board_id
+          tag_id: rest.tag_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetag
+        description: Update tag
+        call: miro-tags.updatetag
+        with:
+          board_id: rest.board_id
+          tag_id: rest.tag_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetag
+        description: Delete tag
+        call: miro-tags.deletetag
+        with:
+          board_id: rest.board_id
+          tag_id: rest.tag_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-tags-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — tags. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-items-tag
+      description: Get items by tag
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-tags.getitemsbytag
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        board_id_PlatformTags: tools.board_id_PlatformTags
+        tag_id: tools.tag_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attach-tag-item
+      description: Attach tag to item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-tags.attachtagtoitem
+      with:
+        board_id_PlatformTags: tools.board_id_PlatformTags
+        item_id: tools.item_id
+        tag_id: tools.tag_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-tag-item
+      description: Remove tag from item
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-tags.removetagfromitem
+      with:
+        board_id_PlatformTags: tools.board_id_PlatformTags
+        item_id: tools.item_id
+        tag_id: tools.tag_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tags-item
+      description: Get tags from item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-tags.gettagsfromitem
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tag
+      description: Create tag
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-tags.createtag
+      with:
+        board_id: tools.board_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tags-board
+      description: Get tags from board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-tags.gettagsfromboard
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tag
+      description: Get tag
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-tags.gettag
+      with:
+        board_id: tools.board_id
+        tag_id: tools.tag_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-tag
+      description: Update tag
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-tags.updatetag
+      with:
+        board_id: tools.board_id
+        tag_id: tools.tag_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tag
+      description: Delete tag
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-tags.deletetag
+      with:
+        board_id: tools.board_id
+        tag_id: tools.tag_id
+      outputParameters:
+      - type: object
+        mapping: $.

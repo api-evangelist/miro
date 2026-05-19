@@ -1,0 +1,311 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Projects
+  description: 'Miro Developer Platform — Projects. 5 operations. Lead operation: Create project. Self-contained Naftiko capability
+    covering one Miro business surface.'
+  tags:
+  - Miro
+  - Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-projects
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-teams-team_id-projects
+      path: /v2/orgs/{org_id}/teams/{team_id}/projects
+      operations:
+      - name: enterprisecreateproject
+        method: POST
+        description: Create project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: The ID of the organization within which you you want to create a project.
+          required: true
+        - name: team_id
+          in: path
+          type: string
+          description: The ID of the team within which you you want to create a project.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: enterprisegetprojects
+        method: GET
+        description: List of projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: The ID of the organization from which you want to retrieve the list of available projects.
+          required: true
+        - name: team_id
+          in: path
+          type: string
+          description: The ID of the team from which you want to retrieve the list of available projects.
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return per call. If the number of projects in the response is greater
+            than the limit specified, the response returns the cursor
+        - name: cursor
+          in: query
+          type: string
+          description: An indicator of the position of a page in the full set of results. To obtain the first page leave it
+            empty. To obtain subsequent pages set it to the value retur
+    - name: v2-orgs-org_id-teams-team_id-projects-project_id
+      path: /v2/orgs/{org_id}/teams/{team_id}/projects/{project_id}
+      operations:
+      - name: enterprisegetproject
+        method: GET
+        description: Get project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: The ID of the organization from which you want to retrieve the project information.
+          required: true
+        - name: team_id
+          in: path
+          type: string
+          description: The ID of the team from which you want to retrieve the project information.
+          required: true
+        - name: project_id
+          in: path
+          type: string
+          description: The ID of the project for which you want to retrieve the information.
+          required: true
+      - name: enterpriseupdateproject
+        method: PATCH
+        description: Update project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: The ID of an Organization.
+          required: true
+        - name: team_id
+          in: path
+          type: string
+          description: The ID of a Team.
+          required: true
+        - name: project_id
+          in: path
+          type: string
+          description: The ID of a Project.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: enterprisedeleteproject
+        method: DELETE
+        description: Delete project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: The ID of the organization from which you want to delete a project.
+          required: true
+        - name: team_id
+          in: path
+          type: string
+          description: The ID of the team from which you want to delete a project.
+          required: true
+        - name: project_id
+          in: path
+          type: string
+          description: The ID of the project that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-projects-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Projects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/teams/{team-id}/projects
+      name: v2-orgs-org-id-teams-team-id-projects
+      description: REST surface for v2-orgs-org_id-teams-team_id-projects.
+      operations:
+      - method: POST
+        name: enterprisecreateproject
+        description: Create project
+        call: miro-projects.enterprisecreateproject
+        with:
+          org_id: rest.org_id
+          team_id: rest.team_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: enterprisegetprojects
+        description: List of projects
+        call: miro-projects.enterprisegetprojects
+        with:
+          org_id: rest.org_id
+          team_id: rest.team_id
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/teams/{team-id}/projects/{project-id}
+      name: v2-orgs-org-id-teams-team-id-projects-project-id
+      description: REST surface for v2-orgs-org_id-teams-team_id-projects-project_id.
+      operations:
+      - method: GET
+        name: enterprisegetproject
+        description: Get project
+        call: miro-projects.enterprisegetproject
+        with:
+          org_id: rest.org_id
+          team_id: rest.team_id
+          project_id: rest.project_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: enterpriseupdateproject
+        description: Update project
+        call: miro-projects.enterpriseupdateproject
+        with:
+          org_id: rest.org_id
+          team_id: rest.team_id
+          project_id: rest.project_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: enterprisedeleteproject
+        description: Delete project
+        call: miro-projects.enterprisedeleteproject
+        with:
+          org_id: rest.org_id
+          team_id: rest.team_id
+          project_id: rest.project_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Projects. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-project
+      description: Create project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-projects.enterprisecreateproject
+      with:
+        org_id: tools.org_id
+        team_id: tools.team_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-projects
+      description: List of projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-projects.enterprisegetprojects
+      with:
+        org_id: tools.org_id
+        team_id: tools.team_id
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project
+      description: Get project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-projects.enterprisegetproject
+      with:
+        org_id: tools.org_id
+        team_id: tools.team_id
+        project_id: tools.project_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project
+      description: Update project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-projects.enterpriseupdateproject
+      with:
+        org_id: tools.org_id
+        team_id: tools.team_id
+        project_id: tools.project_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project
+      description: Delete project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-projects.enterprisedeleteproject
+      with:
+        org_id: tools.org_id
+        team_id: tools.team_id
+        project_id: tools.project_id
+      outputParameters:
+      - type: object
+        mapping: $.

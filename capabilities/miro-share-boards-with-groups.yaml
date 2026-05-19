@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Share boards with groups
+  description: 'Miro Developer Platform — Share boards with groups. 3 operations. Lead operation: Get board user group assignments.
+    Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Share boards with groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-share-boards-with-groups
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Share boards with groups business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-boards-board_id-groups
+      path: /v2/orgs/{org_id}/boards/{board_id}/groups
+      operations:
+      - name: enterpriseboardsgetgroups
+        method: GET
+        description: Get board user group assignments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: enterpriseboardscreategroup
+        method: POST
+        description: Create board user group assignments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-orgs-org_id-boards-board_id-groups-group_id
+      path: /v2/orgs/{org_id}/boards/{board_id}/groups/{group_id}
+      operations:
+      - name: enterpriseboardsdeletegroups
+        method: DELETE
+        description: Delete board user group assignment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-share-boards-with-groups-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Share boards with groups. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/boards/{board-id}/groups
+      name: v2-orgs-org-id-boards-board-id-groups
+      description: REST surface for v2-orgs-org_id-boards-board_id-groups.
+      operations:
+      - method: GET
+        name: enterpriseboardsgetgroups
+        description: Get board user group assignments
+        call: miro-share-boards-with-groups.enterpriseboardsgetgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: enterpriseboardscreategroup
+        description: Create board user group assignments
+        call: miro-share-boards-with-groups.enterpriseboardscreategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/orgs/{org-id}/boards/{board-id}/groups/{group-id}
+      name: v2-orgs-org-id-boards-board-id-groups-group-id
+      description: REST surface for v2-orgs-org_id-boards-board_id-groups-group_id.
+      operations:
+      - method: DELETE
+        name: enterpriseboardsdeletegroups
+        description: Delete board user group assignment
+        call: miro-share-boards-with-groups.enterpriseboardsdeletegroups
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-share-boards-with-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Share boards with groups. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-board-user-group-assignments
+      description: Get board user group assignments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-share-boards-with-groups.enterpriseboardsgetgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-board-user-group-assignments
+      description: Create board user group assignments
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-share-boards-with-groups.enterpriseboardscreategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-board-user-group-assignment
+      description: Delete board user group assignment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-share-boards-with-groups.enterpriseboardsdeletegroups
+      outputParameters:
+      - type: object
+        mapping: $.

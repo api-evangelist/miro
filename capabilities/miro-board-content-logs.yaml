@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Board Content Logs
+  description: 'Miro Developer Platform — Board Content Logs. 1 operations. Lead operation: Retrieve content change logs of
+    board items. Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Board Content Logs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-board-content-logs
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Board Content Logs business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-content-logs-items
+      path: /v2/orgs/{org_id}/content-logs/items
+      operations:
+      - name: enterpriseboardcontentitemlogsfetch
+        method: GET
+        description: Retrieve content change logs of board items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: board_ids
+          in: query
+          type: array
+          description: List of board IDs for which you want to retrieve the content logs.
+        - name: emails
+          in: query
+          type: array
+          description: Filter content logs based on the list of emails of users who created, modified, or deleted the board
+            item.
+        - name: from
+          in: query
+          type: string
+          description: Filter content logs based on the date and time when the board item was last modified. This is the start
+            date and time for the modified date duration.
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: 'Filter content logs based on the date and time when the board item was last modified. This is the
+            end date and time for the modified date duration. Format: UTC,'
+          required: true
+        - name: cursor
+          in: query
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the limit specified
+            and a cursor that points to the next portion of the results
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return per call. If the number of logs in the response is greater
+            than the limit specified, the response returns the cursor par
+        - name: sorting
+          in: query
+          type: string
+          description: Sort order in which you want to view the result set based on the modified date. To sort by an ascending
+            modified date, specify `asc`. To sort by a descending mo
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-board-content-logs-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Board Content Logs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/content-logs/items
+      name: v2-orgs-org-id-content-logs-items
+      description: REST surface for v2-orgs-org_id-content-logs-items.
+      operations:
+      - method: GET
+        name: enterpriseboardcontentitemlogsfetch
+        description: Retrieve content change logs of board items
+        call: miro-board-content-logs.enterpriseboardcontentitemlogsfetch
+        with:
+          org_id: rest.org_id
+          board_ids: rest.board_ids
+          emails: rest.emails
+          from: rest.from
+          to: rest.to
+          cursor: rest.cursor
+          limit: rest.limit
+          sorting: rest.sorting
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-board-content-logs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Board Content Logs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: retrieve-content-change-logs-board
+      description: Retrieve content change logs of board items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-board-content-logs.enterpriseboardcontentitemlogsfetch
+      with:
+        org_id: tools.org_id
+        board_ids: tools.board_ids
+        emails: tools.emails
+        from: tools.from
+        to: tools.to
+        cursor: tools.cursor
+        limit: tools.limit
+        sorting: tools.sorting
+      outputParameters:
+      - type: object
+        mapping: $.

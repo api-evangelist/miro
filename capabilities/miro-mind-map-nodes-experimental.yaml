@@ -1,0 +1,218 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Mind map nodes (experimental)
+  description: 'Miro Developer Platform — Mind map nodes (experimental). 4 operations. Lead operation: Get mind map nodes.
+    Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Mind map nodes (experimental)
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-mind-map-nodes-experimental
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Mind map nodes (experimental) business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-experimental-boards-board_id-mindmap_nodes
+      path: /v2-experimental/boards/{board_id}/mindmap_nodes
+      operations:
+      - name: getmindmapnodesexperimental
+        method: GET
+        description: Get mind map nodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+          description: Maximum number of results returned
+        - name: cursor
+          in: query
+          type: string
+          description: Points to the next portion of the results set
+      - name: createmindmapnodesexperimental
+        method: POST
+        description: Create mind map node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board where you want to create the item.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v2-experimental-boards-board_id-mindmap_nodes-item_id
+      path: /v2-experimental/boards/{board_id}/mindmap_nodes/{item_id}
+      operations:
+      - name: getmindmapnodeexperimental
+        method: GET
+        description: Get specific mind map node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to retrieve a mind map node.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the mind map node that you want to retrieve.
+          required: true
+      - name: deletemindmapnodeexperimental
+        method: DELETE
+        description: Delete mind map node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board from which you want to delete the mind map node.
+          required: true
+        - name: item_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the mind map node that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-mind-map-nodes-experimental-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Mind map nodes (experimental). One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2-experimental/boards/{board-id}/mindmap-nodes
+      name: v2-experimental-boards-board-id-mindmap-nodes
+      description: REST surface for v2-experimental-boards-board_id-mindmap_nodes.
+      operations:
+      - method: GET
+        name: getmindmapnodesexperimental
+        description: Get mind map nodes
+        call: miro-mind-map-nodes-experimental.getmindmapnodesexperimental
+        with:
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmindmapnodesexperimental
+        description: Create mind map node
+        call: miro-mind-map-nodes-experimental.createmindmapnodesexperimental
+        with:
+          board_id: rest.board_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2-experimental/boards/{board-id}/mindmap-nodes/{item-id}
+      name: v2-experimental-boards-board-id-mindmap-nodes-item-id
+      description: REST surface for v2-experimental-boards-board_id-mindmap_nodes-item_id.
+      operations:
+      - method: GET
+        name: getmindmapnodeexperimental
+        description: Get specific mind map node
+        call: miro-mind-map-nodes-experimental.getmindmapnodeexperimental
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemindmapnodeexperimental
+        description: Delete mind map node
+        call: miro-mind-map-nodes-experimental.deletemindmapnodeexperimental
+        with:
+          board_id: rest.board_id
+          item_id: rest.item_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-mind-map-nodes-experimental-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Mind map nodes (experimental). One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-mind-map-nodes
+      description: Get mind map nodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-mind-map-nodes-experimental.getmindmapnodesexperimental
+      with:
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-mind-map-node
+      description: Create mind map node
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-mind-map-nodes-experimental.createmindmapnodesexperimental
+      with:
+        board_id: tools.board_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-mind-map-node
+      description: Get specific mind map node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-mind-map-nodes-experimental.getmindmapnodeexperimental
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-mind-map-node
+      description: Delete mind map node
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-mind-map-nodes-experimental.deletemindmapnodeexperimental
+      with:
+        board_id: tools.board_id
+        item_id: tools.item_id
+      outputParameters:
+      - type: object
+        mapping: $.

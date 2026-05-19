@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — AI Interaction Logs
+  description: 'Miro Developer Platform — AI Interaction Logs. 1 operations. Lead operation: Get AI interaction logs (Beta).
+    Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - AI Interaction Logs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-ai-interaction-logs
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — AI Interaction Logs business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-orgs-org_id-ai-interaction-logs
+      path: /v2/orgs/{org_id}/ai-interaction-logs
+      operations:
+      - name: enterprisegetaiinteractionlogs
+        method: GET
+        description: Get AI interaction logs (Beta)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          description: Unique identifier of the organization.
+          required: true
+        - name: object_ids
+          in: query
+          type: array
+          description: 'List of object IDs used to retrieve AI interaction logs. '
+        - name: emails
+          in: query
+          type: array
+          description: Filters AI interaction logs using a list of user emails. Only AI interactions associated with the provided
+            emails will be included in the response.
+        - name: from
+          in: query
+          type: string
+          description: Start date and time of the time range used to filter AI interaction logs. Only interactions that were
+            stored within the specified <code>from</code> - <code>to</
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: End date and time of the time range used to filter AI interaction logs. Only interactions that were
+            stored within the specified <code>from</code> - <code>to</co
+          required: true
+        - name: cursor
+          in: query
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the limit specified
+            and a cursor that points to the next portion of the results
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return per call. If the number of logs in the response is greater
+            than the limit specified, the response returns the cursor par
+        - name: sorting
+          in: query
+          type: string
+          description: Sort order in which you want to view the result set based on the interaction date. To sort by an ascending
+            date, specify `asc`. To sort by a descending date, sp
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-ai-interaction-logs-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — AI Interaction Logs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/orgs/{org-id}/ai-interaction-logs
+      name: v2-orgs-org-id-ai-interaction-logs
+      description: REST surface for v2-orgs-org_id-ai-interaction-logs.
+      operations:
+      - method: GET
+        name: enterprisegetaiinteractionlogs
+        description: Get AI interaction logs (Beta)
+        call: miro-ai-interaction-logs.enterprisegetaiinteractionlogs
+        with:
+          org_id: rest.org_id
+          object_ids: rest.object_ids
+          emails: rest.emails
+          from: rest.from
+          to: rest.to
+          cursor: rest.cursor
+          limit: rest.limit
+          sorting: rest.sorting
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-ai-interaction-logs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — AI Interaction Logs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-ai-interaction-logs-beta
+      description: Get AI interaction logs (Beta)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-ai-interaction-logs.enterprisegetaiinteractionlogs
+      with:
+        org_id: tools.org_id
+        object_ids: tools.object_ids
+        emails: tools.emails
+        from: tools.from
+        to: tools.to
+        cursor: tools.cursor
+        limit: tools.limit
+        sorting: tools.sorting
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Reset all sessions of a user
+  description: 'Miro Developer Platform — Reset all sessions of a user. 1 operations. Lead operation: Reset all sessions of
+    a user. Self-contained Naftiko capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Reset all sessions of a user
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-reset-all-sessions-of-a-user
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Reset all sessions of a user business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-sessions-reset_all
+      path: /v2/sessions/reset_all
+      operations:
+      - name: enterprisepostusersessionsreset
+        method: POST
+        description: Reset all sessions of a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: email
+          in: query
+          type: string
+          description: Email ID of the user whose sessions you want to reset. Note that this user will be signed out from
+            all devices.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-reset-all-sessions-of-a-user-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Reset all sessions of a user. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/sessions/reset-all
+      name: v2-sessions-reset-all
+      description: REST surface for v2-sessions-reset_all.
+      operations:
+      - method: POST
+        name: enterprisepostusersessionsreset
+        description: Reset all sessions of a user
+        call: miro-reset-all-sessions-of-a-user.enterprisepostusersessionsreset
+        with:
+          email: rest.email
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-reset-all-sessions-of-a-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Reset all sessions of a user. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: reset-all-sessions-user
+      description: Reset all sessions of a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-reset-all-sessions-of-a-user.enterprisepostusersessionsreset
+      with:
+        email: tools.email
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,217 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Discovery
+  description: 'Miro Developer Platform — Discovery. 5 operations. Lead operation: List resource types. Self-contained Naftiko
+    capability covering one Miro business surface.'
+  tags:
+  - Miro
+  - Discovery
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-discovery
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Discovery business capability. Self-contained, no shared references.
+    resources:
+    - name: ResourceTypes
+      path: /ResourceTypes
+      operations:
+      - name: listresourcetypes
+        method: GET
+        description: List resource types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ResourceTypes-resource
+      path: /ResourceTypes/{resource}
+      operations:
+      - name: getresourcetype
+        method: GET
+        description: Get resource type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource
+          in: path
+          type: string
+          required: true
+    - name: Schemas
+      path: /Schemas
+      operations:
+      - name: listschemas
+        method: GET
+        description: List schemas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Schemas-uri
+      path: /Schemas/{uri}
+      operations:
+      - name: getschema
+        method: GET
+        description: Get schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: uri
+          in: path
+          type: string
+          description: Schema URI of a particular resource type.
+          required: true
+    - name: ServiceProviderConfig
+      path: /ServiceProviderConfig
+      operations:
+      - name: listserviceproviderconfigs
+        method: GET
+        description: Get Service Provider Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-discovery-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Discovery. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/resourcetypes
+      name: resourcetypes
+      description: REST surface for ResourceTypes.
+      operations:
+      - method: GET
+        name: listresourcetypes
+        description: List resource types
+        call: miro-discovery.listresourcetypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/resourcetypes/{resource}
+      name: resourcetypes-resource
+      description: REST surface for ResourceTypes-resource.
+      operations:
+      - method: GET
+        name: getresourcetype
+        description: Get resource type
+        call: miro-discovery.getresourcetype
+        with:
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schemas
+      name: schemas
+      description: REST surface for Schemas.
+      operations:
+      - method: GET
+        name: listschemas
+        description: List schemas
+        call: miro-discovery.listschemas
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schemas/{uri}
+      name: schemas-uri
+      description: REST surface for Schemas-uri.
+      operations:
+      - method: GET
+        name: getschema
+        description: Get schema
+        call: miro-discovery.getschema
+        with:
+          uri: rest.uri
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/serviceproviderconfig
+      name: serviceproviderconfig
+      description: REST surface for ServiceProviderConfig.
+      operations:
+      - method: GET
+        name: listserviceproviderconfigs
+        description: Get Service Provider Config
+        call: miro-discovery.listserviceproviderconfigs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-discovery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Discovery. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-resource-types
+      description: List resource types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-discovery.listresourcetypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-resource-type
+      description: Get resource type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-discovery.getresourcetype
+      with:
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-schemas
+      description: List schemas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-discovery.listschemas
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-schema
+      description: Get schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-discovery.getschema
+      with:
+        uri: tools.uri
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-service-provider-config
+      description: Get Service Provider Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-discovery.listserviceproviderconfigs
+      outputParameters:
+      - type: object
+        mapping: $.

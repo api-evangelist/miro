@@ -1,0 +1,304 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Miro Developer Platform — Boards
+  description: 'Miro Developer Platform — Boards. 6 operations. Lead operation: Create board. Self-contained Naftiko capability
+    covering one Miro business surface.'
+  tags:
+  - Miro
+  - Boards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MIRO_API_KEY: MIRO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: miro-boards
+    baseUri: https://api.miro.com
+    description: Miro Developer Platform — Boards business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-boards
+      path: /v2/boards
+      operations:
+      - name: createboard
+        method: POST
+        description: Create board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getboards
+        method: GET
+        description: Get boards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: team_id
+          in: query
+          type: string
+        - name: project_id
+          in: query
+          type: string
+        - name: query
+          in: query
+          type: string
+        - name: owner
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: string
+        - name: sort
+          in: query
+          type: string
+      - name: copyboard
+        method: PUT
+        description: Copy board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: copy_from
+          in: query
+          type: string
+          description: Unique identifier (ID) of the board that you want to copy.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v2-boards-board_id
+      path: /v2/boards/{board_id}
+      operations:
+      - name: getspecificboard
+        method: GET
+        description: Get specific board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board that you want to retrieve.
+          required: true
+      - name: updateboard
+        method: PATCH
+        description: Update board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board that you want to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteboard
+        method: DELETE
+        description: Delete board
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: board_id
+          in: path
+          type: string
+          description: Unique identifier (ID) of the board that you want to delete.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MIRO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: miro-boards-rest
+    port: 8080
+    description: REST adapter for Miro Developer Platform — Boards. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/boards
+      name: v2-boards
+      description: REST surface for v2-boards.
+      operations:
+      - method: POST
+        name: createboard
+        description: Create board
+        call: miro-boards.createboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getboards
+        description: Get boards
+        call: miro-boards.getboards
+        with:
+          team_id: rest.team_id
+          project_id: rest.project_id
+          query: rest.query
+          owner: rest.owner
+          limit: rest.limit
+          offset: rest.offset
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: copyboard
+        description: Copy board
+        call: miro-boards.copyboard
+        with:
+          copy_from: rest.copy_from
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/boards/{board-id}
+      name: v2-boards-board-id
+      description: REST surface for v2-boards-board_id.
+      operations:
+      - method: GET
+        name: getspecificboard
+        description: Get specific board
+        call: miro-boards.getspecificboard
+        with:
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateboard
+        description: Update board
+        call: miro-boards.updateboard
+        with:
+          board_id: rest.board_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteboard
+        description: Delete board
+        call: miro-boards.deleteboard
+        with:
+          board_id: rest.board_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: miro-boards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Miro Developer Platform — Boards. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-board
+      description: Create board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: miro-boards.createboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-boards
+      description: Get boards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-boards.getboards
+      with:
+        team_id: tools.team_id
+        project_id: tools.project_id
+        query: tools.query
+        owner: tools.owner
+        limit: tools.limit
+        offset: tools.offset
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copy-board
+      description: Copy board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-boards.copyboard
+      with:
+        copy_from: tools.copy_from
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-board
+      description: Get specific board
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: miro-boards.getspecificboard
+      with:
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-board
+      description: Update board
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: miro-boards.updateboard
+      with:
+        board_id: tools.board_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-board
+      description: Delete board
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: miro-boards.deleteboard
+      with:
+        board_id: tools.board_id
+      outputParameters:
+      - type: object
+        mapping: $.
