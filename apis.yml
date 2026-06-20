@@ -7,7 +7,7 @@ description: >-
   The Miro REST API exposes boards, board items (sticky notes, cards, shapes, frames, images, embeds, etc.), connectors,
   tags, mind maps, members, organizations, teams, webhooks, audit logs, and SCIM provisioning. Miro also offers a Web
   SDK for in-board apps.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Productivity
   - Whiteboard
@@ -23,7 +23,7 @@ apis:
     tags:
       - Boards
       - CRUD
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/boards
     baseURL: https://api.miro.com/v2
     properties:
@@ -42,7 +42,7 @@ apis:
       - Items
       - Sticky Notes
       - Shapes
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/items
     baseURL: https://api.miro.com/v2
     properties:
@@ -58,7 +58,7 @@ apis:
     tags:
       - Connectors
       - Diagramming
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/connectors
     baseURL: https://api.miro.com/v2
     properties:
@@ -74,7 +74,7 @@ apis:
     tags:
       - Tags
       - Metadata
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/tags
     baseURL: https://api.miro.com/v2
     properties:
@@ -88,7 +88,7 @@ apis:
     tags:
       - Mind Map
       - Diagramming
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/mindmap-nodes
     baseURL: https://api.miro.com/v2
     properties:
@@ -103,7 +103,7 @@ apis:
       - Members
       - Sharing
       - Permissions
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/board-members
     baseURL: https://api.miro.com/v2
     properties:
@@ -117,7 +117,7 @@ apis:
     tags:
       - Webhooks
       - Events
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/webhooks
     baseURL: https://api.miro.com/v2
     properties:
@@ -133,7 +133,7 @@ apis:
     tags:
       - Organization
       - Enterprise
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/enterprise-organization
     baseURL: https://api.miro.com/v2
     properties:
@@ -149,7 +149,7 @@ apis:
     tags:
       - Teams
       - Membership
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/enterprise-teams
     baseURL: https://api.miro.com/v2
     properties:
@@ -164,7 +164,7 @@ apis:
       - Audit
       - Compliance
       - Enterprise
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/audit-logs
     baseURL: https://api.miro.com/v2
     properties:
@@ -179,7 +179,7 @@ apis:
       - SCIM
       - Identity
       - Provisioning
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/reference/scim-api
     baseURL: https://miro.com/api/v1/scim
     properties:
@@ -196,7 +196,7 @@ apis:
       - SDK
       - Browser
       - Apps
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.miro.com/docs/build-your-first-hello-world-app
     baseURL: https://miro.com
     properties:
