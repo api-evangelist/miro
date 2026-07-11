@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/miro-openapi.json
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oAuth2AuthCode
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://miro.com/oauth/authorize
+    tokenUrl: https://api.miro.com/v1/oauth/token
+    scopes: 8
+  description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+  sources:
+  - openapi/miro-openapi.json

@@ -210,6 +210,12 @@ apis:
       Build apps that run inside the Miro board UI. The Web SDK lets your app create and modify board items, react to
       events, render custom panels, and integrate with the user's workspace.
 common:
+  - type: TrustCenter
+    url: security/miro-trust-center.yml
+  - type: DomainSecurity
+    url: security/miro-domain-security.yml
+  - type: Authentication
+    url: authentication/miro-authentication.yml
   - type: OAuthScopes
     url: scopes/miro-scopes.yml
   - type: LinkedIn
