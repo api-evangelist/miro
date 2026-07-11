@@ -210,6 +210,8 @@ apis:
       Build apps that run inside the Miro board UI. The Web SDK lets your app create and modify board items, react to
       events, render custom panels, and integrate with the user's workspace.
 common:
+  - type: OAuthScopes
+    url: scopes/miro-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/mirohq
   - type: Website
@@ -228,6 +230,8 @@ common:
     url: finops/miro-finops.yml
   - type: Integrations
     url: https://miro.com/integrations/
+  - type: Blog
+    url: https://miro.com/blog/
 integrations:
   - name: Go to dashboard
 maintainers:

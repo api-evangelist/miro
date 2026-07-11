@@ -1,0 +1,63 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/miro-openapi.json
+schemes:
+- name: oAuth2AuthCode
+  source: openapi/miro-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://miro.com/oauth/authorize
+    tokenUrl: https://api.miro.com/v1/oauth/token
+  description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+scopes:
+- scope: boards:read
+  description: Retrieve information about boards, board members, or items
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: boards:write
+  description: Create, update, or delete boards, board members, or items
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: microphone:listen
+  description: Access a user's microphone to record audio in an iFrame
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: organizations:read
+  description: Read information about the organization, such as name, plan, number of licenses,
+    organization settings, or organization members.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: organizations:teams:read
+  description: Read team information, such as the list of teams, team settings, team members,
+    for an organization.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: organizations:teams:write
+  description: Create or delete teams, update team information, team settings, team members,
+    for an organization.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: screen:record
+  description: Access a user's screen to record it in an iFrame
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
+- scope: webcam:record
+  description: Allows an iFrame to access a user's camera to record video
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/miro-openapi.json
