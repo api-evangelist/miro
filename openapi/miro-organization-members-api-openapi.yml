@@ -1,0 +1,307 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Organization Members API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Organization Members
+paths:
+  /v2/orgs/{org_id}/members:
+    get:
+      description: Retrieves organization members based on the organization ID and the cursor, or based on the user emails provided in the request.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-organization-members
+      parameters:
+      - in: query
+        name: emails
+        schema:
+          type: string
+          description: 'Emails of the organization members you want to retrieve. If you specify a value for the `emails` parameter, only the `emails` parameter is considered. All other filtering parameters are ignored. Maximum emails size is 10. Example: `emails=someEmail1@miro.com,someEmail2@miro.com`'
+          example: someEmail1@miro.com
+      - in: query
+        name: role
+        schema:
+          type: string
+          description: Filter organization members by role
+          enum:
+          - organization_internal_admin
+          - organization_internal_user
+          - organization_external_user
+          - organization_team_guest_user
+          - unknown
+      - in: query
+        name: license
+        schema:
+          type: string
+          description: Filter organization members by license
+          enum:
+          - advanced
+          - standard
+          - basic
+          - full
+          - occasional
+          - free
+          - free_restricted
+          - full_trial
+          - unknown
+      - in: query
+        name: active
+        schema:
+          type: boolean
+          description: Filter results based on whether the user is active or deactivated. Learn more about <a target="blank" href="https://help.miro.com/hc/en-us/articles/360025025894-Deactivated-users">user deactivation</a>.
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          description: The ID of the organization member used as the reference for pagination. To retrieve the first portion of the collection don't pass a cursor value. To retrieve the next portion of the collection, set the `cursor` parameter value to the ID of the last organization member you received in the response of the previous request.
+          example: '3055557345821141000'
+      - in: query
+        name: limit
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Limit for the number of organization members returned in the result list.
+          format: int32
+          example: 100
+          default: 100
+      - description: id of the organization
+        example: '3074457345821141000'
+        in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/OrganizationMembersSearchResponse'
+                - $ref: '#/components/schemas/OrganizationMembersSearchByEmailsResponse'
+          description: Organization members queries successfully
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get organization members
+      tags:
+      - Organization Members
+  /v2/orgs/{org_id}/members/{member_id}:
+    get:
+      description: Retrieves organization member information for an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-organization-member
+      parameters:
+      - description: id of the organization
+        example: '3074457345821141000'
+        in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      - description: id of the organization member
+        example: '3055557345821141000'
+        in: path
+        name: member_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMember'
+          description: Organization member found
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get organization member
+      tags:
+      - Organization Members
+components:
+  schemas:
+    OrganizationMember:
+      description: Organization member
+      required:
+      - active
+      - email
+      - id
+      - license
+      - role
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the user
+          example: '3074457345821140934'
+        active:
+          type: boolean
+          description: Indicates if a user is active or deactivated. Learn more about <a target="blank" href="https://help.miro.com/hc/en-us/articles/360025025894-Deactivated-users">user deactivation</a>.
+          example: true
+        email:
+          type: string
+          description: User email
+          example: user@miro.com
+        lastActivityAt:
+          type: string
+          description: 'Date and time when the user was last active. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)). If the user never logged in, the parameter value is empty.
+
+            '
+          format: date-time
+        license:
+          type: string
+          description: Name of the current user license in the organization
+          example: full
+          enum:
+          - advanced
+          - standard
+          - basic
+          - full
+          - occasional
+          - free
+          - free_restricted
+          - full_trial
+          - unknown
+        licenseAssignedAt:
+          type: string
+          description: Time when the license was assigned to the user
+          format: date-time
+        role:
+          type: string
+          description: Name of the user role in the organization
+          example: organization_internal_user
+          enum:
+          - organization_internal_admin
+          - organization_internal_user
+          - organization_external_user
+          - organization_team_guest_user
+          - unknown
+        type:
+          type: string
+          description: Type of the object returned.
+          default: organization-member
+        adminRoles:
+          description: List of admin roles assigned to the user
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminRole'
+    OrganizationMembersSearchByEmailsResponse:
+      description: Response for search organization members by user emails
+      type: array
+      items:
+        $ref: '#/components/schemas/OrganizationMember'
+    AdminRole:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the admin role prebuilt or custom
+          example: prebuilt
+          enum:
+          - prebuilt
+          - custom
+        name:
+          type: string
+          description: Name of the admin role
+          example: User Admin
+    OrganizationMembersSearchResponse:
+      type: object
+      description: Response for query by cursor and filter parameters
+      properties:
+        limit:
+          type: integer
+          description: Maximum number of results returned based on the limit specified in the request. For example, if there are 20 results, the request has no cursor value, and the limit is set to 20, the size of the results will be 20. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the cursor parameter value.
+          format: int32
+          example: 20
+        size:
+          type: integer
+          description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10.
+          format: int32
+          example: 1
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationMember'
+        cursor:
+          type: string
+          description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+          example: '3074457345821140946'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

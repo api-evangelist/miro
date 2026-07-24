@@ -1,0 +1,348 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Project Settings API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Project Settings
+paths:
+  /v2/orgs/{org_id}/teams/{team_id}/projects/{project_id}/settings:
+    get:
+      description: Retrieves the project settings.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-project-settings
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012091'
+      - name: project_id
+        description: The ID of the project for which you want to retrieve the project settings.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSettings'
+          description: Defines the sharing policies for the boards within the project.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Get project settings
+      tags:
+      - Project Settings
+    patch:
+      description: Updates the settings of a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-update-project-settings
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of the project whose settings you want to update.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectSettingsRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSettings'
+          description: Project object
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Update project settings
+      tags:
+      - Project Settings
+components:
+  schemas:
+    ProjectSettings:
+      type: object
+      required:
+      - sharingPolicySettings
+      - type
+      properties:
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
+        type:
+          type: string
+          description: Type of the object
+          default: project_settings
+    Error403:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 403
+        code:
+          type: string
+          description: Description of the status code.
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error429:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 429
+        code:
+          type: string
+          description: Description of the status code.
+          example: tooManyRequests
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error409:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 409
+        code:
+          type: string
+          description: Description of the status code.
+          example: conflict
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    TeamAccess:
+      type: string
+      description: 'Team access
+
+        * "private": Only the members of the project can access the information within the project.
+
+        * "view":    Anyone in the team can view the information in within the project.
+
+        '
+      enum:
+      - private
+      - view
+      default: private
+      example: private
+    SharingPolicySettings:
+      type: object
+      properties:
+        teamAccess:
+          $ref: '#/components/schemas/TeamAccess'
+    UpdateProjectSettingsRequest:
+      type: object
+      properties:
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
+    Error401:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 401
+        code:
+          type: string
+          description: Description of the status code.
+          default: tokenNotProvided
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error404:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 404
+        code:
+          type: string
+          description: Description of the status code.
+          example: notFound
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

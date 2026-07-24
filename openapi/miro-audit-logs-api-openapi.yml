@@ -1,0 +1,263 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Audit Logs API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Audit Logs
+paths:
+  /v2/audit/logs:
+    get:
+      description: Retrieves a page of audit events from the last 90 days. If you want to retrieve data that is older than 90 days, you can use the <a target=_blank href="https://help.miro.com/hc/en-us/articles/360017571434-Audit-logs#h_01J7EY4E0F67EFTRQ7BT688HW0">CSV export feature</a>.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>auditlogs:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a>
+      operationId: enterprise-get-audit-logs
+      parameters:
+      - description: 'Retrieve audit logs created after the date and time provided. This is the start date of the duration for which you want to retrieve audit logs. For example, if you want to retrieve audit logs between `2023-03-30T17:26:50.000Z` and `2023-04-30T17:26:50.000Z`, provide `2023-03-30T17:26:50.000Z` as the value for the `createdAfter` parameter.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), including milliseconds and a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC))."
+
+          '
+        example: '2023-03-30T17:26:50.000Z'
+        in: query
+        name: createdAfter
+        required: true
+        schema:
+          type: string
+      - description: 'Retrieve audit logs created before the date and time provided. This is the end date of the duration for which you want to retrieve audit logs. For example, if you want to retrieve audit logs between `2023-03-30T17:26:50.000Z` and `2023-04-30T17:26:50.000Z`, provide `2023-04-30T17:26:50.000Z` as the value for the `createdBefore` parameter.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), including milliseconds and a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+          '
+        example: '2023-04-30T17:26:50.000Z'
+        in: query
+        name: createdBefore
+        required: true
+        schema:
+          type: string
+      - description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the appropriate cursor value returned in the response.
+        in: query
+        name: cursor
+        schema:
+          type: string
+      - description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that  you obtained from the response.<br>Default: `100`
+
+          '
+        example: 100
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: 'Sort order in which you want to view the result set. Based on the value you provide, the results are sorted in an ascending or descending order of the audit log creation date (audit log `createdAt` parameter).<br>Default: `ASC`
+
+          '
+        example: ASC
+        in: query
+        name: sorting
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditPage'
+          description: Audit logs fetched
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get audit logs
+      tags:
+      - Audit Logs
+components:
+  schemas:
+    AuditOrganization:
+      type: object
+      description: Organization associated with the audit context
+      properties:
+        id:
+          type: string
+          description: Id of the organization
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the organization
+          example: Example Organization
+    AuditCreatedBy:
+      type: object
+      description: The details regarding the creator of the audit event
+      properties:
+        type:
+          type: string
+          description: Type of the creator
+          example: user
+          enum:
+          - user
+          - application
+          - scim_provisioner
+          - miro_automation
+        id:
+          type: string
+          description: Id of the creator
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the creator
+          example: John Smith
+        email:
+          type: string
+          description: Email of the creator
+          example: john.smith@miro.com
+    AuditPage:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the response, in this case it's always 'cursor-list'
+          example: cursor-list
+        limit:
+          type: integer
+          description: Page limit
+          example: 10
+        size:
+          type: integer
+          description: Item count in current page
+          example: 2
+        cursor:
+          type: string
+          description: The key that should be used as the cursor request parameter to fetch the next page
+          example: 2023-09-01T09:30:10.840687Z#1234567890123456789-DDB
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditEvent'
+          description: Audit events list
+    AuditContext:
+      type: object
+      description: Audit context
+      properties:
+        ip:
+          type: string
+          description: Ip address associated with the audit context
+          example: 0.0.0.0
+        team:
+          $ref: '#/components/schemas/AuditTeam'
+        organization:
+          $ref: '#/components/schemas/AuditOrganization'
+    AuditTeam:
+      type: object
+      description: Team associated with the audit context
+      properties:
+        id:
+          type: string
+          description: Id of the team
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the team
+          example: Example Team
+    AuditEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Audit event id
+          example: 2023-09-01T09:30:10.840687Z#1234567890123456789-DDB
+        context:
+          $ref: '#/components/schemas/AuditContext'
+        object:
+          $ref: '#/components/schemas/AuditObject'
+        createdAt:
+          type: string
+          description: Time when the audit event has been created
+          format: date-time
+          example: 2023-09-01T09:30:10.840+0000
+        details:
+          type: object
+          description: Details json related to the audit event
+          example: '{ "authType": "SSO", "mfaFactorType": "NONE" }'
+        createdBy:
+          $ref: '#/components/schemas/AuditCreatedBy'
+        event:
+          type: string
+          description: Event type of the audit event
+          example: sign_in_succeeded
+        category:
+          type: string
+          description: Event category of the audit event.
+          example: authentication
+    AuditObject:
+      type: object
+      description: The object related with the audit event
+      properties:
+        id:
+          type: string
+          description: Id of the object
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the object
+          example: Example Object
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

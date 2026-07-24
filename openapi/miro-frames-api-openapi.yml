@@ -1,0 +1,769 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs frames API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: frames
+paths:
+  /v2/boards/{board_id}/frames:
+    post:
+      description: Adds a frame to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: create-frame-item
+      parameters:
+      - description: Unique identifier (ID) of the board where you want to create a frame.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FrameCreateRequest'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FrameItem'
+          description: Frame created
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Malformed request
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Not found
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Too many requests
+      summary: Create frame
+      tags:
+      - frames
+  /v2/boards/{board_id}/frames/{item_id}:
+    get:
+      description: Retrieves information for a specific frame on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-frame-item
+      parameters:
+      - description: Unique identifier (ID) of the board that contains the frame that you want to retrieve
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the frame that you want to retrieve.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FrameItem'
+          description: Frame retrieved
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Malformed request
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Not found
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Too many requests
+      summary: Get frame
+      tags:
+      - frames
+    patch:
+      description: Updates a frame on a board based on the data, style, or geometry properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: update-frame-item
+      parameters:
+      - description: Unique identifier (ID) of the board where you want to update the frame.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the frame that you want to update.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FrameUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FrameItem'
+          description: Frame updated
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Malformed request
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 409
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Too many requests
+      summary: Update frame
+      tags:
+      - frames
+    delete:
+      description: Deletes a frame from a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: delete-frame-item
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to delete the frame.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the frame that you want to delete.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Frame deleted
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Malformed request
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Not found
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test error obj
+                properties:
+                  code:
+                    type: string
+                    description: Code of the error
+                    example: error
+                  message:
+                    type: string
+                    description: Description of the error
+                    example: Error message
+                  status:
+                    type: integer
+                    format: int32
+                    description: Status code of the error
+                    example: 400
+                  type:
+                    type: string
+                    description: Type of the error
+                    example: error
+          description: Too many requests
+      summary: Delete frame
+      tags:
+      - frames
+components:
+  schemas:
+    FrameData:
+      type: object
+      description: Contains frame item data, such as the title, frame type, or frame format.
+      properties:
+        format:
+          type: string
+          default: custom
+          description: Only custom frames are supported at the moment.
+          enum:
+          - custom
+          - desktop
+          - phone
+          - tablet
+          - a4
+          - letter
+          - ratio_1x1
+          - ratio_4x3
+          - ratio_16x9
+        title:
+          type: string
+          description: Title of the frame. This title appears at the top of the frame.
+          example: Sample frame title
+        type:
+          type: string
+          default: freeform
+          description: Only free form frames are supported at the moment.
+          enum:
+          - freeform
+          - heap
+          - grid
+          - rows
+          - columns
+    FrameChanges:
+      type: object
+      description: Contains frame item data, such as the title, frame type, or frame format.
+      properties:
+        format:
+          type: string
+          default: custom
+          description: Only custom frames are supported at the moment.
+          enum:
+          - custom
+        title:
+          type: string
+          default: Sample frame title
+          description: Title of the frame. This title appears at the top of the frame.
+        type:
+          type: string
+          default: freeform
+          description: Only free form frames are supported at the moment.
+          enum:
+          - freeform
+        showContent:
+          type: boolean
+          default: true
+          description: Hide or reveal the content inside a frame (Enterprise plan only).
+    FrameUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FrameChanges'
+        style:
+          $ref: '#/components/schemas/UpdateFrameStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/GeometryNoRotation'
+    FrameItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/FrameData'
+        style:
+          $ref: '#/components/schemas/FrameStyle'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: frame
+      required:
+      - id
+      - type
+    GeometryNoRotation:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+    FrameStyle:
+      type: object
+      description: Contains information about the style of a frame item, such as the fill color.
+      properties:
+        fillColor:
+          type: string
+          description: 'Fill color for the frame.
+
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`
+
+            Default: #ffffffff (transparent).'
+          example: '#ffffffff'
+    FrameCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FrameChanges'
+        style:
+          $ref: '#/components/schemas/FrameStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/GeometryNoRotation'
+      required:
+      - data
+    PositionChange:
+      type: object
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
+      properties:
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    UpdateFrameStyle:
+      type: object
+      description: Contains information about the style of a frame item, such as the fill color.
+      properties:
+        fillColor:
+          type: string
+          description: 'Fill color for the frame.
+
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`'
+          example: '#ffffffff'
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

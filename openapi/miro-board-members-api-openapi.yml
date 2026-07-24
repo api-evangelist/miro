@@ -1,0 +1,448 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Board members API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Board members
+paths:
+  /v2/boards/{board_id}/members:
+    post:
+      x-settings:
+        skip-tests: true
+      description: Shares the board and Invites new members to collaborate on a board by sending an invitation email. Depending on the board's Sharing policy, there might be various scenarios where membership in the team is required in order to share the board with a user.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: share-board
+      parameters:
+      - description: Unique identifier (ID) of the board to which the board member belongs.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardMembersInvite'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvitationResult'
+          description: Board members invited
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Share board
+      tags:
+      - Board members
+    get:
+      description: Retrieves a pageable list of members for a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-board-members
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: string
+          description: 'The maximum number of board members to retrieve.
+
+            Default: `20`.'
+          maximum: 50
+          minimum: 1
+      - in: query
+        name: offset
+        schema:
+          type: string
+          description: 'The (zero-based) offset of the first item in the collection to return.
+
+            Default: `0`.'
+      - description: Unique identifier (ID) of the board to which the board member belongs.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardMembersPagedResponse'
+          description: Board members retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get all board members
+      tags:
+      - Board members
+  /v2/boards/{board_id}/members/{board_member_id}:
+    get:
+      x-settings:
+        skip-tests: true
+      description: Retrieves information for a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-specific-board-member
+      parameters:
+      - description: Unique identifier (ID) of the board to which the board member belongs.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the board member whose role you want to retrieve.
+        in: path
+        name: board_member_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardMemberWithLinks'
+          description: Board member retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get specific board member
+      tags:
+      - Board members
+    patch:
+      x-settings:
+        skip-tests: true
+      description: Updates the role of a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: update-board-member
+      parameters:
+      - description: Unique identifier (ID) of the board for which you want to update the role of the board member.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the board member whose role you want to update.
+        in: path
+        name: board_member_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardMemberChanges'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardMemberWithLinks'
+          description: Board member updated
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Update board member
+      tags:
+      - Board members
+    delete:
+      x-settings:
+        skip-tests: true
+      description: Removes a board member from a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: remove-board-member
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to delete an item.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the board member whose role you want to delete.
+        in: path
+        name: board_member_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Board member deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Remove board member
+      tags:
+      - Board members
+components:
+  schemas:
+    InvitationError:
+      type: object
+      description: Contains information about the invites that failed.
+      properties:
+        email:
+          type: string
+          description: Email ID for which the invitation failed.
+          example: john.smith.demo@miro.com
+        reason:
+          type: string
+          description: Reason why the invitation failed.
+          example: INVITATION_FAILED
+    InvitationResult:
+      type: object
+      properties:
+        failed:
+          type: array
+          description: Contains information about the invites that failed.
+          items:
+            $ref: '#/components/schemas/InvitationError'
+        successful:
+          type: array
+          description: Contains information about the invites that were successfully sent.
+          example: 3074457350804038700
+          items:
+            type: integer
+            format: int64
+            description: Contains information about the invites that were successfully sent.
+            example: 3074457350804038700
+    BoardMemberChanges:
+      type: object
+      properties:
+        role:
+          type: string
+          default: commenter
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+    BoardMember:
+      type: object
+      description: Contains the current user's board membership details. The current user could be different from the board owner.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        role:
+          type: string
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, `type` returns `board_member`.
+          example: board_member
+      required:
+      - id
+      - name
+      - type
+    BoardMembersPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/BoardMember'
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
+
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        type:
+          type: string
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    BoardMembersInvite:
+      type: object
+      properties:
+        emails:
+          type: array
+          description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
+          items:
+            type: string
+            example: member@email.com
+            description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
+          maxItems: 20
+          minItems: 1
+        role:
+          type: string
+          default: commenter
+          description: Role of the board member. Inviting users with the role `owner` has the same effect as the role `coowner`.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        message:
+          type: string
+          description: The message that will be sent in the invitation email.
+          example: Hey there! Join my board and let's collaborate on this project!
+      required:
+      - emails
+    BoardMemberWithLinks:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        role:
+          type: string
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        links:
+          $ref: '#/components/schemas/SelfLink'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, `type` returns `board_member`.
+          example: board_member
+      required:
+      - id
+      - name
+      - type
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

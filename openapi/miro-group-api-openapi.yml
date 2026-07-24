@@ -1,0 +1,546 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Group API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Group
+paths:
+  /Groups:
+    get:
+      tags:
+      - Group
+      description: 'Retrieves the list of groups (teams) in the organization.<br><br> Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
+      parameters:
+      - name: attributes
+        in: query
+        required: false
+        description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to fetch attributes within complex attributes, for Example: members.display.'
+        schema:
+          type: string
+      - name: filter
+        in: query
+        required: false
+        description: 'You can request a subset of resources by specifying the filter query parameter containing a filter expression. Attribute names and attribute operators used in filters are not case sensitive. The filter parameter must contain at least one valid expression. Each expression must contain an attribute name followed by an attribute operator and an optional value. <br>eq = equal<br> ne = not equal<br> co = contains<br> sw = starts with<br> ew = ends with<br> pr = preset (has value)<br> gt = greater than<br> ge = greater than or equal to<br> lt = less than<br> le = less than or equal to<br> and = Logical "and"<br> or = Logical "or"<br> not = "Not" function<br> () = Precedence grouping <br>The value must be passed within parenthesis. <br><br>For Example: displayName eq "Product Team" will fetch information related to team matching the display name "Product Team". <br>Note</b>: Filtering on complex attributes is not supported'
+        schema:
+          type: string
+      - name: startIndex
+        in: query
+        required: false
+        description: 'Use startIndex in combination with count query parameters to receive paginated results. <br><br> start index is 1-based. <br><br> Example: startIndex=1'
+        schema:
+          type: integer
+      - name: count
+        in: query
+        required: false
+        description: 'Specifies the maximum number of query results per page. <br><br> Use count in combination with startIndex query parameters to receive paginated results. <br><br> The count query parameter is set to 100 by default and the maximum value allowed for this parameter is 1000. <br><br> Example: count=12'
+        schema:
+          type: integer
+      - name: sortBy
+        in: query
+        required: false
+        description: Specifies the attribute whose value will be used to order the response. Example sortBy=displayName
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        required: false
+        description: 'Defines the order in which the ''sortBy'' parameter is applied. Example: sortOrder=ascending'
+        schema:
+          type: string
+          enum:
+          - ascending
+          - descending
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/scim+json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+              example:
+                schemas:
+                - urn:ietf:params:scim:api:messages:2.0:ListResponse
+                totalResults: 1
+                itemsPerPage: 1
+                startIndex: 1
+                Resources:
+                - schemas:
+                  - urn:ietf:params:scim:schemas:core:2.0:Group
+                  id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                  displayName: Sales Ops
+                  members:
+                  - value: 2819c223-7f76-453a-919d-413861904646
+                    ref: /Users/2819c223-7f76-453a-919d-413861904646
+                    type: User
+                  meta:
+                    resourceType: Group
+                    location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+              example:
+                schemas:
+                - urn:ietf:params:scim:api:messages:2.0:ListResponse
+                totalResults: 1
+                itemsPerPage: 1
+                startIndex: 1
+                Resources:
+                - schemas:
+                  - urn:ietf:params:scim:schemas:core:2.0:Group
+                  id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                  displayName: Sales Ops
+                  members:
+                  - value: 2819c223-7f76-453a-919d-413861904646
+                    ref: /Users/2819c223-7f76-453a-919d-413861904646
+                    type: User
+                  meta:
+                    resourceType: Group
+                    location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      operationId: listGroups
+      summary: List groups
+      x-codeSamples:
+      - lang: curl
+        label: List groups
+        source: "curl -X GET 'https://api.miro.com/api/v1/scim/Groups' \\\n  -H 'Authorization: Bearer <token>' \\\n  -H 'Content-Type: application/scim+json'"
+      - lang: javascript
+        label: List groups (fetch)
+        source: "const res = await fetch(\n  'https://api.miro.com/api/v1/scim/Groups',\n  {\n    method: 'GET',\n    headers: {\n      'Authorization': 'Bearer <token>',\n      'Content-Type': 'application/scim+json'\n    },\n    // no body\n  }\n);\nconst data = await res.json();\nconsole.log(data);"
+  /Groups/{id}:
+    get:
+      tags:
+      - Group
+      description: 'Retrieves a single Group resource.<br><b> Note</b>: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
+      parameters:
+      - name: id
+        in: path
+        description: A server-assigned, unique identifier for this Group (team).
+        required: true
+        schema:
+          type: string
+      - name: attributes
+        in: query
+        required: false
+        description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to retrieve attributes within complex attributes. For example: members.display'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/scim+json:
+              schema:
+                $ref: '#/components/schemas/GroupResource'
+              example:
+                schemas:
+                - urn:ietf:params:scim:schemas:core:2.0:Group
+                id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                displayName: Sales Ops
+                members:
+                - value: 2819c223-7f76-453a-919d-413861904646
+                  ref: /Users/2819c223-7f76-453a-919d-413861904646
+                  type: User
+                meta:
+                  resourceType: Group
+                  location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResource'
+              example:
+                schemas:
+                - urn:ietf:params:scim:schemas:core:2.0:Group
+                id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                displayName: Sales Ops
+                members:
+                - value: 2819c223-7f76-453a-919d-413861904646
+                  ref: /Users/2819c223-7f76-453a-919d-413861904646
+                  type: User
+                meta:
+                  resourceType: Group
+                  location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+          headers:
+            ETag:
+              description: Entity tag identifying the current version of the resource.
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '413':
+          $ref: '#/components/responses/413'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      operationId: getGroup
+      summary: Get group
+      x-codeSamples:
+      - lang: curl
+        label: Get group
+        source: "curl -X GET 'https://api.miro.com/api/v1/scim/Groups/{id}' \\\n  -H 'Authorization: Bearer <token>' \\\n  -H 'Content-Type: application/scim+json'"
+      - lang: javascript
+        label: Get group (fetch)
+        source: "const res = await fetch(\n  'https://api.miro.com/api/v1/scim/Groups/{id}',\n  {\n    method: 'GET',\n    headers: {\n      'Authorization': 'Bearer <token>',\n      'Content-Type': 'application/scim+json'\n    },\n    // no body\n  }\n);\nconst data = await res.json();\nconsole.log(data);"
+    patch:
+      tags:
+      - Group
+      description: 'Updates an existing group resource, i.e. a team, overwriting values for specified attributes. Patch operation for group can be used to add, remove, or replace team members and to update the display name of the group (team). <br><br> To add a user to the group (team), use add operation. <br> To remove a user from a group (team), use remove operation. <br> To update a user resource, use the replace operation. <br> The last team admin cannot be removed from the team. <br><br> Note: Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided. <br><br> Team members removal specifics: <br> For remove or replace operations, the team member is removed from the team and from all team boards. The ownership of boards that belong to the removed team member is transferred to the oldest team member who currently has an admin role. After you remove a team member, adding the team member again to the team does not automatically restore their previous ownership of the boards. If the user is not registered fully in Miro and is not assigned to any other team, the user is also removed from the organization. <br><br> Add team members specifics: <br> All added team members are reactivated or recreated if they were deactivated or deleted earlier. <br><br> External users specifics: <br> When adding existing users with the role ORGANIZATION_EXTERNAL_USER or ORGANIZATION_TEAM_GUEST_USER to a team, we set FULL license and ORGANIZATION_INTERNAL_USER roles. '
+      parameters:
+      - name: id
+        in: path
+        description: Group (Team) ID. A server-assigned, unique identifier for this Group (team).
+        required: true
+        schema:
+          type: string
+      - name: attributes
+        in: query
+        required: false
+        description: 'A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> It is also possible to fetch attributes within complex attributes, for Example: members.display'
+        schema:
+          type: string
+      requestBody:
+        description: 'Payload to add, replace, remove members in the specified group (team). <br><br> The body of a PATCH request must contain the attribute `Operations` and its value is an array of one or more PATCH operations. Each PATCH operation object must have exactly one `op` member. '
+        content:
+          application/scim+json:
+            schema:
+              $ref: '#/components/schemas/PatchGroupResource'
+            example:
+              schemas:
+              - urn:ietf:params:scim:api:messages:2.0:PatchOp
+              Operations:
+              - op: Add
+                path: members
+                value:
+                - value: '3074457365265951581'
+                - value: '3074457365266570558'
+              - op: Remove
+                path: members[value eq 3074457364022187294]
+              - op: Replace
+                path: displayName
+                value: design_unit2_product
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchGroupResource'
+            example:
+              schemas:
+              - urn:ietf:params:scim:api:messages:2.0:PatchOp
+              Operations:
+              - op: Add
+                path: members
+                value:
+                - value: '3074457365265951581'
+                - value: '3074457365266570558'
+              - op: Remove
+                path: members[value eq 3074457364022187294]
+              - op: Replace
+                path: displayName
+                value: design_unit2_product
+        required: true
+      responses:
+        '200':
+          description: Successful Operation <br><br> A remove operation is successful only if all members to be removed can be removed.
+          content:
+            application/scim+json:
+              schema:
+                $ref: '#/components/schemas/GroupResource'
+              example:
+                schemas:
+                - urn:ietf:params:scim:schemas:core:2.0:Group
+                id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                displayName: Sales Ops
+                members:
+                - value: 2819c223-7f76-453a-919d-413861904646
+                  ref: /Users/2819c223-7f76-453a-919d-413861904646
+                  type: User
+                meta:
+                  resourceType: Group
+                  location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResource'
+              example:
+                schemas:
+                - urn:ietf:params:scim:schemas:core:2.0:Group
+                id: a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+                displayName: Sales Ops
+                members:
+                - value: 2819c223-7f76-453a-919d-413861904646
+                  ref: /Users/2819c223-7f76-453a-919d-413861904646
+                  type: User
+                meta:
+                  resourceType: Group
+                  location: /Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d
+          headers:
+            ETag:
+              description: Entity tag identifying the current version of the resource.
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/updateGroup400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/updateGroup409'
+        '413':
+          $ref: '#/components/responses/413'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      operationId: patchGroup
+      summary: Patch group
+      x-codeSamples:
+      - lang: curl
+        label: Patch group (add member)
+        source: "curl -X PATCH 'https://api.miro.com/api/v1/scim/Groups/{id}' \\\n  -H 'Authorization: Bearer <token>' \\\n  -H 'Content-Type: application/scim+json'\n  -d '{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"<userId>\"\n        }\n      ]\n    }\n  ]\n}'"
+      - lang: javascript
+        label: Patch group (fetch)
+        source: "const res = await fetch(\n  'https://api.miro.com/api/v1/scim/Groups/{id}',\n  {\n    method: 'PATCH',\n    headers: {\n      'Authorization': 'Bearer <token>',\n      'Content-Type': 'application/scim+json'\n    },\n    body: JSON.stringify({\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"<userId>\"\n        }\n      ]\n    }\n  ]\n})\n  }\n);\nconst data = await res.json();\nconsole.log(data);"
+components:
+  schemas:
+    GroupListResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse — a paginated wrapper around a set of resources (such as Users or Groups).
+          items:
+            type: string
+            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
+        totalResults:
+          type: number
+          description: The total number of results matching the request.
+          example: 12
+        startIndex:
+          type: number
+          description: The index of the first returned result in the current page.
+          example: 1
+        itemsPerPage:
+          type: number
+          description: The number of items returned in the response.
+          example: 10
+        Resources:
+          type: array
+          items:
+            type: object
+            properties:
+              schemas:
+                type: array
+                description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
+                items:
+                  type: string
+                  example: urn:ietf:params:scim:schemas:core:2.0:Group
+              id:
+                type: string
+                description: A server-assigned, unique identifier for this Group (team).
+                example: '3074457365836251622'
+              displayName:
+                type: string
+                description: A human readable name for the Group (team).
+                example: Product
+              members:
+                type: array
+                description: A list of all members that are part of the Group (team).
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                      description: A server-assigned, unique identifier for the user (member).
+                      example: '3074457365265951581'
+                    type:
+                      type: string
+                      description: Type of item - in this case it is User for all members.
+                      example: User
+                    display:
+                      type: string
+                      description: A human-readable name for the user (member), typically the full name.
+                      example: User One
+              meta:
+                type: object
+                description: Metadata about the resource.
+                properties:
+                  resourceType:
+                    type: string
+                    description: Type of resource.
+                    example: Group
+                  location:
+                    type: string
+                    description: URI of resource.
+                    example: http://api-synai:9111/api/v1/scim/Groups/3074457365836251622
+      description: list of groups (teams)
+    PatchGroupResource:
+      type: object
+      required:
+      - schemas
+      - Operations
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the PatchOp schema.
+          enum:
+          - urn:ietf:params:scim:api:messages:2.0:PatchOp
+          items:
+            type: string
+        Operations:
+          type: array
+          description: 'A list of patch operations. <br><br> Multiple users can be added or removed from the group (team) in one request. use the array to add or remove multiple users.<br><br> For updating security group name: <br> "op"="replace", "value"={"id":"13266533725732", "displayName":"New group name"} must be provided in the Operations array.'
+          items:
+            type: object
+            required:
+            - op
+            properties:
+              op:
+                type: string
+                description: Supported operations for this Patch request.
+                enum:
+                - Add
+                - Remove
+                - Replace
+              path:
+                type: string
+                description: 'The "path" attribute value is a string containing an attribute path describing the target of the operation. The "path" attribute is optional for the "add", and "replace" operations and is required for the "remove" operation. <br><br> '
+                enum:
+                - members
+                - displayName
+              value:
+                oneOf:
+                - type: array
+                  items:
+                    type: object
+                    required:
+                    - value
+                    properties:
+                      value:
+                        type: string
+                        description: A server-assigned, unique identifier for the user to be added, removed, or replaced.
+                        example: '3074457364156964977'
+                - type: string
+                  description: Human-readable name of the group to be updated.
+    GroupResource:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
+          items:
+            type: string
+            example: urn:ietf:params:scim:schemas:core:2.0:Group
+        id:
+          type: string
+          description: A server-assigned, unique identifier for this Group (team).
+          example: '3074457365836251622'
+        meta:
+          type: object
+          description: Metadata about the resource.
+          properties:
+            resourceType:
+              type: string
+              description: Type of resource.
+              example: Group
+            location:
+              type: string
+              description: URI of resource.
+              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
+        displayName:
+          type: string
+          description: A human readable name for the Group (team).
+          example: Product
+        members:
+          type: array
+          description: A list of all members that are part of the Group (team).
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: A server-assigned, unique identifier for the user (member).
+                example: '3074457365265951581'
+              type:
+                type: string
+                description: Type of item - in this case it is User for all members.
+                example: User
+              display:
+                type: string
+                description: A human-readable name for the user (member), typically the full name.
+                example: John Doe
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

@@ -1,0 +1,656 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Project Members API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Project Members
+paths:
+  /v2/orgs/{org_id}/teams/{team_id}/projects/{project_id}/members:
+    post:
+      description: Add a Miro user to a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-add-project-member
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of the project to which you want to add a user.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProjectMemberRequest'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectMember'
+          description: Project object
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Add member in a project
+      tags:
+      - Project Members
+    get:
+      description: Retrieves the list of members for a specific project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-project-members
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of the project for which you want to retrieve the list of members.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: limit
+        description: The maximum number of results to return per call. If the number of project members in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+        in: query
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 100
+          default: 100
+        example: 100
+      - name: cursor
+        description: An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.
+        in: query
+        schema:
+          type: string
+        example: '3074457345618265000'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectMemberPage'
+          description: Page of project member
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: List of project members
+      tags:
+      - Project Members
+  /v2/orgs/{org_id}/teams/{team_id}/projects/{project_id}/members/{member_id}:
+    get:
+      description: Retrieves information for a specific project member.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-project-member
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of the project from which you want to retrieve specific member information.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: member_id
+        description: The ID of the member for which you want to retrieve information.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '307445734562315000'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectMember'
+          description: Contains information about the project member, such as the member's role.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Get project member
+      tags:
+      - Project Members
+    patch:
+      description: Updates details of a project member, such as the member's role.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-update-project-member
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project member belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project member belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of a Project.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: member_id
+        description: The ID of the member whose details you want to update.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '307445734562315000'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectMemberRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectMember'
+          description: Contains information about the project member, such as the member's role.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Update project member
+      tags:
+      - Project Members
+    delete:
+      description: Remove a member from a project. The user remains in the team even after the member is removed from a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-delete-project-member
+      parameters:
+      - name: org_id
+        description: The ID of the organization to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: team_id
+        description: The ID of the team to which the project belongs.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345619012000'
+      - name: project_id
+        description: The ID of the project from which you want to remove a member.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      - name: member_id
+        description: The ID of the member that you want to remove from a project.
+        in: path
+        required: true
+        schema:
+          type: string
+        example: '3074457345618265000'
+      responses:
+        '204':
+          description: Project member removed
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+          description: Malformed request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+          description: Invalid authentication credentials
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          description: Invalid access
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+          description: Not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error409'
+          description: Conflict
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+          description: Too many requests
+      summary: Remove project member
+      tags:
+      - Project Members
+components:
+  schemas:
+    Error403:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 403
+        code:
+          type: string
+          description: Description of the status code.
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    ProjectMember:
+      type: object
+      required:
+      - id
+      - email
+      - role
+      - type
+      properties:
+        id:
+          type: string
+          description: ID of the project member.
+          example: '3074457345618265000'
+        email:
+          type: string
+          description: Email ID of the project member.
+          example: someone@domain.com
+        role:
+          $ref: '#/components/schemas/ProjectRole'
+        type:
+          type: string
+          description: Type of the object
+          default: project_member
+    Error429:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 429
+        code:
+          type: string
+          description: Description of the status code.
+          example: tooManyRequests
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    UpdateProjectMemberRequest:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/ProjectRole'
+    Error409:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 409
+        code:
+          type: string
+          description: Description of the status code.
+          example: conflict
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    ProjectMemberPage:
+      type: object
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 100
+          default: 100
+          example: 100
+          description: The maximum number of results to return per call. If the number of project member in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+        size:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          default: 100
+          example: 87
+          description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectMember'
+          description: Contains the result data.
+        cursor:
+          type: string
+          description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+          example: '3074457345821140946'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
+    ProjectRole:
+      type: string
+      description: Role of the project member.
+      enum:
+      - owner
+      - editor
+      - viewer
+      - commentator
+      - coowner
+      example: viewer
+    AddProjectMemberRequest:
+      type: object
+      required:
+      - email
+      - role
+      properties:
+        email:
+          type: string
+          description: Email ID of the user.
+          example: someone@domain.com
+        role:
+          $ref: '#/components/schemas/ProjectRole'
+    Error401:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 401
+        code:
+          type: string
+          description: Description of the status code.
+          default: tokenNotProvided
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error404:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 404
+        code:
+          type: string
+          description: Description of the status code.
+          example: notFound
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

@@ -1,0 +1,214 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs App metrics (experimental) API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: App metrics (experimental)
+paths:
+  /v2-experimental/apps/{app_id}/metrics:
+    get:
+      summary: Get app metrics
+      description: 'Returns a list of usage metrics for a specific app for a given time range, grouped by requested time period.
+
+
+        This endpoint requires an app management API token. It can be generated in the <a href="https://developers.miro.com/?features=appMetricsToken#your-apps">Your Apps</a> section of Developer Hub.<br/>
+
+        <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>
+
+        <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+
+        '
+      operationId: get-metrics
+      tags:
+      - App metrics (experimental)
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+        description: ID of the app to get metrics for.
+      - in: query
+        name: startDate
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Start date of the period in UTC format. For example, 2024-12-31.
+      - in: query
+        name: endDate
+        required: true
+        schema:
+          type: string
+          format: date
+        description: End date of the period in UTC format. For example, 2024-12-31.
+      - in: query
+        name: period
+        schema:
+          type: string
+          enum:
+          - DAY
+          - WEEK
+          - MONTH
+          default: WEEK
+        description: Group data by this time period.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    periodStart:
+                      type: string
+                      description: Date from which the metrics are aggregated.
+                      format: date
+                    uniqueUsers:
+                      type: integer
+                      description: Number of unique users who performed at least one activity in the application.
+                    uniqueRecurringUsers:
+                      type: integer
+                      description: Number of unique users who have been active for more than one day over the past 30 days.
+                    uniqueOrganizations:
+                      type: integer
+                      description: Number of unique company accounts that have installed the application.
+                    installations:
+                      type: integer
+                      description: Number of application installations for a team.
+                    uninstallations:
+                      type: integer
+                      description: Number of application uninstallations for a team.
+        '404':
+          description: App not found response
+          content:
+            application/json:
+              schema:
+                type: object
+                description: App not found response
+                properties:
+                  message:
+                    type: string
+                  status:
+                    type: integer
+  /v2-experimental/apps/{app_id}/metrics-total:
+    get:
+      summary: Get total app metrics
+      description: 'Returns total usage metrics for a specific app since the app was created.
+
+
+        This endpoint requires an app management API token. It can be generated in <a href="https://developers.miro.com/?features=appMetricsToken#your-apps">your apps</a> section of Developer Hub.<br/>
+
+        <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>
+
+        <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+
+        '
+      operationId: get-metrics-total
+      tags:
+      - App metrics (experimental)
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+        description: ID of the app to get total metrics for.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uniqueUsers:
+                    type: integer
+                    description: Number of unique users who performed at least one activity in the application.
+                  uniqueRecurringUsers:
+                    type: integer
+                    description: Number of unique users who have been active for more than one day over the past 30 days.
+                  uniqueOrganizations:
+                    type: integer
+                    description: Number of unique company accounts that have installed the application.
+                  installations:
+                    type: integer
+                    description: Number of application installations for a team.
+                  uninstallations:
+                    type: integer
+                    description: Number of application uninstallations for a team.
+        '404':
+          description: App not found response
+          content:
+            application/json:
+              schema:
+                type: object
+                description: App not found response
+                properties:
+                  message:
+                    type: string
+                    description: Description of the error.
+                  status:
+                    type: integer
+                    description: HTTP status code.
+components:
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

@@ -1,0 +1,915 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Boards API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Boards
+paths:
+  /v2/boards:
+    post:
+      description: Creates a board with the specified name and sharing policies.<br/><h4>Note</h4> You can only create up to 3 team boards with the free plan.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: create-board
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardChanges'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardWithLinks'
+          description: Board created
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Create board
+      tags:
+      - Boards
+    get:
+      description: 'Retrieves a list of boards accessible to the user associated with the provided access token. This endpoint supports filtering and sorting through URL query parameters.
+
+        Customize the response by specifying `team_id`, `project_id`, or other query parameters. Filtering by `team_id` or `project_id` (or both) returns results instantly. For other filters, allow a few seconds for indexing of newly created boards.
+
+
+        If you''re an Enterprise customer with Company Admin permissions:
+
+        - Enable **Content Admin** permissions to retrieve all boards, including private boards (those not explicitly shared with you). For details, see the [Content Admin Permissions for Company Admins](https://help.miro.com/hc/en-us/articles/360012777280-Content-Admin-permissions-for-Company-Admins).
+
+        - Note that **Private board contents remain inaccessible**. The API allows you to verify their existence but prevents viewing their contents to uphold security best practices. Unauthorized access attempts will return an error.
+
+        <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+
+        '
+      operationId: get-boards
+      parameters:
+      - in: query
+        name: team_id
+        schema:
+          type: string
+          description: The team_id for which you want to retrieve the list of boards. If this parameter is sent in the request, the `query` and `owner` parameters are ignored.
+      - in: query
+        name: project_id
+        schema:
+          type: string
+          description: The `project_id` for which you want to retrieve the list of boards.<br/>**Note:** Projects have been renamed to Spaces. Use this as the unique identifier (ID) of the space. If this parameter is included in the request, the `query` and `owner` parameters are ignored.
+      - in: query
+        name: query
+        schema:
+          type: string
+          description: Retrieves a list of boards that contain the query string provided in the board name or board description. For example, if you want to retrieve a list of boards that have the word `beta` in the board name or description, add `beta` as the `query` parameter value. You can use the `query` parameter with the owner parameter to narrow down the board search results.
+          maxLength: 500
+      - in: query
+        name: owner
+        schema:
+          type: string
+          description: Retrieves a list of boards that belong to a specific owner ID. You must pass the owner ID (for example, 3074457353169356300), not the owner name. You can use the 'owner' parameter with the `query` parameter to narrow down the board search results. Note that if you pass the `team_id` in the same request, the `owner` parameter is ignored.
+      - in: query
+        name: limit
+        schema:
+          type: string
+          description: 'The maximum number of boards to retrieve.
+
+            Default: `20`'
+          maximum: 50
+          minimum: 1
+      - in: query
+        name: offset
+        schema:
+          type: string
+          description: 'The (zero-based) offset of the first item in the collection to return.
+
+            Default: `0`.'
+      - in: query
+        name: sort
+        schema:
+          type: string
+          default: default
+          description: 'Sort order in which you want to view the result set. The parameter is applicable only when you search for boards by team or project.
+
+            * `default` - If `team_id` is present, `last_created`. Otherwise, `last_opened`.
+
+            * `last_modified` - sort by the date and time when the board was last modified.
+
+            * `last_opened` - sort by the date and time when the board was last opened.
+
+            * `last_created` - sort by the date and time when the board was created.
+
+            * `alphabetically` - sort by the board name (alphabetically).'
+          enum:
+          - default
+          - last_modified
+          - last_opened
+          - last_created
+          - alphabetically
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardsPagedResponse'
+          description: Board search results.
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get boards
+      tags:
+      - Boards
+    put:
+      description: Creates a copy of an existing board. You can also update the name, description, sharing policy, and permissions policy for the new board in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a><br/>
+      operationId: copy-board
+      parameters:
+      - description: Unique identifier (ID) of the board that you want to copy.
+        in: query
+        name: copy_from
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyBoardChanges'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardWithLinksAndWithoutProject'
+          description: Board copied
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Copy board
+      tags:
+      - Boards
+  /v2/boards/{board_id}:
+    get:
+      description: Retrieves information about a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-specific-board
+      parameters:
+      - description: Unique identifier (ID) of the board that you want to retrieve.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardWithLinksAndLastOpened'
+          description: Board retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get specific board
+      tags:
+      - Boards
+    patch:
+      description: Updates a specific board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: update-board
+      parameters:
+      - description: Unique identifier (ID) of the board that you want to update.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardChanges'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardWithLinks'
+          description: Board updated
+        '202':
+          description: 'The board update operation has been accepted and will be processed asynchronously. If the operation exceeds the expected duration, a response will be returned.
+
+            To monitor the status of the board update, use the <a target="blank" href="/reference/get-specific- board">Get specific board</a> API. This API allows you to verify whether the board has been successfully updated.'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Update board
+      tags:
+      - Boards
+    delete:
+      description: Deletes a board. Deleted boards go to Trash (on paid plans) and can be restored via UI within 90 days after deletion.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: delete-board
+      parameters:
+      - description: Unique identifier (ID) of the board that you want to delete.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Board deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Delete board
+      tags:
+      - Boards
+components:
+  schemas:
+    Picture:
+      type: object
+      properties:
+        id:
+          type: number
+          format: int64
+          description: Id of the picture
+          example: 3074457345618261500
+        imageURL:
+          type: string
+          description: Url of the picture
+          example: https://miro.images/5252525252/125252/266/144/1/size210.jpg
+        originalUrl:
+          type: string
+          description: Original team picture url for icon generation
+          example: https://miro.com/original-image.jpg
+        type:
+          type: string
+          description: Type of the object returned.
+          default: picture
+    BoardProject:
+      type: object
+      description: Contains information about the project with which the board is associated.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the project.
+          example: '3088887345710756000'
+    BoardPermissionsPolicy:
+      type: object
+      description: Defines the permissions policies for the board.
+      properties:
+        collaborationToolsStartAccess:
+          type: string
+          default: all_editors
+          description: Defines who can start or stop timer, voting, video chat, screen sharing, attention management. Others will only be able to join. To change the value for the `collaborationToolsStartAccess` parameter, contact Miro Customer Support.
+          enum:
+          - all_editors
+          - board_owners_and_coowners
+        copyAccess:
+          type: string
+          default: anyone
+          description: Defines who can copy the board, copy objects, download images, and save the board as a template or PDF.
+          enum:
+          - anyone
+          - team_members
+          - team_editors
+          - board_owner
+        sharingAccess:
+          type: string
+          default: team_members_with_editing_rights
+          description: Defines who can change access and invite users to this board. To change the value for the `sharingAccess` parameter, contact Miro Customer Support.
+          enum:
+          - team_members_with_editing_rights
+          - owner_and_coowners
+    BoardWithLinks:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the board.
+          example: uXjVOD6LSME=
+        name:
+          type: string
+          description: Name of the board.
+          example: Sample board name
+        description:
+          type: string
+          description: Description of the board.
+          example: Sample board description
+        team:
+          $ref: '#/components/schemas/Team'
+        project:
+          $ref: '#/components/schemas/BoardProject'
+        picture:
+          $ref: '#/components/schemas/Picture'
+        policy:
+          $ref: '#/components/schemas/BoardPolicy'
+        viewLink:
+          type: string
+          description: URL to view the board.
+          example: https://miro.com/app/board/uXjVOD6LSME=
+        owner:
+          $ref: '#/components/schemas/UserInfoShort'
+        currentUserMembership:
+          $ref: '#/components/schemas/BoardMember'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was created. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        createdBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last modified. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        modifiedBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        links:
+          $ref: '#/components/schemas/BoardLinks'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `board`.
+          example: board
+      required:
+      - description
+      - id
+      - name
+      - type
+    BoardPolicy:
+      type: object
+      description: Defines the permissions policies and sharing policies for the board.
+      properties:
+        permissionsPolicy:
+          $ref: '#/components/schemas/BoardPermissionsPolicy'
+        sharingPolicy:
+          $ref: '#/components/schemas/BoardSharingPolicy'
+    BoardPolicyChange:
+      type: object
+      description: Defines the permissions policies and sharing policies for the board.
+      properties:
+        permissionsPolicy:
+          $ref: '#/components/schemas/BoardPermissionsPolicy'
+        sharingPolicy:
+          $ref: '#/components/schemas/BoardSharingPolicyChange'
+    UserInfoLastOpenedBy:
+      type: object
+      description: Contains information about the user who opened the board last.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    BoardLinks:
+      type: object
+      description: Contains applicable links for the board.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the board members associated with the board.
+          example: http://api.miro.com/v2/boards/o9J_k1JKioQ=/members?limit=20&offset=0
+        self:
+          type: string
+          description: Link to obtain information about the current board.
+          example: http://api.miro.com/v2/boards/o9J_k1JKioQ=
+    Team:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+          description: Team id
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: Team name
+          example: My Team
+        picture:
+          $ref: '#/components/schemas/Picture'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: team
+    BoardSharingPolicyChange:
+      type: object
+      description: Defines the public-level, organization-level, and team-level access for the board. The access level that a user gets depends on the highest level of access that results from considering the public-level, team-level, organization-level, and direct sharing access.
+      properties:
+        access:
+          type: string
+          default: private
+          description: Defines the public-level access to the board.
+          enum:
+          - private
+          - view
+          - edit
+          - comment
+        inviteToAccountAndBoardLinkAccess:
+          type: string
+          default: no_access
+          description: Defines the user role when inviting a user via the invite to team and board link. For Enterprise users, the `inviteToAccountAndBoardLinkAccess` parameter is always set to `no_access` regardless of the value that you assign for this parameter.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - no_access
+        organizationAccess:
+          type: string
+          default: private
+          description: Defines the organization-level access to the board. If the board is created for a team that does not belong to an organization, the `organizationAccess` parameter is always set to the default value.
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+        teamAccess:
+          type: string
+          description: Defines the team-level access to the board. By default, **edit** for the free plan and **private** for other plans.
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+    GetBoardUserInfoLastOpenedBy:
+      type: object
+      description: Contains information about the user who last opened the board.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+      required:
+      - id
+      - name
+      - type
+    UserInfoShort:
+      type: object
+      description: Contains information about the user who created the board.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+      required:
+      - id
+      - name
+      - type
+    BoardWithLinksAndWithoutProject:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the board.
+          example: uXjVOD6LSME=
+        name:
+          type: string
+          description: Name of the board.
+          example: Sample board name
+        description:
+          type: string
+          description: Description of the board.
+          example: Sample board description
+        team:
+          $ref: '#/components/schemas/Team'
+        picture:
+          $ref: '#/components/schemas/Picture'
+        policy:
+          $ref: '#/components/schemas/BoardPolicy'
+        viewLink:
+          type: string
+          description: URL to view the board.
+          example: https://miro.com/app/board/uXjVOD6LSME=
+        owner:
+          $ref: '#/components/schemas/UserInfoShort'
+        currentUserMembership:
+          $ref: '#/components/schemas/BoardMember'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was created. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        createdBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last modified. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        modifiedBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        links:
+          $ref: '#/components/schemas/BoardLinks'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `board`.
+          example: board
+      required:
+      - description
+      - id
+      - name
+      - type
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    BoardsPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/Board'
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
+
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        type:
+          type: string
+    Board:
+      type: object
+      description: Contains the result data.
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was created. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        createdBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        currentUserMembership:
+          $ref: '#/components/schemas/BoardMember'
+        description:
+          type: string
+          description: Description of the board.
+          example: Sample board description
+        id:
+          type: string
+          description: Unique identifier (ID) of the board.
+          example: uXjVOD6LSME=
+        lastOpenedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last opened by any user. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        lastOpenedBy:
+          $ref: '#/components/schemas/UserInfoLastOpenedBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last modified. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        modifiedBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        name:
+          type: string
+          description: Name of the board.
+          example: Sample board name
+        owner:
+          $ref: '#/components/schemas/UserInfoShort'
+        picture:
+          $ref: '#/components/schemas/Picture'
+        policy:
+          $ref: '#/components/schemas/BoardPolicy'
+        team:
+          $ref: '#/components/schemas/Team'
+        project:
+          $ref: '#/components/schemas/BoardProject'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `board`.
+          example: board
+        viewLink:
+          type: string
+          description: URL to view the board.
+          example: https://miro.com/app/board/uXjVOD6LSME=
+      required:
+      - description
+      - id
+      - name
+      - type
+    BoardMember:
+      type: object
+      description: Contains the current user's board membership details. The current user could be different from the board owner.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        role:
+          type: string
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, `type` returns `board_member`.
+          example: board_member
+      required:
+      - id
+      - name
+      - type
+    BoardSharingPolicy:
+      type: object
+      description: Defines the public-level, organization-level, and team-level access for the board. The access level that a user gets depends on the highest level of access that results from considering the public-level, team-level, organization-level, and direct sharing access.
+      properties:
+        access:
+          type: string
+          description: Defines the public-level access to the board.
+          enum:
+          - private
+          - view
+          - edit
+          - comment
+        accessPasswordRequired:
+          type: boolean
+          description: Defines if a password is required to access the board.
+          default: false
+        inviteToAccountAndBoardLinkAccess:
+          type: string
+          default: no_access
+          description: Defines the user role when inviting a user via the invite to team and board link. For Enterprise users, the `inviteToAccountAndBoardLinkAccess` parameter is always set to `no_access`.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+          - guest
+          - no_access
+        organizationAccess:
+          type: string
+          default: private
+          description: Defines the organization-level access to the board. If the board is created for a team that does not belong to an organization, the `organizationAccess` parameter is always set to the default value.
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+        teamAccess:
+          type: string
+          description: Defines the team-level access to the board.
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+    CopyBoardChanges:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the board.
+          maxLength: 300
+          minLength: 0
+        name:
+          type: string
+          default: Untitled
+          description: Name for the board.
+          maxLength: 60
+          minLength: 1
+        policy:
+          $ref: '#/components/schemas/BoardPolicyChange'
+        teamId:
+          type: string
+          description: Unique identifier (ID) of the team where the board must be placed.
+    BoardChanges:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the board.
+          maxLength: 300
+          minLength: 0
+        name:
+          type: string
+          default: Untitled
+          description: Name for the board.
+          maxLength: 60
+          minLength: 1
+        policy:
+          $ref: '#/components/schemas/BoardPolicyChange'
+        teamId:
+          type: string
+          description: 'Unique identifier (ID) of the team where the board must be placed.
+
+
+            **Note**: On Enterprise plan, boards can be moved via API by Board Owners, Co-Owners, and Content Admins. This behavior differs from the Miro UI, where only Board Owners can move boards. This difference is **intentional** and works as designed. On non-Enterprise plans, only Board Owners can move boards between teams—both via the API and the Miro UI.'
+        projectId:
+          type: string
+          description: 'Unique identifier (ID) of the project to which the board must be added.
+
+
+            **Note**: Projects have been renamed to Spaces. Use this parameter to update the space. For Starter and Edu plans, Team Admins looking to move boards between Spaces/Projects of the same team would need to be direct Board Editors on the boards to move.'
+    BoardWithLinksAndLastOpened:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the board.
+          example: uXjVOD6LSME=
+        name:
+          type: string
+          description: Name of the board.
+          example: Sample board name
+        description:
+          type: string
+          description: Description of the board.
+          example: Sample board description
+        team:
+          $ref: '#/components/schemas/Team'
+        project:
+          $ref: '#/components/schemas/BoardProject'
+        picture:
+          $ref: '#/components/schemas/Picture'
+        policy:
+          $ref: '#/components/schemas/BoardPolicy'
+        viewLink:
+          type: string
+          description: URL to view the board.
+          example: https://miro.com/app/board/uXjVOD6LSME=
+        owner:
+          $ref: '#/components/schemas/UserInfoShort'
+        currentUserMembership:
+          $ref: '#/components/schemas/BoardMember'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was created. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        createdBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        lastOpenedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last opened by any user. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        lastOpenedBy:
+          $ref: '#/components/schemas/GetBoardUserInfoLastOpenedBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the board was last modified. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+        modifiedBy:
+          $ref: '#/components/schemas/UserInfoShort'
+        links:
+          $ref: '#/components/schemas/BoardLinks'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `board`.
+          example: board
+      required:
+      - description
+      - id
+      - name
+      - type
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

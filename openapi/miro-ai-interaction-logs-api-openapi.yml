@@ -1,0 +1,314 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: AI Interaction Logs
+paths:
+  /v2/orgs/{org_id}/ai-interaction-logs:
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      description: 'Retrieves AI interaction logs for your organization. AI interaction logs capture user interactions with AI features in Miro. You can retrieve results for a specific time period. You can also filter results based on object IDs and the emails of users who interacted with AI features. Additionally, results can be paginated for easier viewing and processing.
+
+        <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>aiinteractionlogs:read</a>
+
+        <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a>
+
+        <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>.</p>
+
+        '
+      operationId: enterprise-get-ai-interaction-logs
+      parameters:
+      - name: org_id
+        description: Unique identifier of the organization.
+        example: '3074457345821141000'
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: object_ids
+        description: "List of object IDs used to retrieve AI interaction logs. \nCurrently, supported object types include board IDs and organization IDs. \nYou can obtain object IDs from the response of this endpoint (the <code>object.id</code> field), \nfrom other Platform API endpoints (for example, [Get boards API](https://developers.miro.com/reference/get-boards)), \nor from Miro UI URLs (board ID and organization ID from the URLs).\n"
+        example:
+        - '3458764549483493025'
+        - u8J_kllZmDk=
+        in: query
+        required: false
+        schema:
+          type: array
+          maxItems: 15
+          items:
+            description: Unique identifier of the object (organization, board) where AI interaction happened for the User.
+            type: string
+            example: '3458764549483493025'
+      - name: emails
+        description: Filters AI interaction logs using a list of user emails. Only AI interactions associated with the provided emails will be included in the response.
+        example:
+        - someone@domain.com
+        - someoneelse@domain.com
+        in: query
+        required: false
+        schema:
+          type: array
+          maxItems: 15
+          items:
+            description: Email address of the user whose AI interaction logs you want to retrieve. Only interactions associated with the specified emails are returned.
+            type: string
+            example: someone@domain.com
+      - name: from
+        description: 'Start date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.
+
+          Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+          '
+        example: '2026-01-30T17:26:50Z'
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        description: 'End date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.
+
+          Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+          '
+        example: '2036-03-30T17:26:50Z'
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: cursor
+        description: 'A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+        example: MTY2OTg4NTIwMDAwMHwxMjM=
+      - name: limit
+        description: 'The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 100
+          default: 100
+        example: 100
+      - name: sorting
+        description: 'Sort order in which you want to view the result set based on the interaction date. To sort by an ascending date, specify `asc`. To sort by a descending date, specify `desc`.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+        example: asc
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAiInteractionLogsResponse'
+          description: 'Response from the API that includes AI interaction logs, size of the data list, pagination cursor, and pagination limit.
+
+            '
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get AI interaction logs (Beta)
+      tags:
+      - AI Interaction Logs
+components:
+  schemas:
+    AiInteractionLogList:
+      type: array
+      description: Contains the list of AI interaction logs.
+      items:
+        $ref: '#/components/schemas/AiInteractionLog'
+    AiInteractionLog:
+      type: object
+      description: Contains information about a single AI interaction log entry.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the AI interaction log entry.
+          example: 2dcf57ff-f12c-4fad-b708-c1642204b41b
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the AI interaction occurred.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+            '
+          example: '2023-06-24T17:32:28Z'
+        storedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the AI interaction log was stored.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+            '
+          example: '2023-06-24T17:32:30Z'
+        sessionId:
+          type: string
+          description: Unique identifier of the session during which the AI interaction occurred.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        messageId:
+          type: string
+          description: Unique identifier of the message associated with the AI interaction.
+          example: b2c3d4e5-f6a7-8901-bcde-f12345678901
+        object:
+          $ref: '#/components/schemas/AiInteractionLogObject'
+        aiFeatureName:
+          type: string
+          description: Name of the AI feature that was used during the interaction.
+          example: ai_generate_sticky_notes
+        actor:
+          $ref: '#/components/schemas/AiInteractionLogActor'
+        logType:
+          type: string
+          description: Type of the AI interaction log entry.
+          example: request
+        details:
+          type: object
+          description: Additional details about the AI interaction. The structure of this object varies depending on the AI feature used. The text may contain unstructured data that could reveal information used in interactions with the LLM.
+          additionalProperties: true
+          example:
+            text: '{\"text\":\"Generate me 1 sticker with the text \\\"AI generates content\\\"\",\"board_context\":{\"selection\":{\"selected_nodes\":[],\"reference_images\":[],\"design_reference_images\":[],\"comments\":[]},\"talktracks\":[],\"config\":{\"processing_method\":\"none\",\"ai_feature\":\"ai_generate_sticky_notes\"},\"context_prototype\":null,\"prototype_description\":null,\"screens\":null}}'
+    AiInteractionLogObject:
+      type: object
+      description: Contains information about the Miro object involved in the AI interaction.
+      properties:
+        id:
+          type: string
+          description: 'Unique identifier of the Miro object involved in the AI interaction, e.g., Board ID or Organization ID.
+
+            '
+          example: '3458764549483493025'
+        type:
+          type: string
+          description: Type of the Miro object involved in the AI interaction, e.g., "board, "organization".
+          example: board
+    AiInteractionLogActor:
+      type: object
+      description: Contains information about the user who performed the AI interaction.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user who performed the AI interaction.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: Email of the user who performed the AI interaction.
+          example: john.smith.demo@miro.com
+        name:
+          type: string
+          description: Name of the user who performed the AI interaction.
+          example: John Smith
+    GetAiInteractionLogsResponse:
+      type: object
+      description: Response for query using cursor and filter parameters.
+      properties:
+        limit:
+          type: integer
+          description: 'The maximum number of results to return per call. If the number of logs in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+          format: int32
+          example: 100
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        data:
+          $ref: '#/components/schemas/AiInteractionLogList'
+        cursor:
+          type: string
+          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+
+            '
+          example: MTY2OTg4NTIwMDAwMHwxMjM=
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

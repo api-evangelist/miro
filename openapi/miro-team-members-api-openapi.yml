@@ -1,0 +1,415 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Team Members API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Team Members
+paths:
+  /v2/orgs/{org_id}/teams/{team_id}/members:
+    post:
+      description: Invites a new Miro user to an existing team. The user must exist in your Miro organization. Users who do not exist in your Miro organization can be invited to the team via [SCIM](https://developers.miro.com/docs/scim) and an external identity provider, such as Okta or Azure Active Directory.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-invite-team-member
+      parameters:
+      - $ref: '#/components/parameters/pathOrgId'
+      - $ref: '#/components/parameters/pathTeamId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamMemberInvite'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMember'
+          description: Invitation result object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Invite team members
+      tags:
+      - Team Members
+    get:
+      description: Retrieves team members by cursor.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-team-members
+      parameters:
+      - $ref: '#/components/parameters/pathOrgId'
+      - $ref: '#/components/parameters/pathTeamId'
+      - name: limit
+        in: query
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Limit for the number of team members returned in the result list.
+          format: int32
+          example: 100
+          default: 100
+      - description: An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.
+        example: '3055557345821140500'
+        in: query
+        name: cursor
+        schema:
+          type: string
+      - description: '
+
+          Role query. Filters members by role using full word match. Accepted values are:
+
+          * "member":     Team member with full member permissions.
+
+          * "admin":      Admin of a team. Team member with permission to manage team.
+
+          * "non_team":   External user, non-team user.
+
+          * "team_guest": (Deprecated) Team-guest user, user with access only to a team without access to organization.
+
+          '
+        in: query
+        name: role
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Page of team members that match the search query.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMembersPage'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: List team members
+      tags:
+      - Team Members
+  /v2/orgs/{org_id}/teams/{team_id}/members/{member_id}:
+    get:
+      description: Retrieves team member by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-get-team-member
+      parameters:
+      - $ref: '#/components/parameters/pathOrgId'
+      - $ref: '#/components/parameters/pathTeamId'
+      - $ref: '#/components/parameters/pathTeamMemberId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMember'
+          description: Team member object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get team member
+      tags:
+      - Team Members
+    patch:
+      description: Updates team member role in team by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-update-team-member
+      parameters:
+      - $ref: '#/components/parameters/pathOrgId'
+      - $ref: '#/components/parameters/pathTeamId'
+      - $ref: '#/components/parameters/pathTeamMemberId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamMemberChanges'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamMember'
+          description: Team member object
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Update team member
+      tags:
+      - Team Members
+    delete:
+      description: Deletes team member from team by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-delete-team-member
+      parameters:
+      - $ref: '#/components/parameters/pathOrgId'
+      - $ref: '#/components/parameters/pathTeamId'
+      - $ref: '#/components/parameters/pathTeamMemberId'
+      responses:
+        '204':
+          description: Deleted successfully
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Delete team member from team
+      tags:
+      - Team Members
+components:
+  parameters:
+    pathTeamId:
+      name: team_id
+      description: The ID of a team.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathTeamMemberId:
+      name: member_id
+      description: The id of the Team Member
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+  schemas:
+    TeamMemberInvite:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: User email to add to a team
+          example: user@miro.com
+        role:
+          type: string
+          example: member
+          description: '
+
+            Role of the team member.
+
+            * "member":     Team member with full member permissions.
+
+            * "admin":      Admin of a team. Team member with permission to manage team.
+
+            '
+          enum:
+          - member
+          - admin
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+    TeamMembersPage:
+      type: object
+      description: Page of team members that match the search query.
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+        size:
+          $ref: '#/components/schemas/PageSize'
+        data:
+          type: array
+          description: List of team members
+          items:
+            $ref: '#/components/schemas/TeamMember'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        type:
+          $ref: '#/components/schemas/PageType'
+    TeamMember:
+      required:
+      - id
+      - teamId
+      - role
+      type: object
+      properties:
+        id:
+          type: string
+          description: Team member id.
+          example: '3074457345618264000'
+        role:
+          type: string
+          description: '
+
+            Role of the team member.
+
+            * "member":     Team member with full member permissions.
+
+            * "admin":      Admin of a team. Team member with permission to manage team.
+
+            * "non_team":   External user, non-team user.
+
+            * "team_guest": (Deprecated) Team-guest user, user with access only to a team without access to organization.
+
+            '
+          enum:
+          - non_team
+          - member
+          - admin
+        createdAt:
+          type: string
+          description: Date and time when member was invited to the team.
+          format: date-time
+        createdBy:
+          type: string
+          description: Id of the user who invited the team member.
+          example: '3074457345618264000'
+        modifiedAt:
+          type: string
+          description: Date and time when the user's membership was last updated.
+          format: date-time
+        modifiedBy:
+          type: string
+          description: Id of the user who last updated the user's membership.
+          example: '3074457345618264000'
+        teamId:
+          type: string
+          description: Team id
+          example: '3074457345618265000'
+        type:
+          description: Type of the object returned.
+          type: string
+          default: team-member
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    TeamMemberChanges:
+      type: object
+      properties:
+        role:
+          type: string
+          example: member
+          description: '
+
+            Role of the team member.
+
+            * "member":     Team member with full member permissions.
+
+            * "admin":      Admin of a team. Team member with permission to manage team.
+
+            '
+          enum:
+          - member
+          - admin
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

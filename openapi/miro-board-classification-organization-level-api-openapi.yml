@@ -1,0 +1,156 @@
+openapi: 3.0.1
+info:
+  title: 'Miro Developer Platform AI Interaction Logs Board classification: Organization level API'
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: 'Board classification: Organization level'
+paths:
+  /v2/orgs/{org_id}/data-classification-settings:
+    get:
+      description: Retrieves board classification settings for an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      operationId: enterprise-dataclassification-organization-settings-get
+      parameters:
+      - description: id of the organization
+        example: '3074457345821141000'
+        in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataClassificationOrganizationSettings'
+          description: Organization board classification settings
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get organization settings
+      tags:
+      - 'Board classification: Organization level'
+components:
+  schemas:
+    DataClassificationOrganizationSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Data classification enabled for organization
+          example: true
+        labels:
+          type: array
+          description: Data classification labels
+          items:
+            $ref: '#/components/schemas/DataClassificationLabel'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: data-classification-organization-settings
+    DataClassificationLabel:
+      description: Data classification label
+      type: object
+      properties:
+        id:
+          type: string
+          description: Label id.
+          example: '3000457366756290996'
+        color:
+          type: string
+          description: Label color.
+          example: '#F5DC80'
+        default:
+          type: boolean
+          description: Label is default.
+          example: false
+        description:
+          type: string
+          description: Label description.
+          example: Board could not be shared publicly
+        name:
+          type: string
+          description: Label name.
+          example: internal
+        orderNumber:
+          type: integer
+          description: Label order number.
+          format: int32
+          example: 2
+        sharingRecommendation:
+          type: string
+          description: Sharing Recommendation (one of NO_SHARING_RESTRICTIONS, ONLY_WITHIN_ORGANIZATION, ONLY_WITHIN_TEAM or ONLY_WITH_AUTHORIZED_TEAM_MEMBERS ).
+          example: NO_SHARING_RESTRICTIONS
+        guidelineUrl:
+          type: string
+          description: Indicates the URL for the board classification label guidelines.
+          example: https://miro.com
+        type:
+          type: string
+          description: Type of the object returned.
+          default: data-classification-label
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

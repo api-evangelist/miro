@@ -1,0 +1,965 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Legal holds API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Legal holds
+paths:
+  /v2/orgs/{org_id}/cases:
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get all cases
+      operationId: get-all-cases
+      description: Retrieves the list of eDiscovery cases in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - $ref: '#/components/parameters/queryPageLimit'
+      - $ref: '#/components/parameters/queryPageCursor'
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the list of cases.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      responses:
+        '200':
+          description: Case objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCaseResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    post:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Create case
+      operationId: create-case
+      description: Creating a case for legal hold is the first critical step in the eDiscovery process when litigation or an investigation is anticipated. One of the purposes of creating a case is that it acts as a container that allows admins to group multiple legal holds under one case. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/22120022370962-Create-a-case" target=_blank>Help Center page on creating a case</a>. <br><br>This API creates a new case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseRequest'
+        required: true
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization in which you want to create a new case.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      responses:
+        '200':
+          description: Case created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+  /v2/orgs/{org_id}/cases/{case_id}:
+    delete:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Close case
+      operationId: delete-case
+      description: Closing a case is the final stage in the eDiscovery process, marking the conclusion of a legal matter or investigation. You must ensure that all associated legal holds within the case are closed before closing the case. Closing a case will permanently delete it. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/22138936297746-Close-a-case" target=_blank>Help Center page on closing a case</a>. <br><br>This API closes a case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization in which you want to close a case.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case you want to close.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      responses:
+        '204':
+          description: Case closed successfully.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get case
+      operationId: get-case
+      description: Retrieves information about a case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the case information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case you want to retrieve.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      responses:
+        '200':
+          description: Case object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    put:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Edit case
+      operationId: edit-case
+      description: Editing a case allows eDiscovery Admins to keep case details accurate and aligned with the evolving scope of a legal matter. As investigations progress, it may be necessary to update the case name or description to reflect changes in focus, terminology, or internal documentation standards. Since a case serves as the central container for one or more legal holds, keeping its information up to date helps ensure clarity, consistency, and easier navigation for all stakeholders involved in the legal process.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/docs/miro-rest-api-introduction#rate-limiting">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseRequest'
+        required: true
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to edit the case information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case you want to edit.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      responses:
+        '200':
+          description: Case object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+  /v2/orgs/{org_id}/cases/{case_id}/legal-holds:
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get all legal holds within a case
+      operationId: get-all-legal-holds
+      description: Retrieves the list of all legal holds within a case for an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - $ref: '#/components/parameters/queryPageLimit'
+      - $ref: '#/components/parameters/queryPageCursor'
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the list of legal holds within a case.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case for which you want to retrieve the list of legal holds.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      responses:
+        '200':
+          description: Legal hold objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLegalHoldResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    post:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Create legal hold
+      operationId: create-legal-hold
+      description: After creating a case it is possible to add one or multiple legal holds to the case. Creating a legal hold involves identifying the relevant users associated with a case and applying the hold to prevent permanent deletion of content that those users own, co-own, create, edit or access. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/22120471564946-Add-a-legal-hold-to-a-case" target=_blank>Help Center page on adding a legal hold to a case</a>. <br><br>This API creates a new legal hold in a case for an organization. Newly created legal holds could take up to 24 hours to be processed.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalHoldRequest'
+        required: true
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization in which you want to create a new legal hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case in which you want to create a new legal hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      responses:
+        '200':
+          description: Legal hold created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalHoldResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+  /v2/orgs/{org_id}/cases/{case_id}/export-jobs:
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get board export jobs of a case
+      operationId: get-legal-hold-export-jobs
+      description: Retrieves board export jobs for a case.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - $ref: '#/components/parameters/queryPageLimit'
+      - $ref: '#/components/parameters/queryPageCursor'
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the list of export jobs within a case.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case for which you want to retrieve the list of export jobs.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      responses:
+        '200':
+          description: Export job objects containing job IDs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCaseExportJobsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+  /v2/orgs/{org_id}/cases/{case_id}/legal-holds/{legal_hold_id}:
+    delete:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Close legal hold
+      operationId: delete-legal-hold
+      description: Closing a legal hold is one of the final steps in the eDiscovery process once the litigation or investigation has concluded. This process involves releasing the Miro boards and custodians that were under legal hold, allowing the preserved boards to return to normal operations. Closing a legal hold will permanently delete it. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/21922521629330-Close-a-legal-hold" target=_blank>Help Center page on closing a legal hold</a>. <br><br>This API closes a legal hold in a case for an organization. Once a legal hold is closed, it can take up to 24 hours to release the content items from the legal hold. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization in which you want to close a legal hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case in which you want to close a legal hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      - in: path
+        name: legal_hold_id
+        description: The ID of the legal hold you want to close.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619013003'
+        required: true
+      responses:
+        '204':
+          description: Legal hold closed successfully.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get legal hold information
+      operationId: get-legal-hold
+      description: Retrieves information about a legal hold within a case for an organization. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the legal hold information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case for which you want to retrieve the legal hold information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      - in: path
+        name: legal_hold_id
+        description: The ID of the legal hold you want to retrieve.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619013003'
+        required: true
+      responses:
+        '200':
+          description: Legal hold object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalHoldResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+    put:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Edit legal hold
+      operationId: edit-legal-hold
+      description: Editing a legal hold allows eDiscovery Admins to adjust and refine ongoing legal preservation efforts as case requirements evolve. Whether new custodians are identified, additional Miro boards become relevant, or existing boards or users are no longer in scope, editing a legal hold ensures that the correct data remains preserved and defensible throughout the legal process. Admins can update the legal hold’s name or description and add or remove users and boards as needed. This flexibility supports dynamic legal workflows and ensures that preservation stays precise, up to date, and aligned with the scope of the legal matter—maintaining compliance while avoiding unnecessary data retention.<br/><br/>When a legal hold is edited, boards newly added to the hold will begin having their versions preserved from that point forward, boards or users removed from the hold will stop being preserved, and their versions will no longer be preserved as part of that legal hold, boards that remain under hold will continue to have all versions preserved, including any deletions that occur after the hold was applied. This approach ensures organizations can respond to legal demands with accuracy and accountability as a case evolves.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/docs/miro-rest-api-introduction#rate-limiting">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalHoldRequest'
+        required: true
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to edit the legal hold information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case for which you want to edit the legal hold information.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      - in: path
+        name: legal_hold_id
+        description: The ID of the legal hold you want to edit.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619013003'
+        required: true
+      responses:
+        '200':
+          description: Legal hold object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalHoldResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+  /v2/orgs/{org_id}/cases/{case_id}/legal-holds/{legal_hold_id}/content-items:
+    get:
+      x-settings:
+        publish: true
+        skip-tests: true
+      summary: Get content items under legal hold
+      operationId: get-legal-hold-content-items
+      description: Once a legal hold is in place you can review or explore the preserved Miro boards to ensure that all relevant data is intact and ready for legal proceedings or investigations. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/22120628583570-Review-boards-under-legal-hold" target=_blank>Help Center page on reviewing boards under legal hold</a>. <br><br>This API lists all content items under a specific legal hold in a case for an organization. Please verify that the legal hold is in 'ACTIVE' state to guarantee that the legal hold has finished processing the full list of content items under hold. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href="https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href="https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN">eDiscovery Admin</a> roles.
+      parameters:
+      - in: path
+        name: org_id
+        description: The ID of the organization for which you want to retrieve the list of content items under hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345618265000'
+        required: true
+      - in: path
+        name: case_id
+        description: The ID of the case for which you want to retrieve the list of content items under hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619012007'
+        required: true
+      - in: path
+        name: legal_hold_id
+        description: The ID of the legal hold for which you want to retrieve the list of content items under hold.
+        schema:
+          type: string
+          pattern: ^[0-9]+$
+        example: '3074457345619013003'
+        required: true
+      - $ref: '#/components/parameters/queryPageLimit'
+      - $ref: '#/components/parameters/queryPageCursor'
+      responses:
+        '200':
+          description: Content item objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLegalHoldContentItemsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      tags:
+      - Legal holds
+components:
+  schemas:
+    LegalHoldRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the legal hold.
+          example: My legal hold
+        description:
+          type: string
+          description: The description of the legal hold.
+          example: Info about my legal hold
+        scope:
+          $ref: '#/components/schemas/LegalHoldRequestScope'
+      required:
+      - name
+      - scope
+    LegalHoldRequestScopeUsers:
+      title: Users
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                description: Email of the user
+                example: john.smith@example.com
+            required:
+            - email
+      required:
+      - user
+    LegalHoldContentItemsResponse:
+      type: object
+      properties:
+        contentId:
+          type: string
+          description: Identifier for the piece of content referenced by a content item. In the case of a board, this represents the `boardKey` and can be used to export a board using the Discovery APIs.
+          example: uXjVOD6LSME=
+        type:
+          type: string
+          description: 'Type of the content item that is returned.
+
+            '
+          example: board
+      required:
+      - id
+      - name
+      - type
+    PageTotal:
+      type: integer
+      description: Total number of results in the collection.
+      format: int32
+      example: 15
+    PaginatedLegalHoldContentItemsResponse:
+      description: List of content items under legal hold.
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/LegalHoldContentItemsResponse'
+    Pagination:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        total:
+          $ref: '#/components/schemas/PageTotal'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+          description: 'The maximum number of results to return per call. If the number of items in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+        type:
+          type: string
+          description: Type of the response, in this case it's always 'cursor-list'.
+          default: cursor-list
+    CaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the case.
+          example: '3074457345619012007'
+        organizationId:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the organization.
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: The name of the case.
+          example: My Case
+        description:
+          type: string
+          description: The description of the case.
+          example: Info about my case
+        createdBy:
+          $ref: '#/components/schemas/User'
+        lastModifiedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - createdBy
+      - id
+      - lastModifiedAt
+      - name
+      - organizationId
+    LegalHoldRequestScope:
+      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants. The request must always include a list of all users to be placed under hold, whether it's for a new legal hold or an update to an existing one. You can have up to 200 users per legal hold, including users added in legal hold updates.
+      oneOf:
+      - $ref: '#/components/schemas/LegalHoldRequestScopeUsers'
+    PaginatedCaseResponse:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/CaseResponse'
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    PaginatedCaseExportJobsResponse:
+      description: Board export job for a case.
+      properties:
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+          description: 'The maximum number of results to return per call. If the number of items in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+        type:
+          type: string
+          description: Type of the response, in this case it's always 'cursor-list'.
+          default: cursor-list
+        data:
+          type: array
+          items:
+            type: object
+            description: Board export job.
+            properties:
+              id:
+                type: string
+                description: Unique identifier of the board export job.
+                format: uuid
+                example: 92343229-c532-446d-b8cb-2f155bedb807
+    LegalHoldResponseScope:
+      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants.
+      oneOf:
+      - $ref: '#/components/schemas/LegalHoldResponseScopeUsers'
+    User:
+      description: User information.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: User email.
+          example: john.smith@example.com
+        firstName:
+          type: string
+          description: First name of the user.
+          example: John
+        lastName:
+          type: string
+          description: Last name of the user.
+          example: Smith
+      required:
+      - id
+      - email
+      - firstName
+      - lastName
+    CaseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the case.
+          example: My Case
+        description:
+          type: string
+          description: The description of the case.
+          example: Info about my case
+      required:
+      - name
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    LegalHoldResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the legal hold.
+          example: '3074457345618265000'
+        organizationId:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the organization.
+          example: '3074457345618265000'
+        caseId:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the case.
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: The name of the legal hold.
+          example: My legal hold
+        description:
+          type: string
+          description: The description of the legal hold.
+          example: Info about my legal hold
+        state:
+          $ref: '#/components/schemas/LegalHoldState'
+        scope:
+          $ref: '#/components/schemas/LegalHoldResponseScope'
+        createdBy:
+          $ref: '#/components/schemas/User'
+        lastModifiedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - createdBy
+      - id
+      - caseId
+      - lastModifiedAt
+      - name
+      - organizationId
+      - scope
+      - scopeValue
+      - state
+    PaginatedLegalHoldResponse:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/LegalHoldResponse'
+    LegalHoldResponseScopeUsers:
+      title: Users scope
+      type: object
+      description: List of users under legal hold.
+      properties:
+        users:
+          type: array
+          minItems: 1
+          maxItems: 200
+          items:
+            $ref: '#/components/schemas/User'
+    LegalHoldState:
+      type: string
+      description: 'The state of the legal hold. Legal holds could take up to 24 hours to be processed and the state could be one of the following:
+
+        - `PROCESSING`: the legal hold is being created and content items are being processed.
+
+        - `ACTIVE`: the legal hold has been created and all content items have been processed.
+
+        - `DELETING`: the legal hold is being deleted and content items are being processed.
+
+        '
+      enum:
+      - PROCESSING
+      - ACTIVE
+      - DELETING
+  parameters:
+    queryPageCursor:
+      in: query
+      name: cursor
+      description: 'An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.
+
+        '
+      schema:
+        type: string
+      example: MTY2OTg4NTIwMDAwMHwxMjM=
+    queryPageLimit:
+      in: query
+      name: limit
+      description: The maximum number of items in the result list.
+      schema:
+        type: integer
+        maximum: 100
+        minimum: 1
+        default: 100
+        format: int32
+      example: 10
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

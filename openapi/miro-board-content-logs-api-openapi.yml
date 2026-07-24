@@ -1,0 +1,318 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Board Content Logs API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Board Content Logs
+paths:
+  /v2/orgs/{org_id}/content-logs/items:
+    get:
+      x-settings:
+        skip-tests: true
+      description: 'Retrieves content changes for board items within your organization. Content changes are actions that users can perform on board items, such as updating a sticky note''s text. You can retrieve results for a specific time period. You can also filter results based on the board IDs and the emails of users who created, modified, or deleted a board item. Additionally, results can be paginated for easier viewing and processing.
+
+        <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>contentlogs:export</a>
+
+        <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a>
+
+        <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin.</p>
+
+        '
+      operationId: enterprise-board-content-item-logs-fetch
+      parameters:
+      - name: org_id
+        description: Unique identifier of the organization.
+        example: '3074457345821141000'
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: board_ids
+        description: List of board IDs for which you want to retrieve the content logs.
+        example:
+        - o9J_kzlUDmo=
+        - u8J_kllZmDk=
+        in: query
+        required: false
+        schema:
+          type: array
+          maxItems: 15
+          items:
+            description: Unique identifier of the board for which you want to retrieve the content logs.
+            type: string
+            example: o9J_kzlUDmo=
+      - name: emails
+        description: Filter content logs based on the list of emails of users who created, modified, or deleted the board item.
+        example:
+        - someone@domain.com
+        - someoneelse@domain.com
+        in: query
+        required: false
+        schema:
+          type: array
+          maxItems: 15
+          items:
+            description: Email of the user who created, modified, or deleted the board item.
+            type: string
+            example: someone@domain.com
+      - name: from
+        description: 'Filter content logs based on the date and time when the board item was last modified. This is the start date and time for the modified date duration.
+
+          Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+          '
+        example: '2022-03-30T17:26:50Z'
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        description: 'Filter content logs based on the date and time when the board item was last modified. This is the end date and time for the modified date duration. Format: UTC, adheres to
+
+          [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+          '
+        example: '2023-03-30T17:26:50Z'
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: cursor
+        description: 'A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+        example: MTY2OTg4NTIwMDAwMHwxMjM=
+      - name: limit
+        description: 'The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          default: 1000
+        example: 1000
+      - name: sorting
+        description: 'Sort order in which you want to view the result set based on the modified date. To sort by an ascending modified date, specify `asc`. To sort by a descending modified date, specify `desc`.
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+        example: asc
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBoardItemContentLogsResponse'
+          description: 'Response from the API that includes content logs of board items such as data, size of the data list, pagination cursor, and pagination limit.
+
+            '
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Retrieve content change logs of board items
+      tags:
+      - Board Content Logs
+components:
+  schemas:
+    GetBoardItemContentLogsResponse:
+      type: object
+      description: Response for query using cursor and filter parameters.
+      properties:
+        limit:
+          type: integer
+          description: 'The maximum number of results to return per call. If the number of logs in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+          format: int32
+          example: 20
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        data:
+          $ref: '#/components/schemas/BoardItemContentLogList'
+        cursor:
+          type: string
+          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+
+            '
+          example: MTY2OTg4NTIwMDAwMHwxMjM=
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
+    Actor:
+      type: object
+      description: Contains information about the user who performed the action.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user who performed the action.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: Email of the user who performed the action.
+          example: john.smith.demo@miro.com
+        name:
+          type: string
+          description: Name of the user who performed the action.
+          example: John Smith
+    BoardItemContentLogList:
+      type: array
+      description: Contains the list of content logs for a board item.
+      items:
+        $ref: '#/components/schemas/BoardItemContentLog'
+    State:
+      type: object
+      description: Object that contains information about the state of the board item after the action was performed.
+    BoardItemContentLog:
+      type: object
+      description: Contains information about the content log of for a board item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the content log.
+          example: 2dcf57ff-f12c-4fad-b708-c1642204b41b
+        contentId:
+          type: string
+          description: Unique identifier of the board where the action happened.
+          example: o9J_kzlUDmo=
+        actionType:
+          type: string
+          enum:
+          - create
+          - update
+          - delete
+          description: Type of action within the board, such as creation of a widget, update of a comment message, and so on.
+          example: update
+        actionTime:
+          type: string
+          format: date-time
+          example: '2023-06-24T17:32:28Z'
+          description: 'Date and time when the action happened.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).
+
+            '
+        actor:
+          $ref: '#/components/schemas/Actor'
+        itemType:
+          type: string
+          enum:
+          - widget
+          - comment_thread
+          - comment_message
+          description: Type of the board item on which the action happened.
+          example: widget
+        itemId:
+          type: string
+          description: Unique identifier of the board item on which the action happened. For example, the widget ID.
+          example: '3458764549483493025'
+        state:
+          $ref: '#/components/schemas/State'
+        relationships:
+          type: array
+          description: Contains the list of items related to the current board item.
+          items:
+            $ref: '#/components/schemas/Relationship'
+    Relationship:
+      type: object
+      description: Object that contains information about a related board item for the current item.
+      properties:
+        type:
+          type: string
+          description: Indicates the relationship of this item with the current item. For example, if `type` returns `parent`, this means that related item is a parent for the current item.
+          example: parent
+        itemType:
+          type: string
+          description: Indicates the type of the related board item. For example, if `itemType` returns `widget`, this means that related item is a widget.
+          example: widget
+        itemId:
+          type: string
+          description: Unique identifier of the related board item.
+          example: '3074457345933870505'
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

@@ -1,0 +1,677 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Connectors API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Connectors
+paths:
+  /v2/boards/{board_id}/connectors:
+    post:
+      description: Adds a connector to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: create-connector
+      parameters:
+      - description: Unique identifier (ID) of the board for which you want to create the connector.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectorCreationData'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorWithLinks'
+          description: Connector created
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Create connector
+      tags:
+      - Connectors
+    get:
+      description: 'Retrieves a list of connectors for a specific board.
+
+
+        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set the `limit` query parameter to `10` and the board contains 20 objects, the first call will return information about the first 10 objects in the response along with a cursor parameter and value. In this example, let''s say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>'
+      operationId: get-connectors
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: string
+          default: '10'
+          description: The maximum number of results to return per call. If the number of connectors in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+          maximum: 50
+          minimum: 10
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the limit specified and a `cursor` that points to the next portion of the results. To retrieve the next portion of the collection, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.
+      - description: Unique identifier (ID) of the board from which you want to retrieve a list of connectors.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorsCursorPaged'
+          description: Connectors retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get connectors
+      tags:
+      - Connectors
+  /v2/boards/{board_id}/connectors/{connector_id}:
+    get:
+      description: Retrieves information for a specific connector on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-connector
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to retrieve a specific connector.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the connector that you want to retrieve.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorWithLinks'
+          description: Connector retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get specific connector
+      tags:
+      - Connectors
+    patch:
+      description: Updates a connector on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: update-connector
+      parameters:
+      - description: Unique identifier (ID) of the board for which you want to update the connector.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the connector that you want to update.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectorChangesData'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorWithLinks'
+          description: Connector updated
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Update connector
+      tags:
+      - Connectors
+    delete:
+      description: Deletes the specified connector from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: delete-connector
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to delete the connector.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the connector that you want to delete.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Connector deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Delete connector
+      tags:
+      - Connectors
+components:
+  schemas:
+    ConnectorStyle:
+      type: object
+      description: Contains information about the style of a connector, such as the color or caption font size
+      properties:
+        color:
+          type: string
+          description: 'Hex value representing the color for the captions on the connector. Default: `#1a1a1a`'
+          example: '#9510ac'
+        endStrokeCap:
+          type: string
+          description: 'The decoration cap of the connector end, like an arrow or circle. Default: stealth.'
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        fontSize:
+          type: string
+          description: 'Defines the font size, in dp, for the captions on the connector. Default: 14'
+          example: '15'
+          maximum: 288
+          minimum: 10
+        startStrokeCap:
+          type: string
+          description: 'The decoration cap of the connector end, like an arrow or circle. Default: none.'
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        strokeColor:
+          type: string
+          description: 'Hex value of the color of the connector line. Default: #000000.'
+          example: '#2d9bf0'
+        strokeStyle:
+          type: string
+          description: 'The stroke pattern of the connector line. Default: normal.'
+          enum:
+          - normal
+          - dotted
+          - dashed
+        strokeWidth:
+          type: string
+          description: 'The thickness of the connector line, in dp. Default: 1.0.'
+          example: '2.0'
+          maximum: 24
+          minimum: 1
+        textOrientation:
+          type: string
+          description: 'The captions orientation relatively to the connector line curvature. Default: aligned.'
+          enum:
+          - horizontal
+          - aligned
+    ConnectorsCursorPaged:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
+          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/ConnectorWithLinks'
+        limit:
+          type: integer
+          format: int32
+          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+          example: 1
+        total:
+          type: integer
+          format: int64
+    ConnectorCreationData:
+      type: object
+      description: startItem.id must be different from endItem.id
+      properties:
+        startItem:
+          $ref: '#/components/schemas/ItemConnectionCreationData'
+        endItem:
+          $ref: '#/components/schemas/ItemConnectionCreationData'
+        shape:
+          type: string
+          description: 'The path type of the connector line, defines curvature. Default: curved.'
+          enum:
+          - straight
+          - elbowed
+          - curved
+        captions:
+          type: array
+          description: Blocks of text you want to display on the connector.
+          items:
+            $ref: '#/components/schemas/Caption'
+          maxItems: 20
+          maxLength: 20
+          minItems: 0
+        style:
+          $ref: '#/components/schemas/ConnectorStyle'
+      required:
+      - endItem
+      - startItem
+    Caption:
+      type: object
+      description: Contains the connector's caption data, such as content and its position.
+      properties:
+        content:
+          type: string
+          description: The text you want to display on the connector. Supports inline HTML tags.
+          example: <p>Caption text</p>
+          maxLength: 200
+          minLength: 0
+        position:
+          type: string
+          description: 'The relative position of the text on the connector, in percentage, minimum 0%, maximum 100%. With 50% value, the text will be placed in the middle of the connector line. Default: 50%'
+          example: 50%
+        textAlignVertical:
+          type: string
+          description: 'The vertical position of the text on the connector. Default: middle'
+          enum:
+          - top
+          - middle
+          - bottom
+      required:
+      - content
+    ConnectorWithLinks:
+      type: object
+      description: Contains the result data.
+      properties:
+        captions:
+          type: array
+          description: Blocks of text you want to display on the connector.
+          items:
+            $ref: '#/components/schemas/Caption'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the connector was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        endItem:
+          $ref: '#/components/schemas/ItemConnectionWithLinks'
+        id:
+          type: string
+          description: Unique identifier (ID) of a connector.
+          example: '3458764517517818867'
+        isSupported:
+          type: boolean
+          description: Indicates whether the connector is supported at the moment. If this parameter returns `false`, we do not support the connector at the moment. We do not allow updates for unsupported connectors and we might not return all data about the connector, such as intermediate points and connection points to the canvas.
+        links:
+          $ref: '#/components/schemas/SelfLink'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the connector was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        shape:
+          type: string
+          default: curved
+          description: 'The path type of the connector line, defines curvature. Default: curved.'
+          enum:
+          - straight
+          - elbowed
+          - curved
+        startItem:
+          $ref: '#/components/schemas/ItemConnectionWithLinks'
+        style:
+          $ref: '#/components/schemas/ConnectorStyle'
+        type:
+          type: string
+          description: Type of board object that is returned.
+      required:
+      - id
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    ItemConnectionCreationData:
+      type: object
+      description: The end point of the connector. endItem.id must be different from startItem.id
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
+          example: '3458764517517818867'
+        position:
+          $ref: '#/components/schemas/RelativeOffset'
+        snapTo:
+          type: string
+          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
+          enum:
+          - auto
+          - top
+          - right
+          - bottom
+          - left
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    UpdateConnectorStyle:
+      type: object
+      description: Contains information about the style of a connector, such as the color or caption font size
+      properties:
+        color:
+          type: string
+          description: Hex value representing the color for the captions on the connector.
+          example: '#9510ac'
+        endStrokeCap:
+          type: string
+          description: The decoration cap of the connector end, like an arrow or circle.
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        fontSize:
+          type: string
+          description: Defines the font size, in dp, for the captions on the connector.
+          example: '15'
+          maximum: 288
+          minimum: 10
+        startStrokeCap:
+          type: string
+          description: The decoration cap of the connector end, like an arrow or circle.
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        strokeColor:
+          type: string
+          description: Hex value of the color of the connector line.
+          example: '#2d9bf0'
+        strokeStyle:
+          type: string
+          description: The stroke pattern of the connector line.
+          enum:
+          - normal
+          - dotted
+          - dashed
+        strokeWidth:
+          type: string
+          description: The thickness of the connector line, in dp.
+          example: '2.0'
+          maximum: 24
+          minimum: 1
+        textOrientation:
+          type: string
+          description: The captions orientation relatively to the connector line curvature.
+          enum:
+          - horizontal
+          - aligned
+    ItemConnectionWithLinks:
+      type: object
+      description: The starting point of the connector.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the item the connector is attached to.
+          example: '3458764517517818867'
+        links:
+          $ref: '#/components/schemas/SelfLink'
+        position:
+          $ref: '#/components/schemas/RelativeOffset'
+    RelativeOffset:
+      type: object
+      description: The relative position of the point on an item where the connector is attached. Position with x=0% and y=0% correspond to the top-left corner of the item, x=100% and y=100% correspond to the right-bottom corner.
+      properties:
+        x:
+          type: string
+          description: X-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
+          example: 50%
+        y:
+          type: string
+          description: Y-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
+          example: 0%
+    ItemConnectionChangesData:
+      type: object
+      description: The ending point of the connector. If startItem is also provided, endItem.id must be different from startItem.id
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
+          example: '3458764517517818867'
+        position:
+          $ref: '#/components/schemas/RelativeOffset'
+        snapTo:
+          type: string
+          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
+          enum:
+          - auto
+          - top
+          - right
+          - bottom
+          - left
+    ConnectorChangesData:
+      type: object
+      description: If both are provided, startItem.id must be different from endItem.id
+      properties:
+        startItem:
+          $ref: '#/components/schemas/ItemConnectionChangesData'
+        endItem:
+          $ref: '#/components/schemas/ItemConnectionChangesData'
+        shape:
+          type: string
+          description: 'The path type of the connector line, defines curvature. Default: curved.'
+          enum:
+          - straight
+          - elbowed
+          - curved
+        captions:
+          type: array
+          description: Blocks of text you want to display on the connector.
+          items:
+            $ref: '#/components/schemas/Caption'
+          maxItems: 20
+          maxLength: 20
+          minItems: 0
+        style:
+          $ref: '#/components/schemas/UpdateConnectorStyle'
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true

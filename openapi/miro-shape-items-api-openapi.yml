@@ -1,0 +1,686 @@
+openapi: 3.0.1
+info:
+  title: Miro Developer Platform AI Interaction Logs Shape items API
+  version: v2.0
+  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+
+
+    ### Miro Developer Platform concepts
+
+
+    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
+
+    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
+
+
+
+    ### Getting started with the Miro REST API
+
+
+    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
+
+    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
+
+
+
+    ### Miro REST API tutorials
+
+
+    Check out our how-to articles with step-by-step instructions and code examples so you can:
+
+
+    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
+
+
+
+    ### Miro App Examples
+
+
+    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
+
+    '
+servers:
+- url: https://api.miro.com/
+tags:
+- name: Shape items
+paths:
+  /v2/boards/{board_id}/shapes:
+    post:
+      description: Adds a shape item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: create-shape-item
+      parameters:
+      - description: Unique identifier (ID) of the board where you want to create the item.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShapeCreateRequest'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShapeItem'
+          description: Shape item created
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Create shape item
+      tags:
+      - Shape items
+  /v2/boards/{board_id}/shapes/{item_id}:
+    get:
+      description: Retrieves information for a specific shape item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      operationId: get-shape-item
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to retrieve a specific item.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the item that you want to retrieve.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShapeItem'
+          description: Shape item retrieved
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Get shape item
+      tags:
+      - Shape items
+    patch:
+      description: Updates a shape item on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      operationId: update-shape-item
+      parameters:
+      - description: Unique identifier (ID) of the board where you want to update the item.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the item that you want to update.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShapeUpdateRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShapeItem'
+          description: Shape item updated
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Update shape item
+      tags:
+      - Shape items
+    delete:
+      description: Deletes a shape item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      operationId: delete-shape-item
+      parameters:
+      - description: Unique identifier (ID) of the board from which you want to delete the item.
+        in: path
+        name: board_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier (ID) of the item that you want to delete.
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Shape item deleted
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+      summary: Delete shape item
+      tags:
+      - Shape items
+components:
+  schemas:
+    ShapeItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/ShapeDataForCreate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForCreate'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/CreatedBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/ModifiedBy'
+        parent:
+          $ref: '#/components/schemas/ParentLinksEnvelope'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: shape
+      required:
+      - id
+      - type
+    ShapeCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShapeDataForCreate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForCreate'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    ParentLinksEnvelope:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    ShapeStyleForUpdate:
+      type: object
+      description: "Contains information about the shape style, such as the border color or opacity. <br> All properties in style object are supported for shape types aren't listed below. <br> <table>\n  <tr>\n    <th align=\"left\">Shape type</th>\n    <th align=\"left\">Unsupported properties</th>\n  </tr>\n  <tr>\n    <td>flow_chart_or</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_summing_junction</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_left</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_right</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_square</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n</table>"
+      properties:
+        borderColor:
+          type: string
+          description: Defines the color of the border of the shape.
+        borderOpacity:
+          type: string
+          description: 'Defines the opacity level of the shape border.
+
+            Possible values: any number between `0.0` and `1.0`, where:
+
+            `0.0`: the background color is completely transparent or invisible
+
+            `1.0`: the background color is completely opaque or solid'
+          maximum: 1
+          minimum: 0
+        borderStyle:
+          type: string
+          description: Defines the style used to represent the border of the shape.
+          enum:
+          - normal
+          - dotted
+          - dashed
+        borderWidth:
+          type: string
+          description: Defines the thickness of the shape border, in dp.
+          maximum: 24
+          minimum: 1
+        color:
+          type: string
+          description: Hex value representing the color for the text within the shape item.
+          example: '#1a1a1a'
+        fillColor:
+          type: string
+          description: 'Fill color for the shape.
+
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`'
+          example: '#8fd14f'
+        fillOpacity:
+          type: string
+          description: 'Opacity level of the fill color.
+
+            Possible values: any number between `0` and `1`, where:
+
+            `0.0`: the background color is completely transparent or invisible
+
+            `1.0`: the background color is completely opaque or solid
+
+            '
+          maximum: 1
+          minimum: 0
+        fontFamily:
+          type: string
+          description: Defines the font type for the text in the shape item.
+          enum:
+          - arial
+          - abril_fatface
+          - bangers
+          - eb_garamond
+          - georgia
+          - graduate
+          - gravitas_one
+          - fredoka_one
+          - nixie_one
+          - open_sans
+          - permanent_marker
+          - pt_sans
+          - pt_sans_narrow
+          - pt_serif
+          - rammetto_one
+          - roboto
+          - roboto_condensed
+          - roboto_slab
+          - caveat
+          - times_new_roman
+          - titan_one
+          - lemon_tuesday
+          - roboto_mono
+          - noto_sans
+          - plex_sans
+          - plex_serif
+          - plex_mono
+          - spoof
+          - tiempos_text
+          - formular
+        fontSize:
+          type: string
+          description: Defines the font size, in dp, for the text on the shape.
+          maximum: 288
+          minimum: 10
+        textAlign:
+          type: string
+          description: Defines how the sticky note text is horizontally aligned.
+          enum:
+          - left
+          - right
+          - center
+        textAlignVertical:
+          type: string
+          description: Defines how the sticky note text is vertically aligned.
+          enum:
+          - top
+          - middle
+          - bottom
+    ShapeUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShapeDataForUpdate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForUpdate'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    ShapeDataForCreate:
+      type: object
+      description: Contains shape item data, such as the content or the type of the shape.
+      properties:
+        content:
+          type: string
+          description: "The text you want to display on the shape.\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
+          example: Hello
+        shape:
+          type: string
+          default: rectangle
+          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
+    CreatedBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    PositionChange:
+      type: object
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
+      properties:
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    ShapeDataForUpdate:
+      type: object
+      description: Contains shape item data, such as the content or the type of the shape.
+      properties:
+        content:
+          type: string
+          description: "The text you want to display on the shape.\n**Note: When updating a shape type to one of the types below, existing `content` will be lost.**\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
+          example: Hello
+        shape:
+          type: string
+          default: rectangle
+          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    ShapeStyleForCreate:
+      type: object
+      description: "Contains information about the shape style, such as the border color or opacity. <br> All properties in style object are supported for shape types aren't listed below. <br> <table>\n  <tr>\n    <th align=\"left\">Shape type</th>\n    <th align=\"left\">Unsupported properties</th>\n  </tr>\n  <tr>\n    <td>flow_chart_or</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_summing_junction</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_left</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_right</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_square</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n</table>"
+      properties:
+        borderColor:
+          type: string
+          description: 'Defines the color of the border of the shape.
+
+            Default: `#1a1a1a` (dark gray).'
+        borderOpacity:
+          type: string
+          description: 'Defines the opacity level of the shape border.
+
+            Possible values: any number between `0.0` and `1.0`, where:
+
+            `0.0`: the background color is completely transparent or invisible
+
+            `1.0`: the background color is completely opaque or solid
+
+            Default: `1.0` (solid color).'
+          maximum: 1
+          minimum: 0
+        borderStyle:
+          type: string
+          description: 'Defines the style used to represent the border of the shape.
+
+            Default: `normal`.'
+          enum:
+          - normal
+          - dotted
+          - dashed
+        borderWidth:
+          type: string
+          description: 'Defines the thickness of the shape border, in dp.
+
+            Default: `2.0`.'
+          maximum: 24
+          minimum: 1
+        color:
+          type: string
+          description: 'Hex value representing the color for the text within the shape item.
+
+            Default: `#1a1a1a`.'
+          example: '#1a1a1a'
+        fillColor:
+          type: string
+          description: 'Fill color for the shape.
+
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`
+
+            Default: #ffffff.'
+          example: '#8fd14f'
+        fillOpacity:
+          type: string
+          description: 'Opacity level of the fill color.
+
+            Possible values: any number between `0` and `1`, where:
+
+            `0.0`: the background color is completely transparent or invisible
+
+            `1.0`: the background color is completely opaque or solid
+
+            Default: `Flowchart` shapes: `1.0`. `Basic` shapes: `1.0` if `fillColor` provided, `0.0` if no `fillColor` provided.
+
+            '
+          maximum: 1
+          minimum: 0
+        fontFamily:
+          type: string
+          description: 'Defines the font type for the text in the shape item.
+
+            Default: `arial`.'
+          enum:
+          - arial
+          - abril_fatface
+          - bangers
+          - eb_garamond
+          - georgia
+          - graduate
+          - gravitas_one
+          - fredoka_one
+          - nixie_one
+          - open_sans
+          - permanent_marker
+          - pt_sans
+          - pt_sans_narrow
+          - pt_serif
+          - rammetto_one
+          - roboto
+          - roboto_condensed
+          - roboto_slab
+          - caveat
+          - times_new_roman
+          - titan_one
+          - lemon_tuesday
+          - roboto_mono
+          - noto_sans
+          - plex_sans
+          - plex_serif
+          - plex_mono
+          - spoof
+          - tiempos_text
+          - formular
+        fontSize:
+          type: string
+          description: 'Defines the font size, in dp, for the text on the shape.
+
+            Default: `14`.'
+          maximum: 288
+          minimum: 10
+        textAlign:
+          type: string
+          description: 'Defines how the shape text is horizontally aligned.
+
+            Default:
+
+            Flowchart shapes: `center`.
+
+            Basic shapes: `left`.
+
+
+            `unknown` is returned for unsupported shapes.'
+          enum:
+          - left
+          - right
+          - center
+          - unknown
+        textAlignVertical:
+          type: string
+          description: 'Defines how the shape text is vertically aligned.
+
+            Default:
+
+            Flowchart shapes: `middle`.
+
+            Basic shapes: `top`.
+
+
+            `unknown` is returned for unsupported shapes.'
+          enum:
+          - top
+          - middle
+          - bottom
+          - unknown
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    ModifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+  securitySchemes:
+    oAuth2AuthCode:
+      type: oauth2
+      description: For more information, see https://developers.miro.com/reference/authorization-flow-for-expiring-tokens
+      flows:
+        authorizationCode:
+          authorizationUrl: https://miro.com/oauth/authorize
+          tokenUrl: https://api.miro.com/v1/oauth/token
+          scopes:
+            boards:read: Retrieve information about boards, board members, or items
+            boards:write: Create, update, or delete boards, board members, or items
+            microphone:listen: Access a user's microphone to record audio in an iFrame
+            screen:record: Access a user's screen to record it in an iFrame
+            webcam:record: Allows an iFrame to access a user's camera to record video
+            organizations:read: Read information about the organization, such as name, plan, number of licenses, organization settings, or organization members.
+            organizations:teams:read: Read team information, such as the list of teams, team settings, team members, for an organization.
+            organizations:teams:write: Create or delete teams, update team information, team settings, team members, for an organization.
+x-settings:
+  publish: true
