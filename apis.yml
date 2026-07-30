@@ -7,7 +7,20 @@ description: >-
   The Miro REST API exposes boards, board items (sticky notes, cards, shapes, frames, images, embeds, etc.), connectors,
   tags, mind maps, members, organizations, teams, webhooks, audit logs, and SCIM provisioning. Miro also offers a Web
   SDK for in-board apps.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/miro.png
 tags:
   - Productivity
   - Whiteboard
@@ -18,197 +31,1957 @@ created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: miro:miro-boards-api
-    name: Miro Boards API
-    tags:
-      - Boards
-      - CRUD
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/boards
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/boards
-        type: APIReference
-      - url: https://developers.miro.com/reference/overview
-        type: Documentation
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Create, read, update, copy, and delete Miro boards. Boards are the top-level container for whiteboard content
-      within a team or workspace.
-  - aid: miro:miro-board-items-api
-    name: Miro Board Items API
-    tags:
-      - Items
-      - Sticky Notes
-      - Shapes
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/items
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/items
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Generic and per-type endpoints for board items: sticky notes, cards, shapes, text, frames, images, documents,
-      embeds, and app cards. CRUD on items, with type-specific create/update endpoints for each item kind.
-  - aid: miro:miro-connectors-api
-    name: Miro Connectors API
-    tags:
-      - Connectors
-      - Diagramming
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/connectors
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/connectors
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Create and manage connectors (lines/arrows) between board items, including style and shape options for diagramming
-      workflows.
-  - aid: miro:miro-tags-api
-    name: Miro Tags API
-    tags:
-      - Tags
-      - Metadata
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/tags
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/tags
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: Create, attach, and remove tags on board items for searching, filtering, and grouping.
-  - aid: miro:miro-mind-map-api
-    name: Miro Mind Map API
-    tags:
-      - Mind Map
-      - Diagramming
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/mindmap-nodes
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/mindmap-nodes
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: Create and manage mind-map nodes and parent-child relationships on a board.
-  - aid: miro:miro-board-members-api
-    name: Miro Board Members API
-    tags:
-      - Members
-      - Sharing
-      - Permissions
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/board-members
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/board-members
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: Manage who has access to a board and what role (owner, editor, commenter, viewer) they hold.
-  - aid: miro:miro-webhooks-api
-    name: Miro Webhooks API
-    tags:
-      - Webhooks
-      - Events
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/webhooks
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/webhooks
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Subscribe to board events (item created/updated/deleted, board events) and receive HTTP callbacks at your
-      endpoint.
-  - aid: miro:miro-organization-api
-    name: Miro Organization API
-    tags:
-      - Organization
-      - Enterprise
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/enterprise-organization
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/enterprise-organization
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Enterprise-only endpoints to manage the organization, list members, and inspect organization-wide membership and
-      licensing.
-  - aid: miro:miro-teams-api
-    name: Miro Teams API
-    tags:
-      - Teams
-      - Membership
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/enterprise-teams
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/enterprise-teams
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: Manage teams, team members, team settings, and default team roles within an organization.
-  - aid: miro:miro-audit-logs-api
-    name: Miro Audit Logs API
-    tags:
-      - Audit
-      - Compliance
-      - Enterprise
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/audit-logs
-    baseURL: https://api.miro.com/v2
-    properties:
-      - url: https://developers.miro.com/reference/audit-logs
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: Enterprise audit-log endpoints. Query user, board, and admin actions for compliance and security monitoring.
-  - aid: miro:miro-scim-api
-    name: Miro SCIM API
-    tags:
-      - SCIM
-      - Identity
-      - Provisioning
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/reference/scim-api
-    baseURL: https://miro.com/api/v1/scim
-    properties:
-      - url: https://developers.miro.com/reference/scim-api
-        type: APIReference
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      SCIM 2.0 provisioning for Enterprise customers. Automate user/group lifecycle from Okta, Azure AD, OneLogin, and
-      other IdPs.
-  - aid: miro:miro-web-sdk
-    name: Miro Web SDK
-    tags:
-      - SDK
-      - Browser
-      - Apps
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.miro.com/docs/build-your-first-hello-world-app
-    baseURL: https://miro.com
-    properties:
-      - url: https://developers.miro.com/docs/build-your-first-hello-world-app
-        type: Documentation
-      - url: https://github.com/miroapp
-        type: GitHub
-      - url: openapi/miro-openapi.json
-        type: OpenAPI
-    description: >-
-      Build apps that run inside the Miro board UI. The Web SDK lets your app create and modify board items, react to
-      events, render custom panels, and integrate with the user's workspace.
+- aid: miro:miro-ai-interaction-logs-api
+  name: Miro AI Interaction Logs API
+  description: The AI Interaction Logs API from Miro — 1 operation(s) for ai interaction logs.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - AI Interaction Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-ai-interaction-logs-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-app-card-items-api
+  name: Miro App card items API
+  description: The App card items API from Miro — 2 operation(s) for app card items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - App card items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-app-card-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-app-metrics-experimental-api
+  name: Miro App metrics (experimental) API
+  description: >-
+    The App metrics (experimental) API from Miro — 2 operation(s) for app metrics (experimental).
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - App metrics (experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-app-metrics-experimental-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-audit-logs-api
+  name: Miro Audit Logs API
+  description: The Audit Logs API from Miro — 1 operation(s) for audit logs.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Audit Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-audit-logs-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-classification-board-level-api
+  name: 'Miro Board classification: Board level API'
+  description: >-
+    The Board classification: Board level API from Miro — 1 operation(s) for board classification: board
+    level.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - 'Board classification: Board level'
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-classification-board-level-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-classification-organization-level-api
+  name: 'Miro Board classification: Organization level API'
+  description: >-
+    The Board classification: Organization level API from Miro — 1 operation(s) for board classification:
+    organization level.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - 'Board classification: Organization level'
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-classification-organization-level-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-classification-team-level-api
+  name: 'Miro Board classification: Team level API'
+  description: >-
+    The Board classification: Team level API from Miro — 2 operation(s) for board classification: team
+    level.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - 'Board classification: Team level'
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-classification-team-level-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-content-logs-api
+  name: Miro Board Content Logs API
+  description: The Board Content Logs API from Miro — 1 operation(s) for board content logs.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Board Content Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-content-logs-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-export-api
+  name: Miro Board Export API
+  description: The Board Export API from Miro — 6 operation(s) for board export.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Board Export
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-export-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-board-members-api
+  name: Miro Board members API
+  description: The Board members API from Miro — 2 operation(s) for board members.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Board members
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-board-members-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-boards-api
+  name: Miro Boards API
+  description: The Boards API from Miro — 2 operation(s) for boards.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Boards
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-boards-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-bulk-operations-api
+  name: Miro Bulk operations API
+  description: The Bulk operations API from Miro — 2 operation(s) for bulk operations.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Bulk operations
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-bulk-operations-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-card-items-api
+  name: Miro Card items API
+  description: The Card items API from Miro — 2 operation(s) for card items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Card items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-card-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-code-widget-items-experimental-api
+  name: Miro Code widget items (experimental) API
+  description: >-
+    The Code widget items (experimental) API from Miro — 3 operation(s) for code widget items (experimental).
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Code widget items (experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-code-widget-items-experimental-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-connectors-api
+  name: Miro Connectors API
+  description: The Connectors API from Miro — 2 operation(s) for connectors.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-connectors-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-discovery-api
+  name: Miro Discovery API
+  description: The Discovery API from Miro — 5 operation(s) for discovery.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-discovery-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-doc-formats-api
+  name: Miro doc formats API
+  description: The doc formats API from Miro — 2 operation(s) for doc formats.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - doc formats
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-doc-formats-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-document-items-api
+  name: Miro Document items API
+  description: The Document items API from Miro — 2 operation(s) for document items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Document items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-document-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-documents-api
+  name: Miro documents API
+  description: The documents API from Miro — 2 operation(s) for documents.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - documents
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-documents-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-embed-items-api
+  name: Miro Embed items API
+  description: The Embed items API from Miro — 2 operation(s) for embed items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Embed items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-embed-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-flowchart-shapes-experimental-api
+  name: Miro Flowchart shapes (experimental) API
+  description: >-
+    The Flowchart shapes (experimental) API from Miro — 4 operation(s) for flowchart shapes (experimental).
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Flowchart shapes (experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-flowchart-shapes-experimental-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-frames-api
+  name: Miro frames API
+  description: The frames API from Miro — 2 operation(s) for frames.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - frames
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-frames-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-group-api
+  name: Miro Group API
+  description: The Group API from Miro — 2 operation(s) for group.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-group-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-groups-api
+  name: Miro groups API
+  description: The groups API from Miro — 4 operation(s) for groups.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-image-items-api
+  name: Miro Image items API
+  description: The Image items API from Miro — 2 operation(s) for image items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Image items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-image-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-images-api
+  name: Miro images API
+  description: The images API from Miro — 2 operation(s) for images.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - images
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-images-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-items-api
+  name: Miro Items API
+  description: The Items API from Miro — 4 operation(s) for items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-legal-holds-api
+  name: Miro Legal holds API
+  description: The Legal holds API from Miro — 6 operation(s) for legal holds.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Legal holds
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-legal-holds-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-mind-map-nodes-experimental-api
+  name: Miro Mind map nodes (experimental) API
+  description: >-
+    The Mind map nodes (experimental) API from Miro — 2 operation(s) for mind map nodes (experimental).
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Mind map nodes (experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-mind-map-nodes-experimental-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-oauth-api
+  name: Miro OAuth API
+  description: The OAuth API from Miro — 1 operation(s) for oauth.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-oauth-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-organization-members-api
+  name: Miro Organization Members API
+  description: The Organization Members API from Miro — 2 operation(s) for organization members.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Organization Members
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-organization-members-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-organizations-api
+  name: Miro Organizations API
+  description: The Organizations API from Miro — 1 operation(s) for organizations.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-organizations-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-project-members-api
+  name: Miro Project Members API
+  description: The Project Members API from Miro — 2 operation(s) for project members.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Project Members
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-project-members-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-project-settings-api
+  name: Miro Project Settings API
+  description: The Project Settings API from Miro — 1 operation(s) for project settings.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Project Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-project-settings-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-projects-api
+  name: Miro Projects API
+  description: The Projects API from Miro — 2 operation(s) for projects.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-projects-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-reset-all-sessions-of-a-user-api
+  name: Miro Reset all sessions of a user API
+  description: >-
+    The Reset all sessions of a user API from Miro — 1 operation(s) for reset all sessions of a user.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Reset all sessions of a user
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-reset-all-sessions-of-a-user-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-shape-items-api
+  name: Miro Shape items API
+  description: The Shape items API from Miro — 2 operation(s) for shape items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Shape items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-shape-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-share-boards-with-groups-api
+  name: Miro Share boards with groups API
+  description: >-
+    The Share boards with groups API from Miro — 2 operation(s) for share boards with groups.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Share boards with groups
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-share-boards-with-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-share-projects-with-groups-api
+  name: Miro Share projects with groups API
+  description: >-
+    The Share projects with groups API from Miro — 2 operation(s) for share projects with groups.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Share projects with groups
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-share-projects-with-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-sticky-note-items-api
+  name: Miro Sticky note items API
+  description: The Sticky note items API from Miro — 2 operation(s) for sticky note items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Sticky note items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-sticky-note-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-tags-api
+  name: Miro tags API
+  description: The tags API from Miro — 5 operation(s) for tags.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-tags-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-team-members-api
+  name: Miro Team Members API
+  description: The Team Members API from Miro — 2 operation(s) for team members.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Team Members
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-team-members-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-team-settings-api
+  name: Miro Team Settings API
+  description: The Team Settings API from Miro — 2 operation(s) for team settings.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Team Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-team-settings-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-team-user-groups-api
+  name: Miro Team user groups API
+  description: The Team user groups API from Miro — 2 operation(s) for team user groups.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Team user groups
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-team-user-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-teams-api
+  name: Miro Teams API
+  description: The Teams API from Miro — 2 operation(s) for teams.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-teams-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-text-items-api
+  name: Miro Text items API
+  description: The Text items API from Miro — 2 operation(s) for text items.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - Text items
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-text-items-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-tokens-api
+  name: Miro tokens API
+  description: The tokens API from Miro — 2 operation(s) for tokens.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-tokens-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-user-api
+  name: Miro User API
+  description: The User API from Miro — 2 operation(s) for user.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-user-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-user-group-members-api
+  name: Miro User group members API
+  description: The User group members API from Miro — 2 operation(s) for user group members.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - User group members
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-user-group-members-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-user-group-to-teams-api
+  name: Miro User group to teams API
+  description: The User group to teams API from Miro — 2 operation(s) for user group to teams.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - User group to teams
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-user-group-to-teams-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-user-groups-api
+  name: Miro User groups API
+  description: The User groups API from Miro — 2 operation(s) for user groups.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - User groups
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-user-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
 common:
   - type: AgenticAccess
     url: agentic-access/miro-agentic-access.yml
