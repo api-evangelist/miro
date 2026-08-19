@@ -1,0 +1,1310 @@
+{
+  "item": [
+    {
+      "id": "f2c3cc3b-b4b3-4f29-9893-afaac46d8144",
+      "name": "Share boards with groups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "760e34de-8b08-4fab-83d6-5984cadcbf04",
+          "name": "Get board user group assignments",
+          "request": {
+            "name": "Get board user group assignments",
+            "description": {
+              "content": "Retrieves information about user groups invited to the specified board.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "boards",
+                ":board_id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of user groups in the result list."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of an organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) The ID of the board."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec727bb5-e08a-4441-80b7-df08b8eeaabd",
+              "name": "Get user groups assigned to board",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 100,\n  \"size\": 87,\n  \"data\": [\n    {\n      \"id\": \"3074457345618265000\",\n      \"role\": \"VIEWER\",\n      \"type\": \"board-user-group\"\n    },\n    {\n      \"id\": \"3074457345618265000\",\n      \"role\": \"VIEWER\",\n      \"type\": \"board-user-group\"\n    }\n  ],\n  \"cursor\": \"3074457345821140946\",\n  \"type\": \"cursor-list\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0164c790-021f-447d-9a58-ae598d3f4479",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d90574d0-4f67-43df-a77d-1d459fa9026f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18881637-6ab1-4146-97d5-7f44a8d38c77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2ef61b4-0f68-4c06-9e6d-f58c3f468386",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6be4fcdf-3f08-45f5-83f5-32d9e54c2169",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "693d49da-ee2d-49bd-9133-d7c178eb3cda",
+          "name": "Create board user group assignments",
+          "request": {
+            "name": "Create board user group assignments",
+            "description": {
+              "content": "Shares a board with user groups with a specified role. Updates the role if already shared.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "boards",
+                ":board_id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of an organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) The ID of the board."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aadbea3c-8bf6-4939-b721-ea01671efa80",
+              "name": "User group role assignment on board",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3074457345618265000\",\n  \"role\": \"VIEWER\",\n  \"type\": \"board-user-group\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "307127ba-93e0-4d88-9643-b051bb63defd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b416119-5234-4b07-a441-18a5281ea77f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dd9726a-cbb6-4c96-a4ea-7852b619f497",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a18df4dc-388a-4226-a4c4-b4ec7dfc3b02",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1ca95ec-59d6-4108-8492-24ad979f240c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userGroupIds\": [\n    \"3074457345618265000\",\n    \"3074457345618265000\"\n  ],\n  \"role\": \"VIEWER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cca5112c-bda0-41bd-961e-dd417c9f74b7",
+          "name": "Delete board user group assignment",
+          "request": {
+            "name": "Delete board user group assignment",
+            "description": {
+              "content": "Removes a user group from the specified board.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "boards",
+                ":board_id",
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of an organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) The ID of the board."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of a user group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea5d583b-2cf3-4250-974f-847ba645ab76",
+              "name": "User group to board assignment deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d8d7b62-0e57-44df-b6a0-4835b60b88d7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35501faf-022e-481c-a62c-e277d6912062",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c3a5056-7239-4d9e-b7e4-a1e8a7bb5e22",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cdcdb9b-93d9-453e-9174-7d57a683e4f1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f782b25-d419-4326-97f2-7bfb178a0607",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3074455-c84b-434f-8e26-c87d12420938",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) The ID of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of a user group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6cdf25d8-af5e-4ab8-b721-86b460894f1b",
+    "name": "Miro Developer Platform AI Interaction Logs Share boards with groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

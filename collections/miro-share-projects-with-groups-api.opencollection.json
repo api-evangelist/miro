@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Share projects with groups API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Share projects with groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get project user group assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/projects/:project_id/groups",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of user groups in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning."
+              }
+            ]
+          },
+          "docs": "Retrieves information about user groups invited to the specified project.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-refer"
+        },
+        {
+          "info": {
+            "name": "Create project user group assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/projects/:project_id/groups",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Shares a project with user groups with a specified role. Updates the role if already shared.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/r"
+        },
+        {
+          "info": {
+            "name": "Delete project user group assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/projects/:project_id/groups/:group_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              }
+            ]
+          },
+          "docs": "Removes a user group from the specified project.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">En"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

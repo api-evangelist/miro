@@ -1,0 +1,1061 @@
+{
+  "item": [
+    {
+      "id": "c49f2067-2fb8-41a6-b8ad-2a71a9e60967",
+      "name": "Project Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "960174d1-c08b-4178-a4e2-6fe16330cbb0",
+          "name": "Get project settings",
+          "request": {
+            "name": "Get project settings",
+            "description": {
+              "content": "Retrieves the project settings.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "teams",
+                ":team_id",
+                "projects",
+                ":project_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization to which the project belongs."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_id",
+                  "description": "(Required) The ID of the team to which the project belongs."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "900f4e4e-ce1d-4a92-a012-19efe2e16b02",
+              "name": "Defines the sharing policies for the boards within the project.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  },\n  \"type\": \"project_settings\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a80b584-d948-4472-9ecf-0269c75e8626",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"invalidParameters\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc58f566-e51c-43fa-9ec7-f4019c77bb53",
+              "name": "Invalid authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"code\": \"tokenNotProvided\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddaab166-fb96-408c-9dea-a77b15a01abb",
+              "name": "Invalid access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"code\": \"forbiddenAccess\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6da0dc0a-09ab-409c-8869-646e8cdd42f9",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"code\": \"notFound\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee549ddb-8a08-43b8-9edc-fa60d3804fbc",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project for which you want to retrieve the project settings."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 429,\n  \"code\": \"tooManyRequests\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6924d5a-e3b3-4e20-8069-b12e94f8a0fc",
+          "name": "Update project settings",
+          "request": {
+            "name": "Update project settings",
+            "description": {
+              "content": "Updates the settings of a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "teams",
+                ":team_id",
+                "projects",
+                ":project_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization to which the project belongs."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_id",
+                  "description": "(Required) The ID of the team to which the project belongs."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The ID of the project whose settings you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb535344-7e3d-456c-9290-b39ba6e16105",
+              "name": "Project object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  },\n  \"type\": \"project_settings\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f25ca415-a1c8-43df-a1f1-4fb2ce465747",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"invalidParameters\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3611b5ba-323f-482b-9180-dae2745c79d1",
+              "name": "Invalid authentication credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 401,\n  \"code\": \"tokenNotProvided\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78159b20-a432-4326-8998-5caba2ba5998",
+              "name": "Invalid access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 403,\n  \"code\": \"forbiddenAccess\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1131d41b-e97f-4b40-b146-bba18c38b11e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"code\": \"notFound\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "403c1375-918b-4e07-9fff-cebd5a3ea963",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 409,\n  \"code\": \"conflict\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d260c22-d703-44c7-91ec-dde0cda0c7af",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "projects",
+                    ":project_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of the team to which the project belongs."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project whose settings you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sharingPolicySettings\": {\n    \"teamAccess\": \"private\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 429,\n  \"code\": \"tooManyRequests\",\n  \"message\": \"string\",\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "027783b0-3fe9-4fed-b29e-2ca95267e2e5",
+    "name": "Miro Developer Platform AI Interaction Logs Project Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

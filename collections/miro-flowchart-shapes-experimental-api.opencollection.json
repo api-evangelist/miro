@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Flowchart shapes (experimental) API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flowchart shapes (experimental)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get items on board",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/items",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board for which you want to retrieve the list of available items."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of items for a specific board. You can retrieve all items on the board, a list of child items inside a parent item, or a list of specific types of items by specifying URL query parameter values.\n\nThis method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call "
+        },
+        {
+          "info": {
+            "name": "Get specific item on board",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/items/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to retrieve a specific item."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the item that you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information for a specific item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Create shape item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/shapes",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to create the item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a flowchart shape item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Get shape item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/shapes/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to retrieve a specific item."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the item that you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information for a specific shape item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Update shape item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/shapes/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to update the item."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the item that you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a flowchart shape item on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Delete shape item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/shapes/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to delete the item."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the item that you want to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a flowchart shape item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

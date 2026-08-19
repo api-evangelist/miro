@@ -1,0 +1,464 @@
+{
+  "item": [
+    {
+      "id": "104e1c51-45ae-4d7a-917a-42a6f4e22ec3",
+      "name": "Audit Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c04279a9-5951-4133-8b16-d1c00d092c9e",
+          "name": "Get audit logs",
+          "request": {
+            "name": "Get audit logs",
+            "description": {
+              "content": "Retrieves a page of audit events from the last 90 days. If you want to retrieve data that is older than 90 days, you can use the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/360017571434-Audit-logs#h_01J7EY4E0F67EFTRQ7BT688HW0\">CSV export feature</a>.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>auditlogs:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "audit",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<string>",
+                  "description": "(Required) Retrieve audit logs created after the date and time provided. This is the start date of the duration for which you want to retrieve audit logs. For example, if you want to retrieve audit logs between `2023-03-30T17:26:50.000Z` and `2023-04-30T17:26:50.000Z`, provide `2023-03-30T17:26:50.000Z` as the value for the `createdAfter` parameter.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), including milliseconds and a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\"\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<string>",
+                  "description": "(Required) Retrieve audit logs created before the date and time provided. This is the end date of the duration for which you want to retrieve audit logs. For example, if you want to retrieve audit logs between `2023-03-30T17:26:50.000Z` and `2023-04-30T17:26:50.000Z`, provide `2023-04-30T17:26:50.000Z` as the value for the `createdBefore` parameter.<br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), including milliseconds and a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the appropriate cursor value returned in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that  you obtained from the response.<br>Default: `100`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting",
+                  "value": "<string>",
+                  "description": "Sort order in which you want to view the result set. Based on the value you provide, the results are sorted in an ascending or descending order of the audit log creation date (audit log `createdAt` parameter).<br>Default: `ASC`\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36585f52-0936-4af7-9443-9f2fc09289c8",
+              "name": "Audit logs fetched",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"cursor-list\",\n  \"limit\": 10,\n  \"size\": 2,\n  \"cursor\": \"2023-09-01T09:30:10.840687Z#1234567890123456789-DDB\",\n  \"data\": [\n    {\n      \"id\": \"2023-09-01T09:30:10.840687Z#1234567890123456789-DDB\",\n      \"context\": {\n        \"ip\": \"0.0.0.0\",\n        \"team\": {\n          \"id\": \"1234567890123456789\",\n          \"name\": \"Example Team\"\n        },\n        \"organization\": {\n          \"id\": \"1234567890123456789\",\n          \"name\": \"Example Organization\"\n        }\n      },\n      \"object\": {\n        \"id\": \"1234567890123456789\",\n        \"name\": \"Example Object\"\n      },\n      \"createdAt\": \"2023-09-01T09:30:10.840+0000\",\n      \"details\": {},\n      \"createdBy\": {\n        \"type\": \"user\",\n        \"id\": \"1234567890123456789\",\n        \"name\": \"John Smith\",\n        \"email\": \"john.smith@miro.com\"\n      },\n      \"event\": \"sign_in_succeeded\",\n      \"category\": \"authentication\"\n    },\n    {\n      \"id\": \"2023-09-01T09:30:10.840687Z#1234567890123456789-DDB\",\n      \"context\": {\n        \"ip\": \"0.0.0.0\",\n        \"team\": {\n          \"id\": \"1234567890123456789\",\n          \"name\": \"Example Team\"\n        },\n        \"organization\": {\n          \"id\": \"1234567890123456789\",\n          \"name\": \"Example Organization\"\n        }\n      },\n      \"object\": {\n        \"id\": \"1234567890123456789\",\n        \"name\": \"Example Object\"\n      },\n      \"createdAt\": \"2023-09-01T09:30:10.840+0000\",\n      \"details\": {},\n      \"createdBy\": {\n        \"type\": \"user\",\n        \"id\": \"1234567890123456789\",\n        \"name\": \"John Smith\",\n        \"email\": \"john.smith@miro.com\"\n      },\n      \"event\": \"sign_in_succeeded\",\n      \"category\": \"authentication\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49848543-f243-4ff8-b6f9-247d85077501",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c118a036-90b4-4b11-8813-4d5b37c04c2c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "656deb64-fafd-4d8a-9a9c-3b701d107299",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d8fdcee-2e6a-408f-9674-f61fc278daa4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e757dc0-272b-42d3-b84c-e3447b826c92",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "515851b0-bc5b-495e-a034-28f7ccded43f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "audit",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAfter",
+                      "value": "2023-03-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "2023-04-30T17:26:50.000Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "927d7075-35d9-4ca1-92c6-c7464f2a6096",
+    "name": "Miro Developer Platform AI Interaction Logs Audit Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

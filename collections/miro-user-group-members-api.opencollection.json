@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs User group members API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User group members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of user group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of members in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of members who are part of a team in an existing organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint"
+        },
+        {
+          "info": {
+            "name": "Create user group member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a member to a user group in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Comp"
+        },
+        {
+          "info": {
+            "name": "Bulk edit of membership in user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add and remove members in one request. For example, remove user A and add user B. You can add or remove up to 500 users at a time.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> per item. For example, if you want to add 10 users and remove 5, the rate limiting applicable will be 750 credits. This is because each "
+        },
+        {
+          "info": {
+            "name": "Get user group member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a group member."
+              }
+            ]
+          },
+          "docs": "Retrieves information about a user group member in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have t"
+        },
+        {
+          "info": {
+            "name": "Delete user group member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a group member."
+              }
+            ]
+          },
+          "docs": "Removes a member from a user group in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

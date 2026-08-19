@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs User group to teams API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User group to teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get teams of a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/teams",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of teams in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A representation of the position of a team in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of teams that the user group is a part of.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/><a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#"
+        },
+        {
+          "info": {
+            "name": "Get user group team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/groups/:group_id/teams/:team_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "group_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a user group."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              }
+            ]
+          },
+          "docs": "Retrieves information of a team that the user group is a part of in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a> <br/><a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/r"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

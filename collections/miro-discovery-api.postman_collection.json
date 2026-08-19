@@ -1,0 +1,1214 @@
+{
+  "item": [
+    {
+      "id": "34f5a450-5fd4-4f0c-86b9-d61802392bd3",
+      "name": "Discovery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e2d6e0f-2f96-4cfa-98c7-9f65b0e42c90",
+          "name": "Get Service Provider Config",
+          "request": {
+            "name": "Get Service Provider Config",
+            "description": {
+              "content": "Retrieve supported operations and SCIM API basic configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ServiceProviderConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad1c1658-a0d0-4f64-bbff-5964449a0933",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig\"\n  ],\n  \"patch\": {\n    \"supported\": true\n  },\n  \"bulk\": {\n    \"supported\": false\n  },\n  \"filter\": {\n    \"supported\": true,\n    \"maxResults\": 200\n  },\n  \"changePassword\": {\n    \"supported\": false\n  },\n  \"sort\": {\n    \"supported\": true\n  },\n  \"etag\": {\n    \"supported\": false\n  },\n  \"authenticationSchemes\": [\n    {\n      \"type\": \"oauthbearertoken\",\n      \"name\": \"OAuth Bearer Token\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07c3ebca-6dc4-4ac6-aa6f-bc254ae256ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "812f71b5-fa5b-4100-bc43-731fb85eb38c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3d36be9-8270-4308-b3e7-749735a9bc73",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abc85515-31b6-49cd-b1c2-2812c660e480",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b8fd434-05ec-42f8-92e4-650764e11760",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ServiceProviderConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22d27114-c2f0-4a6a-8444-1e8feab104b8",
+          "name": "List resource types",
+          "request": {
+            "name": "List resource types",
+            "description": {
+              "content": "Retrieve information about which SCIM resources are supported. <br><br> Currently, Miro supports Users and Groups as Resource Types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ResourceTypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5525e616-c1e6-4f98-a675-8b7413688f03",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"Resources\": [\n    {\n      \"id\": \"User\",\n      \"name\": \"User\",\n      \"endpoint\": \"/Users\",\n      \"schema\": \"urn:ietf:params:scim:schemas:core:2.0:User\"\n    }\n  ],\n  \"totalResults\": 1,\n  \"startIndex\": 1,\n  \"itemsPerPage\": 1,\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65496aff-efe2-4081-9a86-29d1076071ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58dfc69e-4ddc-4faf-8842-aa8e1ef9e0a7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6547998e-8d3f-47f4-88fb-ebc1dbf94119",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9cedec6-7c25-4c05-87e1-a960f6e1770e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b9c31ab-ed96-4e4b-9de7-063c61c28593",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a0cb115-17a6-4ccf-9797-41fbe760689c",
+          "name": "Get resource type",
+          "request": {
+            "name": "Get resource type",
+            "description": {
+              "content": "Retrieve metadata for the available resource types (User and Group) that are supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ResourceTypes",
+                ":resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aac84878-5bed-42f2-8e87-a6e7591c5cf8",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag identifying the current version of the resource.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"User\",\n  \"name\": \"User\",\n  \"endpoint\": \"/Users\",\n  \"schema\": \"urn:ietf:params:scim:schemas:core:2.0:User\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c0afef2-3992-4159-a528-e243747ed20c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f90df96-5645-446f-8795-a678b651707d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98d188aa-7ecf-4e6b-a780-286635b0cd2c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a06c4b78-4cb2-4246-8a99-cc585d8326e9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cef547ce-73ab-4b52-a66e-d929074708df",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ResourceTypes",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a148406b-4068-4709-8bcc-fb9ec646fef3",
+          "name": "List schemas",
+          "request": {
+            "name": "List schemas",
+            "description": {
+              "content": "Retrieve metadata about Users, Groups, and extension attributes that are currently supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Schemas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1a714da-3e54-4cd8-8948-655850176ec0",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"Resources\": [\n    {\n      \"id\": \"urn:ietf:params:scim:schemas:core:2.0:User\",\n      \"name\": \"User\",\n      \"description\": \"User Account\",\n      \"attributes\": [\n        {\n          \"name\": \"userName\",\n          \"type\": \"string\",\n          \"required\": true\n        }\n      ]\n    }\n  ],\n  \"totalResults\": 1,\n  \"startIndex\": 1,\n  \"itemsPerPage\": 1,\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c34b595-4040-401d-9080-8cf198211788",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10f1a1cb-fdbf-40e6-aeaf-746d3d773947",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb1620ab-b3ac-4e09-83f1-90cd357857a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13c2896d-77be-4640-a0d1-72f6bfd628e3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ff22e87-50e7-4c22-a2d2-26ae6fde181f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f0bcbde-8c0d-450e-80d2-876a7477c94f",
+          "name": "Get schema",
+          "request": {
+            "name": "Get schema",
+            "description": {
+              "content": "Retrieve information about how users, groups, and enterprise-user attributes URIs that are formatted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Schemas",
+                ":uri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uri",
+                  "description": "(Required) Schema URI of a particular resource type."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92a21835-ace2-4fff-af81-28927f83b380",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"urn:ietf:params:scim:schemas:core:2.0:User\",\n  \"name\": \"User\",\n  \"description\": \"User Account\",\n  \"attributes\": [\n    {\n      \"name\": \"userName\",\n      \"type\": \"string\",\n      \"required\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22a76de2-72b5-450a-b2dc-501e3a2e0882",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5527eb91-42d7-455c-8282-da5c3dd20f48",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c1a7853-5a69-4588-9afb-8c67c9c5a8b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3f57fd0-31ee-4eb9-8432-1d97050f08d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d2f73e4-5c89-4fc0-8978-e3bfecb93288",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Schemas",
+                    ":uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uri",
+                      "description": "(Required) Schema URI of a particular resource type."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7ae4d48d-2c37-469e-9c7c-c5e9d78145c7",
+    "name": "Miro Developer Platform AI Interaction Logs Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

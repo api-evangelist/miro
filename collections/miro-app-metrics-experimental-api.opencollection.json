@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs App metrics (experimental) API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "App metrics (experimental)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get app metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/apps/:app_id/metrics",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the app to get metrics for."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the period in UTC format. For example, 2024-12-31."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date of the period in UTC format. For example, 2024-12-31."
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Group data by this time period."
+              }
+            ]
+          },
+          "docs": "Returns a list of usage metrics for a specific app for a given time range, grouped by requested time period.\n\nThis endpoint requires an app management API token. It can be generated in the <a href=\"https://developers.miro.com/?features=appMetricsToken#your-apps\">Your Apps</a> section of Developer Hub.<br/>\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>\n<h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limi"
+        },
+        {
+          "info": {
+            "name": "Get total app metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/apps/:app_id/metrics-total",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the app to get total metrics for."
+              }
+            ]
+          },
+          "docs": "Returns total usage metrics for a specific app since the app was created.\n\nThis endpoint requires an app management API token. It can be generated in <a href=\"https://developers.miro.com/?features=appMetricsToken#your-apps\">your apps</a> section of Developer Hub.<br/>\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>\n<h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,353 @@
+{
+  "item": [
+    {
+      "id": "f643f0e6-c6a1-4d78-a636-4c27e0d37c4a",
+      "name": "App metrics (experimental)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26bd1550-80f9-49a5-ac18-c197d999703c",
+          "name": "Get app metrics",
+          "request": {
+            "name": "Get app metrics",
+            "description": {
+              "content": "Returns a list of usage metrics for a specific app for a given time range, grouped by requested time period.\n\nThis endpoint requires an app management API token. It can be generated in the <a href=\"https://developers.miro.com/?features=appMetricsToken#your-apps\">Your Apps</a> section of Developer Hub.<br/>\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>\n<h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "apps",
+                ":app_id",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "(Required) Start date of the period in UTC format. For example, 2024-12-31."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "(Required) End date of the period in UTC format. For example, 2024-12-31."
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "WEEK",
+                  "description": "Group data by this time period."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) ID of the app to get metrics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4e7f495-9fff-4611-9147-c3cebaf1f15b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "apps",
+                    ":app_id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "WEEK"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) ID of the app to get metrics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"periodStart\": \"1972-07-31\",\n    \"uniqueUsers\": 3206,\n    \"uniqueRecurringUsers\": 265,\n    \"uniqueOrganizations\": 8952,\n    \"installations\": 2299,\n    \"uninstallations\": 228\n  },\n  {\n    \"periodStart\": \"1979-12-29\",\n    \"uniqueUsers\": 1170,\n    \"uniqueRecurringUsers\": 4520,\n    \"uniqueOrganizations\": 7002,\n    \"installations\": 8295,\n    \"uninstallations\": 9253\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "222ea9f1-b942-4013-a295-66da6f5d8650",
+              "name": "App not found response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "apps",
+                    ":app_id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "WEEK"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) ID of the app to get metrics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 123\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a07fd250-3e6d-464a-88d0-57cfcb24b3b8",
+          "name": "Get total app metrics",
+          "request": {
+            "name": "Get total app metrics",
+            "description": {
+              "content": "Returns total usage metrics for a specific app since the app was created.\n\nThis endpoint requires an app management API token. It can be generated in <a href=\"https://developers.miro.com/?features=appMetricsToken#your-apps\">your apps</a> section of Developer Hub.<br/>\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a><br/>\n<h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "apps",
+                ":app_id",
+                "metrics-total"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) ID of the app to get total metrics for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b9662cb-e2ee-4b2e-badf-5a55ad0dbf87",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "apps",
+                    ":app_id",
+                    "metrics-total"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) ID of the app to get total metrics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uniqueUsers\": 7067,\n  \"uniqueRecurringUsers\": 9412,\n  \"uniqueOrganizations\": 3556,\n  \"installations\": 9172,\n  \"uninstallations\": 2240\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58e96273-15b6-4619-b278-2f458f0d8b85",
+              "name": "App not found response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "apps",
+                    ":app_id",
+                    "metrics-total"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) ID of the app to get total metrics for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": 656\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bef54652-b085-4451-bac7-d315be404446",
+    "name": "Miro Developer Platform AI Interaction Logs App metrics (experimental) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

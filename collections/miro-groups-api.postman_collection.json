@@ -1,0 +1,2048 @@
+{
+  "item": [
+    {
+      "id": "4bdec6ab-cc6c-449a-9f76-9169e6f3f729",
+      "name": "groups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ed1b4df-b05a-42a6-8bb9-b7fd1ff51a55",
+          "name": "Create group",
+          "request": {
+            "name": "Create group",
+            "description": {
+              "content": "Creates a group of items on a board. The group is created with the items that are passed in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"user-group\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce83880e-e696-466f-9f11-ddcbe121bbc1",
+              "name": "Group created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3258764517517852419\",\n  \"type\": \"group\",\n  \"data\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My group\",\n    \"type\": \"user-group\",\n    \"description\": \"Info about group\"\n  },\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c312035-35ac-40d8-b866-4bf5d9cb4a80",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9effc5ba-a14f-4f8e-8e7e-07862a4b086b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66487246-80fe-47ce-a152-bf72dc4ecc1d",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c080163c-32d7-41b4-b0bf-7f429cab3960",
+          "name": "Get all groups on a board",
+          "request": {
+            "name": "Get all groups on a board",
+            "description": {
+              "content": "Returns all the groups and the items of the respective groups within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated  method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/> For example, if you set the `limit` query parameter to `10` and the board  contains 20 items that are a part of a group, the first call will return information about the first 10 items in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The maximum number of items to return at one time, default is 10, maximum is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbf0462f-3bd2-4db6-9137-8cb0347f917e",
+              "name": "Groups retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 10,\n  \"size\": 1,\n  \"data\": [\n    {\n      \"id\": \"3258764517517852419\",\n      \"type\": \"group\",\n      \"data\": {\n        \"id\": \"3074457345618265000\",\n        \"name\": \"My group\",\n        \"type\": \"user-group\",\n        \"description\": \"Info about group\"\n      },\n      \"links\": {\n        \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n        \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n        \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n        \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n      }\n    },\n    {\n      \"id\": \"3258764517517852419\",\n      \"type\": \"group\",\n      \"data\": {\n        \"id\": \"3074457345618265000\",\n        \"name\": \"My group\",\n        \"type\": \"user-group\",\n        \"description\": \"Info about group\"\n      },\n      \"links\": {\n        \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n        \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n        \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n        \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddceb0bf-8a3b-43ad-a2d5-25eb01413518",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3c95a29-1bd8-4eae-928b-0cd9dcabd117",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f4273a6-13cc-40e2-876b-932800acd8e9",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca21d7ad-dabd-4fab-b870-38df9ff69ef9",
+          "name": "Get items of a group by ID",
+          "request": {
+            "name": "Get items of a group by ID",
+            "description": {
+              "content": "Returns a list of items that are a part of any group, within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/> For example, if you set the `limit` query parameter to `10` and the board  contains 20 items that are a part of a group, the first call will return information about the first 10 items (not 10 groups) in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The maximum number of items to return at one time, default is 10, maximum is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_item_id",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the group item to retrieve."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cda3bb9f-189e-42d0-9a2d-0c243a8ee7a1",
+              "name": "Items retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_item_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 10,\n  \"size\": 1,\n  \"total\": 1,\n  \"data\": {\n    \"id\": \"3258764517517852419\",\n    \"type\": \"string\",\n    \"data\": [\n      {\n        \"data\": [\n          {\n            \"id\": \"3458764517517819000\",\n            \"type\": \"sticky_note\",\n            \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n            \"createdBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geometry\": {\n              \"height\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"width\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n            \"modifiedBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"parent\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"position\": {\n              \"origin\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relativeTo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"x\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"y\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"id\": \"3458764517517819000\",\n            \"type\": \"sticky_note\",\n            \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n            \"createdBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geometry\": {\n              \"height\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"width\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n            \"modifiedBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"parent\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"position\": {\n              \"origin\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relativeTo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"x\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"y\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"limit\": 20,\n        \"links\": {\n          \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n          \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n          \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n          \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n          \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n        },\n        \"offset\": 0,\n        \"size\": 1,\n        \"total\": 1,\n        \"type\": \"string\"\n      },\n      {\n        \"data\": [\n          {\n            \"id\": \"3458764517517819000\",\n            \"type\": \"sticky_note\",\n            \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n            \"createdBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geometry\": {\n              \"height\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"width\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n            \"modifiedBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"parent\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"position\": {\n              \"origin\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relativeTo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"x\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"y\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"id\": \"3458764517517819000\",\n            \"type\": \"sticky_note\",\n            \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n            \"createdBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geometry\": {\n              \"height\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"width\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n            \"modifiedBy\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"parent\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"position\": {\n              \"origin\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"relativeTo\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"x\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"y\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ],\n        \"limit\": 20,\n        \"links\": {\n          \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n          \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n          \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n          \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n          \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n        },\n        \"offset\": 0,\n        \"size\": 1,\n        \"total\": 1,\n        \"type\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e09a3e5-b333-4d36-b22d-f456b630fe00",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_item_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ccde98d-415e-4cbe-8d91-76cd39be96ca",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_item_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a63f72e3-82a9-4802-99c4-520cafb6dd7e",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_item_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57866c5d-bb44-4925-a3c4-b18dc5e20636",
+          "name": "Get a group by its ID",
+          "request": {
+            "name": "Get a group by its ID",
+            "description": {
+              "content": "Returns a list of items in a specific group. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a>\n<br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> per item ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) Unique identifier (ID) of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93017447-fd00-433a-8f49-cf715123695f",
+              "name": "Group retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3258764517517852419\",\n  \"type\": \"group\",\n  \"data\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My group\",\n    \"type\": \"user-group\",\n    \"description\": \"Info about group\"\n  },\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8c7f70d-a810-4cda-9a3b-89ce582fa673",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61a65bd6-e748-43c9-8f18-9dfa4919d28b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd1d097f-fdc9-4550-b0a8-25efe65065d9",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43911d6d-089e-4dd7-806a-1a86b2926566",
+          "name": "Ungroup items",
+          "request": {
+            "name": "Ungroup items",
+            "description": {
+              "content": "Ungroups items from a group.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "delete_items",
+                  "value": "<boolean>",
+                  "description": "Indicates whether the items should be removed. By default, false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) Unique identifier (ID) of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50e1d800-7520-453a-ad1b-40ac09163670",
+              "name": "Ungrouped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "656db288-6bc6-4387-b5ae-ac7a1c999eb1",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a462a904-aa51-45a8-b7ce-c07bd2ee0940",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4af959f-c01b-4124-bb76-cca726b63e18",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "218ad5ba-bb58-42fe-8f5e-637d07937926",
+          "name": "Updates a group with new items",
+          "request": {
+            "name": "Updates a group with new items",
+            "description": {
+              "content": "This endpoint updates an existing group by replacing it entirely with a new group.  When the update is made, the original group is completely replaced, and a new group ID is assigned. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) Unique identifier (ID) of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"user-group\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43e57139-518e-4662-9401-e9452cba5616",
+              "name": "update group response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3258764517517852419\",\n  \"type\": \"group\",\n  \"data\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My group\",\n    \"type\": \"user-group\",\n    \"description\": \"Info about group\"\n  },\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0aafc859-7df3-4561-a5a3-6e583866b0f2",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1334360-3d84-4f5d-8a60-a943e8dce65d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3916b63b-937e-49c2-ba8b-9998950c7548",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) Unique identifier (ID) of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"3074457345618265000\",\n  \"name\": \"My group\",\n  \"type\": \"user-group\",\n  \"description\": \"Info about group\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fbc1596-e9ca-42bd-b729-fe2d10915cb4",
+          "name": "Deletes the group",
+          "request": {
+            "name": "Deletes the group",
+            "description": {
+              "content": "Deletes a group from a board. All the items in the group are deleted along with the group.  <b>Note - this endpoint will delete items which are locked as well. </b> <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "groups",
+                "{{group_id}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "delete_items",
+                  "value": "<boolean>",
+                  "description": "(Required) Indicates whether the items should be removed. Set to `true` to delete items in the group."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfd31d27-adf5-4bab-951c-023b2273cd8c",
+              "name": "Group deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "{{group_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89f8da61-5337-452e-a2ef-6355ed31f46c",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "{{group_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69128c19-c7f9-45ff-8861-5c69b4f5f986",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "{{group_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 404,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f32bece2-ec3d-4de1-9e51-f09a94f92704",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "groups",
+                    "{{group_id}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_items",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 429,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier (ID) of the group.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "group_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "c40d705a-2ef2-4789-9b0e-4a0925e12cc9",
+    "name": "Miro Developer Platform AI Interaction Logs groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

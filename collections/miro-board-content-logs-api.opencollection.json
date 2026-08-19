@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Board Content Logs API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Board Content Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve content change logs of board items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/content-logs/items",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "board_ids",
+                "value": "o9J_kzlUDmo=,u8J_kllZmDk=",
+                "type": "query",
+                "description": "List of board IDs for which you want to retrieve the content logs."
+              },
+              {
+                "name": "emails",
+                "value": "someone@domain.com,someoneelse@domain.com",
+                "type": "query",
+                "description": "Filter content logs based on the list of emails of users who created, modified, or deleted the board item."
+              },
+              {
+                "name": "from",
+                "value": "2022-03-30T17:26:50Z",
+                "type": "query",
+                "description": "Filter content logs based on the date and time when the board item was last modified. This is the start date and time for the modified date duration.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+              },
+              {
+                "name": "to",
+                "value": "2023-03-30T17:26:50Z",
+                "type": "query",
+                "description": "Filter content logs based on the date and time when the board item was last modified. This is the end date and time for the modified date duration. Format: UTC, adheres to\n[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+              },
+              {
+                "name": "limit",
+                "value": "1000",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+              },
+              {
+                "name": "sorting",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort order in which you want to view the result set based on the modified date. To sort by an ascending modified date, specify `asc`. To sort by a descending modified date, specify `desc`.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves content changes for board items within your organization. Content changes are actions that users can perform on board items, such as updating a sticky note's text. You can retrieve results for a specific time period. You can also filter results based on the board IDs and the emails of users who created, modified, or deleted a board item. Additionally, results can be paginated for easier viewing and processing.\n<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.c"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

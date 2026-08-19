@@ -1,0 +1,811 @@
+{
+  "item": [
+    {
+      "id": "48b2f428-7d42-4338-83c5-146e8c77daa2",
+      "name": "doc formats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20beb90d-0e61-417a-a63e-01fa1d2a9b26",
+          "name": "Create doc format item",
+          "request": {
+            "name": "Create doc format item",
+            "description": {
+              "content": "Adds a doc format item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "docs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\",\n    \"contentVersion\": \"<number>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fce307f3-954b-4259-b628-adf8d5cecddc",
+              "name": "Doc format item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\",\n    \"contentVersion\": \"<number>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"doc_format\",\n  \"data\": {\n    \"contentType\": \"html\",\n    \"content\": \"string\",\n    \"contentVersion\": 2102.221033282654\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70781d5c-f945-4953-b6b9-ea5a49d7f8cd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\",\n    \"contentVersion\": \"<number>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "912b3c6b-8ebe-4ce9-b5cf-9bfbefb7df1e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\",\n    \"contentVersion\": \"<number>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6f656c4-df2b-46eb-9081-feec39696d53",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\",\n    \"contentVersion\": \"<number>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf5d99b3-9f90-40e0-bbc7-0ccf6ef1444b",
+          "name": "Get doc format item",
+          "request": {
+            "name": "Get doc format item",
+            "description": {
+              "content": "Retrieves information for a specific doc format item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "docs",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "textContentType",
+                  "value": "<string>",
+                  "description": "Controls the contentType of the returned doc's content."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1db60d65-eb1c-4f3a-a5b6-d3ebd704a65c",
+              "name": "Doc format item retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "textContentType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"doc_format\",\n  \"data\": {\n    \"contentType\": \"html\",\n    \"content\": \"string\",\n    \"contentVersion\": 2102.221033282654\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be38ff61-f42e-4243-9c0a-8911136c102d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "textContentType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3016c5cc-1ab9-4c2f-ad34-e80cc2033617",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "textContentType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89996747-1dbb-43ba-90a1-20bdc2810854",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "textContentType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d19ab32-113a-409a-9a0a-83cf4ad4840b",
+          "name": "Delete doc format item",
+          "request": {
+            "name": "Delete doc format item",
+            "description": {
+              "content": "Deletes a doc format item from the board<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "docs",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "591e285a-1afc-45b4-9474-91f6f25c574a",
+              "name": "Doc format item deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b954353-2c76-4318-a6a0-412e818601a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54a370f1-53a0-4bf4-bba3-e545d9e7b377",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86f70f05-6e18-41ac-a35b-78b3f92772ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "docs",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71659113-39bc-4024-8eba-b5f8e1c3c0f2",
+    "name": "Miro Developer Platform AI Interaction Logs doc formats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

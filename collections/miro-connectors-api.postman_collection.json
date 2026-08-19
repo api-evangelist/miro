@@ -1,0 +1,1389 @@
+{
+  "item": [
+    {
+      "id": "8286ea88-c8af-4c0f-9462-2c820f42d913",
+      "name": "Connectors",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9b57bb5-2f9d-47b9-809a-5756df48fe31",
+          "name": "Create connector",
+          "request": {
+            "name": "Create connector",
+            "description": {
+              "content": "Adds a connector to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board for which you want to create the connector."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"endItem\": {\n    \"id\": \"<string>\",\n    \"position\": {\n      \"x\": \"<string>\",\n      \"y\": \"<string>\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"startItem\": {\n    \"id\": \"<string>\",\n    \"position\": {\n      \"x\": \"<string>\",\n      \"y\": \"<string>\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"<string>\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"<string>\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"<string>\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e999263-3103-4890-a5bd-a322de1a3782",
+              "name": "Connector created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to create the connector."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517818867\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"isSupported\": false,\n  \"links\": {\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"shape\": \"curved\",\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  },\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afed5c86-f223-4e67-ad37-17860b4ade0b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to create the connector."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa13c798-6382-437a-b6b9-6c862512d905",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to create the connector."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "261383fa-7e13-4b32-b8de-bc8af3fc7e62",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to create the connector."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14953198-4911-4f06-a8a6-ec443473880f",
+          "name": "Get connectors",
+          "request": {
+            "name": "Get connectors",
+            "description": {
+              "content": "Retrieves a list of connectors for a specific board.\n\nThis method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set the `limit` query parameter to `10` and the board contains 20 objects, the first call will return information about the first 10 objects in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a list of connectors."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c27fd19b-76a7-47d9-b691-1115ea392494",
+              "name": "Connectors retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a list of connectors."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": \"MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=\",\n  \"data\": [\n    {\n      \"id\": \"3458764517517818867\",\n      \"captions\": [\n        {\n          \"content\": \"<p>Caption text</p>\",\n          \"position\": \"50%\",\n          \"textAlignVertical\": \"<string>\"\n        },\n        {\n          \"content\": \"<p>Caption text</p>\",\n          \"position\": \"50%\",\n          \"textAlignVertical\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"endItem\": {\n        \"id\": \"3458764517517818867\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        },\n        \"position\": {\n          \"x\": \"50%\",\n          \"y\": \"0%\"\n        }\n      },\n      \"isSupported\": false,\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"shape\": \"curved\",\n      \"startItem\": {\n        \"id\": \"3458764517517818867\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        },\n        \"position\": {\n          \"x\": \"50%\",\n          \"y\": \"0%\"\n        }\n      },\n      \"style\": {\n        \"color\": \"#9510ac\",\n        \"endStrokeCap\": \"<string>\",\n        \"fontSize\": \"15\",\n        \"startStrokeCap\": \"<string>\",\n        \"strokeColor\": \"#2d9bf0\",\n        \"strokeStyle\": \"<string>\",\n        \"strokeWidth\": \"2.0\",\n        \"textOrientation\": \"<string>\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"3458764517517818867\",\n      \"captions\": [\n        {\n          \"content\": \"<p>Caption text</p>\",\n          \"position\": \"50%\",\n          \"textAlignVertical\": \"<string>\"\n        },\n        {\n          \"content\": \"<p>Caption text</p>\",\n          \"position\": \"50%\",\n          \"textAlignVertical\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"endItem\": {\n        \"id\": \"3458764517517818867\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        },\n        \"position\": {\n          \"x\": \"50%\",\n          \"y\": \"0%\"\n        }\n      },\n      \"isSupported\": false,\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"shape\": \"curved\",\n      \"startItem\": {\n        \"id\": \"3458764517517818867\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        },\n        \"position\": {\n          \"x\": \"50%\",\n          \"y\": \"0%\"\n        }\n      },\n      \"style\": {\n        \"color\": \"#9510ac\",\n        \"endStrokeCap\": \"<string>\",\n        \"fontSize\": \"15\",\n        \"startStrokeCap\": \"<string>\",\n        \"strokeColor\": \"#2d9bf0\",\n        \"strokeStyle\": \"<string>\",\n        \"strokeWidth\": \"2.0\",\n        \"textOrientation\": \"<string>\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"limit\": 20,\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  },\n  \"size\": 1,\n  \"total\": 3063\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9223f0a0-65ef-48dd-88c8-4f8ce8a667ae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a list of connectors."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95860415-e87e-45e0-be29-f1b39685ad03",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a list of connectors."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2d2e4c4-2c9b-4d4f-83d6-3dd0c02764ce",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a list of connectors."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "780c75e4-7f20-4bb7-8665-d220bf0230b3",
+          "name": "Get specific connector",
+          "request": {
+            "name": "Get specific connector",
+            "description": {
+              "content": "Retrieves information for a specific connector on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "connectors",
+                ":connector_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific connector."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier (ID) of the connector that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc635e55-3a00-4715-9999-34ad8a52e8ff",
+              "name": "Connector retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517818867\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"isSupported\": true,\n  \"links\": {\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"shape\": \"curved\",\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  },\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1497c9b7-afee-4f14-98b3-4b1f3c4f683f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04c0d19d-3c53-444b-83a6-0631c414cac0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "618835e7-a8f9-45ef-adec-2df3912cfd88",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "101eb8b3-1dbb-4ab3-922f-ddb684ee15da",
+          "name": "Update connector",
+          "request": {
+            "name": "Update connector",
+            "description": {
+              "content": "Updates a connector on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "connectors",
+                ":connector_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startItem\": {\n    \"id\": \"<string>\",\n    \"position\": {\n      \"x\": \"<string>\",\n      \"y\": \"<string>\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"<string>\",\n    \"position\": {\n      \"x\": \"<string>\",\n      \"y\": \"<string>\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<string>\",\n      \"position\": \"<string>\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"<string>\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"<string>\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"<string>\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8627c65d-db61-4760-9c14-032e31ea05ae",
+              "name": "Connector updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517818867\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"isSupported\": true,\n  \"links\": {\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"shape\": \"curved\",\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    },\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    }\n  },\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  },\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7480e3b6-7cb2-4f88-84a9-c27a74bb94dc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e2d4a69-71be-458d-b9c5-c20a6a726ad0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8291a5b5-0caf-4c6c-a379-bfae3a151f83",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa10da0c-45ac-409b-8a4f-bfd4b17cd3f4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to update the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"endItem\": {\n    \"id\": \"3458764517517818867\",\n    \"position\": {\n      \"x\": \"50%\",\n      \"y\": \"0%\"\n    },\n    \"snapTo\": \"<string>\"\n  },\n  \"shape\": \"<string>\",\n  \"captions\": [\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    },\n    {\n      \"content\": \"<p>Caption text</p>\",\n      \"position\": \"50%\",\n      \"textAlignVertical\": \"<string>\"\n    }\n  ],\n  \"style\": {\n    \"color\": \"#9510ac\",\n    \"endStrokeCap\": \"<string>\",\n    \"fontSize\": \"15\",\n    \"startStrokeCap\": \"<string>\",\n    \"strokeColor\": \"#2d9bf0\",\n    \"strokeStyle\": \"<string>\",\n    \"strokeWidth\": \"2.0\",\n    \"textOrientation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02f5b212-8c61-4773-a3ca-d34327228853",
+          "name": "Delete connector",
+          "request": {
+            "name": "Delete connector",
+            "description": {
+              "content": "Deletes the specified connector from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "connectors",
+                ":connector_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the connector."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier (ID) of the connector that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fddb875d-5625-4378-ad1c-26bfcb6f2cca",
+              "name": "Connector deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "876f5795-b095-462d-88a4-ce72bc71b5f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d388ec1-d1b8-4ec6-8930-499e05f6e438",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ba4be9c-1a98-484c-870f-e618a43dd8f7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "connectors",
+                    ":connector_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the connector."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier (ID) of the connector that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fc69cd48-203c-4708-aca9-989adb3e9d8e",
+    "name": "Miro Developer Platform AI Interaction Logs Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

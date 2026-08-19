@@ -1,0 +1,394 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Legal holds API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Legal holds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all cases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of items in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+              },
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the list of cases."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of eDiscovery cases in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">"
+        },
+        {
+          "info": {
+            "name": "Create case",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization in which you want to create a new case."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creating a case for legal hold is the first critical step in the eDiscovery process when litigation or an investigation is anticipated. One of the purposes of creating a case is that it acts as a container that allows admins to group multiple legal holds under one case. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120022370962-Create-a-case\" target=_blank>Help Center page on creating a case</a>. <br><br>This API creates a new case in an organization.<br/><h3>R"
+        },
+        {
+          "info": {
+            "name": "Get case",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the case information."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information about a case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Ente"
+        },
+        {
+          "info": {
+            "name": "Edit case",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to edit the case information."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case you want to edit."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Editing a case allows eDiscovery Admins to keep case details accurate and aligned with the evolving scope of a legal matter. As investigations progress, it may be necessary to update the case name or description to reflect changes in focus, terminology, or internal documentation standards. Since a case serves as the central container for one or more legal holds, keeping its information up to date helps ensure clarity, consistency, and easier navigation for all stakeholders involved in the legal "
+        },
+        {
+          "info": {
+            "name": "Close case",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization in which you want to close a case."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the case you want to close."
+              }
+            ]
+          },
+          "docs": "Closing a case is the final stage in the eDiscovery process, marking the conclusion of a legal matter or investigation. You must ensure that all associated legal holds within the case are closed before closing the case. Closing a case will permanently delete it. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22138936297746-Close-a-case\" target=_blank>Help Center page on closing a case</a>. <br><br>This API closes a case in an organization.<br/><h3>Required scope</"
+        },
+        {
+          "info": {
+            "name": "Get all legal holds within a case",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of items in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+              },
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the list of legal holds within a case."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case for which you want to retrieve the list of legal holds."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of all legal holds within a case for an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Gu"
+        },
+        {
+          "info": {
+            "name": "Create legal hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization in which you want to create a new legal hold."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case in which you want to create a new legal hold."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "After creating a case it is possible to add one or multiple legal holds to the case. Creating a legal hold involves identifying the relevant users associated with a case and applying the hold to prevent permanent deletion of content that those users own, co-own, create, edit or access. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120471564946-Add-a-legal-hold-to-a-case\" target=_blank>Help Center page on adding a legal hold to a case</a>. <br><br>This API creat"
+        },
+        {
+          "info": {
+            "name": "Get board export jobs of a case",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/export-jobs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of items in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+              },
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the list of export jobs within a case."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case for which you want to retrieve the list of export jobs."
+              }
+            ]
+          },
+          "docs": "Retrieves board export jobs for a case.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard ad"
+        },
+        {
+          "info": {
+            "name": "Get legal hold information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds/:legal_hold_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the legal hold information."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case for which you want to retrieve the legal hold information."
+              },
+              {
+                "name": "legal_hold_id",
+                "value": "3074457345619013003",
+                "type": "path",
+                "description": "The ID of the legal hold you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information about a legal hold within a case for an organization. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterpris"
+        },
+        {
+          "info": {
+            "name": "Edit legal hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds/:legal_hold_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to edit the legal hold information."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case for which you want to edit the legal hold information."
+              },
+              {
+                "name": "legal_hold_id",
+                "value": "3074457345619013003",
+                "type": "path",
+                "description": "The ID of the legal hold you want to edit."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Editing a legal hold allows eDiscovery Admins to adjust and refine ongoing legal preservation efforts as case requirements evolve. Whether new custodians are identified, additional Miro boards become relevant, or existing boards or users are no longer in scope, editing a legal hold ensures that the correct data remains preserved and defensible throughout the legal process. Admins can update the legal hold’s name or description and add or remove users and boards as needed. This flexibility suppor"
+        },
+        {
+          "info": {
+            "name": "Close legal hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds/:legal_hold_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization in which you want to close a legal hold."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case in which you want to close a legal hold."
+              },
+              {
+                "name": "legal_hold_id",
+                "value": "3074457345619013003",
+                "type": "path",
+                "description": "The ID of the legal hold you want to close."
+              }
+            ]
+          },
+          "docs": "Closing a legal hold is one of the final steps in the eDiscovery process once the litigation or investigation has concluded. This process involves releasing the Miro boards and custodians that were under legal hold, allowing the preserved boards to return to normal operations. Closing a legal hold will permanently delete it. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/21922521629330-Close-a-legal-hold\" target=_blank>Help Center page on closing a legal hold</a>."
+        },
+        {
+          "info": {
+            "name": "Get content items under legal hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/cases/:case_id/legal-holds/:legal_hold_id/content-items",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization for which you want to retrieve the list of content items under hold."
+              },
+              {
+                "name": "case_id",
+                "value": "3074457345619012007",
+                "type": "path",
+                "description": "The ID of the case for which you want to retrieve the list of content items under hold."
+              },
+              {
+                "name": "legal_hold_id",
+                "value": "3074457345619013003",
+                "type": "path",
+                "description": "The ID of the legal hold for which you want to retrieve the list of content items under hold."
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of items in the result list."
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+              }
+            ]
+          },
+          "docs": "Once a legal hold is in place you can review or explore the preserved Miro boards to ensure that all relevant data is intact and ready for legal proceedings or investigations. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120628583570-Review-boards-under-legal-hold\" target=_blank>Help Center page on reviewing boards under legal hold</a>. <br><br>This API lists all content items under a specific legal hold in a case for an organization. Please verify that the le"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

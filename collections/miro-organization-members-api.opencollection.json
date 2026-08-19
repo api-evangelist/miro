@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Organization Members API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/members",
+            "params": [
+              {
+                "name": "emails",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "license",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "id of the organization"
+              }
+            ]
+          },
+          "docs": "Retrieves organization members based on the organization ID and the cursor, or based on the user emails provided in the request.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a"
+        },
+        {
+          "info": {
+            "name": "Get organization member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "id of the organization"
+              },
+              {
+                "name": "member_id",
+                "value": "3055557345821141000",
+                "type": "path",
+                "description": "id of the organization member"
+              }
+            ]
+          },
+          "docs": "Retrieves organization member information for an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the r"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

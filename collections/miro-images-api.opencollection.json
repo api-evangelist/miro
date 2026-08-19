@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs images API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create image item using file from device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards/:board_id_PlatformFileUpload/images",
+            "params": [
+              {
+                "name": "board_id_PlatformFileUpload",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to create the item."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Adds an image item to a board by specifying a file from device.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Update image item using file from device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/boards/:board_id_PlatformFileUpload/images/:item_id",
+            "params": [
+              {
+                "name": "board_id_PlatformFileUpload",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to update the item."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the item that you want to update."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Updates an image item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1133 @@
+{
+  "item": [
+    {
+      "id": "488fa072-3c81-4fac-92e8-e80525c62f0e",
+      "name": "Embed items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd42d12e-dd93-48dc-9c67-f306464de343",
+          "name": "Create embed item",
+          "request": {
+            "name": "Create embed item",
+            "description": {
+              "content": "Adds an embed item containing external content to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "embeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\",\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25064132-1e08-4196-9d6f-9c3dfaaf5728",
+              "name": "Embed item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\",\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"embed\",\n  \"data\": {\n    \"contentType\": \"video\",\n    \"description\": \"So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...\",\n    \"html\": \"<iframe class=\\\\\\\"embedly-embed\\\\\\\" src=\\\\\\\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\\\\\\\" width=\\\\\\\"854\\\\\\\" height=\\\\\\\"480\\\\\\\" scrolling=\\\\\\\"no\\\\\\\" title=\\\\\\\"YouTube embed\\\\\\\" frameborder=\\\\\\\"0\\\\\\\" allow=\\\\\\\"autoplay; fullscreen\\\\\\\" allowfullscreen=\\\\\\\"true\\\\\\\"></iframe>\",\n    \"mode\": \"modal\",\n    \"previewUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false\",\n    \"providerName\": \"YouTube\",\n    \"providerUrl\": \"https://www.youtube.com/\",\n    \"title\": \"HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": 7232.526391553482,\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7f1368d-6f50-41c7-a237-9950f48d240a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\",\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8541a0c6-fc13-4894-8ace-f06c3a08738a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\",\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f7cc8f2-34b0-46ef-8e09-d9b200f2810b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\",\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4aafc13-7e1b-4bc6-b334-919a805f10ca",
+          "name": "Get embed item",
+          "request": {
+            "name": "Get embed item",
+            "description": {
+              "content": "Retrieves information for a specific embed item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "embeds",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54ae13b1-17db-498f-aa7f-469a734268b5",
+              "name": "Embed item retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"embed\",\n  \"data\": {\n    \"contentType\": \"video\",\n    \"description\": \"So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...\",\n    \"html\": \"<iframe class=\\\\\\\"embedly-embed\\\\\\\" src=\\\\\\\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\\\\\\\" width=\\\\\\\"854\\\\\\\" height=\\\\\\\"480\\\\\\\" scrolling=\\\\\\\"no\\\\\\\" title=\\\\\\\"YouTube embed\\\\\\\" frameborder=\\\\\\\"0\\\\\\\" allow=\\\\\\\"autoplay; fullscreen\\\\\\\" allowfullscreen=\\\\\\\"true\\\\\\\"></iframe>\",\n    \"mode\": \"modal\",\n    \"previewUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false\",\n    \"providerName\": \"YouTube\",\n    \"providerUrl\": \"https://www.youtube.com/\",\n    \"title\": \"HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": 7232.526391553482,\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "630bd0df-373b-4c49-8899-ac006e88bc90",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc08417d-5342-44de-8b82-a73f06783795",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0704678d-f8db-4b4c-978d-e979c192dbaa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a3eb1a0-6900-47cc-97ad-46037ec3aa43",
+          "name": "Update embed item",
+          "request": {
+            "name": "Update embed item",
+            "description": {
+              "content": "Updates an embed item on a board based on the data properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "embeds",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c26d0b31-1b21-4a2c-871a-338c6791ecc5",
+              "name": "Embed item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"embed\",\n  \"data\": {\n    \"contentType\": \"video\",\n    \"description\": \"So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...\",\n    \"html\": \"<iframe class=\\\\\\\"embedly-embed\\\\\\\" src=\\\\\\\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\\\\\\\" width=\\\\\\\"854\\\\\\\" height=\\\\\\\"480\\\\\\\" scrolling=\\\\\\\"no\\\\\\\" title=\\\\\\\"YouTube embed\\\\\\\" frameborder=\\\\\\\"0\\\\\\\" allow=\\\\\\\"autoplay; fullscreen\\\\\\\" allowfullscreen=\\\\\\\"true\\\\\\\"></iframe>\",\n    \"mode\": \"modal\",\n    \"previewUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false\",\n    \"providerName\": \"YouTube\",\n    \"providerUrl\": \"https://www.youtube.com/\",\n    \"title\": \"HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": 7232.526391553482,\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c50e10e5-ebe3-46e5-9c37-b7579ebac68f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "637eb886-1340-452e-b316-80407316fd45",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b752d253-1e36-45d0-a8e7-bd8b4d1295fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df2f728b-ac18-4377-be4a-0ccbd12e5b9e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"mode\": \"<string>\",\n    \"previewUrl\": \"<string>\",\n    \"url\": \"https://www.youtube.com/watch?v=HlVSNEiFCBk\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89e63d4c-b7b8-42ab-85fc-43915cc9da62",
+          "name": "Delete embed item",
+          "request": {
+            "name": "Delete embed item",
+            "description": {
+              "content": "Deletes an embed item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "embeds",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2070938a-ba77-4fb2-8368-3c70b48590df",
+              "name": "Embed item deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d4b0ae4-a611-418f-9d5b-9d1cfe898729",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77eb52c8-8c30-4a44-bd42-5482dee3bba1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09dfb828-d939-4a56-948f-ffb032bd3a6a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "embeds",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "31847356-ea5e-45ab-b38d-3b9660710207",
+    "name": "Miro Developer Platform AI Interaction Logs Embed items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

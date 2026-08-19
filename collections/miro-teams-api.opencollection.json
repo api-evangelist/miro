@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Teams API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "3055557345821140500",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request."
+              },
+              {
+                "name": "name",
+                "value": "My team",
+                "type": "query",
+                "description": "Name query. Filters teams by name using case insensitive partial match. A value \"dev\" will return both \"Developer's team\" and \"Team for developers\"."
+              }
+            ]
+          },
+          "docs": "Retrieves list of teams in an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Comp"
+        },
+        {
+          "info": {
+            "name": "Create team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new team in an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company "
+        },
+        {
+          "info": {
+            "name": "Get team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              }
+            ]
+          },
+          "docs": "Retrieves team information for an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company "
+        },
+        {
+          "info": {
+            "name": "Update team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request"
+        },
+        {
+          "info": {
+            "name": "Delete team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              }
+            ]
+          },
+          "docs": "Deletes an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

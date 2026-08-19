@@ -1,0 +1,1133 @@
+{
+  "item": [
+    {
+      "id": "a1b0f303-1c0c-4803-b463-dc0a4e0a18aa",
+      "name": "Shape items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42193b86-41f5-4a27-aa3f-baeffac01c93",
+          "name": "Create shape item",
+          "request": {
+            "name": "Create shape item",
+            "description": {
+              "content": "Adds a shape item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "shapes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content\": \"<string>\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"<string>\",\n    \"fillColor\": \"<string>\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bee5602-d659-4803-aca5-44d490fce43a",
+              "name": "Shape item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"shape\",\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "773c792b-a8f1-4887-b448-edbc0fe78cca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb5f388b-9ea9-42af-af28-3046925ee49d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "331e2779-4b54-4faa-9b44-516f80974288",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "711f95b1-a73c-40de-b321-b66c3f9fbf4c",
+          "name": "Get shape item",
+          "request": {
+            "name": "Get shape item",
+            "description": {
+              "content": "Retrieves information for a specific shape item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "shapes",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc0bec62-b2bb-4465-901f-42f6e559a52d",
+              "name": "Shape item retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"shape\",\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36fa49e7-89bc-48ad-a0f0-5035fa4c2d57",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7275156-c2eb-486d-9c36-a2b2e7439e73",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bf2d63b-e48d-4bdb-be21-fb2223443e91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0117ed25-b382-41c1-8399-0fcd17de8b98",
+          "name": "Update shape item",
+          "request": {
+            "name": "Update shape item",
+            "description": {
+              "content": "Updates a shape item on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "shapes",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content\": \"<string>\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"<string>\",\n    \"fillColor\": \"<string>\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0f56722-81bc-4a34-9a92-85936f3e8c00",
+              "name": "Shape item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"shape\",\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2edfe8b-e50b-468e-b169-5912ec44766f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5648da56-96c6-40c1-86e3-d70bda97227d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7fbbb3d-7ee3-433f-94e1-35d1df14f4ce",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6bd3a76-903a-4b17-b456-e58a072fd1ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"Hello\",\n    \"shape\": \"rectangle\"\n  },\n  \"style\": {\n    \"borderColor\": \"<string>\",\n    \"borderOpacity\": \"<string>\",\n    \"borderStyle\": \"<string>\",\n    \"borderWidth\": \"<string>\",\n    \"color\": \"#1a1a1a\",\n    \"fillColor\": \"#8fd14f\",\n    \"fillOpacity\": \"<string>\",\n    \"fontFamily\": \"<string>\",\n    \"fontSize\": \"<string>\",\n    \"textAlign\": \"<string>\",\n    \"textAlignVertical\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f903b353-7bd3-4dd7-8767-d35eb8a9d215",
+          "name": "Delete shape item",
+          "request": {
+            "name": "Delete shape item",
+            "description": {
+              "content": "Deletes a shape item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "shapes",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "014e2c06-5c21-4c68-8acc-3bdefe09f2d5",
+              "name": "Shape item deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c487fd6-415e-4568-8eef-8aed438f6706",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f98dd8a-397f-4190-935b-a6eeeee8b80d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "916b529a-0b2a-42a9-b683-80ff71b33efa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "shapes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "714b80d9-923a-4f39-946d-5d94358109ed",
+    "name": "Miro Developer Platform AI Interaction Logs Shape items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Reset all sessions of a user API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reset all sessions of a user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reset all sessions of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/sessions/reset_all",
+            "params": [
+              {
+                "name": "email",
+                "value": "john.smith@example.com",
+                "type": "query",
+                "description": "Email ID of the user whose sessions you want to reset. Note that this user will be signed out from all devices."
+              }
+            ]
+          },
+          "docs": "Reset all sessions of a user.  Admins can now take immediate action to restrict user access to company data in case of security concerns. Calling this API ends all active Miro sessions across devices for a particular user, requiring the user to sign in again. This is useful in situations where a user leaves the company, their credentials are compromised, or there's suspicious activity on their account.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

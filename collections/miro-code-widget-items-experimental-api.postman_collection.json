@@ -1,0 +1,1759 @@
+{
+  "item": [
+    {
+      "id": "82cdc637-03f0-4d4f-a481-a5631b394f3d",
+      "name": "Code widget items (experimental)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12ee6be5-56f6-43d1-9934-773adc0c7ffb",
+          "name": "Get code widget items",
+          "request": {
+            "name": "Get code widget items",
+            "description": {
+              "content": "Retrieves a list of code widget items for a specific board.\n\nThis method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board for which you want to retrieve the list of code widget items."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bdea4ea8-c20e-4e12-9d80-2fff7777a7a6",
+              "name": "Code widget items retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to retrieve the list of code widget items."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"code\",\n      \"data\": {\n        \"code\": \"console.log(\\\"Hello, World!\\\");\",\n        \"language\": \"javascript\",\n        \"lineNumbersVisible\": true,\n        \"title\": \"My Code Snippet\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"canvas_center\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": 184.85169972074388,\n        \"width\": 320\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"links\": {\n        \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n      }\n    },\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"code\",\n      \"data\": {\n        \"code\": \"console.log(\\\"Hello, World!\\\");\",\n        \"language\": \"javascript\",\n        \"lineNumbersVisible\": true,\n        \"title\": \"My Code Snippet\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"parent_top_left\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": 385.4369326299445,\n        \"width\": 320\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"links\": {\n        \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n      }\n    }\n  ],\n  \"total\": 6838,\n  \"size\": 1,\n  \"cursor\": \"MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=\",\n  \"limit\": 10,\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bd17049-fcf5-4473-a487-3a58a4d6d8ea",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to retrieve the list of code widget items."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64c35ea9-56a3-47e1-b827-28f59096209f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to retrieve the list of code widget items."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c35e12b3-1a74-4e1d-b572-632dc2b2cc46",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board for which you want to retrieve the list of code widget items."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e8a7112-6d6b-41d5-bfd6-c3914b336250",
+          "name": "Create code widget item",
+          "request": {
+            "name": "Create code widget item",
+            "description": {
+              "content": "Adds a code widget item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"code\": \"<string>\",\n    \"language\": \"<string>\",\n    \"lineNumbersVisible\": \"<boolean>\",\n    \"title\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ac040cf-335d-45d9-b54a-02305b95f802",
+              "name": "Code widget item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"code\",\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27324cb0-5567-4486-a49a-9c94ed84eb63",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53ef70cf-4756-4113-b546-8f1282813991",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cb85f5b-1874-4fcf-a0ce-5d5d164e7a26",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0012a1e-64d3-41c0-8dd2-c903d499ba9e",
+          "name": "Get code widget item",
+          "request": {
+            "name": "Get code widget item",
+            "description": {
+              "content": "Retrieves information for a specific code widget item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "575025eb-dcce-4df6-975a-0d32c7e30990",
+              "name": "Code widget item retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"code\",\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e2f71b0-ae00-47a9-a3b1-f8b39e5519b1",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "134e038e-d7c4-45f2-83d7-afe41b8e5037",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b12a031f-87b5-49ff-aadb-48c6c2a8ea22",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95ccb937-e019-4d26-a93d-d8fec0aa4135",
+          "name": "Update code widget item",
+          "request": {
+            "name": "Update code widget item",
+            "description": {
+              "content": "Updates a code widget item on a board based on the data properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"code\": \"<string>\",\n    \"language\": \"<string>\",\n    \"lineNumbersVisible\": \"<boolean>\",\n    \"title\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2094c74b-a1d8-40d9-b31a-1e6aba9eb957",
+              "name": "Code widget item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"code\",\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d7f0b02-1b27-4f4f-af36-81901a31ec46",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aaaabb7-eb7e-4af7-a45f-f9d672496615",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fea9eb51-b99b-441f-86fd-df6895ad19ca",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de4819c4-bea5-42c1-b162-cc7d1f272fa7",
+          "name": "Delete code widget item",
+          "request": {
+            "name": "Delete code widget item",
+            "description": {
+              "content": "Deletes a code widget item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "720c6752-683f-4853-8251-a7236b788242",
+              "name": "Code widget item deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd95f62d-2858-4d0b-8056-21caaeac7841",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3ef7608-3277-46aa-9cd2-a0a845219d6b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33ba37a6-100e-43d1-ae2b-8d151cb8a87e",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e6718c8-6595-4e89-b6dd-8857bc90119a",
+          "name": "Move code widget item",
+          "request": {
+            "name": "Move code widget item",
+            "description": {
+              "content": "Updates the position of a code widget item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "code_widgets",
+                ":item_id",
+                "position"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to move the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to move."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"x\": 0,\n  \"y\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "edd1eb36-99ea-4f3e-96a7-3004dce0bdff",
+              "name": "Code widget item moved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to move the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to move."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"x\": 100,\n  \"y\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"code\",\n  \"data\": {\n    \"code\": \"console.log(\\\"Hello, World!\\\");\",\n    \"language\": \"javascript\",\n    \"lineNumbersVisible\": true,\n    \"title\": \"My Code Snippet\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e39b139b-8c65-42f6-91b2-73207ab96f39",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to move the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to move."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"x\": 100,\n  \"y\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "776d8728-df96-4034-8fc6-297abcd05b98",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to move the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to move."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"x\": 100,\n  \"y\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d5e5c4c-17f0-43f0-969f-1bd463caa634",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "code_widgets",
+                    ":item_id",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to move the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to move."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"x\": 100,\n  \"y\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7f598e1-b3e0-4b59-8a3a-b3677c03be8d",
+    "name": "Miro Developer Platform AI Interaction Logs Code widget items (experimental) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

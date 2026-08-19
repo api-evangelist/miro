@@ -1,0 +1,799 @@
+{
+  "item": [
+    {
+      "id": "ddd17860-0bae-45f4-9200-6cc9053bf9ec",
+      "name": "Mind map nodes (experimental)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53d5de10-6430-4643-89ac-e23814d0d97c",
+          "name": "Get specific mind map node",
+          "request": {
+            "name": "Get specific mind map node",
+            "description": {
+              "content": "Retrieves information for a specific mind map node on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "mindmap_nodes",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a mind map node."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the mind map node that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76a2a8e8-7007-416a-9f71-93c2cc9ac78d",
+              "name": "Mind map node retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a mind map node."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the mind map node that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3074457362577955300\",\n  \"type\": \"string\",\n  \"data\": {\n    \"nodeView\": {\n      \"type\": \"text\",\n      \"data\": {\n        \"content\": \"Hello\"\n      },\n      \"style\": {\n        \"color\": \"#1a1a1a\",\n        \"fillOpacity\": \"string\",\n        \"fontSize\": \"string\"\n      }\n    },\n    \"isRoot\": false,\n    \"direction\": \"end\"\n  },\n  \"createdAt\": \"1972-05-26T14:22:24.329Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"1955-12-07T18:37:01.885Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  },\n  \"style\": {\n    \"nodeColor\": \"#1a1a1a\",\n    \"shape\": \"rounded_rectangle\",\n    \"fontSize\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d889b247-72ba-4ea8-8c6a-7d58e107fae9",
+          "name": "Delete mind map node",
+          "request": {
+            "name": "Delete mind map node",
+            "description": {
+              "content": "Deletes a mind map node item and its child nodes from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "mindmap_nodes",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete the mind map node."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the mind map node that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1a6626d-15ee-4c8b-b370-3cde4f7dd325",
+              "name": "Mind map node deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the mind map node."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the mind map node that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e7b9998-f213-4f95-a357-1aa58675002f",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the mind map node."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the mind map node that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6889e56-3922-49a3-acda-453058d1805e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the mind map node."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the mind map node that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ece6b53-bca1-4f2d-a12e-9b29d1759e80",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete the mind map node."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the mind map node that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72c0b689-6cab-41f9-b51b-a25b4da574b9",
+          "name": "Get mind map nodes",
+          "request": {
+            "name": "Get mind map nodes",
+            "description": {
+              "content": "Retrieves a list of mind map nodes for a specific board.\n\nThis method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set the `limit` query parameter to `10` and the board contains 20 objects, the first call will return information about the first 10 objects in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "mindmap_nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Maximum number of results returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Points to the next portion of the results set"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve mind map nodes."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6af70566-3bf0-4477-8706-0fdec88d009e",
+              "name": "Mind map nodes retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve mind map nodes."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"3074457362577955300\",\n      \"type\": \"string\",\n      \"data\": {\n        \"nodeView\": {\n          \"type\": \"text\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"style\": {\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fillOpacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontSize\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"isRoot\": true,\n        \"direction\": \"start\"\n      },\n      \"createdAt\": \"1949-05-30T10:19:08.175Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2005-08-19T21:09:30.975Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"parent\": {\n        \"id\": \"3074457362577955300\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"links\": {\n        \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n      },\n      \"style\": {\n        \"nodeColor\": \"#1a1a1a\",\n        \"shape\": \"none\",\n        \"fontSize\": \"string\"\n      }\n    },\n    {\n      \"id\": \"3074457362577955300\",\n      \"type\": \"string\",\n      \"data\": {\n        \"nodeView\": {\n          \"type\": \"text\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"style\": {\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fillOpacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontSize\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"isRoot\": true,\n        \"direction\": \"start\"\n      },\n      \"createdAt\": \"1969-07-03T00:22:14.779Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"1960-06-07T13:11:30.023Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"parent\": {\n        \"id\": \"3074457362577955300\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"links\": {\n        \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n      },\n      \"style\": {\n        \"nodeColor\": \"#1a1a1a\",\n        \"shape\": \"pill\",\n        \"fontSize\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3010,\n  \"size\": 5953,\n  \"cursor\": \"string\",\n  \"limit\": 8841,\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86826b85-f011-4c95-8c8b-fab8fa6eef88",
+          "name": "Create mind map node",
+          "request": {
+            "name": "Create mind map node",
+            "description": {
+              "content": "Adds a mind map node to a board. A root node is the starting point of a mind map. A node that is created under a root node is a child node. For information on mind maps, use cases, mind map structure, and more, see the <a href=\"https://developers.miro.com/docs/mind-maps\" target=_blank>Mind Map Overview</a> page. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/><br/> <b>Known limitations on node placement: </b> Currently, the create API supports explicit positions for nodes. This means that users can only place nodes based on the x, y coordinates provided in the position parameters. If the position is not provided in the request, nodes default to coordinates x=0, y=0, effectively placing them at the center of the board. <br /><br /><b>Upcoming changes:</b> We understand the importance of flexibility in node placement. We are actively working on implementing changes to support positioning nodes relative to their parent node as well. This enhancement offers a more dynamic and intuitive mind mapping experience. <br /><br />Additionally, we are actively working on providing the update API, further enhancing the functionality of mind map APIs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2-experimental",
+                "boards",
+                ":board_id",
+                "mindmap_nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"nodeView\": {\n      \"data\": {\n        \"type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d732adb-11c8-4603-96d6-0d9b6b8ce802",
+              "name": "Mind map node created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"nodeView\": {\n      \"data\": {\n        \"type\": \"text\",\n        \"content\": \"Sample text\"\n      }\n    }\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3074457362577955300\",\n  \"type\": \"string\",\n  \"data\": {\n    \"nodeView\": {\n      \"type\": \"text\",\n      \"data\": {\n        \"content\": \"Hello\"\n      },\n      \"style\": {\n        \"color\": \"#1a1a1a\",\n        \"fillOpacity\": \"string\",\n        \"fontSize\": \"string\"\n      }\n    },\n    \"isRoot\": false,\n    \"direction\": \"end\"\n  },\n  \"createdAt\": \"1972-05-26T14:22:24.329Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"1955-12-07T18:37:01.885Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  },\n  \"style\": {\n    \"nodeColor\": \"#1a1a1a\",\n    \"shape\": \"rounded_rectangle\",\n    \"fontSize\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4eb777a2-0c1d-4151-a020-428883b295e9",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"nodeView\": {\n      \"data\": {\n        \"type\": \"text\",\n        \"content\": \"Sample text\"\n      }\n    }\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e80fe5da-1905-43ad-ac37-315831e05949",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"nodeView\": {\n      \"data\": {\n        \"type\": \"text\",\n        \"content\": \"Sample text\"\n      }\n    }\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40e64e5b-d65e-4c35-9c4d-d25b7bb44c73",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2-experimental",
+                    "boards",
+                    ":board_id",
+                    "mindmap_nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"nodeView\": {\n      \"data\": {\n        \"type\": \"text\",\n        \"content\": \"Sample text\"\n      }\n    }\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"error\",\n  \"message\": \"Error message\",\n  \"status\": 400,\n  \"type\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "072e67e8-122c-44eb-ae92-5939dd2dbe9a",
+    "name": "Miro Developer Platform AI Interaction Logs Mind map nodes (experimental) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

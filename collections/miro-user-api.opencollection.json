@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs User API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Users",
+            "params": [
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id, userName, displayName, name, userType, active, emails, photos, groups, roles. You can also retrieve attributes within complex attributes, for Example: emails.value. The API also supports sorting and the filter parameter."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "You can request a subset of resources by specifying the filter query parameter containing a filter expression. Attribute names and attribute operators used in filters are not case sensitive. The filter parameter must contain at least one valid expression. Each expression must contain an attribute name followed by an attribute operator and an optional value. <br>eq = equal<br> ne = not equal<br> co = contains<br> sw = starts with<br> ew = ends with<br> pr = preset (has value)<br> gt = greater than<br> ge = greater than or equal to<br> lt = less than<br> le = less than or equal to<br> and = Logical \"and\"<br> or = Logical \"or\"<br> not = \"Not\" function<br> () = Precedence grouping <br>The value must be passed within parenthesis. <br><br> <u>Example filters</u>:<br><br> For fetching  users with user name as user@miro.com: userName eq \"user@miro.com\" <br><br> For fetching all active users in the organization: active eq true <br><br> For fetching users with \"user\" in their displayName: displayName co \"user\" <br><br> For fetching users that are member of a specific group (team): groups.value eq \"3458764577585056871\" <br><br> For fetching users that are not of userType Full: userType ne \"Full\""
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "Use startIndex in combination with count query parameters to receive paginated results. <br><br> start index is 1-based. <br><br> Example: startIndex=1"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the maximum number of query results per page. <br><br> Use count in combination with startIndex query parameters to receive paginated results. <br><br> The count query parameter is set to 100 by default and the maximum value allowed for this parameter is 1000. <br><br> Example: count=12"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the attribute whose value will be used to order the response. <br><br> Example: sortBy=userName, sortBy=emails.value"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Defines the order in which the sortBy parameter is applied. <br><br> Example: sortOrder=ascending"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of users in your organization. <br><b> <br>Note</b>: The API returns users that are members in the organization, it does not return users that are added in the organization as guests."
+        },
+        {
+          "info": {
+            "name": "Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user in the organization. <br><br> <br>Note</b>: All newly provisioned users are added to the default team."
+        },
+        {
+          "info": {
+            "name": "Get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User ID of the user to be retrieved"
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of attribute names to return in the response. <br><br> <br>Example attributes</b> - id, userName, displayName, name, userType, active, emails, photos, groups, roles. <br><br> <br>Note</b>: It is also possible to fetch attributes within complex attributes, for Example: emails.value"
+              }
+            ]
+          },
+          "docs": "Retrieves a single user resource. <br><b> <br>Note</b>: Returns only users that are members in the organization. It does not return users that are added in the organization as guests."
+        },
+        {
+          "info": {
+            "name": "Replace user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/Users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User ID. A server-assigned, unique identifier for this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing user resource. This is the easiest way to replace user information. <br><br> If the user is deactivated, <br> userName, userType, and roles.value cannot be updated. <br> emails.value, emails.display, emails.primary get ignored and do not return any error. <br><br> Note: If the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated. "
+        },
+        {
+          "info": {
+            "name": "Patch user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/Users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User ID. A server-assigned, unique identifier for this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing user resource, overwriting values for specified attributes. Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided. <br><br> Note: If  the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated. "
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/Users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User ID. A server-assigned, unique identifier for this user."
+              }
+            ]
+          },
+          "docs": "Deletes a single user from the organization.<br><br> Note: A user who is the last admin in the team or the last admin in the organization cannot be deleted. User must be a member in the organization to be deleted. Users that have guest role in the organization cannot be deleted. <br><br> After a user is deleted, the ownership of all the boards that belong to the deleted user is transferred to the oldest team member who currently has an admin role."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

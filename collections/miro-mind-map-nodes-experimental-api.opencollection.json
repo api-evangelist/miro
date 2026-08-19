@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Mind map nodes (experimental) API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mind map nodes (experimental)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get specific mind map node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/mindmap_nodes/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to retrieve a mind map node."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the mind map node that you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information for a specific mind map node on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Delete mind map node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/mindmap_nodes/:item_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to delete the mind map node."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the mind map node that you want to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a mind map node item and its child nodes from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Get mind map nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/mindmap_nodes",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to retrieve mind map nodes."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results returned"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Points to the next portion of the results set"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of mind map nodes for a specific board.\n\nThis method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set th"
+        },
+        {
+          "info": {
+            "name": "Create mind map node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2-experimental/boards/:board_id/mindmap_nodes",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to retrieve mind map nodes."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a mind map node to a board. A root node is the starting point of a mind map. A node that is created under a root node is a child node. For information on mind maps, use cases, mind map structure, and more, see the <a href=\"https://developers.miro.com/docs/mind-maps\" target=_blank>Mind Map Overview</a> page. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiti"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Discovery API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Provider Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/ServiceProviderConfig"
+          },
+          "docs": "Retrieve supported operations and SCIM API basic configuration."
+        },
+        {
+          "info": {
+            "name": "List resource types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/ResourceTypes"
+          },
+          "docs": "Retrieve information about which SCIM resources are supported. <br><br> Currently, Miro supports Users and Groups as Resource Types."
+        },
+        {
+          "info": {
+            "name": "Get resource type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/ResourceTypes/:resource",
+            "params": [
+              {
+                "name": "resource",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for the available resource types (User and Group) that are supported."
+        },
+        {
+          "info": {
+            "name": "List schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Schemas"
+          },
+          "docs": "Retrieve metadata about Users, Groups, and extension attributes that are currently supported."
+        },
+        {
+          "info": {
+            "name": "Get schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Schemas/:uri",
+            "params": [
+              {
+                "name": "uri",
+                "value": "",
+                "type": "path",
+                "description": "Schema URI of a particular resource type."
+              }
+            ]
+          },
+          "docs": "Retrieve information about how users, groups, and enterprise-user attributes URIs that are formatted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Interaction Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get AI interaction logs (Beta)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/ai-interaction-logs",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "object_ids",
+                "value": "3458764549483493025,u8J_kllZmDk=",
+                "type": "query",
+                "description": "List of object IDs used to retrieve AI interaction logs. \nCurrently, supported object types include board IDs and organization IDs. \nYou can obtain object IDs from the response of this endpoint (the <code>object.id</code> field), \nfrom other Platform API endpoints (for example, [Get boards API](https://developers.miro.com/reference/get-boards)), \nor from Miro UI URLs (board ID and organization ID from the URLs).\n"
+              },
+              {
+                "name": "emails",
+                "value": "someone@domain.com,someoneelse@domain.com",
+                "type": "query",
+                "description": "Filters AI interaction logs using a list of user emails. Only AI interactions associated with the provided emails will be included in the response."
+              },
+              {
+                "name": "from",
+                "value": "2026-01-30T17:26:50Z",
+                "type": "query",
+                "description": "Start date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+              },
+              {
+                "name": "to",
+                "value": "2036-03-30T17:26:50Z",
+                "type": "query",
+                "description": "End date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+              },
+              {
+                "name": "cursor",
+                "value": "MTY2OTg4NTIwMDAwMHwxMjM=",
+                "type": "query",
+                "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+              },
+              {
+                "name": "sorting",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort order in which you want to view the result set based on the interaction date. To sort by an ascending date, specify `asc`. To sort by a descending date, specify `desc`.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves AI interaction logs for your organization. AI interaction logs capture user interactions with AI features in Miro. You can retrieve results for a specific time period. You can also filter results based on object IDs and the emails of users who interacted with AI features. Additionally, results can be paginated for easier viewing and processing.\n<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>aiinteractionlogs:read</a>\n<br/><h3>Rate limiti"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

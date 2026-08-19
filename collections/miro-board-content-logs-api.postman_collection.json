@@ -1,0 +1,603 @@
+{
+  "item": [
+    {
+      "id": "a512d62a-177c-42ed-9a22-5517f96c6df9",
+      "name": "Board Content Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d1c7ccb-e2bc-4712-a5ae-c31de308351a",
+          "name": "Retrieve content change logs of board items",
+          "request": {
+            "name": "Retrieve content change logs of board items",
+            "description": {
+              "content": "Retrieves content changes for board items within your organization. Content changes are actions that users can perform on board items, such as updating a sticky note's text. You can retrieve results for a specific time period. You can also filter results based on the board IDs and the emails of users who created, modified, or deleted a board item. Additionally, results can be paginated for easier viewing and processing.\n<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>contentlogs:export</a>\n<br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a>\n<br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin.</p>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "content-logs",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "board_ids",
+                  "value": "<string>",
+                  "description": "List of board IDs for which you want to retrieve the content logs."
+                },
+                {
+                  "disabled": false,
+                  "key": "board_ids",
+                  "value": "<string>",
+                  "description": "List of board IDs for which you want to retrieve the content logs."
+                },
+                {
+                  "disabled": false,
+                  "key": "emails",
+                  "value": "<string>",
+                  "description": "Filter content logs based on the list of emails of users who created, modified, or deleted the board item."
+                },
+                {
+                  "disabled": false,
+                  "key": "emails",
+                  "value": "<string>",
+                  "description": "Filter content logs based on the list of emails of users who created, modified, or deleted the board item."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) Filter content logs based on the date and time when the board item was last modified. This is the start date and time for the modified date duration.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) Filter content logs based on the date and time when the board item was last modified. This is the end date and time for the modified date duration. Format: UTC, adheres to\n[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting",
+                  "value": "asc",
+                  "description": "Sort order in which you want to view the result set based on the modified date. To sort by an ascending modified date, specify `asc`. To sort by a descending modified date, specify `desc`.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) Unique identifier of the organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "193e6e38-65b3-48dc-9c3c-fc89c549769c",
+              "name": "Response from the API that includes content logs of board items such as data, size of the data list, pagination cursor, and pagination limit.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 20,\n  \"size\": 1,\n  \"data\": [\n    {\n      \"id\": \"2dcf57ff-f12c-4fad-b708-c1642204b41b\",\n      \"contentId\": \"o9J_kzlUDmo=\",\n      \"actionType\": \"update\",\n      \"actionTime\": \"2023-06-24T17:32:28Z\",\n      \"actor\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith.demo@miro.com\",\n        \"name\": \"John Smith\"\n      },\n      \"itemType\": \"widget\",\n      \"itemId\": \"3458764549483493025\",\n      \"state\": {},\n      \"relationships\": [\n        {\n          \"type\": \"parent\",\n          \"itemType\": \"widget\",\n          \"itemId\": \"3074457345933870505\"\n        },\n        {\n          \"type\": \"parent\",\n          \"itemType\": \"widget\",\n          \"itemId\": \"3074457345933870505\"\n        }\n      ]\n    },\n    {\n      \"id\": \"2dcf57ff-f12c-4fad-b708-c1642204b41b\",\n      \"contentId\": \"o9J_kzlUDmo=\",\n      \"actionType\": \"update\",\n      \"actionTime\": \"2023-06-24T17:32:28Z\",\n      \"actor\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith.demo@miro.com\",\n        \"name\": \"John Smith\"\n      },\n      \"itemType\": \"widget\",\n      \"itemId\": \"3458764549483493025\",\n      \"state\": {},\n      \"relationships\": [\n        {\n          \"type\": \"parent\",\n          \"itemType\": \"widget\",\n          \"itemId\": \"3074457345933870505\"\n        },\n        {\n          \"type\": \"parent\",\n          \"itemType\": \"widget\",\n          \"itemId\": \"3074457345933870505\"\n        }\n      ]\n    }\n  ],\n  \"cursor\": \"MTY2OTg4NTIwMDAwMHwxMjM=\",\n  \"type\": \"cursor-list\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12419cf9-cde0-45a0-a9d6-872538925fd2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b880cd7c-ef77-423f-a414-14b5a63f1c33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79b3e7aa-378c-4bb7-a624-beacd3655d40",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "710d9c38-ee58-499e-99bb-ff2b4b672ede",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39ab7c0e-6a7e-4dab-b941-bb4446611e6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "content-logs",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "board_ids",
+                      "value": "o9J_kzlUDmo="
+                    },
+                    {
+                      "key": "board_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2022-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "632c5312-55b8-45b0-8148-d9b9b2c477b9",
+    "name": "Miro Developer Platform AI Interaction Logs Board Content Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

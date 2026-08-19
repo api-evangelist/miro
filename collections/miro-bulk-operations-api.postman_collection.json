@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "95703ceb-d9b7-4146-a4d6-f2d1e012dd48",
+      "name": "Bulk operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "513eb793-7a22-45a3-afef-eae66bef080b",
+          "name": "Create items in bulk",
+          "request": {
+            "name": "Create items in bulk",
+            "description": {
+              "content": "Adds different types of items to a board. You can add up to 20 items of the same or different type per create call. For example, you can create 3 shape items, 4 card items, and 5 sticky notes in one create call. The bulk create operation is transactional. If any item's create operation fails, the create operation for all the remaining items also fails, and none of the items will be created. <br/><br>To try out this API in our documentation:<br/><br>1. In the **BODY PARAMS** section, scroll down until you see **ADD OBJECT** (Figure 1).<br><br><img alt=“add src=\"https://files.readme.io/570dac1-small-add_object.png\"><br>Figure 1. Add object user interface in readme<br><br>2. Click **ADD OBJECT**, and then select or enter the appropriate values for parameters of the item that you want to add.<br><br>3. Repeat steps 1 and 2 for each item that you want to add.<br> <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a>\n<br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> per item. For example, if you want to create one sticky note, one card, and one shape item in one call, the rate limiting applicable will be 300 credits. This is because create item calls take Level 2 rate limiting of 100 credits each, 100 for sticky note, 100 for card, and 100 for shape item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "items",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"type\": \"<string>\",\n    \"data\": {\n      \"description\": \"<string>\",\n      \"fields\": [\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"owned\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    \"style\": {\n      \"fillColor\": \"<string>\"\n    },\n    \"position\": {\n      \"x\": 0,\n      \"y\": 0\n    },\n    \"geometry\": {\n      \"height\": \"<double>\",\n      \"rotation\": \"<double>\",\n      \"width\": \"<double>\"\n    },\n    \"parent\": {\n      \"id\": \"<int64>\"\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e679c205-3d76-4e51-bb48-0d7d3cebe520",
+              "name": "Items created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "items",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"type\": \"text\",\n    \"data\": {\n      \"description\": \"Sample app card description\",\n      \"fields\": [\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"owned\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"title\": \"sample app card item\"\n    },\n    \"style\": {\n      \"fillColor\": \"#2d9bf0\"\n    },\n    \"position\": {\n      \"x\": 100,\n      \"y\": 100\n    },\n    \"geometry\": {\n      \"height\": 60,\n      \"rotation\": \"<double>\",\n      \"width\": 320\n    },\n    \"parent\": {\n      \"id\": \"3074457362577955300\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bulk-list\",\n  \"data\": [\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"document\",\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"data\": {\n        \"documentUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false\",\n        \"title\": \"Sample document title\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"canvas_center\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": \"<double>\",\n        \"width\": 320\n      },\n      \"parent\": {\n        \"id\": \"3458764517517819001\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\"\n    },\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"document\",\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"data\": {\n        \"documentUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false\",\n        \"title\": \"Sample document title\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"parent_top_left\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": \"<double>\",\n        \"width\": 320\n      },\n      \"parent\": {\n        \"id\": \"3458764517517819001\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64cd306f-5478-4e3d-8233-89a66a69321b",
+              "name": "Malformed request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "items",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"type\": \"text\",\n    \"data\": {\n      \"description\": \"Sample app card description\",\n      \"fields\": [\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"owned\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"title\": \"sample app card item\"\n    },\n    \"style\": {\n      \"fillColor\": \"#2d9bf0\"\n    },\n    \"position\": {\n      \"x\": 100,\n      \"y\": 100\n    },\n    \"geometry\": {\n      \"height\": 60,\n      \"rotation\": \"<double>\",\n      \"width\": 320\n    },\n    \"parent\": {\n      \"id\": \"3074457362577955300\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error message\",\n  \"type\": \"error\",\n  \"code\": \"string\",\n  \"context\": {\n    \"fields\": [\n      {\n        \"field\": \"string\",\n        \"message\": \"Invalid parameters\",\n        \"context\": {}\n      },\n      {\n        \"field\": \"string\",\n        \"message\": \"Invalid parameters\",\n        \"context\": {}\n      }\n    ]\n  },\n  \"status\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82268504-86b0-4d49-9433-1613a42282c6",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "items",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"type\": \"text\",\n    \"data\": {\n      \"description\": \"Sample app card description\",\n      \"fields\": [\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"fillColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconShape\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"iconUrl\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"textColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"tooltip\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"owned\": \"<boolean>\",\n      \"status\": \"<string>\",\n      \"title\": \"sample app card item\"\n    },\n    \"style\": {\n      \"fillColor\": \"#2d9bf0\"\n    },\n    \"position\": {\n      \"x\": 100,\n      \"y\": 100\n    },\n    \"geometry\": {\n      \"height\": 60,\n      \"rotation\": \"<double>\",\n      \"width\": 320\n    },\n    \"parent\": {\n      \"id\": \"3074457362577955300\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error message\",\n  \"type\": \"error\",\n  \"code\": \"string\",\n  \"context\": {},\n  \"status\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd05b48c-96e8-4178-9933-e6101eb2e44f",
+          "name": "Create items in bulk using file from device",
+          "request": {
+            "name": "Create items in bulk using file from device",
+            "description": {
+              "content": "Adds different types of items to a board using files from a device. You can add up to 20 items of the same or different type per create call. For example, you can create 5 document items and 5 images in one create call.  The bulk create operation is transactional. If any item's create operation fails, the create operation for all the remaining items also fails, and none of the items will be created.\nTo try out this API in our documentation:\n1. In the **BODY PARAMS** section, select **ADD FILE**, and then upload a local file. Repeat for each item that you want to add.\n2. Upload a JSON file that contains the bulk data for the items you want to create.\n\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/> <h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> per item<br/>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id_Platformcreateitemsinbulkusingfilefromdevice",
+                "items",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "data",
+                  "type": "file",
+                  "description": "(Required) JSON file containing bulk data, where each object represents an item to be created. For details, see [JSON file example](https://developers.miro.com/reference/json-data-example)."
+                },
+                {
+                  "key": "resources",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "(Required) Array of items to create (PDFs, images, etc.). Maximum of 20 items."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b40b8df-5f86-4e7b-a813-2f633ca96ca1",
+              "name": "Items created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id_Platformcreateitemsinbulkusingfilefromdevice",
+                    "items",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON file containing bulk data, where each object represents an item to be created. For details, see [JSON file example](https://developers.miro.com/reference/json-data-example).",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Array of items to create (PDFs, images, etc.). Maximum of 20 items.",
+                        "type": "text/plain"
+                      },
+                      "key": "resources",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"bulk-list\",\n  \"data\": [\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"document\",\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"data\": {\n        \"documentUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false\",\n        \"title\": \"Sample document title\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"canvas_center\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": \"<double>\",\n        \"width\": 320\n      },\n      \"parent\": {\n        \"id\": \"3458764517517819001\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\"\n    },\n    {\n      \"id\": \"3458764517517819000\",\n      \"type\": \"document\",\n      \"links\": {\n        \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n      },\n      \"data\": {\n        \"documentUrl\": \"https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false\",\n        \"title\": \"Sample document title\"\n      },\n      \"position\": {\n        \"origin\": \"center\",\n        \"relativeTo\": \"parent_top_left\",\n        \"x\": 100,\n        \"y\": 100\n      },\n      \"geometry\": {\n        \"height\": 60,\n        \"rotation\": \"<double>\",\n        \"width\": 320\n      },\n      \"parent\": {\n        \"id\": \"3458764517517819001\",\n        \"links\": {\n          \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n        }\n      },\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n      \"modifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"2022-03-30T17:26:50.000Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0a4a6308-6378-49f0-9cdf-2fd87a1bb2a9",
+    "name": "Miro Developer Platform AI Interaction Logs Bulk operations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

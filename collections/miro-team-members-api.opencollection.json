@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Team Members API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Team Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List team members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "3055557345821140500",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request."
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "\nRole query. Filters members by role using full word match. Accepted values are:\n* \"member\":     Team member with full member permissions.\n* \"admin\":      Admin of a team. Team member with permission to manage team.\n* \"non_team\":   External user, non-team user.\n* \"team_guest\": (Deprecated) Team-guest user, user with access only to a team without access to organization.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves team members by cursor.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can "
+        },
+        {
+          "info": {
+            "name": "Invite team members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invites a new Miro user to an existing team. The user must exist in your Miro organization. Users who do not exist in your Miro organization can be invited to the team via [SCIM](https://developers.miro.com/docs/scim) and an external identity provider, such as Okta or Azure Active Directory.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-l"
+        },
+        {
+          "info": {
+            "name": "Get team member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The id of the Team Member"
+              }
+            ]
+          },
+          "docs": "Retrieves team member by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can reque"
+        },
+        {
+          "info": {
+            "name": "Update team member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The id of the Team Member"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates team member role in team by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. Y"
+        },
+        {
+          "info": {
+            "name": "Delete team member from team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a team."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The id of the Team Member"
+              }
+            ]
+          },
+          "docs": "Deletes team member from team by id.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,4804 @@
+{
+  "item": [
+    {
+      "id": "a97307b2-982c-4f18-ae8c-312888eaf396",
+      "name": "Legal holds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b52a722e-51a1-4ff5-aafc-d175dc334231",
+          "name": "Get all cases",
+          "request": {
+            "name": "Get all cases",
+            "description": {
+              "content": "Retrieves the list of eDiscovery cases in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items in the result list."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2811e206-81c0-4949-af7c-e162d27e32df",
+              "name": "Case objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 1,\n  \"total\": 15,\n  \"cursor\": \"3074457345821140946\",\n  \"limit\": 100,\n  \"type\": \"cursor-list\",\n  \"data\": [\n    {\n      \"createdAt\": \"1980-05-26T11:37:42.658Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      },\n      \"id\": \"3074457345619012007\",\n      \"lastModifiedAt\": \"1985-04-02T06:46:51.966Z\",\n      \"name\": \"My Case\",\n      \"organizationId\": \"3074457345618265000\",\n      \"description\": \"Info about my case\",\n      \"lastModifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    },\n    {\n      \"createdAt\": \"1962-09-03T08:01:36.574Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      },\n      \"id\": \"3074457345619012007\",\n      \"lastModifiedAt\": \"1981-07-17T01:29:48.403Z\",\n      \"name\": \"My Case\",\n      \"organizationId\": \"3074457345618265000\",\n      \"description\": \"Info about my case\",\n      \"lastModifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9adcf436-7141-4630-9b88-70bd8b23b35c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3226f104-126a-4734-89e7-532ea720dd07",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3bfd7e5-0d8f-4e0c-9570-ee7c89fa16ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0c3c7df-e893-484f-9a29-ea6ef61c722b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "179e9403-1e2c-4583-bcb0-ad705dfa12eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of cases."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33df2d8c-c141-4dc4-9c2d-0563e99dbb47",
+          "name": "Create case",
+          "request": {
+            "name": "Create case",
+            "description": {
+              "content": "Creating a case for legal hold is the first critical step in the eDiscovery process when litigation or an investigation is anticipated. One of the purposes of creating a case is that it acts as a container that allows admins to group multiple legal holds under one case. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120022370962-Create-a-case\" target=_blank>Help Center page on creating a case</a>. <br><br>This API creates a new case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization in which you want to create a new case."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66dcd94a-2bd0-409c-a0cf-43732eceb51c",
+              "name": "Case created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1974-07-26T19:57:01.659Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345619012007\",\n  \"lastModifiedAt\": \"2005-07-08T11:06:21.997Z\",\n  \"name\": \"My Case\",\n  \"organizationId\": \"3074457345618265000\",\n  \"description\": \"Info about my case\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58a165b7-4b21-4b66-8430-31f8290e86a7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba23110b-266c-42b5-a25f-a085a9da2674",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b550487-c637-4594-8fa9-53bb2b5947e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51ece5db-d65c-481c-a3b2-29d5e46f746c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "347e6c05-38e5-4898-9f65-04843e8b2501",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new case."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de294a14-3fd5-4fce-82be-d809c8be3bf8",
+          "name": "Close case",
+          "request": {
+            "name": "Close case",
+            "description": {
+              "content": "Closing a case is the final stage in the eDiscovery process, marking the conclusion of a legal matter or investigation. You must ensure that all associated legal holds within the case are closed before closing the case. Closing a case will permanently delete it. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22138936297746-Close-a-case\" target=_blank>Help Center page on closing a case</a>. <br><br>This API closes a case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization in which you want to close a case."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case you want to close."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b67afaab-7549-4a5d-a118-545c3001864f",
+              "name": "Case closed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cf7abca-a5e0-4025-83c5-f8fe2d83e531",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0009e44-427e-4e6d-a29a-75d93d75c055",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60194b0b-8b2f-401b-8b32-55fec4d53c0e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14111ebf-6421-4ef2-aa5a-3038ffbcd70f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95011ab4-08a9-40b2-968c-74a48e4be994",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ad02e8c-bab3-4e5b-b60b-d2b5a154cf9f",
+          "name": "Get case",
+          "request": {
+            "name": "Get case",
+            "description": {
+              "content": "Retrieves information about a case in an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9eab8746-b929-4fc2-9485-e87ad7d8ffda",
+              "name": "Case object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1974-07-26T19:57:01.659Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345619012007\",\n  \"lastModifiedAt\": \"2005-07-08T11:06:21.997Z\",\n  \"name\": \"My Case\",\n  \"organizationId\": \"3074457345618265000\",\n  \"description\": \"Info about my case\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9b68021-3236-4026-856d-05cc8043955f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "121ed135-abe8-4464-a89c-2160de0754e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "229b0c33-d07d-4f2b-b6ca-f12b0f45ba37",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc308540-8866-44d1-be51-73fa64e1544f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03ba436d-85a1-453a-abc0-6d945cec030c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f4b5978-cfe6-40e0-9b31-f5a384d7c870",
+          "name": "Edit case",
+          "request": {
+            "name": "Edit case",
+            "description": {
+              "content": "Editing a case allows eDiscovery Admins to keep case details accurate and aligned with the evolving scope of a legal matter. As investigations progress, it may be necessary to update the case name or description to reflect changes in focus, terminology, or internal documentation standards. Since a case serves as the central container for one or more legal holds, keeping its information up to date helps ensure clarity, consistency, and easier navigation for all stakeholders involved in the legal process.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/docs/miro-rest-api-introduction#rate-limiting\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to edit the case information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case you want to edit."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0379b973-a884-402b-b313-768097e826f9",
+              "name": "Case object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"1974-07-26T19:57:01.659Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345619012007\",\n  \"lastModifiedAt\": \"2005-07-08T11:06:21.997Z\",\n  \"name\": \"My Case\",\n  \"organizationId\": \"3074457345618265000\",\n  \"description\": \"Info about my case\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "000c7f1a-b880-4b69-bb09-00ed5ae923d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "959fe50f-ddc0-4c10-b1a9-eeb3dd0f00a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d90a066-937f-434a-ba9d-f16577b723ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db18e70a-b4aa-4739-8e9a-108e2748c96c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec1f48d9-a618-4ac2-997e-2998056ad7d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the case information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Case\",\n  \"description\": \"Info about my case\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6727ee39-2993-4646-88f3-52261719243b",
+          "name": "Get all legal holds within a case",
+          "request": {
+            "name": "Get all legal holds within a case",
+            "description": {
+              "content": "Retrieves the list of all legal holds within a case for an organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items in the result list."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0dd90680-0dc7-43f4-9651-e7d2dd7de3ea",
+              "name": "Legal hold objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 1,\n  \"total\": 15,\n  \"cursor\": \"3074457345821140946\",\n  \"limit\": 100,\n  \"type\": \"cursor-list\",\n  \"data\": [\n    {\n      \"createdAt\": \"2022-07-26T05:33:00.333Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      },\n      \"id\": \"3074457345618265000\",\n      \"caseId\": \"3074457345618265000\",\n      \"lastModifiedAt\": \"1967-11-13T14:49:52.843Z\",\n      \"name\": \"My legal hold\",\n      \"organizationId\": \"3074457345618265000\",\n      \"scope\": {\n        \"users\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"ACTIVE\",\n      \"description\": \"Info about my legal hold\",\n      \"lastModifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    },\n    {\n      \"createdAt\": \"1968-10-05T23:32:38.653Z\",\n      \"createdBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      },\n      \"id\": \"3074457345618265000\",\n      \"caseId\": \"3074457345618265000\",\n      \"lastModifiedAt\": \"1984-01-17T15:33:06.058Z\",\n      \"name\": \"My legal hold\",\n      \"organizationId\": \"3074457345618265000\",\n      \"scope\": {\n        \"users\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"ACTIVE\",\n      \"description\": \"Info about my legal hold\",\n      \"lastModifiedBy\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9585f52-8bc9-4414-8fd4-6c6b7b69085c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88006e2a-54f8-46a7-9647-0adb6ac29af0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6be163f3-f08e-414d-8d70-16cd42ae2865",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd6fbcc2-0e95-4d1c-9b2f-5e6d41ce39d6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6110c17-0dc4-4f22-ab05-bdf075e0d0ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of legal holds within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of legal holds."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc21eb3a-0b1a-4adc-a4c4-8bb76b494239",
+          "name": "Create legal hold",
+          "request": {
+            "name": "Create legal hold",
+            "description": {
+              "content": "After creating a case it is possible to add one or multiple legal holds to the case. Creating a legal hold involves identifying the relevant users associated with a case and applying the hold to prevent permanent deletion of content that those users own, co-own, create, edit or access. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120471564946-Add-a-legal-hold-to-a-case\" target=_blank>Help Center page on adding a legal hold to a case</a>. <br><br>This API creates a new legal hold in a case for an organization. Newly created legal holds could take up to 24 hours to be processed.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ]\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d977adfd-4fb6-4192-9efe-7377c1811a59",
+              "name": "Legal hold created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2022-11-03T18:21:38.041Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345618265000\",\n  \"caseId\": \"3074457345618265000\",\n  \"lastModifiedAt\": \"1978-12-07T13:37:17.788Z\",\n  \"name\": \"My legal hold\",\n  \"organizationId\": \"3074457345618265000\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    ]\n  },\n  \"state\": \"ACTIVE\",\n  \"description\": \"Info about my legal hold\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c5a0a15-e329-4931-aa7a-36298e8c04f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9444e4a4-7329-41f6-87b8-58835802237a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c388271a-a5f5-4e72-967e-134106c4a032",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "225dee9a-82d4-4b79-93ee-3a76149fbe33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4056bfe1-b47e-4b72-b3a1-6b188e7ee129",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to create a new legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to create a new legal hold."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e42ce18-3bb4-4b75-bd85-b5ff23d640aa",
+          "name": "Get board export jobs of a case",
+          "request": {
+            "name": "Get board export jobs of a case",
+            "description": {
+              "content": "Retrieves board export jobs for a case.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "export-jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items in the result list."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34a9eb3b-4957-4f0d-b1f4-a8c66a959944",
+              "name": "Export job objects containing job IDs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 1,\n  \"cursor\": \"3074457345821140946\",\n  \"limit\": 100,\n  \"type\": \"cursor-list\",\n  \"data\": [\n    {\n      \"id\": \"92343229-c532-446d-b8cb-2f155bedb807\"\n    },\n    {\n      \"id\": \"92343229-c532-446d-b8cb-2f155bedb807\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "583b4f48-3700-46cb-86cf-f785089677df",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb0a0e38-c5c4-4909-a839-aa949c789fe7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4957a7be-835c-4957-b01d-a7803a9a78e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49dcb765-56ac-4442-828c-a4c9e2987bb6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "645204c8-a971-4ed3-b2e5-908262e1c24c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "export-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of export jobs within a case."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of export jobs."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7c294ee-2ab9-469f-b4a5-1c9e45515f8d",
+          "name": "Close legal hold",
+          "request": {
+            "name": "Close legal hold",
+            "description": {
+              "content": "Closing a legal hold is one of the final steps in the eDiscovery process once the litigation or investigation has concluded. This process involves releasing the Miro boards and custodians that were under legal hold, allowing the preserved boards to return to normal operations. Closing a legal hold will permanently delete it. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/21922521629330-Close-a-legal-hold\" target=_blank>Help Center page on closing a legal hold</a>. <br><br>This API closes a legal hold in a case for an organization. Once a legal hold is closed, it can take up to 24 hours to release the content items from the legal hold. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds",
+                ":legal_hold_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case in which you want to close a legal hold."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "legal_hold_id",
+                  "description": "(Required) The ID of the legal hold you want to close."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "117f2fcc-dd48-41f5-a97d-4ea8a4b86dd9",
+              "name": "Legal hold closed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e5a7b45-464d-4f29-9d32-d2a359772930",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e92008eb-9cba-40a2-b08f-a99f72cfc8cd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dec4e21-dad6-4eeb-b52a-ad2c30a1b0aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08b51f72-e43c-4cac-a7b0-07d3d08457f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d160d00e-140e-4904-8bf2-694817d07fcb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case in which you want to close a legal hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to close."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abbab8f4-2eac-4dcf-b66b-4da8b7da01cf",
+          "name": "Get legal hold information",
+          "request": {
+            "name": "Get legal hold information",
+            "description": {
+              "content": "Retrieves information about a legal hold within a case for an organization. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds",
+                ":legal_hold_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "legal_hold_id",
+                  "description": "(Required) The ID of the legal hold you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3c478e6-5018-4a1e-b005-2a1c43356618",
+              "name": "Legal hold object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2022-11-03T18:21:38.041Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345618265000\",\n  \"caseId\": \"3074457345618265000\",\n  \"lastModifiedAt\": \"1978-12-07T13:37:17.788Z\",\n  \"name\": \"My legal hold\",\n  \"organizationId\": \"3074457345618265000\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    ]\n  },\n  \"state\": \"ACTIVE\",\n  \"description\": \"Info about my legal hold\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5e5e2d0-8e15-4674-be5b-ca56c363fddd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90ea020a-0a19-45ad-9d17-e9418ccbc8cb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c973c1c5-22ae-4cf4-a3ab-4e21b2ba6117",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b92c27b-2993-44f0-889e-7d852f3fc533",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b51893e-d708-4e30-ac7f-3636389846c7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cafc847-4a98-4003-85ce-6e4f46f79f51",
+          "name": "Edit legal hold",
+          "request": {
+            "name": "Edit legal hold",
+            "description": {
+              "content": "Editing a legal hold allows eDiscovery Admins to adjust and refine ongoing legal preservation efforts as case requirements evolve. Whether new custodians are identified, additional Miro boards become relevant, or existing boards or users are no longer in scope, editing a legal hold ensures that the correct data remains preserved and defensible throughout the legal process. Admins can update the legal hold’s name or description and add or remove users and boards as needed. This flexibility supports dynamic legal workflows and ensures that preservation stays precise, up to date, and aligned with the scope of the legal matter—maintaining compliance while avoiding unnecessary data retention.<br/><br/>When a legal hold is edited, boards newly added to the hold will begin having their versions preserved from that point forward, boards or users removed from the hold will stop being preserved, and their versions will no longer be preserved as part of that legal hold, boards that remain under hold will continue to have all versions preserved, including any deletions that occur after the hold was applied. This approach ensures organizations can respond to legal demands with accuracy and accountability as a case evolves.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/docs/miro-rest-api-introduction#rate-limiting\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds",
+                ":legal_hold_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "legal_hold_id",
+                  "description": "(Required) The ID of the legal hold you want to edit."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ]\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6aec4506-b563-485d-93d9-389024f268f8",
+              "name": "Legal hold object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2022-11-03T18:21:38.041Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  },\n  \"id\": \"3074457345618265000\",\n  \"caseId\": \"3074457345618265000\",\n  \"lastModifiedAt\": \"1978-12-07T13:37:17.788Z\",\n  \"name\": \"My legal hold\",\n  \"organizationId\": \"3074457345618265000\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith@example.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Smith\"\n      }\n    ]\n  },\n  \"state\": \"ACTIVE\",\n  \"description\": \"Info about my legal hold\",\n  \"lastModifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"email\": \"john.smith@example.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd6a34d0-cd9f-4a8c-91e9-cca782be69bc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bca1e370-f8e0-4f93-9441-340901495290",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9094191-4efd-4cfd-a9c1-98af3030cff3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1cc03f4-9aa9-4a6a-b6a1-e6c6ceb6fe7d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "963ecbf0-90f4-4252-90a9-f349e87921c5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to edit the legal hold information."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold you want to edit."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My legal hold\",\n  \"scope\": {\n    \"users\": [\n      {\n        \"email\": \"john.smith@example.com\"\n      },\n      {\n        \"email\": \"john.smith@example.com\"\n      }\n    ]\n  },\n  \"description\": \"Info about my legal hold\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5f474d0-c8bb-46b3-82e6-5292a495ae30",
+          "name": "Get content items under legal hold",
+          "request": {
+            "name": "Get content items under legal hold",
+            "description": {
+              "content": "Once a legal hold is in place you can review or explore the preserved Miro boards to ensure that all relevant data is intact and ready for legal proceedings or investigations. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/22120628583570-Review-boards-under-legal-hold\" target=_blank>Help Center page on reviewing boards under legal hold</a>. <br><br>This API lists all content items under a specific legal hold in a case for an organization. Please verify that the legal hold is in 'ACTIVE' state to guarantee that the legal hold has finished processing the full list of content items under hold. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organization:cases:management</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a> <br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>. You can only use this endpoint if you have both the Company Admin and <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15695755655954-Understand-admin-roles-and-their-privileges#01JARF6KM8ATNT6YDMGD7GMYJN\">eDiscovery Admin</a> roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "cases",
+                ":case_id",
+                "legal-holds",
+                ":legal_hold_id",
+                "content-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items in the result list."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "case_id",
+                  "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "legal_hold_id",
+                  "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "078d46cf-73fe-44ae-9fe7-1e84911c80e6",
+              "name": "Content item objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 1,\n  \"total\": 15,\n  \"cursor\": \"3074457345821140946\",\n  \"limit\": 100,\n  \"type\": \"cursor-list\",\n  \"data\": [\n    {\n      \"type\": \"board\",\n      \"contentId\": \"uXjVOD6LSME=\",\n      \"id\": 1116.4269857644504\n    },\n    {\n      \"type\": \"board\",\n      \"contentId\": \"uXjVOD6LSME=\",\n      \"id\": 8332.107767193278\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "151d95a4-6ff9-45b9-adbc-aa9f359d7a86",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12e16305-3b9c-487f-af01-26ba5faf9044",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6064f81-5600-40ec-8970-6a2fba476cce",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb65503f-be9b-4689-a701-a7537c973eee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8670b0b6-c75c-43d2-b9ea-4d253626c143",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "cases",
+                    ":case_id",
+                    "legal-holds",
+                    ":legal_hold_id",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of the organization for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "case_id",
+                      "description": "(Required) The ID of the case for which you want to retrieve the list of content items under hold."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "legal_hold_id",
+                      "description": "(Required) The ID of the legal hold for which you want to retrieve the list of content items under hold."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fb24434a-112e-4518-95cd-26ff7675dfde",
+    "name": "Miro Developer Platform AI Interaction Logs Legal holds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Project Settings API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get project settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/settings",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012091",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project for which you want to retrieve the project settings."
+              }
+            ]
+          },
+          "docs": "Retrieves the project settings.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise pl"
+        },
+        {
+          "info": {
+            "name": "Update project settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/settings",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project whose settings you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the settings of a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterpris"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

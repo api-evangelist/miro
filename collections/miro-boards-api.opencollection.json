@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Boards API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Boards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get boards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards",
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of boards accessible to the user associated with the provided access token. This endpoint supports filtering and sorting through URL query parameters.\nCustomize the response by specifying `team_id`, `project_id`, or other query parameters. Filtering by `team_id` or `project_id` (or both) returns results instantly. For other filters, allow a few seconds for indexing of newly created boards.\n\nIf you're an Enterprise customer with Company Admin permissions:\n- Enable **Content Admin"
+        },
+        {
+          "info": {
+            "name": "Create board",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a board with the specified name and sharing policies.<br/><h4>Note</h4> You can only create up to 3 team boards with the free plan.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Copy board",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/v2/boards",
+            "params": [
+              {
+                "name": "copy_from",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier (ID) of the board that you want to copy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a copy of an existing board. You can also update the name, description, sharing policy, and permissions policy for the new board in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Get specific board",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board that you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information about a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Update board",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/boards/:board_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board that you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specific board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Delete board",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/boards/:board_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board that you want to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a board. Deleted boards go to Trash (on paid plans) and can be restored via UI within 90 days after deletion.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Project Members API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of project members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project for which you want to retrieve the list of members."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of project members in the response is greater than the limit specified, the response returns the cursor parameter with a value."
+              },
+              {
+                "name": "cursor",
+                "value": "3074457345618265000",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of members for a specific project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterpri"
+        },
+        {
+          "info": {
+            "name": "Add member in a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/members",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project to which you want to add a user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a Miro user to a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise pla"
+        },
+        {
+          "info": {
+            "name": "Get project member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project from which you want to retrieve specific member information."
+              },
+              {
+                "name": "member_id",
+                "value": "307445734562315000",
+                "type": "path",
+                "description": "The ID of the member for which you want to retrieve information."
+              }
+            ]
+          },
+          "docs": "Retrieves information for a specific project member.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterpris"
+        },
+        {
+          "info": {
+            "name": "Update project member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project member belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project member belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a Project."
+              },
+              {
+                "name": "member_id",
+                "value": "307445734562315000",
+                "type": "path",
+                "description": "The ID of the member whose details you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates details of a project member, such as the member's role.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-referen"
+        },
+        {
+          "info": {
+            "name": "Remove project member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id/members/:member_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization to which the project belongs."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team to which the project belongs."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project from which you want to remove a member."
+              },
+              {
+                "name": "member_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the member that you want to remove from a project."
+              }
+            ]
+          },
+          "docs": "Remove a member from a project. The user remains in the team even after the member is removed from a project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

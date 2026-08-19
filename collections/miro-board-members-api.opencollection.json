@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Board members API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Board members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all board members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id/members",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board to which the board member belongs."
+              }
+            ]
+          },
+          "docs": "Retrieves a pageable list of members for a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Share board",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards/:board_id/members",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board to which the board member belongs."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Shares the board and Invites new members to collaborate on a board by sending an invitation email. Depending on the board's Sharing policy, there might be various scenarios where membership in the team is required in order to share the board with a user.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Get specific board member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id/members/:board_member_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board to which the board member belongs."
+              },
+              {
+                "name": "board_member_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board member whose role you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves information for a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Update board member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/boards/:board_id/members/:board_member_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board for which you want to update the role of the board member."
+              },
+              {
+                "name": "board_member_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board member whose role you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the role of a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Remove board member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/boards/:board_id/members/:board_member_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board from which you want to delete an item."
+              },
+              {
+                "name": "board_member_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board member whose role you want to delete."
+              }
+            ]
+          },
+          "docs": "Removes a board member from a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

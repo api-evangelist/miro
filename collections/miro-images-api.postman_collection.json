@@ -1,0 +1,317 @@
+{
+  "item": [
+    {
+      "id": "536c1a69-6e66-4cc0-aa26-267121adad10",
+      "name": "images",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56ca7e8d-9d33-4db2-a7ad-aa46f9ba65b3",
+          "name": "Create image item using file from device",
+          "request": {
+            "name": "Create image item using file from device",
+            "description": {
+              "content": "Adds an image item to a board by specifying a file from device.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id_PlatformFileUpload",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id_PlatformFileUpload",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "resource",
+                  "type": "file",
+                  "description": "(Required) Select a file to upload. Maximum file size is 6 MB."
+                },
+                {
+                  "key": "data",
+                  "value": "{\"title\":\"<string>\",\"altText\":\"<string>\",\"position\":{\"x\":0,\"y\":0},\"geometry\":{\"height\":\"<double>\",\"width\":\"<double>\",\"rotation\":\"<double>\"},\"parent\":{\"id\":\"<int64>\"}}",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b0f94ee-e3aa-4c31-813b-6402e70052a5",
+              "name": "Image item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id_PlatformFileUpload",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id_PlatformFileUpload",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Select a file to upload. Maximum file size is 6 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "resource",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "{\"title\":\"foo.png\",\"altText\":\"Sample image alt text\",\"position\":{\"x\":100,\"y\":100},\"geometry\":{\"height\":\"<double>\",\"width\":\"<double>\",\"rotation\":\"<double>\"},\"parent\":{\"id\":\"3074457362577955300\"}}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764597687208572\",\n  \"type\": \"image\",\n  \"data\": {\n    \"imageUrl\": \"https://api.miro.com/v2/boards/board_id_PlatformFileUpload/resources/images/3458764515979043608?format=preview&redirect=false\",\n    \"title\": \"image\"\n  },\n  \"geometry\": {\n    \"width\": 512,\n    \"height\": 512\n  },\n  \"position\": {\n    \"x\": 3000,\n    \"y\": 3000,\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\"\n  },\n  \"links\": {\n    \"self\": \"https://api.miro.com/v2/boards/board_id_PlatformFileUpload/images/3458764597687208572\"\n  },\n  \"createdAt\": \"2024-08-21T11:19:57Z\",\n  \"createdBy\": {\n    \"id\": \"3458764569867985278\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2024-08-21T11:19:57Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764569867985278\",\n    \"type\": \"user\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0efe5ad-79d2-4ca2-8ab7-77f1198d5471",
+          "name": "Update image item using file from device",
+          "request": {
+            "name": "Update image item using file from device",
+            "description": {
+              "content": "Updates an image item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id_PlatformFileUpload",
+                "images",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id_PlatformFileUpload",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "resource",
+                  "value": "<binary>",
+                  "type": "text",
+                  "description": "(Required) Select a file to upload. Maximum file size is 6 MB."
+                },
+                {
+                  "key": "data",
+                  "value": "{\"title\":\"<string>\",\"altText\":\"<string>\",\"position\":{\"x\":0,\"y\":0},\"geometry\":{\"height\":\"<double>\",\"width\":\"<double>\",\"rotation\":\"<double>\"},\"parent\":{\"id\":\"<int64>\"}}",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bda156b-5483-4f8e-99ed-2cd2418e1820",
+              "name": "Image item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id_PlatformFileUpload",
+                    "images",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id_PlatformFileUpload",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Select a file to upload. Maximum file size is 6 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "resource",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "{\"title\":\"foo.png\",\"altText\":\"Sample image alt text\",\"position\":{\"x\":100,\"y\":100},\"geometry\":{\"height\":\"<double>\",\"width\":\"<double>\",\"rotation\":\"<double>\"},\"parent\":{\"id\":\"3074457362577955300\"}}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764597687208572\",\n  \"type\": \"image\",\n  \"data\": {\n    \"imageUrl\": \"https://api.miro.com/v2/boards/board_id_PlatformFileUpload/resources/images/3458764515979043608?format=preview&redirect=false\",\n    \"title\": \"image\"\n  },\n  \"geometry\": {\n    \"width\": 512,\n    \"height\": 512\n  },\n  \"position\": {\n    \"x\": 3000,\n    \"y\": 3000,\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\"\n  },\n  \"links\": {\n    \"self\": \"https://api.miro.com/v2/boards/board_id_PlatformFileUpload/images/3458764597687208572\"\n  },\n  \"createdAt\": \"2024-08-21T11:19:57Z\",\n  \"createdBy\": {\n    \"id\": \"3458764569867985278\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2024-08-21T11:19:57Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764569867985278\",\n    \"type\": \"user\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ae6a52c6-c574-4a37-9aaa-df238fedbcb8",
+    "name": "Miro Developer Platform AI Interaction Logs images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

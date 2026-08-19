@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Board classification: Board level API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Board classification: Board level",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get board classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/boards/:board_id/data-classification",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "id of the organization"
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "id of the team"
+              },
+              {
+                "name": "board_id",
+                "value": "o9J_kzlUDmo=",
+                "type": "path",
+                "description": "Unique identifier of the board that you want to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves board classification for a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can req"
+        },
+        {
+          "info": {
+            "name": "Update board classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/boards/:board_id/data-classification",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "id of the organization"
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "id of the team"
+              },
+              {
+                "name": "board_id",
+                "value": "o9J_kzlUDmo=",
+                "type": "path",
+                "description": "Unique identifier of the board that you want to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates board classification for an existing board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. Yo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Bulk operations API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create items in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards/:board_id/items/bulk",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to create the item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds different types of items to a board. You can add up to 20 items of the same or different type per create call. For example, you can create 3 shape items, 4 card items, and 5 sticky notes in one create call. The bulk create operation is transactional. If any item's create operation fails, the create operation for all the remaining items also fails, and none of the items will be created. <br/><br>To try out this API in our documentation:<br/><br>1. In the **BODY PARAMS** section, scroll down "
+        },
+        {
+          "info": {
+            "name": "Create items in bulk using file from device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards/:board_id_Platformcreateitemsinbulkusingfilefromdevice/items/bulk",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board where you want to create the item."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "resources",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds different types of items to a board using files from a device. You can add up to 20 items of the same or different type per create call. For example, you can create 5 document items and 5 images in one create call.  The bulk create operation is transactional. If any item's create operation fails, the create operation for all the remaining items also fails, and none of the items will be created.\nTo try out this API in our documentation:\n1. In the **BODY PARAMS** section, select **ADD FILE**,"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

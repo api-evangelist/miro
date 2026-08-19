@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Board classification: Organization level API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Board classification: Organization level",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/data-classification-settings",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "id of the organization"
+              }
+            ]
+          },
+          "docs": "Retrieves board classification settings for an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the rol"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

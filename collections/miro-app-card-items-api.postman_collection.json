@@ -1,0 +1,1133 @@
+{
+  "item": [
+    {
+      "id": "85a61742-fe5b-45e8-ac8d-8142d38bc598",
+      "name": "App card items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46d5a196-1479-424f-ba0f-98b5fbe21489",
+          "name": "Create app card item",
+          "request": {
+            "name": "Create app card item",
+            "description": {
+              "content": "Adds an app card item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "app_cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"description\": \"<string>\",\n    \"fields\": [\n      {\n        \"fillColor\": \"<string>\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"<string>\",\n        \"textColor\": \"<string>\",\n        \"tooltip\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"fillColor\": \"<string>\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"<string>\",\n        \"textColor\": \"<string>\",\n        \"tooltip\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99938aa1-9ff8-4fa5-9722-69d85beab81d",
+              "name": "App card item created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"app_card\",\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"owned\": false,\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"canvas_center\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cb6dab3-47d7-4181-823f-47102367f456",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ce4b639-6034-4415-a6a1-3ebc623cc5c4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab6967b7-2ed1-4b78-8f5a-4cbb7f67ca61",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to create the item."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "126d73bc-d806-4e08-8e8d-1b3ecc7730cd",
+          "name": "Get app card item",
+          "request": {
+            "name": "Get app card item",
+            "description": {
+              "content": "Retrieves information for a specific app card item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "app_cards",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a1de494-ef73-47e8-babd-979bdbb38e0f",
+              "name": "App card item retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"app_card\",\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"owned\": false,\n    \"status\": \"disabled\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b75e720-27b3-44fa-9238-8e4a0e6d7c2d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77db0a37-da7a-426a-a447-13b4d98f1eb7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7736635-18c9-48cf-a263-7dd70212f8f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to retrieve a specific item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8c6a1fb-437f-45ce-967c-e12e93a86eb3",
+          "name": "Update app card item",
+          "request": {
+            "name": "Update app card item",
+            "description": {
+              "content": "Updates an app card item on a board based on the data and style properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "app_cards",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"description\": \"<string>\",\n    \"fields\": [\n      {\n        \"fillColor\": \"<string>\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"<string>\",\n        \"textColor\": \"<string>\",\n        \"tooltip\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"fillColor\": \"<string>\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"<string>\",\n        \"textColor\": \"<string>\",\n        \"tooltip\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"<string>\"\n  },\n  \"position\": {\n    \"x\": 0,\n    \"y\": 0\n  },\n  \"geometry\": {\n    \"height\": \"<double>\",\n    \"rotation\": \"<double>\",\n    \"width\": \"<double>\"\n  },\n  \"parent\": {\n    \"id\": \"<int64>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "36634a6a-be90-48c3-bb2d-d7d7c9bce128",
+              "name": "Card item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3458764517517819000\",\n  \"type\": \"app_card\",\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"owned\": false,\n    \"status\": \"disabled\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"origin\": \"center\",\n    \"relativeTo\": \"parent_top_left\",\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"createdAt\": \"2022-03-30T17:26:50.000Z\",\n  \"createdBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2022-03-30T17:26:50.000Z\",\n  \"modifiedBy\": {\n    \"id\": \"3458764517517852417\",\n    \"type\": \"user\"\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\",\n    \"links\": {\n      \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487\"\n    }\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0877f7c2-f66d-4f89-a2e5-3ac827a3dae7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9b6c479-aa3b-4954-a629-1cbd39935dde",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2596d79f-0593-4766-a83f-d2df2b891ecc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "546d6e36-4a3a-455e-8b76-c7e6ebc831e2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board where you want to update the item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"description\": \"Sample app card description\",\n    \"fields\": [\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      },\n      {\n        \"fillColor\": \"#2fa9e3\",\n        \"iconShape\": \"round\",\n        \"iconUrl\": \"https://cdn-icons-png.flaticon.com/512/5695/5695864.png\",\n        \"textColor\": \"#1a1a1a\",\n        \"tooltip\": \"Completion status indicator\",\n        \"value\": \"Status: in progress\"\n      }\n    ],\n    \"status\": \"disconnected\",\n    \"title\": \"sample app card item\"\n  },\n  \"style\": {\n    \"fillColor\": \"#2d9bf0\"\n  },\n  \"position\": {\n    \"x\": 100,\n    \"y\": 100\n  },\n  \"geometry\": {\n    \"height\": 60,\n    \"rotation\": \"<double>\",\n    \"width\": 320\n  },\n  \"parent\": {\n    \"id\": \"3074457362577955300\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f944922-bd01-4cfd-8dd7-ee97dd9e0881",
+          "name": "Delete app card item",
+          "request": {
+            "name": "Delete app card item",
+            "description": {
+              "content": "Deletes an app card item from a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id",
+                "app_cards",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board from which you want to delete an item."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4944a75-cc65-48c3-855b-5c7f86ccbe02",
+              "name": "App card item deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete an item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef8bbdef-6675-49d8-a3d2-aed988ec91a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete an item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a65af60f-d41a-4c2c-ade7-2e1baf4ed96e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete an item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ef49058-b72e-41a5-81a6-e652ff6522bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id",
+                    "app_cards",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board from which you want to delete an item."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) Unique identifier (ID) of the item that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e39072c7-876e-4e40-bebf-d991457a6277",
+    "name": "Miro Developer Platform AI Interaction Logs App card items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,596 @@
+{
+  "item": [
+    {
+      "id": "b39d06cf-61a8-4643-a056-00f7ecc02e1e",
+      "name": "AI Interaction Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ecd12454-574b-4470-97f4-35c187614f25",
+          "name": "Get AI interaction logs (Beta)",
+          "request": {
+            "name": "Get AI interaction logs (Beta)",
+            "description": {
+              "content": "Retrieves AI interaction logs for your organization. AI interaction logs capture user interactions with AI features in Miro. You can retrieve results for a specific time period. You can also filter results based on object IDs and the emails of users who interacted with AI features. Additionally, results can be paginated for easier viewing and processing.\n<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>aiinteractionlogs:read</a>\n<br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a>\n<br/><h3>Enterprise Guard only</h3> <p>This API is available only for Enterprise plan users with the <a target=_blank href=\"https://help.miro.com/hc/en-us/articles/15699815402514-Enterprise-Guard-overview\">Enterprise Guard add-on</a>.</p>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "ai-interaction-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "object_ids",
+                  "value": "<string>",
+                  "description": "List of object IDs used to retrieve AI interaction logs. \nCurrently, supported object types include board IDs and organization IDs. \nYou can obtain object IDs from the response of this endpoint (the <code>object.id</code> field), \nfrom other Platform API endpoints (for example, [Get boards API](https://developers.miro.com/reference/get-boards)), \nor from Miro UI URLs (board ID and organization ID from the URLs).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_ids",
+                  "value": "<string>",
+                  "description": "List of object IDs used to retrieve AI interaction logs. \nCurrently, supported object types include board IDs and organization IDs. \nYou can obtain object IDs from the response of this endpoint (the <code>object.id</code> field), \nfrom other Platform API endpoints (for example, [Get boards API](https://developers.miro.com/reference/get-boards)), \nor from Miro UI URLs (board ID and organization ID from the URLs).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "emails",
+                  "value": "<string>",
+                  "description": "Filters AI interaction logs using a list of user emails. Only AI interactions associated with the provided emails will be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "emails",
+                  "value": "<string>",
+                  "description": "Filters AI interaction logs using a list of user emails. Only AI interactions associated with the provided emails will be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) End date and time of the time range used to filter AI interaction logs. Only interactions that were stored within the specified <code>from</code> - <code>to</code> time range are returned.\nFormat: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of results to return per call. If the number of logs in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting",
+                  "value": "asc",
+                  "description": "Sort order in which you want to view the result set based on the interaction date. To sort by an ascending date, specify `asc`. To sort by a descending date, specify `desc`.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) Unique identifier of the organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6313199a-1afe-4c04-ae1b-0d4d4adcb546",
+              "name": "Response from the API that includes AI interaction logs, size of the data list, pagination cursor, and pagination limit.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 100,\n  \"size\": 1,\n  \"data\": [\n    {\n      \"id\": \"2dcf57ff-f12c-4fad-b708-c1642204b41b\",\n      \"createdAt\": \"2023-06-24T17:32:28Z\",\n      \"storedAt\": \"2023-06-24T17:32:30Z\",\n      \"sessionId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"messageId\": \"b2c3d4e5-f6a7-8901-bcde-f12345678901\",\n      \"object\": {\n        \"id\": \"3458764549483493025\",\n        \"type\": \"board\"\n      },\n      \"aiFeatureName\": \"ai_generate_sticky_notes\",\n      \"actor\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith.demo@miro.com\",\n        \"name\": \"John Smith\"\n      },\n      \"logType\": \"request\",\n      \"details\": {\n        \"text\": \"{\\\\\\\"text\\\\\\\":\\\\\\\"Generate me 1 sticker with the text \\\\\\\\\\\\\\\"AI generates content\\\\\\\\\\\\\\\"\\\\\\\",\\\\\\\"board_context\\\\\\\":{\\\\\\\"selection\\\\\\\":{\\\\\\\"selected_nodes\\\\\\\":[],\\\\\\\"reference_images\\\\\\\":[],\\\\\\\"design_reference_images\\\\\\\":[],\\\\\\\"comments\\\\\\\":[]},\\\\\\\"talktracks\\\\\\\":[],\\\\\\\"config\\\\\\\":{\\\\\\\"processing_method\\\\\\\":\\\\\\\"none\\\\\\\",\\\\\\\"ai_feature\\\\\\\":\\\\\\\"ai_generate_sticky_notes\\\\\\\"},\\\\\\\"context_prototype\\\\\\\":null,\\\\\\\"prototype_description\\\\\\\":null,\\\\\\\"screens\\\\\\\":null}}\"\n      }\n    },\n    {\n      \"id\": \"2dcf57ff-f12c-4fad-b708-c1642204b41b\",\n      \"createdAt\": \"2023-06-24T17:32:28Z\",\n      \"storedAt\": \"2023-06-24T17:32:30Z\",\n      \"sessionId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"messageId\": \"b2c3d4e5-f6a7-8901-bcde-f12345678901\",\n      \"object\": {\n        \"id\": \"3458764549483493025\",\n        \"type\": \"board\"\n      },\n      \"aiFeatureName\": \"ai_generate_sticky_notes\",\n      \"actor\": {\n        \"id\": \"3458764517517852417\",\n        \"email\": \"john.smith.demo@miro.com\",\n        \"name\": \"John Smith\"\n      },\n      \"logType\": \"request\",\n      \"details\": {\n        \"text\": \"{\\\\\\\"text\\\\\\\":\\\\\\\"Generate me 1 sticker with the text \\\\\\\\\\\\\\\"AI generates content\\\\\\\\\\\\\\\"\\\\\\\",\\\\\\\"board_context\\\\\\\":{\\\\\\\"selection\\\\\\\":{\\\\\\\"selected_nodes\\\\\\\":[],\\\\\\\"reference_images\\\\\\\":[],\\\\\\\"design_reference_images\\\\\\\":[],\\\\\\\"comments\\\\\\\":[]},\\\\\\\"talktracks\\\\\\\":[],\\\\\\\"config\\\\\\\":{\\\\\\\"processing_method\\\\\\\":\\\\\\\"none\\\\\\\",\\\\\\\"ai_feature\\\\\\\":\\\\\\\"ai_generate_sticky_notes\\\\\\\"},\\\\\\\"context_prototype\\\\\\\":null,\\\\\\\"prototype_description\\\\\\\":null,\\\\\\\"screens\\\\\\\":null}}\"\n      }\n    }\n  ],\n  \"cursor\": \"MTY2OTg4NTIwMDAwMHwxMjM=\",\n  \"type\": \"cursor-list\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1fad16b-a730-480a-b1db-b0554f6b7ec9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "266ef64f-303d-402b-9878-0d1e5b00b065",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44d95d02-4d28-4855-a220-09a3378ee4b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a93ef99c-0e11-41e3-a2f4-3f846ca8527c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1016c601-57d2-4113-aeca-e8e858bb72fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "ai-interaction-logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "object_ids",
+                      "value": "3458764549483493025"
+                    },
+                    {
+                      "key": "object_ids",
+                      "value": "u8J_kllZmDk="
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someone@domain.com"
+                    },
+                    {
+                      "key": "emails",
+                      "value": "someoneelse@domain.com"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2026-01-30T17:26:50Z"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2036-03-30T17:26:50Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MTY2OTg4NTIwMDAwMHwxMjM="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) Unique identifier of the organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c9493286-313b-4707-8578-9c4f3451ac8c",
+    "name": "Miro Developer Platform AI Interaction Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

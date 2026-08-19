@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Projects API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization from which you want to retrieve the list of available projects."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team from which you want to retrieve the list of available projects."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of projects in the response is greater than the limit specified, the response returns the cursor parameter with a value."
+              },
+              {
+                "name": "cursor",
+                "value": "3074457345618265000",
+                "type": "query",
+                "description": "An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request."
+              }
+            ]
+          },
+          "docs": "Retrieves the list of projects in an existing team of an organization. You can retrieve all projects, including all private projects (projects that haven't been specifically shared with you) by enabling Content Admin permissions. To enable Content Admin permissions, see [Content Admin permissions for Company Admins](https://help.miro.com/hc/en-us/articles/360012777280-Content-Admin-permissions-for-Company-Admins).<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms"
+        },
+        {
+          "info": {
+            "name": "Create project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization within which you you want to create a project."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team within which you you want to create a project."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Projects are essentially folders of boards with the option to manage user access for a smaller group of people within a team. Projects are here to help you organize your boards and make them easier to find and share. In other words, a project is a group of boards that you can share with your teammates all at once. For more information, see our <a href=\"https://help.miro.com/hc/en-us/articles/360018262033-Projects\" target=_blank>Help Center page on Projects</a>. <br><br>This API creates a new pro"
+        },
+        {
+          "info": {
+            "name": "Get project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization from which you want to retrieve the project information."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team from which you want to retrieve the project information."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project for which you want to retrieve the information."
+              }
+            ]
+          },
+          "docs": "Retrieves project information, such as a name for an existing project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-r"
+        },
+        {
+          "info": {
+            "name": "Update project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of an Organization."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of a Team."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of a Project."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update information about a project, such as the project name.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference"
+        },
+        {
+          "info": {
+            "name": "Delete project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/orgs/:org_id/teams/:team_id/projects/:project_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the organization from which you want to delete a project."
+              },
+              {
+                "name": "team_id",
+                "value": "3074457345619012000",
+                "type": "path",
+                "description": "The ID of the team from which you want to delete a project."
+              },
+              {
+                "name": "project_id",
+                "value": "3074457345618265000",
+                "type": "path",
+                "description": "The ID of the project that you want to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a project. After a project is deleted, all boards and users that belong to the project remain in the team.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available onl"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1451 @@
+{
+  "item": [
+    {
+      "id": "02137b8f-72db-4390-a54a-ad99c4ba29e0",
+      "name": "Group",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b50ec080-fc43-4829-8f78-d1bb7d002e60",
+          "name": "List groups",
+          "request": {
+            "name": "List groups",
+            "description": {
+              "content": "Retrieves the list of groups (teams) in the organization.<br><br> Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to fetch attributes within complex attributes, for Example: members.display."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "You can request a subset of resources by specifying the filter query parameter containing a filter expression. Attribute names and attribute operators used in filters are not case sensitive. The filter parameter must contain at least one valid expression. Each expression must contain an attribute name followed by an attribute operator and an optional value. <br>eq = equal<br> ne = not equal<br> co = contains<br> sw = starts with<br> ew = ends with<br> pr = preset (has value)<br> gt = greater than<br> ge = greater than or equal to<br> lt = less than<br> le = less than or equal to<br> and = Logical \"and\"<br> or = Logical \"or\"<br> not = \"Not\" function<br> () = Precedence grouping <br>The value must be passed within parenthesis. <br><br>For Example: displayName eq \"Product Team\" will fetch information related to team matching the display name \"Product Team\". <br>Note</b>: Filtering on complex attributes is not supported"
+                },
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "<integer>",
+                  "description": "Use startIndex in combination with count query parameters to receive paginated results. <br><br> start index is 1-based. <br><br> Example: startIndex=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>",
+                  "description": "Specifies the maximum number of query results per page. <br><br> Use count in combination with startIndex query parameters to receive paginated results. <br><br> The count query parameter is set to 100 by default and the maximum value allowed for this parameter is 1000. <br><br> Example: count=12"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Specifies the attribute whose value will be used to order the response. Example sortBy=displayName"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Defines the order in which the 'sortBy' parameter is applied. Example: sortOrder=ascending"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3c0413a-dbae-430b-aebb-69c4f824a31b",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ],\n  \"totalResults\": 1,\n  \"itemsPerPage\": 1,\n  \"startIndex\": 1,\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n      ],\n      \"id\": \"a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\",\n      \"displayName\": \"Sales Ops\",\n      \"members\": [\n        {\n          \"value\": \"2819c223-7f76-453a-919d-413861904646\",\n          \"ref\": \"/Users/2819c223-7f76-453a-919d-413861904646\",\n          \"type\": \"User\"\n        }\n      ],\n      \"meta\": {\n        \"resourceType\": \"Group\",\n        \"location\": \"/Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10328aa6-d981-4ced-bdcd-afae750d89c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ca7182c-387c-407e-bd43-c21f04a84f2a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6883d159-7427-418d-9757-db1395ed8553",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a1a8891-0878-4d26-9b74-70bd1cc4ef9d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61075215-8e7b-4bc0-91b3-8e47be2fbc00",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18871570-960a-482f-a24a-8db85a25a2c5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd6e5617-7618-4770-bc68-2c5c13bc6ef1",
+          "name": "Get group",
+          "request": {
+            "name": "Get group",
+            "description": {
+              "content": "Retrieves a single Group resource.<br><b> Note</b>: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to retrieve attributes within complex attributes. For example: members.display"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15ffd5f4-e2a6-47a0-9b94-0e94c58f0b6e",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag identifying the current version of the resource.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\",\n  \"displayName\": \"Sales Ops\",\n  \"members\": [\n    {\n      \"value\": \"2819c223-7f76-453a-919d-413861904646\",\n      \"ref\": \"/Users/2819c223-7f76-453a-919d-413861904646\",\n      \"type\": \"User\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"location\": \"/Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "603b928e-f88e-45f7-aa4d-f1f8425f99a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c11bacc1-0192-4772-9bc9-615fd64a539f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7474215a-d793-4972-b335-e19fef4cbd6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db657622-aee2-42d9-bda7-1565666b1898",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cd4e27c-d66c-4a9a-bf3e-638774f6af00",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3fe2c85-d820-4b57-8716-3fe7a57fd251",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e8290dd-df49-47ee-8461-4f7a9b9afa1a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d27ff593-7343-459a-b944-9d174ef7ab88",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f56d6ea8-2ef0-4fdd-942e-1228beadd0a7",
+          "name": "Patch group",
+          "request": {
+            "name": "Patch group",
+            "description": {
+              "content": "Updates an existing group resource, i.e. a team, overwriting values for specified attributes. Patch operation for group can be used to add, remove, or replace team members and to update the display name of the group (team). <br><br> To add a user to the group (team), use add operation. <br> To remove a user from a group (team), use remove operation. <br> To update a user resource, use the replace operation. <br> The last team admin cannot be removed from the team. <br><br> Note: Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided. <br><br> Team members removal specifics: <br> For remove or replace operations, the team member is removed from the team and from all team boards. The ownership of boards that belong to the removed team member is transferred to the oldest team member who currently has an admin role. After you remove a team member, adding the team member again to the team does not automatically restore their previous ownership of the boards. If the user is not registered fully in Miro and is not assigned to any other team, the user is also removed from the organization. <br><br> Add team members specifics: <br> All added team members are reactivated or recreated if they were deactivated or deleted earlier. <br><br> External users specifics: <br> When adding existing users with the role ORGANIZATION_EXTERNAL_USER or ORGANIZATION_TEAM_GUEST_USER to a team, we set FULL license and ORGANIZATION_INTERNAL_USER roles. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> It is also possible to fetch attributes within complex attributes, for Example: members.display"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/scim+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schemas\": \"urn:ietf:params:scim:api:messages:2.0:PatchOp\",\n  \"Operations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": [\n        {\n          \"value\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": [\n        {\n          \"value\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ecb454e-044c-4832-a296-eecbc9989a12",
+              "name": "Successful Operation <br><br> A remove operation is successful only if all members to be removed can be removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/scim+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Entity tag identifying the current version of the resource.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/scim+json"
+                }
+              ],
+              "body": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\",\n  \"displayName\": \"Sales Ops\",\n  \"members\": [\n    {\n      \"value\": \"2819c223-7f76-453a-919d-413861904646\",\n      \"ref\": \"/Users/2819c223-7f76-453a-919d-413861904646\",\n      \"type\": \"User\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"location\": \"/Groups/a9e4bf9e-3f67-4a22-9a12-9a0522c88c5d\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d4b1183-aa57-4d9b-af73-1c0ab6b8c642",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab17fc3a-3ec1-4e5b-9021-e8767d4aa1fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6480f174-d8e4-4f35-879b-9e0471004340",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "213e4063-316c-444b-82d2-f5dc7360bd29",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9e6b1d6-2028-4fad-87bc-fbca2b296fd5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "163c5604-7f37-4fcd-83e8-91de31ee5b8f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8558e84d-5c97-4885-a48d-afbe7c88b437",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b864886-1085-42df-8385-5a54616fc123",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"Add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"3074457365265951581\"\n        },\n        {\n          \"value\": \"3074457365266570558\"\n        }\n      ]\n    },\n    {\n      \"op\": \"Remove\",\n      \"path\": \"members[value eq 3074457364022187294]\"\n    },\n    {\n      \"op\": \"Replace\",\n      \"path\": \"displayName\",\n      \"value\": \"design_unit2_product\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d6fea120-c43d-4e90-91e7-773068f8a9e3",
+    "name": "Miro Developer Platform AI Interaction Logs Group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

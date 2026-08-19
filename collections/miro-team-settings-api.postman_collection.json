@@ -1,0 +1,1136 @@
+{
+  "item": [
+    {
+      "id": "20d7cb0a-6fb3-40e7-9508-a90475af0950",
+      "name": "Team Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b3055ab-f259-4e09-9060-f9deff35c6db",
+          "name": "Get default team settings",
+          "request": {
+            "name": "Get default team settings",
+            "description": {
+              "content": "Retrieves default team settings of an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "default_teams_settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The id of an Organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0ec55d0-aeca-4fad-848c-27ea6df7f1af",
+              "name": "Team settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationId\": \"3074457345618265000\",\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"request\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"disabled\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"team_members\",\n    \"copyAccessLevelLimitation\": \"team_members\"\n  },\n  \"teamId\": \"3074457345618265000\",\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"not_allowed\",\n    \"whoCanInvite\": \"only_org_admins\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"string\",\n      \"string\"\n    ],\n    \"createAssetAccessLevel\": \"company_admins\",\n    \"defaultBoardAccess\": \"view\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"comment\",\n    \"defaultProjectAccess\": \"private\",\n    \"moveBoardToAccount\": \"not_allowed\",\n    \"restrictAllowedDomains\": \"enabled\",\n    \"sharingOnAccount\": \"not_allowed\",\n    \"sharingOnOrganization\": \"allowed_with_editing\",\n    \"sharingViaPublicLink\": \"allowed_with_editing\"\n  },\n  \"type\": \"team-settings\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8503968-59e6-466d-bf6c-ca57b93895e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65b6d69d-ad97-42a4-99d3-beddcf409be7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4abca691-1348-480b-a884-5d799bed6f5f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b293f02-3de6-4d80-8405-13f642921812",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f8eb5fc-5eb8-4e57-96fa-6d8a6abe2474",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "default_teams_settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The id of an Organization."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "180fe949-6c0c-4c97-89eb-b2562bc1b920",
+          "name": "Get team settings",
+          "request": {
+            "name": "Get team settings",
+            "description": {
+              "content": "Retrieves team settings of an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "teams",
+                ":team_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of an organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_id",
+                  "description": "(Required) The ID of a team."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70653aa5-a07a-4ade-8260-412e15d31894",
+              "name": "Team settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationId\": \"3074457345618265000\",\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"join\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"enabled\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"team_members\",\n    \"copyAccessLevelLimitation\": \"anyone\"\n  },\n  \"teamId\": \"3074457345618265000\",\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"not_allowed\",\n    \"whoCanInvite\": \"only_org_admins\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"string\",\n      \"string\"\n    ],\n    \"createAssetAccessLevel\": \"company_admins\",\n    \"defaultBoardAccess\": \"private\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"private\",\n    \"defaultProjectAccess\": \"view\",\n    \"moveBoardToAccount\": \"not_allowed\",\n    \"restrictAllowedDomains\": \"enabled_with_external_user_access\",\n    \"sharingOnAccount\": \"not_allowed\",\n    \"sharingOnOrganization\": \"allowed_with_editing\",\n    \"sharingViaPublicLink\": \"allowed\"\n  },\n  \"type\": \"team-settings\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d56a18f-982a-4b73-a9f3-f074415b03b6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "313e481b-938e-4e87-8a44-20895929756d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4589ce20-3b38-454b-9a3b-781b001bd0d7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e64a791f-51a5-4cad-852f-e3caa5fb0ef9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ec0072a-f512-4d62-8b15-43edcbf30674",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49c6b597-99e6-4cc0-a2e8-bfdd08f74a2c",
+          "name": "Update team settings",
+          "request": {
+            "name": "Update team settings",
+            "description": {
+              "content": "Updates team settings of an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href=\"https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9\">this form</a>.</p>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "orgs",
+                ":org_id",
+                "teams",
+                ":team_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The ID of an organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_id",
+                  "description": "(Required) The ID of a team."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7981e50b-2263-4c3a-a627-669a3de22a97",
+              "name": "Team settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationId\": \"3074457345618265000\",\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"join\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"enabled\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"team_members\",\n    \"copyAccessLevelLimitation\": \"anyone\"\n  },\n  \"teamId\": \"3074457345618265000\",\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"not_allowed\",\n    \"whoCanInvite\": \"only_org_admins\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"string\",\n      \"string\"\n    ],\n    \"createAssetAccessLevel\": \"company_admins\",\n    \"defaultBoardAccess\": \"private\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"private\",\n    \"defaultProjectAccess\": \"view\",\n    \"moveBoardToAccount\": \"not_allowed\",\n    \"restrictAllowedDomains\": \"enabled_with_external_user_access\",\n    \"sharingOnAccount\": \"not_allowed\",\n    \"sharingOnOrganization\": \"allowed_with_editing\",\n    \"sharingViaPublicLink\": \"allowed\"\n  },\n  \"type\": \"team-settings\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4880e4c3-ada5-4538-9f7a-1754958a0b16",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a52128ac-5083-49db-9c8a-d2f7514441d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb973829-2460-461d-b8d4-6149c3da9972",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c44104e4-4ecb-413c-a536-58e139f29309",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2c6d78e-09db-4db5-ba03-92e973f4f650",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a1c5ea4-5770-410b-97ba-b0d011df3b2c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "orgs",
+                    ":org_id",
+                    "teams",
+                    ":team_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The ID of an organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_id",
+                      "description": "(Required) The ID of a team."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"teamAccountDiscoverySettings\": {\n    \"accountDiscovery\": \"<string>\"\n  },\n  \"teamCollaborationSettings\": {\n    \"coOwnerRole\": \"<string>\"\n  },\n  \"teamCopyAccessLevelSettings\": {\n    \"copyAccessLevel\": \"<string>\",\n    \"copyAccessLevelLimitation\": \"<string>\"\n  },\n  \"teamInvitationSettings\": {\n    \"inviteExternalUsers\": \"<string>\",\n    \"whoCanInvite\": \"<string>\"\n  },\n  \"teamSharingPolicySettings\": {\n    \"allowListedDomains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"createAssetAccessLevel\": \"<string>\",\n    \"defaultBoardAccess\": \"<string>\",\n    \"defaultBoardSharingAccess\": \"team_members_with_editing_rights\",\n    \"defaultOrganizationAccess\": \"<string>\",\n    \"defaultProjectAccess\": \"<string>\",\n    \"moveBoardToAccount\": \"<string>\",\n    \"restrictAllowedDomains\": \"<string>\",\n    \"sharingOnAccount\": \"<string>\",\n    \"sharingOnOrganization\": \"<string>\",\n    \"sharingViaPublicLink\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8541f9c1-a0c3-45f1-bd5a-5ec0d69b60a9",
+    "name": "Miro Developer Platform AI Interaction Logs Team Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

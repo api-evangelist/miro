@@ -1,0 +1,1645 @@
+{
+  "item": [
+    {
+      "id": "634da194-c92b-4e68-b211-5b41013243f2",
+      "name": "Boards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7f5bee0-3455-4cde-94ee-6632e049917c",
+          "name": "Create board",
+          "request": {
+            "name": "Create board",
+            "description": {
+              "content": "Creates a board with the specified name and sharing policies.<br/><h4>Note</h4> You can only create up to 3 team boards with the free plan.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4869dcd-7a26-4829-b154-be3dac607a32",
+              "name": "Board created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"Sample board description\",\n  \"id\": \"uXjVOD6LSME=\",\n  \"name\": \"Sample board name\",\n  \"type\": \"board\",\n  \"team\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My Team\",\n    \"picture\": {\n      \"id\": 3074457345618261500,\n      \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n      \"originalUrl\": \"https://miro.com/original-image.jpg\",\n      \"type\": \"picture\"\n    },\n    \"type\": \"team\"\n  },\n  \"project\": {\n    \"id\": \"3088887345710756000\"\n  },\n  \"picture\": {\n    \"id\": 3074457345618261500,\n    \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n    \"originalUrl\": \"https://miro.com/original-image.jpg\",\n    \"type\": \"picture\"\n  },\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"edit\",\n      \"accessPasswordRequired\": false,\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"private\"\n    }\n  },\n  \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\",\n  \"owner\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"currentUserMembership\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"board_member\",\n    \"role\": \"owner\"\n  },\n  \"createdAt\": \"2022-11-28T11:14:39.415Z\",\n  \"createdBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2020-06-17T19:37:20.795Z\",\n  \"modifiedBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=/members?limit=20&offset=0\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3b94875-eb02-4a9e-8e39-9cb29b87f543",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e09b7ca-4aab-4269-b558-c9997fa0755e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a146924-d7b3-4a07-aea3-99701ce25c69",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9179707-dffd-498b-8d83-d9501cc32c8f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f169914-4d5c-4113-aef3-63b17b1b093e",
+          "name": "Get boards",
+          "request": {
+            "name": "Get boards",
+            "description": {
+              "content": "Retrieves a list of boards accessible to the user associated with the provided access token. This endpoint supports filtering and sorting through URL query parameters.\nCustomize the response by specifying `team_id`, `project_id`, or other query parameters. Filtering by `team_id` or `project_id` (or both) returns results instantly. For other filters, allow a few seconds for indexing of newly created boards.\n\nIf you're an Enterprise customer with Company Admin permissions:\n- Enable **Content Admin** permissions to retrieve all boards, including private boards (those not explicitly shared with you). For details, see the [Content Admin Permissions for Company Admins](https://help.miro.com/hc/en-us/articles/360012777280-Content-Admin-permissions-for-Company-Admins).\n- Note that **Private board contents remain inaccessible**. The API allows you to verify their existence but prevents viewing their contents to uphold security best practices. Unauthorized access attempts will return an error.\n<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "team_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "default"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "129f89a4-092c-45e2-8033-3738c985f108",
+              "name": "Board search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "default"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"description\": \"Sample board description\",\n      \"id\": \"uXjVOD6LSME=\",\n      \"name\": \"Sample board name\",\n      \"type\": \"board\",\n      \"createdAt\": \"2016-02-20T06:02:51.066Z\",\n      \"createdBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"currentUserMembership\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"board_member\",\n        \"role\": \"owner\"\n      },\n      \"lastOpenedAt\": \"1956-04-12T00:24:36.996Z\",\n      \"lastOpenedBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"1982-04-28T04:12:25.636Z\",\n      \"modifiedBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"owner\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"picture\": {\n        \"id\": 3074457345618261500,\n        \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n        \"originalUrl\": \"https://miro.com/original-image.jpg\",\n        \"type\": \"picture\"\n      },\n      \"policy\": {\n        \"permissionsPolicy\": {\n          \"collaborationToolsStartAccess\": \"all_editors\",\n          \"copyAccess\": \"anyone\",\n          \"sharingAccess\": \"team_members_with_editing_rights\"\n        },\n        \"sharingPolicy\": {\n          \"access\": \"edit\",\n          \"accessPasswordRequired\": false,\n          \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n          \"organizationAccess\": \"private\",\n          \"teamAccess\": \"comment\"\n        }\n      },\n      \"team\": {\n        \"id\": \"3074457345618265000\",\n        \"name\": \"My Team\",\n        \"picture\": {\n          \"id\": 3074457345618261500,\n          \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n          \"originalUrl\": \"https://miro.com/original-image.jpg\",\n          \"type\": \"picture\"\n        },\n        \"type\": \"team\"\n      },\n      \"project\": {\n        \"id\": \"3088887345710756000\"\n      },\n      \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\"\n    },\n    {\n      \"description\": \"Sample board description\",\n      \"id\": \"uXjVOD6LSME=\",\n      \"name\": \"Sample board name\",\n      \"type\": \"board\",\n      \"createdAt\": \"1956-03-19T22:05:02.094Z\",\n      \"createdBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"currentUserMembership\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"board_member\",\n        \"role\": \"owner\"\n      },\n      \"lastOpenedAt\": \"1977-07-28T16:35:55.042Z\",\n      \"lastOpenedBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"modifiedAt\": \"1963-04-02T05:56:46.386Z\",\n      \"modifiedBy\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"owner\": {\n        \"id\": \"3074457353169356300\",\n        \"name\": \"John Smith\",\n        \"type\": \"user\"\n      },\n      \"picture\": {\n        \"id\": 3074457345618261500,\n        \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n        \"originalUrl\": \"https://miro.com/original-image.jpg\",\n        \"type\": \"picture\"\n      },\n      \"policy\": {\n        \"permissionsPolicy\": {\n          \"collaborationToolsStartAccess\": \"all_editors\",\n          \"copyAccess\": \"anyone\",\n          \"sharingAccess\": \"team_members_with_editing_rights\"\n        },\n        \"sharingPolicy\": {\n          \"access\": \"comment\",\n          \"accessPasswordRequired\": false,\n          \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n          \"organizationAccess\": \"private\",\n          \"teamAccess\": \"private\"\n        }\n      },\n      \"team\": {\n        \"id\": \"3074457345618265000\",\n        \"name\": \"My Team\",\n        \"picture\": {\n          \"id\": 3074457345618261500,\n          \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n          \"originalUrl\": \"https://miro.com/original-image.jpg\",\n          \"type\": \"picture\"\n        },\n        \"type\": \"team\"\n      },\n      \"project\": {\n        \"id\": \"3088887345710756000\"\n      },\n      \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\"\n    }\n  ],\n  \"total\": 1,\n  \"size\": 1,\n  \"offset\": 0,\n  \"limit\": 20,\n  \"links\": {\n    \"first\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==\",\n    \"last\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==\",\n    \"next\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==\",\n    \"prev\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==\"\n  },\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c05aa2a3-50ff-4166-bfc6-8eb43859a77f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "default"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "993993de-7ec0-4b30-a524-6fc628053eb8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "default"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9aa637b5-da56-4590-8f2e-f1a0d629c8dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "default"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c097470-7856-4a52-b356-639ea589f2a9",
+          "name": "Copy board",
+          "request": {
+            "name": "Copy board",
+            "description": {
+              "content": "Creates a copy of an existing board. You can also update the name, description, sharing policy, and permissions policy for the new board in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "copy_from",
+                  "value": "<string>",
+                  "description": "(Required) Unique identifier (ID) of the board that you want to copy."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41172523-0dd2-4679-ad0e-077987006eed",
+              "name": "Board copied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "copy_from",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"Sample board description\",\n  \"id\": \"uXjVOD6LSME=\",\n  \"name\": \"Sample board name\",\n  \"type\": \"board\",\n  \"team\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My Team\",\n    \"picture\": {\n      \"id\": 3074457345618261500,\n      \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n      \"originalUrl\": \"https://miro.com/original-image.jpg\",\n      \"type\": \"picture\"\n    },\n    \"type\": \"team\"\n  },\n  \"picture\": {\n    \"id\": 3074457345618261500,\n    \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n    \"originalUrl\": \"https://miro.com/original-image.jpg\",\n    \"type\": \"picture\"\n  },\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"comment\",\n      \"accessPasswordRequired\": false,\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"edit\"\n    }\n  },\n  \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\",\n  \"owner\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"currentUserMembership\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"board_member\",\n    \"role\": \"commenter\"\n  },\n  \"createdAt\": \"1970-02-20T19:31:45.209Z\",\n  \"createdBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"1983-12-09T09:34:59.305Z\",\n  \"modifiedBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=/members?limit=20&offset=0\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be65fbd-3be7-4cc8-b7a9-c14111d89af3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "copy_from",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d06d15b-40c6-46d5-b44f-005d30d82ddb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "copy_from",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "678d3cfc-1183-48a3-bc6c-05574f141ce0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "copy_from",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45546768-1e04-4930-9617-cb65d5be14cd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "copy_from",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a30f3b6-dff6-4a3c-a60b-2e7dac68bf29",
+          "name": "Get specific board",
+          "request": {
+            "name": "Get specific board",
+            "description": {
+              "content": "Retrieves information about a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 1</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board that you want to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4118b049-b8a7-46a4-b04d-a872ecc8a44f",
+              "name": "Board retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"Sample board description\",\n  \"id\": \"uXjVOD6LSME=\",\n  \"name\": \"Sample board name\",\n  \"type\": \"board\",\n  \"team\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My Team\",\n    \"picture\": {\n      \"id\": 3074457345618261500,\n      \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n      \"originalUrl\": \"https://miro.com/original-image.jpg\",\n      \"type\": \"picture\"\n    },\n    \"type\": \"team\"\n  },\n  \"project\": {\n    \"id\": \"3088887345710756000\"\n  },\n  \"picture\": {\n    \"id\": 3074457345618261500,\n    \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n    \"originalUrl\": \"https://miro.com/original-image.jpg\",\n    \"type\": \"picture\"\n  },\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"edit\",\n      \"accessPasswordRequired\": false,\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"view\"\n    }\n  },\n  \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\",\n  \"owner\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"currentUserMembership\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"board_member\",\n    \"role\": \"editor\"\n  },\n  \"createdAt\": \"1973-11-13T21:22:53.829Z\",\n  \"createdBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"lastOpenedAt\": \"2024-02-01T11:43:16.626Z\",\n  \"lastOpenedBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2004-04-15T14:26:27.775Z\",\n  \"modifiedBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=/members?limit=20&offset=0\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e226113b-2414-40be-b1e6-0308b74119a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c52b1fb3-4ca2-445f-803b-191e1bbc8238",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f74e5c60-bdc5-423d-ac1e-c55c058df208",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to retrieve."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abbfec58-7fc0-479e-ab55-b565e7560b3f",
+          "name": "Update board",
+          "request": {
+            "name": "Update board",
+            "description": {
+              "content": "Updates a specific board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "200d58ff-fbe6-4fe4-9a8e-d3a79463f933",
+              "name": "Board updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"Sample board description\",\n  \"id\": \"uXjVOD6LSME=\",\n  \"name\": \"Sample board name\",\n  \"type\": \"board\",\n  \"team\": {\n    \"id\": \"3074457345618265000\",\n    \"name\": \"My Team\",\n    \"picture\": {\n      \"id\": 3074457345618261500,\n      \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n      \"originalUrl\": \"https://miro.com/original-image.jpg\",\n      \"type\": \"picture\"\n    },\n    \"type\": \"team\"\n  },\n  \"project\": {\n    \"id\": \"3088887345710756000\"\n  },\n  \"picture\": {\n    \"id\": 3074457345618261500,\n    \"imageURL\": \"https://miro.images/5252525252/125252/266/144/1/size210.jpg\",\n    \"originalUrl\": \"https://miro.com/original-image.jpg\",\n    \"type\": \"picture\"\n  },\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"edit\",\n      \"accessPasswordRequired\": false,\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"private\"\n    }\n  },\n  \"viewLink\": \"https://miro.com/app/board/uXjVOD6LSME=\",\n  \"owner\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"currentUserMembership\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"board_member\",\n    \"role\": \"owner\"\n  },\n  \"createdAt\": \"2022-11-28T11:14:39.415Z\",\n  \"createdBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"modifiedAt\": \"2020-06-17T19:37:20.795Z\",\n  \"modifiedBy\": {\n    \"id\": \"3074457353169356300\",\n    \"name\": \"John Smith\",\n    \"type\": \"user\"\n  },\n  \"links\": {\n    \"related\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=/members?limit=20&offset=0\",\n    \"self\": \"http://api.miro.com/v2/boards/o9J_k1JKioQ=\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4146924-28f2-4fde-874c-d00779f3d238",
+              "name": "The board update operation has been accepted and will be processed asynchronously. If the operation exceeds the expected duration, a response will be returned.\nTo monitor the status of the board update, use the <a target=\"blank\" href=\"/reference/get-specific- board\">Get specific board</a> API. This API allows you to verify whether the board has been successfully updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b755e9ab-0823-4661-923b-b90b2e0ecd3a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b726459d-03b4-46d8-b307-b512f4cc5de0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd55ab31-c598-4448-a842-8f91cb0ccc91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07e5ec51-cae5-473d-9b7a-49746b82535d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to update."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"Untitled\",\n  \"policy\": {\n    \"permissionsPolicy\": {\n      \"collaborationToolsStartAccess\": \"all_editors\",\n      \"copyAccess\": \"anyone\",\n      \"sharingAccess\": \"team_members_with_editing_rights\"\n    },\n    \"sharingPolicy\": {\n      \"access\": \"private\",\n      \"inviteToAccountAndBoardLinkAccess\": \"no_access\",\n      \"organizationAccess\": \"private\",\n      \"teamAccess\": \"<string>\"\n    }\n  },\n  \"teamId\": \"<string>\",\n  \"projectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfe9a096-acaa-4dd6-9bee-65e0ec17084c",
+          "name": "Delete board",
+          "request": {
+            "name": "Delete board",
+            "description": {
+              "content": "Deletes a board. Deleted boards go to Trash (on paid plans) and can be restored via UI within 90 days after deletion.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "boards",
+                ":board_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "board_id",
+                  "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0c7ec9e-cb12-4635-8863-be0d3edb9814",
+              "name": "Board deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52433300-555e-4d2c-8d6b-0581c5b0d358",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3acf52d3-b9c0-4d25-8934-9179ae9f5d15",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d59cab8c-04b2-4e90-bb44-ceb547d98a0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0da63b7d-a8b3-4044-8661-a67c0608c892",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "boards",
+                    ":board_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "board_id",
+                      "description": "(Required) Unique identifier (ID) of the board that you want to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.miro.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0857c423-1b5c-4ae8-b120-98a05d618246",
+    "name": "Miro Developer Platform AI Interaction Logs Boards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<img src=\"https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n\" width=\"1685\" height=\"593\">\n\n### Miro Developer Platform concepts\n\n- New to the Miro Developer Platform? Interested in learning more about platform concepts??\n[Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.\n\n\n### Getting started with the Miro REST API\n\n- [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.\n- [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.\n\n\n### Miro REST API tutorials\n\nCheck out our how-to articles with step-by-step instructions and code examples so you can:\n\n- [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)\n\n\n### Miro App Examples\n\nClone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro's Developer Platform 2.0.\n",
+      "type": "text/plain"
+    }
+  }
+}

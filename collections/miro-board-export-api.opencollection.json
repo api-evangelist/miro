@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Board Export API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Board Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get board export jobs list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the board export jobs that you want to retrieve, such as JOB_STATUS_CREATED, JOB_STATUS_IN_PROGRESS, JOB_STATUS_CANCELLED or JOB_STATUS_FINISHED."
+              },
+              {
+                "name": "creatorId",
+                "value": "1234567890,9876543210",
+                "type": "query",
+                "description": "Unique identifier of the board export job creator."
+              },
+              {
+                "name": "cursor",
+                "value": "87a1a375-cee6-43f2-8049-5c9b5b6b9069",
+                "type": "query",
+                "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of jobs in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of board export jobs based on the filters provided in the request.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you h"
+        },
+        {
+          "info": {
+            "name": "Create board export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "request_id",
+                "value": "92343229-c532-446d-b8cb-2f155bedb807",
+                "type": "query",
+                "description": "Unique identifier of the board export job."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an export job for one or more boards.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin and eDis"
+        },
+        {
+          "info": {
+            "name": "Get board export job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs/:job_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "job_id",
+                "value": "92343229-c532-446d-b8cb-2f155bedb807",
+                "type": "path",
+                "description": "Unique identifier of the board export job."
+              }
+            ]
+          },
+          "docs": "Retrieves the status of the board export job.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin and eDis"
+        },
+        {
+          "info": {
+            "name": "Get results for board export job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs/:job_id/results",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "job_id",
+                "value": "92343229-c532-446d-b8cb-2f155bedb807",
+                "type": "path",
+                "description": "Unique identifier of the job."
+              }
+            ]
+          },
+          "docs": "Retrieves the result of the board export job. The response provides more information about the board export job, such as the S3 link to the files created.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-pla"
+        },
+        {
+          "info": {
+            "name": "Update board export job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs/:job_id/status",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "job_id",
+                "value": "92343229-c532-446d-b8cb-2f155bedb807",
+                "type": "path",
+                "description": "Unique identifier of the board export job."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the status of the board export job.<br/>Currently, only the cancellation of an ongoing export job is supported.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You c"
+        },
+        {
+          "info": {
+            "name": "Get board export job tasks list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs/:job_id/tasks",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "job_id",
+                "value": "08ac2d88-c3a7-46a1-923d-b5fb88ff3fe2",
+                "type": "path",
+                "description": "Unique identifier of the board export job."
+              },
+              {
+                "name": "status",
+                "value": "TASK_STATUS_CREATED",
+                "type": "query",
+                "description": "Filters the list of board export tasks by their status. Accepts an array of statuses such as TASK_STATUS_CREATED, TASK_STATUS_CANCELLED, TASK_STATUS_SCHEDULED, TASK_STATUS_SUCCESS or TASK_STATUS_ERROR."
+              },
+              {
+                "name": "cursor",
+                "value": "87a1a375-cee6-43f2-8049-5c9b5b6b9069",
+                "type": "query",
+                "description": "A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, set the cursor parameter equal to the cursor value you received in the response of the previous request.\n"
+              },
+              {
+                "name": "limit",
+                "value": "50",
+                "type": "query",
+                "description": "The maximum number of results to return per call. If the number of tasks in the response is greater than the limit specified, the response returns the cursor parameter with a value.\n"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of tasks for the board export job.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin "
+        },
+        {
+          "info": {
+            "name": "Create task export link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/orgs/:org_id/boards/export/jobs/:job_id/tasks/:task_id/export-link",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "3074457345821141000",
+                "type": "path",
+                "description": "Unique identifier of the organization."
+              },
+              {
+                "name": "job_id",
+                "value": "08ac2d88-c3a7-46a1-923d-b5fb88ff3fe2",
+                "type": "path",
+                "description": "Unique identifier of the board export job."
+              },
+              {
+                "name": "task_id",
+                "value": "9394a815-86ea-418c-8bfc-71772fdb692d",
+                "type": "path",
+                "description": "Unique identifier of the board export task."
+              }
+            ]
+          },
+          "docs": "Creates a link to download the results of a board export task.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:export</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href=\"/reference/api-reference#enterprise-plan\">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Compa"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

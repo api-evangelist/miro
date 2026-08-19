@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs groups API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all groups on a board",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return at one time, default is 10, maximum is 50."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all the groups and the items of the respective groups within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated  method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous "
+        },
+        {
+          "info": {
+            "name": "Create group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a group of items on a board. The group is created with the items that are passed in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Get items of a group by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups/items",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return at one time, default is 10, maximum is 50."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_item_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the group item to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns a list of items that are a part of any group, within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<"
+        },
+        {
+          "info": {
+            "name": "Get a group by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups/:group_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the group."
+              }
+            ]
+          },
+          "docs": "Returns a list of items in a specific group. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a>\n<br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a> per item ID"
+        },
+        {
+          "info": {
+            "name": "Updates a group with new items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups/:group_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint updates an existing group by replacing it entirely with a new group.  When the update is made, the original group is completely replaced, and a new group ID is assigned. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 2</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Ungroup items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups/:group_id",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the group."
+              },
+              {
+                "name": "delete_items",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether the items should be removed. By default, false."
+              }
+            ]
+          },
+          "docs": "Ungroups items from a group.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        },
+        {
+          "info": {
+            "name": "Deletes the group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.miro.com/v2/boards/:board_id/groups/:group_id?",
+            "params": [
+              {
+                "name": "board_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the board."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (ID) of the group."
+              },
+              {
+                "name": "delete_items",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether the items should be removed. Set to `true` to delete items in the group."
+              }
+            ]
+          },
+          "docs": "Deletes a group from a board. All the items in the group are deleted along with the group.  <b>Note - this endpoint will delete items which are locked as well. </b> <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href=\"/reference/rate-limiting#rate-limit-tiers\">Level 3</a><br/>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

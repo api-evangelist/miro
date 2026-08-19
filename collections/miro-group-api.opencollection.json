@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Miro Developer Platform AI Interaction Logs Group API",
+    "version": "v2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Groups",
+            "params": [
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to fetch attributes within complex attributes, for Example: members.display."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "You can request a subset of resources by specifying the filter query parameter containing a filter expression. Attribute names and attribute operators used in filters are not case sensitive. The filter parameter must contain at least one valid expression. Each expression must contain an attribute name followed by an attribute operator and an optional value. <br>eq = equal<br> ne = not equal<br> co = contains<br> sw = starts with<br> ew = ends with<br> pr = preset (has value)<br> gt = greater than<br> ge = greater than or equal to<br> lt = less than<br> le = less than or equal to<br> and = Logical \"and\"<br> or = Logical \"or\"<br> not = \"Not\" function<br> () = Precedence grouping <br>The value must be passed within parenthesis. <br><br>For Example: displayName eq \"Product Team\" will fetch information related to team matching the display name \"Product Team\". <br>Note</b>: Filtering on complex attributes is not supported"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "Use startIndex in combination with count query parameters to receive paginated results. <br><br> start index is 1-based. <br><br> Example: startIndex=1"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the maximum number of query results per page. <br><br> Use count in combination with startIndex query parameters to receive paginated results. <br><br> The count query parameter is set to 100 by default and the maximum value allowed for this parameter is 1000. <br><br> Example: count=12"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the attribute whose value will be used to order the response. Example sortBy=displayName"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Defines the order in which the 'sortBy' parameter is applied. Example: sortOrder=ascending"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of groups (teams) in the organization.<br><br> Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched."
+        },
+        {
+          "info": {
+            "name": "Get group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.miro.com/Groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A server-assigned, unique identifier for this Group (team)."
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> Note</b>: It is also possible to retrieve attributes within complex attributes. For example: members.display"
+              }
+            ]
+          },
+          "docs": "Retrieves a single Group resource.<br><b> Note</b>: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched."
+        },
+        {
+          "info": {
+            "name": "Patch group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.miro.com/Groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Group (Team) ID. A server-assigned, unique identifier for this Group (team)."
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of attribute names to return in the response. <br><br> Example attributes: id,displayName <br> It is also possible to fetch attributes within complex attributes, for Example: members.display"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing group resource, i.e. a team, overwriting values for specified attributes. Patch operation for group can be used to add, remove, or replace team members and to update the display name of the group (team). <br><br> To add a user to the group (team), use add operation. <br> To remove a user from a group (team), use remove operation. <br> To update a user resource, use the replace operation. <br> The last team admin cannot be removed from the team. <br><br> Note: Attributes that "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
