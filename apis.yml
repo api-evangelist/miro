@@ -26,6 +26,12 @@ tags:
   - Whiteboard
   - Visual Collaboration
   - Diagramming
+  - Software-as-a-Service
+tags_raw:
+  - Productivity
+  - Whiteboard
+  - Visual Collaboration
+  - Diagramming
   - SaaS
 created: '2026-05-08'
 modified: '2026-05-19'
@@ -462,6 +468,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Bulk Operations
+  tags_raw:
   - Bulk operations
   properties:
   - type: OpenAPI
@@ -729,6 +737,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Documents
+  tags_raw:
   - documents
   properties:
   - type: OpenAPI
@@ -844,6 +854,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Frames
+  tags_raw:
   - frames
   properties:
   - type: OpenAPI
@@ -920,6 +932,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -996,6 +1010,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Image
+  tags_raw:
   - images
   properties:
   - type: OpenAPI
@@ -1034,6 +1050,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -1072,6 +1090,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Legal Holds
+  tags_raw:
   - Legal holds
   properties:
   - type: OpenAPI
@@ -1149,6 +1169,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -1225,6 +1247,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1339,6 +1363,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -1570,6 +1596,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -1722,6 +1750,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -1798,6 +1828,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Tokens
+  tags_raw:
   - tokens
   properties:
   - type: OpenAPI
@@ -1950,6 +1982,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - User Groups
+  tags_raw:
   - User groups
   properties:
   - type: OpenAPI
