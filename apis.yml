@@ -7,6 +7,18 @@ description: >-
   The Miro REST API exposes boards, board items (sticky notes, cards, shapes, frames, images, embeds, etc.), connectors,
   tags, mind maps, members, organizations, teams, webhooks, audit logs, and SCIM provisioning. Miro also offers a Web
   SDK for in-board apps.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -2017,6 +2029,9 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 common:
+  - type: CapabilityMap
+    url: capabilities/miro-capability-edges.yml
+    name: Miro Business Capability Map
   - type: AgenticAccess
     url: agentic-access/miro-agentic-access.yml
   - type: TrustCenter
