@@ -480,7 +480,7 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
-  - Bulk Operations
+  - Bulk operations
   tags_raw:
   - Bulk operations
   properties:
@@ -866,7 +866,7 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
-  - Frames
+  - frames
   tags_raw:
   - frames
   properties:
@@ -1102,7 +1102,7 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
-  - Legal Holds
+  - Legal holds
   tags_raw:
   - Legal holds
   properties:
@@ -1994,7 +1994,7 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
-  - User Groups
+  - User groups
   tags_raw:
   - User groups
   properties:
