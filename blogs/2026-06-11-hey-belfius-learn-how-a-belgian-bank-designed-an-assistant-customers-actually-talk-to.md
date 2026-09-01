@@ -1,5 +1,5 @@
 ---
-title: ""Hey Belfius": Learn how a Belgian bank designed an assistant customers actually talk to"
+title: "\"Hey Belfius\": Learn how a Belgian bank designed an assistant customers actually talk to"
 url: "https://miro.com/blog/belfius-canvas-26/"
 date: "2026-06-11"
 author: ""

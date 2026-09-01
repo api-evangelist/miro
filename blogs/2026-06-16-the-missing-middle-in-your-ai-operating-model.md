@@ -1,5 +1,5 @@
 ---
-title: "The "missing middle" in your AI operating model"
+title: "The \"missing middle\" in your AI operating model"
 url: "https://miro.com/blog/ai-operating-model-missing-middle/"
 date: "2026-06-16"
 author: ""
