@@ -1175,46 +1175,6 @@ apis:
     url: https://developers.miro.com/docs/build-your-first-hello-world-app
   - type: GitHub
     url: https://github.com/miroapp
-- aid: miro:miro-oauth-api
-  name: Miro OAuth API
-  description: The OAuth API from Miro — 1 operation(s) for oauth.
-  humanURL: https://developers.miro.com/reference/boards
-  baseURL: https://api.miro.com/v2
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/miro-oauth-api-openapi.yml
-  - type: APIReference
-    url: https://developers.miro.com/reference/boards
-  - type: Documentation
-    url: https://developers.miro.com/reference/overview
-  - type: APIReference
-    url: https://developers.miro.com/reference/items
-  - type: APIReference
-    url: https://developers.miro.com/reference/connectors
-  - type: APIReference
-    url: https://developers.miro.com/reference/tags
-  - type: APIReference
-    url: https://developers.miro.com/reference/mindmap-nodes
-  - type: APIReference
-    url: https://developers.miro.com/reference/board-members
-  - type: APIReference
-    url: https://developers.miro.com/reference/webhooks
-  - type: APIReference
-    url: https://developers.miro.com/reference/enterprise-organization
-  - type: APIReference
-    url: https://developers.miro.com/reference/enterprise-teams
-  - type: APIReference
-    url: https://developers.miro.com/reference/audit-logs
-  - type: APIReference
-    url: https://developers.miro.com/reference/scim-api
-  - type: Documentation
-    url: https://developers.miro.com/docs/build-your-first-hello-world-app
-  - type: GitHub
-    url: https://github.com/miroapp
 - aid: miro:miro-organization-members-api
   name: Miro Organization Members API
   description: The Organization Members API from Miro — 2 operation(s) for organization members.
@@ -2000,6 +1960,44 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/miro-user-groups-api-openapi.yml
+  - type: APIReference
+    url: https://developers.miro.com/reference/boards
+  - type: Documentation
+    url: https://developers.miro.com/reference/overview
+  - type: APIReference
+    url: https://developers.miro.com/reference/items
+  - type: APIReference
+    url: https://developers.miro.com/reference/connectors
+  - type: APIReference
+    url: https://developers.miro.com/reference/tags
+  - type: APIReference
+    url: https://developers.miro.com/reference/mindmap-nodes
+  - type: APIReference
+    url: https://developers.miro.com/reference/board-members
+  - type: APIReference
+    url: https://developers.miro.com/reference/webhooks
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-organization
+  - type: APIReference
+    url: https://developers.miro.com/reference/enterprise-teams
+  - type: APIReference
+    url: https://developers.miro.com/reference/audit-logs
+  - type: APIReference
+    url: https://developers.miro.com/reference/scim-api
+  - type: Documentation
+    url: https://developers.miro.com/docs/build-your-first-hello-world-app
+  - type: GitHub
+    url: https://github.com/miroapp
+- aid: miro:miro-oauth-api
+  name: Miro O Auth API
+  description: The OAuth API from Miro — 1 operation(s) for oauth.
+  humanURL: https://developers.miro.com/reference/boards
+  baseURL: https://api.miro.com/v2
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/miro-oauth-api-openapi.yml
   - type: APIReference
     url: https://developers.miro.com/reference/boards
   - type: Documentation
