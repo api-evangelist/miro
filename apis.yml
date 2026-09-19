@@ -404,6 +404,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Board Members
+  tags_raw:
   - Board members
   properties:
   - type: OpenAPI
@@ -1102,7 +1104,7 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
-  - Legal Holds
+  - Legal Hold
   tags_raw:
   - Legal holds
   properties:
@@ -1994,6 +1996,8 @@ apis:
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
