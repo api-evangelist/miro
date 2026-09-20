@@ -1,69 +1,45 @@
-specification: API Commons Rate Limits
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
-provider: Miro
-providerId: miro
-created: '2026-05-08'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-08, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-08'
-reconciled: true
-tags:
-- Productivity
-- Whiteboard
-- Visual Collaboration
-- Diagramming
-- SaaS
-- Rate Limiting
-- Quotas
-- Throttling
-description: Miro REST API enforces per-OAuth-app rate limits. Free apps share a default
-  ceiling; certified apps and verified apps receive higher limits. 429 responses include a
-  Retry-After header. SCIM and audit-log endpoints have their own limits scoped to the
-  enterprise organization.
-notes: Miro does not publish a single global per-second number; limits are tiered by app
-  certification status. Always honor Retry-After. Use the per-board item batching where
-  available to reduce request volume.
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://developers.miro.com/reference/rate-limiting
 sources:
-- https://developers.miro.com/reference/ratelimiting
-- https://developers.miro.com/reference/overview
-responseCodes:
-  throttled: 429
+- https://developers.miro.com/reference/rate-limiting
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: true
+note: Rate limiting is per-user per-application, measured in credits; table lists requests per minute
+  by weight level. Enterprise plan offers higher unspecified limits.
+limit_count: 5
 limits:
-- name: Default OAuth App
-  scope: oauth_app
-  metric: request
-  limit: published per-app
-  timeFrame: per-minute
-  notes: Default per-app rate ceiling on the REST API; raise by getting the app verified
-    or certified.
-- name: Verified/Certified App
-  scope: oauth_app
-  metric: request
-  limit: published per-app
-  timeFrame: per-minute
-  notes: Verified or certified apps in the Miro Marketplace receive higher per-minute
-    rate limits.
-- name: SCIM
-  scope: organization
-  metric: request
-  limit: published per-org
-  notes: Enterprise SCIM endpoint has its own per-org limit.
-- name: Audit Logs
-  scope: organization
-  metric: request
-  limit: published per-org
-  notes: Audit log queries are limited per organization; paginate with cursor and avoid
-    re-querying.
-policies:
-- name: Backoff Strategy
-  description: Exponential backoff with jitter; honor Retry-After on 429.
-- name: Use Webhooks for Change Detection
-  description: Subscribe to board webhooks rather than polling list endpoints.
-- name: Get App Certified
-  description: Submit your app for verification/certification to raise rate ceilings if
-    you operate at scale.
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+- name: Global credit limit
+  limit_text: 100,000 credits per minute
+  limit: 100000
+  window: minute
+  scope: user
+- name: Level 1 methods
+  limit_text: Level 1 50 credits 2000
+  limit: 2000
+  window: minute
+  scope: user
+- name: Level 2 methods
+  limit_text: Level 2 100 credits 1000
+  limit: 1000
+  window: minute
+  scope: user
+- name: Level 3 methods
+  limit_text: Level 3 500 credits 200
+  limit: 200
+  window: minute
+  scope: user
+- name: Level 4 methods
+  limit_text: Level 4 2000 credits 50
+  limit: 50
+  window: minute
+  scope: user
+headers:
+- X-RateLimit-Limit
+- X-RateLimit-Remaining
+- X-RateLimit-Reset
+exceeded_status: 429
