@@ -10,6 +10,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: Starter
 published: true
 note: Per-seat SaaS pricing page with monthly/yearly toggle (yearly saves 20%); Enterprise is custom priced.
   AI credits and MCP call limits are stated per plan.
