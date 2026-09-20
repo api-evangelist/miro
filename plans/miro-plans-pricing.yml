@@ -1,187 +1,55 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Miro
-providerId: miro
-created: '2026-05-08'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-08, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-08'
-reconciled: true
-tags:
-- Productivity
-- Whiteboard
-- Visual Collaboration
-- Diagramming
-- SaaS
-- Plans
-description: Miro plans reconciled against the public Miro pricing page. Per-member
-  monthly subscription with significant feature gating across Free, Starter, Business,
-  and Enterprise tiers. Developer access (REST API, Web SDK) is available cross-tier;
-  SCIM, audit logs, and enterprise org/team APIs require Enterprise.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://miro.com/pricing/
 sources:
 - https://miro.com/pricing/
-- https://developers.miro.com/reference/overview
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: Per-seat SaaS pricing page with monthly/yearly toggle (yearly saves 20%); Enterprise is custom priced.
+  AI credits and MCP call limits are stated per plan.
+plan_count: 4
+currency: USD
 plans:
-- id: miro-free
-  name: Free
-  type: free
-  description: Free tier for individuals to try the product.
-  entries:
-  - label: Per-Member
-    name: seat
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: Editable Boards
-    name: editable_boards
-    type: flat
-    metric: board
-    limit: 3
-    timeFrame: usage
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  - label: AI Credits
-    name: ai_credits
-    type: usage
-    metric: credit
-    limit: 10
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: false
-  elements:
-  - name: One Workspace
-  - name: 5,000+ Templates
-  - name: 160+ Apps and Integrations
-  - name: 5 Talktracks
-- id: miro-starter
-  name: Starter
-  type: paid
-  description: Per-member plan unlocking unlimited boards and visitors.
-  entries:
-  - label: Per-Member (Annual)
-    name: seat_annual
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 8
-    userMultiplied: true
-  - label: Per-Member (Monthly)
-    name: seat_monthly
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 10
-    userMultiplied: true
-  - label: AI Credits per Member
-    name: ai_credits
-    type: usage
-    metric: credit
-    limit: 25
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: true
-  elements:
-  - name: Unlimited Boards
-  - name: Unlimited Workspaces
-  - name: Unlimited Visitors
-  - name: Facilitation Tools (Timer, Voting, Video Calls)
-  - name: Private Boards
-  - name: Unlimited Talktracks
-- id: miro-business
-  name: Business
-  type: paid
-  description: For larger teams that need diagramming, advanced data, AI workflows, and
-    multiple workspaces.
-  entries:
-  - label: Per-Member (Annual)
-    name: seat_annual
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 20
-    userMultiplied: true
-  - label: Per-Member (Monthly)
-    name: seat_monthly
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 25
-    userMultiplied: true
-  - label: AI Credits per Member
-    name: ai_credits
-    type: usage
-    metric: credit
-    limit: 50
-    timeFrame: monthly
-    geo: global
-    unit: 1
-    price: 0
-    userMultiplied: true
-  elements:
-  - name: Multiple Workspaces with Unlimited Boards
-  - name: Unlimited Guests
-  - name: 3,900+ Diagramming Shapes and Icons
-  - name: Advanced Data Tables
-  - name: AI Workflows (Sidekicks and Flows)
-  - name: Jira and Azure DevOps Integrations
-- id: miro-enterprise
-  name: Enterprise
-  type: enterprise
-  description: For large organizations. Custom pricing; minimum 30 members.
-  entries:
-  - label: Per-Member Subscription
-    name: seat
-    type: flat
-    metric: member
-    limit: -1
-    timeFrame: annual
-    geo: global
-    unit: 1
-    price: contact sales
-    userMultiplied: true
-  - label: Minimum Members
-    name: min_members
-    type: flat
-    metric: member
-    limit: 30
-    timeFrame: annual
-    geo: global
-    unit: 1
-    price: contact sales
-    userMultiplied: false
-  elements:
-  - name: All Business Features
-  - name: Flexible License Program
-  - name: SCIM Automation
-  - name: Enterprise-Grade Security
-  - name: Regional Data Hosting
-  - name: Custom Miro AI Credits
-  - name: Premium 24/7 Support
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+- name: Free
+  price_text: $ 0
+  price: 0
+  currency: USD
+  period: month
+  unit: per member
+  included_quota: 3 editable boards, 100 MCP calls per day, Limited trial AI credits (10 credits per month
+    per FAQ)
+- name: Starter
+  price_text: $ 8 /month per member, billed yearly
+  price: 8
+  currency: USD
+  period: month
+  unit: per member
+  included_quota: 25 AI credits/member/month, 500 MCP calls per day
+  overage: Additional credit packages are available for Starter, Business, and Enterprise
+- name: Business
+  price_text: $ 20 /month per member, billed yearly
+  price: 20
+  currency: USD
+  period: month
+  unit: per member
+  included_quota: 50 AI credits/member/month, 2,000 MCP calls per day
+  overage: Additional credit packages are available for Starter, Business, and Enterprise
+- name: Enterprise
+  price_text: Custom pricing—from 30 members
+  price: 30
+  period: none
+  unit: per member
+  included_quota: Starts from 2500 credits per month, 10,000 MCP calls per day
+  overage: Additional credit packages are available for Starter, Business, and Enterprise
+rate_limit_statements:
+- 500 MCP calls per day
+- 2,000 MCP calls per day
+- 10,000 MCP calls per day
+- 100 MCP calls
+- Engage activities Not included Not included Up to 50 participants Up to 50 participants
