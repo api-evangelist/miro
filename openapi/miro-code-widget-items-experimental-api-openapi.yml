@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Code widget items (experimental) API
+  title: Miro Developer Platform Code widget items (experimental) API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -49,7 +16,17 @@ paths:
       description: 'Retrieves a list of code widget items for a specific board.
 
 
-        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>'
+        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 2'
       operationId: get-code-widget-items
       parameters:
       - in: query
@@ -157,7 +134,17 @@ paths:
       tags:
       - Code widget items (experimental)
     post:
-      description: Adds a code widget item to a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Adds a code widget item to a board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: create-code-widget-item
       parameters:
       - description: Unique identifier (ID) of the board where you want to create the item.
@@ -259,7 +246,17 @@ paths:
       - Code widget items (experimental)
   /v2-experimental/boards/{board_id}/code_widgets/{item_id}:
     get:
-      description: Retrieves information for a specific code widget item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves information for a specific code widget item on a board.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-code-widget-item
       parameters:
       - description: Unique identifier (ID) of the board from which you want to retrieve a specific item.
@@ -360,7 +357,17 @@ paths:
       tags:
       - Code widget items (experimental)
     patch:
-      description: Updates a code widget item on a board based on the data properties provided in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Updates a code widget item on a board based on the data properties provided in the request body.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: update-code-widget-item
       parameters:
       - description: Unique identifier (ID) of the board where you want to update the item.
@@ -467,7 +474,17 @@ paths:
       tags:
       - Code widget items (experimental)
     delete:
-      description: Deletes a code widget item from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      description: 'Deletes a code widget item from the board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 3'
       operationId: delete-code-widget-item
       parameters:
       - description: Unique identifier (ID) of the board from which you want to delete the item.
@@ -569,7 +586,17 @@ paths:
       - Code widget items (experimental)
   /v2-experimental/boards/{board_id}/code_widgets/{item_id}/position:
     patch:
-      description: Updates the position of a code widget item on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Updates the position of a code widget item on a board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: move-code-widget-item
       parameters:
       - description: Unique identifier (ID) of the board where you want to move the item.
@@ -677,18 +704,24 @@ paths:
       - Code widget items (experimental)
 components:
   schemas:
-    ModifiedBy:
+    Geometry:
       type: object
-      description: Contains information about the user who last modified the item.
+      description: Contains geometrical information about the item, such as its width or height.
       properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     CodeWidgetCreateRequest:
       type: object
       properties:
@@ -700,62 +733,30 @@ components:
           $ref: '#/components/schemas/Geometry'
         parent:
           $ref: '#/components/schemas/Parent'
-    Parent:
+    PositionChange:
       type: object
-      description: Contains information about the parent frame for the item.
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    CodeWidgetUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CodeWidgetData'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-    CreatedBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
     Position:
       type: object
       description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
@@ -791,66 +792,18 @@ components:
 
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           example: 100
-    PositionChange:
+    CreatedBy:
       type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
-      properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    CodeWidgetItem:
-      type: object
+      description: Contains information about the user who created the item.
       properties:
         id:
           type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        data:
-          $ref: '#/components/schemas/CodeWidgetData'
-        position:
-          $ref: '#/components/schemas/Position'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/CreatedBy'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/ModifiedBy'
-        links:
-          $ref: '#/components/schemas/WidgetLinks'
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
         type:
           type: string
-          description: Type of item that is returned.
-          example: code
-      required:
-      - id
-      - type
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     WidgetLinks:
       type: object
       description: Contains applicable links for the item.
@@ -891,24 +844,6 @@ components:
           example: 10
         links:
           $ref: '#/components/schemas/PageLinks'
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
     CodeWidgetData:
       type: object
       description: Contains the data properties of a code widget item, such as the code content, programming language, and display settings.
@@ -931,6 +866,98 @@ components:
           description: The title of the code widget.
           maxLength: 100
           example: My Code Snippet
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    CodeWidgetItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/CodeWidgetData'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/CreatedBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/ModifiedBy'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: code
+      required:
+      - id
+      - type
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    ModifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    CodeWidgetUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CodeWidgetData'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

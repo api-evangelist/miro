@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Projects API
+  title: Miro Developer Platform Projects API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -46,7 +13,29 @@ tags:
 paths:
   /v2/orgs/{org_id}/teams/{team_id}/projects:
     post:
-      description: Projects are essentially folders of boards with the option to manage user access for a smaller group of people within a team. Projects are here to help you organize your boards and make them easier to find and share. In other words, a project is a group of boards that you can share with your teammates all at once. For more information, see our <a href="https://help.miro.com/hc/en-us/articles/360018262033-Projects" target=_blank>Help Center page on Projects</a>. <br><br>This API creates a new project in an existing team of an organization.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Projects are essentially folders of boards with the option to manage user access for a smaller group of people within a team. Projects are here to help you organize your boards and make them easier to find and share. In other words, a project is a group of boards that you can share with your teammates all at once. For more information, see our Help Center page on Projects.
+
+
+        This API creates a new project in an existing team of an organization.
+
+        Note
+
+        Projects have been renamed to Spaces, and the terms can be used interchangeably.
+
+        Required scope
+
+        projects:write
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-create-project
       parameters:
       - name: org_id
@@ -116,7 +105,26 @@ paths:
       tags:
       - Projects
     get:
-      description: Retrieves the list of projects in an existing team of an organization. You can retrieve all projects, including all private projects (projects that haven't been specifically shared with you) by enabling Content Admin permissions. To enable Content Admin permissions, see [Content Admin permissions for Company Admins](https://help.miro.com/hc/en-us/articles/360012777280-Content-Admin-permissions-for-Company-Admins).<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves the list of projects in an existing team of an organization. You can retrieve all projects, including all private projects (projects that haven''t been specifically shared with you) by enabling Content Admin permissions. To enable Content Admin permissions, see Content Admin permissions for Company Admins.
+
+        Note
+
+        Projects have been renamed to Spaces, and the terms can be used interchangeably.
+
+        Required scope
+
+        projects:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-projects
       parameters:
       - name: org_id
@@ -191,7 +199,26 @@ paths:
       - Projects
   /v2/orgs/{org_id}/teams/{team_id}/projects/{project_id}:
     get:
-      description: Retrieves project information, such as a name for an existing project.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves project information, such as a name for an existing project.
+
+        Note
+
+        Projects have been renamed to Spaces, and the terms can be used interchangeably.
+
+        Required scope
+
+        projects:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-project
       parameters:
       - name: org_id
@@ -256,7 +283,26 @@ paths:
       tags:
       - Projects
     patch:
-      description: Update information about a project, such as the project name.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Update information about a project, such as the project name.
+
+        Note
+
+        Projects have been renamed to Spaces, and the terms can be used interchangeably.
+
+        Required scope
+
+        projects:write
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-update-project
       parameters:
       - name: org_id
@@ -333,7 +379,26 @@ paths:
       tags:
       - Projects
     delete:
-      description: Deletes a project. After a project is deleted, all boards and users that belong to the project remain in the team.<h4>Note</h4> <em>Projects</em> have been renamed to <em>Spaces</em>, and the terms can be used interchangeably.<h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>projects:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Deletes a project. After a project is deleted, all boards and users that belong to the project remain in the team.
+
+        Note
+
+        Projects have been renamed to Spaces, and the terms can be used interchangeably.
+
+        Required scope
+
+        projects:write
+
+
+        Rate limiting
+
+        Level 4
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-delete-project
       parameters:
       - name: org_id
@@ -401,28 +466,34 @@ paths:
       - Projects
 components:
   schemas:
-    CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Project name.
-          maxLength: 60
-          minLength: 1
-          example: My project
-    Error403:
+    Error404:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 403
+          default: 404
         code:
           type: string
           description: Description of the status code.
-          example: forbiddenAccess
+          example: notFound
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error429:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 429
+        code:
+          type: string
+          description: Description of the status code.
+          example: tooManyRequests
         message:
           type: string
           description: Explanation of the error.
@@ -448,51 +519,28 @@ components:
           type: string
           description: Type of the object returned.
           default: project
-    Error429:
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: New name of the project.
+          maxLength: 60
+          minLength: 1
+          example: My project
+    Error403:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 429
+          default: 403
         code:
           type: string
           description: Description of the status code.
-          example: tooManyRequests
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error400:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 400
-        code:
-          type: string
-          description: Description of the status code.
-          default: invalidParameters
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error409:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 409
-        code:
-          type: string
-          description: Description of the status code.
-          example: conflict
+          example: forbiddenAccess
         message:
           type: string
           description: Explanation of the error.
@@ -535,17 +583,40 @@ components:
           type: string
           description: Type of the object returned.
           default: cursor-list
-    UpdateProjectRequest:
+    Error400:
       type: object
-      required:
-      - name
       properties:
-        name:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
           type: string
-          description: New name of the project.
-          maxLength: 60
-          minLength: 1
-          example: My project
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error409:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 409
+        code:
+          type: string
+          description: Description of the status code.
+          example: conflict
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
     Error401:
       type: object
       properties:
@@ -563,23 +634,17 @@ components:
         type:
           type: string
           default: error
-    Error404:
+    CreateProjectRequest:
       type: object
+      required:
+      - name
       properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 404
-        code:
+        name:
           type: string
-          description: Description of the status code.
-          example: notFound
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
+          description: Project name.
+          maxLength: 60
+          minLength: 1
+          example: My project
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

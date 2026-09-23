@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: 'Miro Developer Platform AI Interaction Logs Board classification: Team level API'
+  title: 'Miro Developer Platform Board classification: Team level API'
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -46,7 +13,23 @@ tags:
 paths:
   /v2/orgs/{org_id}/teams/{team_id}/data-classification:
     patch:
-      description: Updates board classification for not-classified only or all boards in an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Updates board classification for not-classified only or all boards in an existing team.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 4
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-dataclassification-team-boards-bulk
       parameters:
       - description: id of the organization
@@ -91,7 +74,23 @@ paths:
       - 'Board classification: Team level'
   /v2/orgs/{org_id}/teams/{team_id}/data-classification-settings:
     get:
-      description: Retrieves board classification settings for an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves board classification settings for an existing team.
+
+
+        Required scope
+
+        organizations:teams:read
+
+
+        Rate limiting
+
+        Level 2
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-dataclassification-team-settings-get
       parameters:
       - description: id of the organization
@@ -129,7 +128,23 @@ paths:
       tags:
       - 'Board classification: Team level'
     patch:
-      description: Updates board classification settings for an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Updates board classification settings for an existing team.
+
+
+        Required scope
+
+        organizations:teams:write
+
+
+        Rate limiting
+
+        Level 2
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-dataclassification-team-settings-set
       x-settings:
         skip-tests: true
@@ -176,6 +191,42 @@ paths:
       - 'Board classification: Team level'
 components:
   schemas:
+    UpdateBoardsDataClassificationLabelRequest:
+      type: object
+      properties:
+        labelId:
+          type: integer
+          description: Data classification label id for team
+          format: int64
+          example: 3000457366756291000
+        notClassifiedOnly:
+          type: boolean
+          description: Assign data classification label to not-classified only or to all boards of team
+          example: true
+    UpdateBoardsDataClassificationLabel:
+      type: object
+      properties:
+        numberUpdatedBoards:
+          type: integer
+          description: Number of boards updated in the team
+          format: int64
+          example: 10
+        type:
+          type: string
+          description: Type of the object returned.
+          default: boards-data-classification-label-changed
+    UpdateTeamSettingsRequest:
+      type: object
+      properties:
+        defaultLabelId:
+          type: integer
+          description: Data classification default label id
+          format: int64
+          example: 3000457366756291000
+        enabled:
+          type: boolean
+          description: Data classification enabled for team
+          example: true
     DataClassificationTeamSettings:
       type: object
       properties:
@@ -191,42 +242,6 @@ components:
           type: string
           description: Type of the object returned.
           default: team-data-classification-settings
-    UpdateTeamSettingsRequest:
-      type: object
-      properties:
-        defaultLabelId:
-          type: integer
-          description: Data classification default label id
-          format: int64
-          example: 3000457366756291000
-        enabled:
-          type: boolean
-          description: Data classification enabled for team
-          example: true
-    UpdateBoardsDataClassificationLabel:
-      type: object
-      properties:
-        numberUpdatedBoards:
-          type: integer
-          description: Number of boards updated in the team
-          format: int64
-          example: 10
-        type:
-          type: string
-          description: Type of the object returned.
-          default: boards-data-classification-label-changed
-    UpdateBoardsDataClassificationLabelRequest:
-      type: object
-      properties:
-        labelId:
-          type: integer
-          description: Data classification label id for team
-          format: int64
-          example: 3000457366756291000
-        notClassifiedOnly:
-          type: boolean
-          description: Assign data classification label to not-classified only or to all boards of team
-          example: true
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

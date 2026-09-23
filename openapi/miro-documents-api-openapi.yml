@@ -1,48 +1,15 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs documents API
+  title: Miro Developer Platform Documents API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
-- name: documents
+- name: Documents
 paths:
   /v2/boards/{board_id_PlatformFileUpload}/documents:
     post:
@@ -68,7 +35,17 @@ paths:
           name: Custom cURL snippet
           install: brew install curl
           correspondingExample: documentPostExample
-      description: Adds a document item to a board by selecting file from device.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Adds a document item to a board by selecting file from device.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: create-document-item-using-file-from-device
       parameters:
       - description: Unique identifier (ID) of the board where you want to create the item.
@@ -137,7 +114,7 @@ paths:
           description: Document item created
       summary: Create document item using file from device
       tags:
-      - documents
+      - Documents
   /v2/boards/{board_id_PlatformFileUpload}/documents/{item_id}:
     patch:
       x-readme:
@@ -162,7 +139,17 @@ paths:
           name: Custom cURL snippet
           install: brew install curl
           correspondingExample: documentPatchExample
-      description: Updates a document item on a board by using file from a device.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Updates a document item on a board by using file from a device.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: update-document-item-using-file-from-device
       parameters:
       - description: Unique identifier (ID) of the board where you want to update the item.
@@ -218,9 +205,24 @@ paths:
           description: Document item updated
       summary: Update document item using file from device
       tags:
-      - documents
+      - Documents
 components:
   schemas:
+    DocumentData:
+      type: object
+      properties:
+        documentUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+        title:
+          type: string
+          description: A short text header to identify the document.
+          example: Sample document title
     Geometry:
       type: object
       description: Contains geometrical information about the item, such as its width or height.
@@ -239,92 +241,6 @@ components:
           format: double
           description: Width of the item, in pixels.
           example: 320
-    DocumentItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        data:
-          $ref: '#/components/schemas/DocumentData'
-        position:
-          $ref: '#/components/schemas/Position'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        parent:
-          $ref: '#/components/schemas/ParentLinksEnvelope'
-        links:
-          $ref: '#/components/schemas/WidgetLinks'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: document
-      required:
-      - id
-      - type
-    DocumentData:
-      type: object
-      properties:
-        documentUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
-        title:
-          type: string
-          description: A short text header to identify the document.
-          example: Sample document title
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    FixedRatioGeometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -384,6 +300,14 @@ components:
 
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           example: 100
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
     WidgetLinks:
       type: object
       description: Contains applicable links for the item.
@@ -396,6 +320,92 @@ components:
           type: string
           description: Link to obtain information about the current item.
           example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    FixedRatioGeometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+    DocumentItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/DocumentData'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        parent:
+          $ref: '#/components/schemas/ParentLinksEnvelope'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: document
+      required:
+      - id
+      - type
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    ParentLinksEnvelope:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     createdBy:
       type: object
       description: Contains information about the user who created the item.
@@ -434,29 +444,6 @@ components:
           description: Select a file to upload. Maximum file size is 6 MB.
       required:
       - resource
-    ParentLinksEnvelope:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-        links:
-          $ref: '#/components/schemas/SelfLink'
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

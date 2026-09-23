@@ -1,54 +1,31 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Board members API
+  title: Miro Developer Platform Board members API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
-- name: Board members
+- name: Board Members
 paths:
   /v2/boards/{board_id}/members:
     post:
       x-settings:
         skip-tests: true
-      description: Shares the board and Invites new members to collaborate on a board by sending an invitation email. Depending on the board's Sharing policy, there might be various scenarios where membership in the team is required in order to share the board with a user.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      description: 'Shares the board and Invites new members to collaborate on a board by sending an invitation email. Depending on the board''s Sharing policy, there might be various scenarios where membership in the team is required in order to share the board with a user.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 3'
       operationId: share-board
       parameters:
       - description: Unique identifier (ID) of the board to which the board member belongs.
@@ -78,9 +55,19 @@ paths:
           $ref: '#/components/responses/429'
       summary: Share board
       tags:
-      - Board members
+      - Board Members
     get:
-      description: Retrieves a pageable list of members for a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves a pageable list of members for a board.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-board-members
       parameters:
       - in: query
@@ -120,12 +107,22 @@ paths:
           $ref: '#/components/responses/429'
       summary: Get all board members
       tags:
-      - Board members
+      - Board Members
   /v2/boards/{board_id}/members/{board_member_id}:
     get:
       x-settings:
         skip-tests: true
-      description: Retrieves information for a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves information for a board member.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-specific-board-member
       parameters:
       - description: Unique identifier (ID) of the board to which the board member belongs.
@@ -155,11 +152,21 @@ paths:
           $ref: '#/components/responses/429'
       summary: Get specific board member
       tags:
-      - Board members
+      - Board Members
     patch:
       x-settings:
         skip-tests: true
-      description: Updates the role of a board member.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Updates the role of a board member.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: update-board-member
       parameters:
       - description: Unique identifier (ID) of the board for which you want to update the role of the board member.
@@ -195,11 +202,21 @@ paths:
           $ref: '#/components/responses/429'
       summary: Update board member
       tags:
-      - Board members
+      - Board Members
     delete:
       x-settings:
         skip-tests: true
-      description: Removes a board member from a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Removes a board member from a board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: remove-board-member
       parameters:
       - description: Unique identifier (ID) of the board from which you want to delete an item.
@@ -229,51 +246,9 @@ paths:
           $ref: '#/components/responses/429'
       summary: Remove board member
       tags:
-      - Board members
+      - Board Members
 components:
   schemas:
-    InvitationError:
-      type: object
-      description: Contains information about the invites that failed.
-      properties:
-        email:
-          type: string
-          description: Email ID for which the invitation failed.
-          example: john.smith.demo@miro.com
-        reason:
-          type: string
-          description: Reason why the invitation failed.
-          example: INVITATION_FAILED
-    InvitationResult:
-      type: object
-      properties:
-        failed:
-          type: array
-          description: Contains information about the invites that failed.
-          items:
-            $ref: '#/components/schemas/InvitationError'
-        successful:
-          type: array
-          description: Contains information about the invites that were successfully sent.
-          example: 3074457350804038700
-          items:
-            type: integer
-            format: int64
-            description: Contains information about the invites that were successfully sent.
-            example: 3074457350804038700
-    BoardMemberChanges:
-      type: object
-      properties:
-        role:
-          type: string
-          default: commenter
-          description: Role of the board member.
-          enum:
-          - viewer
-          - commenter
-          - editor
-          - coowner
-          - owner
     BoardMember:
       type: object
       description: Contains the current user's board membership details. The current user could be different from the board owner.
@@ -295,6 +270,36 @@ components:
           - editor
           - coowner
           - owner
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, `type` returns `board_member`.
+          example: board_member
+      required:
+      - id
+      - name
+      - type
+    BoardMemberWithLinks:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        role:
+          type: string
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        links:
+          $ref: '#/components/schemas/SelfLink'
         type:
           type: string
           description: Type of the object that is returned. In this case, `type` returns `board_member`.
@@ -345,30 +350,6 @@ components:
           type: string
           description: Link to obtain more information about the current object.
           example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
     BoardMembersInvite:
       type: object
       properties:
@@ -397,19 +378,65 @@ components:
           example: Hey there! Join my board and let's collaborate on this project!
       required:
       - emails
-    BoardMemberWithLinks:
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    InvitationResult:
       type: object
       properties:
-        id:
+        failed:
+          type: array
+          description: Contains information about the invites that failed.
+          items:
+            $ref: '#/components/schemas/InvitationError'
+        successful:
+          type: array
+          description: Contains information about the invites that were successfully sent.
+          example: 3074457350804038700
+          items:
+            type: integer
+            format: int64
+            description: Contains information about the invites that were successfully sent.
+            example: 3074457350804038700
+    InvitationError:
+      type: object
+      description: Contains information about the invites that failed.
+      properties:
+        email:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3074457353169356300'
-        name:
+          description: Email ID for which the invitation failed.
+          example: john.smith.demo@miro.com
+        reason:
           type: string
-          description: Name of the user.
-          example: John Smith
+          description: Reason why the invitation failed.
+          example: INVITATION_FAILED
+    BoardMemberChanges:
+      type: object
+      properties:
         role:
           type: string
+          default: commenter
           description: Role of the board member.
           enum:
           - viewer
@@ -417,16 +444,6 @@ components:
           - editor
           - coowner
           - owner
-        links:
-          $ref: '#/components/schemas/SelfLink'
-        type:
-          type: string
-          description: Type of the object that is returned. In this case, `type` returns `board_member`.
-          example: board_member
-      required:
-      - id
-      - name
-      - type
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

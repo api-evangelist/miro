@@ -1,52 +1,29 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs tags API
+  title: Miro Developer Platform Tags API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
-- name: tags
+- name: Tags
 paths:
   /v2/boards/{board_id}/items/{item_id}/tags:
     get:
-      description: Retrieves all the tags from the specified item.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves all the tags from the specified item.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-tags-from-item
       parameters:
       - description: Unique identifier (ID) of the board with the item whose tags you want to retrieve.
@@ -142,10 +119,20 @@ paths:
           description: Too many requests
       summary: Get tags from item
       tags:
-      - tags
+      - Tags
   /v2/boards/{board_id}/tags:
     post:
-      description: Creates a tag on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Creates a tag on a board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: create-tag
       parameters:
       - description: Unique identifier (ID) of the board where you want to create the tag.
@@ -241,9 +228,19 @@ paths:
           description: Too many requests
       summary: Create tag
       tags:
-      - tags
+      - Tags
     get:
-      description: Retrieves all the tags from the specified board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves all the tags from the specified board.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-tags-from-board
       parameters:
       - in: query
@@ -349,10 +346,20 @@ paths:
           description: Too many requests
       summary: Get tags from board
       tags:
-      - tags
+      - Tags
   /v2/boards/{board_id}/tags/{tag_id}:
     get:
-      description: Retrieves information for a specific tag.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves information for a specific tag.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-tag
       parameters:
       - description: Unique identifier (ID) of the board where you want to retrieve a specific tag.
@@ -448,9 +455,21 @@ paths:
           description: Too many requests
       summary: Get tag
       tags:
-      - tags
+      - Tags
     patch:
-      description: 'Updates a tag based on the data properties provided in the request body. <br><blockquote><strong>Note:</strong> Updates to tags made via the REST API  will not be reflected on the board in realtime. To see REST API updates to tags on a board,  you need to refresh the board. This applies to the following endpoints:  [Attach tag to item](https://developers.miro.com/reference/attach-tag-to-item),  [Remove tag from item](https://developers.miro.com/reference/remove-tag-from-item),   [Delete tag](https://developers.miro.com/reference/delete-tag).</blockquote><br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>'
+      description: 'Updates a tag based on the data properties provided in the request body.
+
+        Note: Updates to tags made via the REST API will not be reflected on the board in realtime. To see REST API updates to tags on a board, you need to refresh the board. This applies to the following endpoints: Attach tag to item, Remove tag from item, Delete tag.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: update-tag
       parameters:
       - description: Unique identifier (ID) of the board where you want to update a specific tag.
@@ -552,9 +571,21 @@ paths:
           description: Too many requests
       summary: Update tag
       tags:
-      - tags
+      - Tags
     delete:
-      description: 'Deletes the specified tag from the board. The tag is also removed from all cards and sticky notes on the board. <br><blockquote><strong>Note:</strong> Updates to tags made via the REST API  will not be reflected on the board in realtime. To see REST API updates to tags on a board,  you need to refresh the board. This applies to the following endpoints:  [Attach tag to item](https://developers.miro.com/reference/attach-tag-to-item),  [Remove tag from item](https://developers.miro.com/reference/remove-tag-from-item),  [Update tag](https://developers.miro.com/reference/update-tag).</blockquote><br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>'
+      description: 'Deletes the specified tag from the board. The tag is also removed from all cards and sticky notes on the board.
+
+        Note: Updates to tags made via the REST API will not be reflected on the board in realtime. To see REST API updates to tags on a board, you need to refresh the board. This applies to the following endpoints: Attach tag to item, Remove tag from item, Update tag.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: delete-tag
       parameters:
       - description: Unique identifier (ID) of the board where you want to delete a specific tag.
@@ -650,10 +681,20 @@ paths:
           description: Too many requests
       summary: Delete tag
       tags:
-      - tags
+      - Tags
   /v2/boards/{board_id_PlatformTags}/items:
     get:
-      description: Retrieves all the items that have the specified tag.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves all the items that have the specified tag.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-items-by-tag
       parameters:
       - in: query
@@ -765,10 +806,22 @@ paths:
           description: Too many requests
       summary: Get items by tag
       tags:
-      - tags
+      - Tags
   /v2/boards/{board_id_PlatformTags}/items/{item_id}:
     post:
-      description: 'Attach an existing tag to the specified item. Card and sticky note items can have up to 8 tags. <br><blockquote><strong>Note:</strong> Updates to tags made via the REST API  will not be reflected on the board in realtime. To see REST API updates to tags on a board,  you need to refresh the board. This applies to the following endpoints:   [Remove tag from item](https://developers.miro.com/reference/remove-tag-from-item),  [Update tag](https://developers.miro.com/reference/update-tag),  [Delete tag](https://developers.miro.com/reference/delete-tag).</blockquote><br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>'
+      description: 'Attach an existing tag to the specified item. Card and sticky note items can have up to 8 tags.
+
+        Note: Updates to tags made via the REST API will not be reflected on the board in realtime. To see REST API updates to tags on a board, you need to refresh the board. This applies to the following endpoints: Remove tag from item, Update tag, Delete tag.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: attach-tag-to-item
       parameters:
       - description: Unique identifier (ID) of the board with the item that you want to add a tag to.
@@ -870,9 +923,21 @@ paths:
           description: Too many requests
       summary: Attach tag to item
       tags:
-      - tags
+      - Tags
     delete:
-      description: 'Removes the specified tag from the specified item. The tag still exists on the board. <br><blockquote><strong>Note:</strong> Updates to tags made via the REST API  will not be reflected on the board in realtime. To see REST API updates to tags on a board,  you need to refresh the board. This applies to the following endpoints:  [Attach tag to item](https://developers.miro.com/reference/attach-tag-to-item),   [Update tag](https://developers.miro.com/reference/update-tag),  [Delete tag](https://developers.miro.com/reference/delete-tag).</blockquote><br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>'
+      description: 'Removes the specified tag from the specified item. The tag still exists on the board.
+
+        Note: Updates to tags made via the REST API will not be reflected on the board in realtime. To see REST API updates to tags on a board, you need to refresh the board. This applies to the following endpoints: Attach tag to item, Update tag, Delete tag.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 1'
       operationId: remove-tag-from-item
       parameters:
       - description: Unique identifier (ID) of the board with the item that you want to remove a tag from.
@@ -974,9 +1039,86 @@ paths:
           description: Too many requests
       summary: Remove tag from item
       tags:
-      - tags
+      - Tags
 components:
   schemas:
+    DocumentData:
+      type: object
+      properties:
+        documentUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+        title:
+          type: string
+          description: A short text header to identify the document.
+          example: Sample document title
+    TextData:
+      type: object
+      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the text item.
+          example: Hello
+      required:
+      - content
+    TagUpdateRequest:
+      type: object
+      properties:
+        fillColor:
+          type: string
+          description: Fill color for the tag.
+          enum:
+          - red
+          - light_green
+          - cyan
+          - yellow
+          - magenta
+          - green
+          - blue
+          - gray
+          - violet
+          - dark_green
+          - dark_blue
+          - black
+        title:
+          type: string
+          description: Text of the tag. Case-sensitive. Must be unique.
+          example: done
+          maxLength: 120
+          minLength: 0
+    AppCardData:
+      type: object
+      description: Contains app card item data, such as the title, description, or fields.
+      properties:
+        description:
+          type: string
+          description: A short text description to add context about the app card.
+          example: Sample app card description
+        fields:
+          type: array
+          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          items:
+            $ref: '#/components/schemas/CustomField'
+        owned:
+          type: boolean
+          description: Defines whether the card is owned by the application making the call.
+        status:
+          type: string
+          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+          enum:
+          - disconnected
+          - connected
+          - disabled
+        title:
+          type: string
+          description: A short text header to identify the app card.
+          example: sample app card item
     FrameData:
       type: object
       description: Contains frame item data, such as the title, frame type, or frame format.
@@ -1009,56 +1151,185 @@ components:
           - grid
           - rows
           - columns
-    AppCardData:
+    GenericItem:
       type: object
-      description: Contains app card item data, such as the title, description, or fields.
+      description: Contains the result data.
       properties:
-        description:
+        createdAt:
           type: string
-          description: A short text description to add context about the app card.
-          example: Sample app card description
-        fields:
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        data:
+          $ref: '#/components/schemas/WidgetDataOutput'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        parent:
+          $ref: '#/components/schemas/Parent'
+        position:
+          $ref: '#/components/schemas/Position'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: sticky_note
+      required:
+      - id
+      - type
+    WidgetDataOutput:
+      type: object
+      description: Contains the item data, such as the item title, content, or description.
+      oneOf:
+      - $ref: '#/components/schemas/TextData'
+      - $ref: '#/components/schemas/EmbedData'
+      - $ref: '#/components/schemas/CardData'
+      - $ref: '#/components/schemas/AppCardData'
+      - $ref: '#/components/schemas/ImageData'
+      - $ref: '#/components/schemas/DocumentData'
+      - $ref: '#/components/schemas/ShapeData'
+      - $ref: '#/components/schemas/FrameData'
+      - $ref: '#/components/schemas/StickyNoteData'
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
           type: array
-          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          description: Contains the result data.
           items:
-            $ref: '#/components/schemas/CustomField'
-        owned:
-          type: boolean
-          description: Defines whether the card is owned by the application making the call.
-        status:
+            $ref: '#/components/schemas/GenericItem'
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
+
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        type:
           type: string
-          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+    Tag:
+      type: object
+      properties:
+        fillColor:
+          type: string
+          description: Background color of the tag.
           enum:
-          - disconnected
-          - connected
-          - disabled
+          - red
+          - light_green
+          - cyan
+          - yellow
+          - magenta
+          - green
+          - blue
+          - gray
+          - violet
+          - dark_green
+          - dark_blue
+          - black
+          example: red
+        id:
+          type: string
+          description: Unique identifier of the tag.
+          example: '3074457363306854000'
         title:
           type: string
-          description: A short text header to identify the app card.
-          example: sample app card item
-    DocumentData:
+          description: Text of the tag.
+          example: delayed
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `tag`.
+      required:
+      - fillColor
+      - id
+      - title
+      - type
+    GetTagsResponse:
       type: object
       properties:
-        documentUrl:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ImageData:
+      type: object
+      properties:
+        imageUrl:
           type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
 
             `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
 
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
         title:
           type: string
-          description: A short text header to identify the document.
-          example: Sample document title
-    SelfLink:
+          description: A short text header to identify the image.
+          example: Sample image title
+    StickyNoteData:
       type: object
-      description: Contains applicable links for the current object.
+      description: Contains sticky note item data, such as the content or shape of the sticky note.
       properties:
-        self:
+        content:
           type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+          description: The actual text (content) that appears in the sticky note item.
+          example: Hello
+        shape:
+          type: string
+          default: square
+          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
+          enum:
+          - square
+          - rectangle
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     TagsPagedResponse:
       type: object
       properties:
@@ -1093,6 +1364,79 @@ components:
           $ref: '#/components/schemas/PageLinks'
         type:
           type: string
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    TagWithLinks:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the tag.
+          example: '3074457363306854000'
+        title:
+          type: string
+          description: Text of the tag
+          example: delayed
+        fillColor:
+          type: string
+          description: Background color of the tag.
+          enum:
+          - red
+          - light_green
+          - cyan
+          - yellow
+          - magenta
+          - green
+          - blue
+          - gray
+          - violet
+          - dark_green
+          - dark_blue
+          - black
+          example: red
+        links:
+          $ref: '#/components/schemas/SelfLink'
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, type returns `tag`.
+      required:
+      - fillColor
+      - id
+      - title
+      - type
     createdBy:
       type: object
       description: Contains information about the user who created the item.
@@ -1164,49 +1508,30 @@ components:
 
             It can be any type of information that you want to convey.'
           example: 'Status: in progress'
-    Geometry:
+    SelfLink:
       type: object
-      description: Contains geometrical information about the item, such as its width or height.
+      description: Contains applicable links for the current object.
       properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    modifiedBy:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    Parent:
       type: object
-      description: Contains information about the user who last modified the item.
+      description: Contains information about the parent frame for the item.
       properties:
         id:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    GetTagsResponse:
-      type: object
-      properties:
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-    Tag:
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    TagCreateRequest:
       type: object
       properties:
         fillColor:
           type: string
-          description: Background color of the tag.
+          default: red
+          description: Fill color for the tag.
           enum:
           - red
           - light_green
@@ -1220,105 +1545,72 @@ components:
           - dark_green
           - dark_blue
           - black
-          example: red
-        id:
-          type: string
-          description: Unique identifier of the tag.
-          example: '3074457363306854000'
         title:
           type: string
-          description: Text of the tag.
-          example: delayed
-        type:
-          type: string
-          description: Type of the object that is returned. In this case, type returns `tag`.
+          description: Text of the tag. Case-sensitive. Must be unique.
+          example: to do
+          maxLength: 120
+          minLength: 0
       required:
-      - fillColor
-      - id
       - title
-      - type
-    Position:
+    PageLinks:
       type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      description: Contains pagination links for the collection.
       properties:
-        origin:
+        first:
           type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
           type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    GenericItem:
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    ShapeData:
       type: object
-      description: Contains the result data.
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        data:
-          $ref: '#/components/schemas/WidgetDataOutput'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        parent:
-          $ref: '#/components/schemas/Parent'
-        position:
-          $ref: '#/components/schemas/Position'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: sticky_note
-      required:
-      - id
-      - type
-    TextData:
-      type: object
-      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      description: Contains shape item data, such as the content or shape type of the shape.
       properties:
         content:
           type: string
-          description: The actual text (content) that appears in the text item.
+          description: The text you want to display on the shape.
           example: Hello
-      required:
-      - content
+        shape:
+          type: string
+          default: rectangle
+          description: Defines the geometric shape of the item when it is rendered on the board.
+          enum:
+          - rectangle
+          - round_rectangle
+          - circle
+          - triangle
+          - rhombus
+          - parallelogram
+          - trapezoid
+          - pentagon
+          - hexagon
+          - octagon
+          - wedge_round_rectangle_callout
+          - star
+          - flow_chart_predefined_process
+          - cloud
+          - cross
+          - can
+          - right_arrow
+          - left_arrow
+          - left_right_arrow
+          - left_brace
+          - right_brace
     EmbedData:
       type: object
       properties:
@@ -1372,245 +1664,18 @@ components:
           type: string
           description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
           example: https://www.youtube.com/watch?v=HlVSNEiFCBk
-    Parent:
+    modifiedBy:
       type: object
-      description: Contains information about the parent frame for the item.
+      description: Contains information about the user who last modified the item.
       properties:
         id:
           type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    WidgetDataOutput:
-      type: object
-      description: Contains the item data, such as the item title, content, or description.
-      oneOf:
-      - $ref: '#/components/schemas/TextData'
-      - $ref: '#/components/schemas/EmbedData'
-      - $ref: '#/components/schemas/CardData'
-      - $ref: '#/components/schemas/AppCardData'
-      - $ref: '#/components/schemas/ImageData'
-      - $ref: '#/components/schemas/DocumentData'
-      - $ref: '#/components/schemas/ShapeData'
-      - $ref: '#/components/schemas/FrameData'
-      - $ref: '#/components/schemas/StickyNoteData'
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    TagCreateRequest:
-      type: object
-      properties:
-        fillColor:
-          type: string
-          default: red
-          description: Fill color for the tag.
-          enum:
-          - red
-          - light_green
-          - cyan
-          - yellow
-          - magenta
-          - green
-          - blue
-          - gray
-          - violet
-          - dark_green
-          - dark_blue
-          - black
-        title:
-          type: string
-          description: Text of the tag. Case-sensitive. Must be unique.
-          example: to do
-          maxLength: 120
-          minLength: 0
-      required:
-      - title
-    TagUpdateRequest:
-      type: object
-      properties:
-        fillColor:
-          type: string
-          description: Fill color for the tag.
-          enum:
-          - red
-          - light_green
-          - cyan
-          - yellow
-          - magenta
-          - green
-          - blue
-          - gray
-          - violet
-          - dark_green
-          - dark_blue
-          - black
-        title:
-          type: string
-          description: Text of the tag. Case-sensitive. Must be unique.
-          example: done
-          maxLength: 120
-          minLength: 0
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/GenericItem'
-        limit:
-          type: integer
-          format: int32
-          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
-
-            '
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-        offset:
-          type: integer
-          format: int32
-          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
-          example: 0
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
-          example: 1
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-          example: 1
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
         type:
           type: string
-    ShapeData:
-      type: object
-      description: Contains shape item data, such as the content or shape type of the shape.
-      properties:
-        content:
-          type: string
-          description: The text you want to display on the shape.
-          example: Hello
-        shape:
-          type: string
-          default: rectangle
-          description: Defines the geometric shape of the item when it is rendered on the board.
-          enum:
-          - rectangle
-          - round_rectangle
-          - circle
-          - triangle
-          - rhombus
-          - parallelogram
-          - trapezoid
-          - pentagon
-          - hexagon
-          - octagon
-          - wedge_round_rectangle_callout
-          - star
-          - flow_chart_predefined_process
-          - cloud
-          - cross
-          - can
-          - right_arrow
-          - left_arrow
-          - left_right_arrow
-          - left_brace
-          - right_brace
-    StickyNoteData:
-      type: object
-      description: Contains sticky note item data, such as the content or shape of the sticky note.
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the sticky note item.
-          example: Hello
-        shape:
-          type: string
-          default: square
-          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
-          enum:
-          - square
-          - rectangle
-    TagWithLinks:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the tag.
-          example: '3074457363306854000'
-        title:
-          type: string
-          description: Text of the tag
-          example: delayed
-        fillColor:
-          type: string
-          description: Background color of the tag.
-          enum:
-          - red
-          - light_green
-          - cyan
-          - yellow
-          - magenta
-          - green
-          - blue
-          - gray
-          - violet
-          - dark_green
-          - dark_blue
-          - black
-          example: red
-        links:
-          $ref: '#/components/schemas/SelfLink'
-        type:
-          type: string
-          description: Type of the object that is returned. In this case, type returns `tag`.
-      required:
-      - fillColor
-      - id
-      - title
-      - type
-    ImageData:
-      type: object
-      properties:
-        imageUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
-        title:
-          type: string
-          description: A short text header to identify the image.
-          example: Sample image title
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

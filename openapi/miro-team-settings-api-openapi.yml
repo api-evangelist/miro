@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Team Settings API
+  title: Miro Developer Platform Team Settings API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -46,7 +13,23 @@ tags:
 paths:
   /v2/orgs/{org_id}/default_teams_settings:
     get:
-      description: Retrieves default team settings of an existing organization.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves default team settings of an existing organization.
+
+
+        Required scope
+
+        organizations:teams:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-default-team-settings
       parameters:
       - description: The id of an Organization.
@@ -78,7 +61,23 @@ paths:
       - Team Settings
   /v2/orgs/{org_id}/teams/{team_id}/settings:
     get:
-      description: Retrieves team settings of an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves team settings of an existing team.
+
+
+        Required scope
+
+        organizations:teams:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-team-settings
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -104,7 +103,23 @@ paths:
       tags:
       - Team Settings
     patch:
-      description: Updates team settings of an existing team.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:teams:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> <br/><h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Updates team settings of an existing team.
+
+
+        Required scope
+
+        organizations:teams:write
+
+
+        Rate limiting
+
+        Level 2
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-update-team-settings
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -138,43 +153,7 @@ paths:
       tags:
       - Team Settings
 components:
-  parameters:
-    pathTeamId:
-      name: team_id
-      description: The ID of a team.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
   schemas:
-    TeamAccountDiscoverySettings:
-      type: object
-      properties:
-        accountDiscovery:
-          type: string
-          description: '
-
-            * "hidden":  Only invited users can see and access the team.
-
-            * "request": Members of organization can find and request to join with admin approval.
-
-            * "join":    Members of organization can find and join.
-
-            '
-          enum:
-          - hidden
-          - request
-          - join
-      description: Team account discovery settings
     TeamAccountDiscoverySettingsChanges:
       type: object
       properties:
@@ -356,6 +335,69 @@ components:
           - allowed_with_editing
           - not_allowed
       description: Team sharing policy settings
+    TeamSettingsChanges:
+      type: object
+      properties:
+        teamAccountDiscoverySettings:
+          $ref: '#/components/schemas/TeamAccountDiscoverySettingsChanges'
+        teamCollaborationSettings:
+          $ref: '#/components/schemas/TeamCollaborationSettingsChanges'
+        teamCopyAccessLevelSettings:
+          $ref: '#/components/schemas/TeamCopyAccessLevelSettingsChanges'
+        teamInvitationSettings:
+          $ref: '#/components/schemas/TeamInvitationSettingsChanges'
+        teamSharingPolicySettings:
+          $ref: '#/components/schemas/TeamSharingPolicySettingsChanges'
+    TeamCopyAccessLevelSettings:
+      type: object
+      properties:
+        copyAccessLevel:
+          type: string
+          description: '
+
+            * "anyone":       Anyone with the board access can copy board content on newly created boards.
+
+            * "team_members": Team members can copy board content on newly created boards.
+
+            * "team_editors": Team members with editing rights can copy board content on newly created boards.
+
+            * "board_owner":  Board owners only can copy board content on newly created boards.
+
+            '
+          enum:
+          - anyone
+          - team_members
+          - team_editors
+          - board_owner            -
+        copyAccessLevelLimitation:
+          type: string
+          description: '
+
+            * "anyone":       Team members and users outside team can be given permission to copy board content.
+
+            * "team_members": Only team members can be given permission to copy board content.
+
+            '
+          enum:
+          - anyone
+          - team_members
+      description: Team copy access settings
+    TeamCollaborationSettings:
+      type: object
+      properties:
+        coOwnerRole:
+          type: string
+          description: '
+
+            * "enabled": Enable Co-owner role on boards and projects
+
+            * "disabled": Disabled Co-owner role on boards and projects
+
+            '
+          enum:
+          - enabled
+          - disabled
+      description: Team collaboration settings
     TeamSettings:
       type: object
       properties:
@@ -381,22 +423,121 @@ components:
           type: string
           description: Type of the object returned.
           default: team-settings
-    TeamCollaborationSettingsChanges:
+    TeamCopyAccessLevelSettingsChanges:
       type: object
       properties:
-        coOwnerRole:
+        copyAccessLevel:
           type: string
           description: '
 
-            * "enabled": Enable Co-owner role on boards and projects
+            * "anyone":       Anyone with the board access can copy board content on newly created boards.
 
-            * "disabled": Disabled Co-owner role on boards and projects
+            * "team_members": Team members can copy board content on newly created boards.
+
+            * "team_editors": Team members with editing rights can copy board content on newly created boards.
+
+            * "board_owner":  Board owners only can copy board content on newly created boards.
 
             '
           enum:
-          - enabled
-          - disabled
-      description: Team collaboration settings
+          - anyone
+          - team_members
+          - team_editors
+          - board_owner
+        copyAccessLevelLimitation:
+          type: string
+          description: '
+
+            * "anyone":       Team members and users outside team can be given permission to copy board content.
+
+            * "team_members": Only team members can be given permission to copy board content.
+
+            '
+          enum:
+          - anyone
+          - team_members
+      description: Team copy access settings
+    TeamInvitationSettings:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
+    TeamInvitationSettingsChanges:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
+    TeamAccountDiscoverySettings:
+      type: object
+      properties:
+        accountDiscovery:
+          type: string
+          description: '
+
+            * "hidden":  Only invited users can see and access the team.
+
+            * "request": Members of organization can find and request to join with admin approval.
+
+            * "join":    Members of organization can find and join.
+
+            '
+          enum:
+          - hidden
+          - request
+          - join
+      description: Team account discovery settings
     TeamSharingPolicySettingsChanges:
       type: object
       properties:
@@ -560,119 +701,7 @@ components:
           - allowed_with_editing
           - not_allowed
       description: Team sharing policy settings
-    TeamInvitationSettings:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
-    TeamCopyAccessLevelSettings:
-      type: object
-      properties:
-        copyAccessLevel:
-          type: string
-          description: '
-
-            * "anyone":       Anyone with the board access can copy board content on newly created boards.
-
-            * "team_members": Team members can copy board content on newly created boards.
-
-            * "team_editors": Team members with editing rights can copy board content on newly created boards.
-
-            * "board_owner":  Board owners only can copy board content on newly created boards.
-
-            '
-          enum:
-          - anyone
-          - team_members
-          - team_editors
-          - board_owner            -
-        copyAccessLevelLimitation:
-          type: string
-          description: '
-
-            * "anyone":       Team members and users outside team can be given permission to copy board content.
-
-            * "team_members": Only team members can be given permission to copy board content.
-
-            '
-          enum:
-          - anyone
-          - team_members
-      description: Team copy access settings
-    TeamCopyAccessLevelSettingsChanges:
-      type: object
-      properties:
-        copyAccessLevel:
-          type: string
-          description: '
-
-            * "anyone":       Anyone with the board access can copy board content on newly created boards.
-
-            * "team_members": Team members can copy board content on newly created boards.
-
-            * "team_editors": Team members with editing rights can copy board content on newly created boards.
-
-            * "board_owner":  Board owners only can copy board content on newly created boards.
-
-            '
-          enum:
-          - anyone
-          - team_members
-          - team_editors
-          - board_owner
-        copyAccessLevelLimitation:
-          type: string
-          description: '
-
-            * "anyone":       Team members and users outside team can be given permission to copy board content.
-
-            * "team_members": Only team members can be given permission to copy board content.
-
-            '
-          enum:
-          - anyone
-          - team_members
-      description: Team copy access settings
-    TeamSettingsChanges:
-      type: object
-      properties:
-        teamAccountDiscoverySettings:
-          $ref: '#/components/schemas/TeamAccountDiscoverySettingsChanges'
-        teamCollaborationSettings:
-          $ref: '#/components/schemas/TeamCollaborationSettingsChanges'
-        teamCopyAccessLevelSettings:
-          $ref: '#/components/schemas/TeamCopyAccessLevelSettingsChanges'
-        teamInvitationSettings:
-          $ref: '#/components/schemas/TeamInvitationSettingsChanges'
-        teamSharingPolicySettings:
-          $ref: '#/components/schemas/TeamSharingPolicySettingsChanges'
-    TeamCollaborationSettings:
+    TeamCollaborationSettingsChanges:
       type: object
       properties:
         coOwnerRole:
@@ -688,37 +717,23 @@ components:
           - enabled
           - disabled
       description: Team collaboration settings
-    TeamInvitationSettingsChanges:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
+  parameters:
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathTeamId:
+      name: team_id
+      description: The ID of a team.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

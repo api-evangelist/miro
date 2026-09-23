@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Mind map nodes (experimental) API
+  title: Miro Developer Platform Mind map nodes (experimental) API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -46,7 +13,17 @@ tags:
 paths:
   /v2-experimental/boards/{board_id}/mindmap_nodes/{item_id}:
     get:
-      description: Retrieves information for a specific mind map node on a board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/>
+      description: 'Retrieves information for a specific mind map node on a board.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 1'
       operationId: get-mindmap-node-experimental
       parameters:
       - schema:
@@ -72,7 +49,17 @@ paths:
       tags:
       - Mind map nodes (experimental)
     delete:
-      description: Deletes a mind map node item and its child nodes from the board.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      description: 'Deletes a mind map node item and its child nodes from the board.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 3'
       operationId: delete-mindmap-node-experimental
       parameters:
       - description: Unique identifier (ID) of the board from which you want to delete the mind map node.
@@ -195,7 +182,17 @@ paths:
       description: 'Retrieves a list of mind map nodes for a specific board.
 
 
-        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set the `limit` query parameter to `10` and the board contains 20 objects, the first call will return information about the first 10 objects in the response along with a cursor parameter and value. In this example, let''s say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>'
+        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request. For example, if you set the `limit` query parameter to `10` and the board contains 20 objects, the first call will return information about the first 10 objects in the response along with a cursor parameter and value. In this example, let''s say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 2'
       parameters:
       - schema:
           type: string
@@ -208,7 +205,26 @@ paths:
         name: cursor
         description: Points to the next portion of the results set
     post:
-      description: 'Adds a mind map node to a board. A root node is the starting point of a mind map. A node that is created under a root node is a child node. For information on mind maps, use cases, mind map structure, and more, see the <a href="https://developers.miro.com/docs/mind-maps" target=_blank>Mind Map Overview</a> page. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/><br/> <b>Known limitations on node placement: </b> Currently, the create API supports explicit positions for nodes. This means that users can only place nodes based on the x, y coordinates provided in the position parameters. If the position is not provided in the request, nodes default to coordinates x=0, y=0, effectively placing them at the center of the board. <br /><br /><b>Upcoming changes:</b> We understand the importance of flexibility in node placement. We are actively working on implementing changes to support positioning nodes relative to their parent node as well. This enhancement offers a more dynamic and intuitive mind mapping experience. <br /><br />Additionally, we are actively working on providing the update API, further enhancing the functionality of mind map APIs.'
+      description: 'Adds a mind map node to a board. A root node is the starting point of a mind map. A node that is created under a root node is a child node. For information on mind maps, use cases, mind map structure, and more, see the Mind Map Overview page.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2
+
+
+        Known limitations on node placement: Currently, the create API supports explicit positions for nodes. This means that users can only place nodes based on the x, y coordinates provided in the position parameters. If the position is not provided in the request, nodes default to coordinates x=0, y=0, effectively placing them at the center of the board.
+
+
+        Upcoming changes: We understand the importance of flexibility in node placement. We are actively working on implementing changes to support positioning nodes relative to their parent node as well. This enhancement offers a more dynamic and intuitive mind mapping experience.
+
+
+        Additionally, we are actively working on providing the update API, further enhancing the functionality of mind map APIs.'
       operationId: create-mindmap-nodes-experimental
       parameters:
       - description: Unique identifier (ID) of the board where you want to create the item.
@@ -310,48 +326,126 @@ paths:
       - Mind map nodes (experimental)
 components:
   schemas:
-    MindmapCreateRequest:
+    TextData:
+      type: object
+      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the text item.
+          example: Hello
+      required:
+      - content
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    MindmapCursorPaged:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/MindmapDataForCreate'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/MindMapNodeGeometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-      required:
-      - data
-    MindmapStyle:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/MindmapItem'
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.'
+        cursor:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.'
+        limit:
+          type: integer
+          format: int32
+          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.'
+        links:
+          $ref: '#/components/schemas/PageLinks'
+    PositionChange:
       type: object
-      description: Contains information about the node style, such as the widget's border color or shape type.
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        nodeColor:
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    MindMapNodeGeometry:
+      type: object
+      description: Contains width of the item.
+      properties:
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    MindmapNodeStyle:
+      type: object
+      description: Contains information about the node style, such as the node color or fillOpacity.
+      properties:
+        color:
           type: string
-          description: Hex value representing the color of the widget's border.
+          description: Hex value representing the color for the text within the node.
           example: '#1a1a1a'
-        shape:
+        fillOpacity:
           type: string
-          description: Shape type of the widget.
-          enum:
-          - pill
-          - rectangle
-          - rounded_rectangle
-          - none
+          description: 'It sets the opacity level of the background fill color.
+
+
+            Allowed values: any number between 0.0 and 1.0 included.
+
+
+            If the value is 0.0, the background fill color is completely transparent or invisible.
+
+            If the value is 1.0, the background fill color is completely opaque or solid.
+
+            Default: 0 (transparent)'
         fontSize:
           type: string
-          description: The same font size as in MindmapNodeStyle.
+          description: 'Defines the font size, in dp, for the text on the node.
+
+            Default: `14`.'
           maximum: 288
           minimum: 10
-    SelfLink:
+    CreatedBy:
       type: object
-      description: Contains applicable links for the current object.
+      description: Contains information about the user who created the item.
       properties:
-        self:
+        id:
           type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     MindmapItem:
       type: object
       properties:
@@ -386,69 +480,18 @@ components:
       required:
       - id
       - type
-    ParentLinksEnvelope:
+    MindmapNodeView:
       type: object
-      description: Contains information about the parent frame for the item.
+      description: Contains the information about the mind map node.
       properties:
-        id:
+        type:
           type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-        links:
-          $ref: '#/components/schemas/SelfLink'
-    MindmapDataForCreate:
-      type: object
-      description: Contains mind map node data, such as the title, content, or description.
-      properties:
-        nodeView:
-          $ref: '#/components/schemas/MindmapNode'
-      required:
-      - nodeView
-    MindmapNode:
-      type: object
-      description: Contains information like data about the mind map node.
-      properties:
+          description: Type of item used as mind map node. Currently, `type` can only be equal to `text`.
+          example: text
         data:
-          $ref: '#/components/schemas/MindmapNodeTextData'
-    MindMapNodeGeometry:
-      type: object
-      description: Contains width of the item.
-      properties:
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    MindmapWidgetDataOutput:
-      oneOf:
-      - $ref: '#/components/schemas/TextData'
-      description: Contains the mind map node data, such as the item title, content, or description.
-    MindmapCursorPaged:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/MindmapItem'
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.'
-        cursor:
-          type: string
-          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.'
-        limit:
-          type: integer
-          format: int32
-          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.'
-        links:
-          $ref: '#/components/schemas/PageLinks'
+          $ref: '#/components/schemas/MindmapWidgetDataOutput'
+        style:
+          $ref: '#/components/schemas/MindmapNodeStyle'
     MindmapData:
       type: object
       description: Contains mind map node data, such as `nodeView` or `isRoot`.
@@ -464,82 +507,32 @@ components:
           enum:
           - start
           - end
-    WidgetLinks:
+    MindmapNode:
       type: object
-      description: Contains applicable links for the item.
+      description: Contains information like data about the mind map node.
       properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        data:
+          $ref: '#/components/schemas/MindmapNodeTextData'
+    MindmapWidgetDataOutput:
+      oneOf:
+      - $ref: '#/components/schemas/TextData'
+      description: Contains the mind map node data, such as the item title, content, or description.
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
         self:
           type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    MindmapNodeTextData:
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    MindmapDataForCreate:
       type: object
-      description: Contains the information about the mind map text.
+      description: Contains mind map node data, such as the title, content, or description.
       properties:
-        type:
-          type: string
-          description: Type of item used as mind map node. Currently, `type` can only be equal to `text`.
-          example: text
-        content:
-          type: string
-          description: The actual text (content) that appears in the mind map node.
-          example: Sample text
+        nodeView:
+          $ref: '#/components/schemas/MindmapNode'
       required:
-      - type
-    MindmapNodeView:
-      type: object
-      description: Contains the information about the mind map node.
-      properties:
-        type:
-          type: string
-          description: Type of item used as mind map node. Currently, `type` can only be equal to `text`.
-          example: text
-        data:
-          $ref: '#/components/schemas/MindmapWidgetDataOutput'
-        style:
-          $ref: '#/components/schemas/MindmapNodeStyle'
-    TextData:
-      type: object
-      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the text item.
-          example: Hello
-      required:
-      - content
-    MindmapNodeStyle:
-      type: object
-      description: Contains information about the node style, such as the node color or fillOpacity.
-      properties:
-        color:
-          type: string
-          description: Hex value representing the color for the text within the node.
-          example: '#1a1a1a'
-        fillOpacity:
-          type: string
-          description: 'It sets the opacity level of the background fill color.
-
-
-            Allowed values: any number between 0.0 and 1.0 included.
-
-
-            If the value is 0.0, the background fill color is completely transparent or invisible.
-
-            If the value is 1.0, the background fill color is completely opaque or solid.
-
-            Default: 0 (transparent)'
-        fontSize:
-          type: string
-          description: 'Defines the font size, in dp, for the text on the node.
-
-            Default: `14`.'
-          maximum: 288
-          minimum: 10
+      - nodeView
     Parent:
       type: object
       description: Contains information about the parent frame for the item.
@@ -549,6 +542,38 @@ components:
           format: int64
           description: Unique identifier (ID) of the parent frame for the item.
           example: '3074457362577955300'
+    MindmapStyle:
+      type: object
+      description: Contains information about the node style, such as the widget's border color or shape type.
+      properties:
+        nodeColor:
+          type: string
+          description: Hex value representing the color of the widget's border.
+          example: '#1a1a1a'
+        shape:
+          type: string
+          description: Shape type of the widget.
+          enum:
+          - pill
+          - rectangle
+          - rounded_rectangle
+          - none
+        fontSize:
+          type: string
+          description: The same font size as in MindmapNodeStyle.
+          maximum: 288
+          minimum: 10
+    ParentLinksEnvelope:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
     PageLinks:
       type: object
       description: Contains pagination links for the collection.
@@ -573,30 +598,19 @@ components:
           type: string
           description: Link to retrieve information in the current page of the collection.
           example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    PositionChange:
+    MindmapCreateRequest:
       type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
+        data:
+          $ref: '#/components/schemas/MindmapDataForCreate'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/MindMapNodeGeometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+      required:
+      - data
     ModifiedBy:
       type: object
       description: Contains information about the user who last modified the item.
@@ -609,18 +623,20 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    CreatedBy:
+    MindmapNodeTextData:
       type: object
-      description: Contains information about the user who created the item.
+      description: Contains the information about the mind map text.
       properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
         type:
           type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
+          description: Type of item used as mind map node. Currently, `type` can only be equal to `text`.
+          example: text
+        content:
+          type: string
+          description: The actual text (content) that appears in the mind map node.
+          example: Sample text
+      required:
+      - type
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

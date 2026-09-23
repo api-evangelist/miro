@@ -1,52 +1,29 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs groups API
+  title: Miro Developer Platform Groups API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
-- name: groups
+- name: Groups
 paths:
   /v2/boards/{board_id}/groups:
     post:
-      description: Creates a group of items on a board. The group is created with the items that are passed in the request body.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Creates a group of items on a board. The group is created with the items that are passed in the request body.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: createGroup
       summary: Create group
       parameters:
@@ -141,9 +118,23 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
     get:
-      description: Returns all the groups and the items of the respective groups within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated  method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/> For example, if you set the `limit` query parameter to `10` and the board  contains 20 items that are a part of a group, the first call will return information about the first 10 items in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Returns all the groups and the items of the respective groups within a specific board.
+
+        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.
+
+        For example, if you set the `limit` query parameter to `10` and the board contains 20 items that are a part of a group, the first call will return information about the first 10 items in the response along with a cursor parameter and value. In this example, let''s say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 2'
       operationId: get-all-groups
       summary: Get all groups on a board
       parameters:
@@ -262,10 +253,24 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
   /v2/boards/{board_id}/groups/items:
     get:
-      description: Returns a list of items that are a part of any group, within a specific board.<br/> This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.<br/> For example, if you set the `limit` query parameter to `10` and the board  contains 20 items that are a part of a group, the first call will return information about the first 10 items (not 10 groups) in the response along with a cursor parameter and value. In this example, let's say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'Returns a list of items that are a part of any group, within a specific board.
+
+        This method returns results using a cursor-based approach. A cursor-paginated method returns a portion of the total set of results based on the limit specified and a cursor that points to the next portion of the results. To retrieve the next portion of the collection, on your next call to the same method, set the `cursor` parameter equal to the `cursor` value you received in the response of the previous request.
+
+        For example, if you set the `limit` query parameter to `10` and the board contains 20 items that are a part of a group, the first call will return information about the first 10 items (not 10 groups) in the response along with a cursor parameter and value. In this example, let''s say the cursor parameter value returned in the response is `foo`. If you want to retrieve the next set of objects, on your next call to the same method, set the cursor parameter value to `foo`.
+
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 2'
       operationId: getItemsByGroupId
       summary: Get items of a group by ID
       parameters:
@@ -406,12 +411,20 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
   /v2/boards/{board_id}/groups/{group_id}:
     get:
-      description: 'Returns a list of items in a specific group. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:read</a>
+      description: 'Returns a list of items in a specific group.
 
-        <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a> per item ID'
+
+        Required scope
+
+        boards:read
+
+
+        Rate limiting
+
+        Level 2 per item ID'
       operationId: getGroupById
       summary: Get a group by its ID
       parameters:
@@ -507,9 +520,19 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
     delete:
-      description: Ungroups items from a group.<br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      description: 'Ungroups items from a group.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 3'
       operationId: unGroup
       summary: Ungroup items
       parameters:
@@ -614,9 +637,19 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
     put:
-      description: This endpoint updates an existing group by replacing it entirely with a new group.  When the update is made, the original group is completely replaced, and a new group ID is assigned. <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 2</a><br/>
+      description: 'This endpoint updates an existing group by replacing it entirely with a new group. When the update is made, the original group is completely replaced, and a new group ID is assigned.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 2'
       operationId: updateGroup
       summary: Updates a group with new items
       parameters:
@@ -718,10 +751,20 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
   /v2/boards/{board_id}/groups/{group_id}?:
     delete:
-      description: Deletes a group from a board. All the items in the group are deleted along with the group.  <b>Note - this endpoint will delete items which are locked as well. </b> <br/><h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>boards:write</a> <br/><h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 3</a><br/>
+      description: 'Deletes a group from a board. All the items in the group are deleted along with the group. Note - this endpoint will delete items which are locked as well.
+
+
+        Required scope
+
+        boards:write
+
+
+        Rate limiting
+
+        Level 3'
       operationId: deleteGroup
       summary: Deletes the group
       parameters:
@@ -826,9 +869,61 @@ paths:
                     example: error
           description: Too many requests
       tags:
-      - groups
+      - Groups
 components:
   schemas:
+    DocumentData:
+      type: object
+      properties:
+        documentUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+        title:
+          type: string
+          description: A short text header to identify the document.
+          example: Sample document title
+    TextData:
+      type: object
+      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the text item.
+          example: Hello
+      required:
+      - content
+    AppCardData:
+      type: object
+      description: Contains app card item data, such as the title, description, or fields.
+      properties:
+        description:
+          type: string
+          description: A short text description to add context about the app card.
+          example: Sample app card description
+        fields:
+          type: array
+          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          items:
+            $ref: '#/components/schemas/CustomField'
+        owned:
+          type: boolean
+          description: Defines whether the card is owned by the application making the call.
+        status:
+          type: string
+          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+          enum:
+          - disconnected
+          - connected
+          - disabled
+        title:
+          type: string
+          description: A short text header to identify the app card.
+          example: sample app card item
     FrameData:
       type: object
       description: Contains frame item data, such as the title, frame type, or frame format.
@@ -861,52 +956,224 @@ components:
           - grid
           - rows
           - columns
-    AppCardData:
+    GroupId:
+      type: string
+      description: Unique identifier (ID) of the Group
+      example: 3858764584681774600
+    GenericItem:
       type: object
-      description: Contains app card item data, such as the title, description, or fields.
+      description: Contains the result data.
       properties:
-        description:
+        createdAt:
           type: string
-          description: A short text description to add context about the app card.
-          example: Sample app card description
-        fields:
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        data:
+          $ref: '#/components/schemas/WidgetDataOutput'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        parent:
+          $ref: '#/components/schemas/Parent'
+        position:
+          $ref: '#/components/schemas/Position'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: sticky_note
+      required:
+      - id
+      - type
+    WidgetDataOutput:
+      type: object
+      description: Contains the item data, such as the item title, content, or description.
+      oneOf:
+      - $ref: '#/components/schemas/TextData'
+      - $ref: '#/components/schemas/EmbedData'
+      - $ref: '#/components/schemas/CardData'
+      - $ref: '#/components/schemas/AppCardData'
+      - $ref: '#/components/schemas/ImageData'
+      - $ref: '#/components/schemas/DocumentData'
+      - $ref: '#/components/schemas/ShapeData'
+      - $ref: '#/components/schemas/FrameData'
+      - $ref: '#/components/schemas/StickyNoteData'
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
           type: array
-          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          description: Contains the result data.
           items:
-            $ref: '#/components/schemas/CustomField'
-        owned:
-          type: boolean
-          description: Defines whether the card is owned by the application making the call.
-        status:
-          type: string
-          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
-          enum:
-          - disconnected
-          - connected
-          - disabled
-        title:
-          type: string
-          description: A short text header to identify the app card.
-          example: sample app card item
-    DocumentData:
-      type: object
-      properties:
-        documentUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+            $ref: '#/components/schemas/GenericItem'
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
 
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
-        title:
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        type:
           type: string
-          description: A short text header to identify the document.
-          example: Sample document title
     BoardId:
       type: string
       description: '[Unique identifier (ID) of the board](https://developers.miro.com/reference/board-model)'
       example: uXjVOfjmfkE=
+    StickyNoteData:
+      type: object
+      description: Contains sticky note item data, such as the content or shape of the sticky note.
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the sticky note item.
+          example: Hello
+        shape:
+          type: string
+          default: square
+          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
+          enum:
+          - square
+          - rectangle
+    GroupResponseShort:
+      type: object
+      description: Contains the result data.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the group.
+          example: '3258764517517852419'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `group`.
+          example: group
+        data:
+          $ref: '#/components/schemas/Group'
+        links:
+          $ref: '#/components/schemas/PageLinks'
+    ImageData:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+        title:
+          type: string
+          description: A short text header to identify the image.
+          example: Sample image title
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    Group:
+      type: object
+      required:
+      - id
+      - name
+      - type
+      properties:
+        id:
+          type: string
+          description: User group ID
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: User group name
+          example: My group
+        description:
+          type: string
+          description: User group description
+          example: Info about group
+        type:
+          type: string
+          description: Object type
+          default: user-group
     createdBy:
       type: object
       description: Contains information about the user who created the item.
@@ -978,118 +1245,73 @@ components:
 
             It can be any type of information that you want to convey.'
           example: 'Status: in progress'
-    Geometry:
+    Parent:
       type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
+      description: Contains information about the parent frame for the item.
       properties:
         id:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    Position:
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    PageLinks:
       type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      description: Contains pagination links for the collection.
       properties:
-        origin:
+        first:
           type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
           type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    GenericItem:
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    ShapeData:
       type: object
-      description: Contains the result data.
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        data:
-          $ref: '#/components/schemas/WidgetDataOutput'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        parent:
-          $ref: '#/components/schemas/Parent'
-        position:
-          $ref: '#/components/schemas/Position'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: sticky_note
-      required:
-      - id
-      - type
-    TextData:
-      type: object
-      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      description: Contains shape item data, such as the content or shape type of the shape.
       properties:
         content:
           type: string
-          description: The actual text (content) that appears in the text item.
+          description: The text you want to display on the shape.
           example: Hello
-      required:
-      - content
+        shape:
+          type: string
+          default: rectangle
+          description: Defines the geometric shape of the item when it is rendered on the board.
+          enum:
+          - rectangle
+          - round_rectangle
+          - circle
+          - triangle
+          - rhombus
+          - parallelogram
+          - trapezoid
+          - pentagon
+          - hexagon
+          - octagon
+          - wedge_round_rectangle_callout
+          - star
+          - flow_chart_predefined_process
+          - cloud
+          - cross
+          - can
+          - right_arrow
+          - left_arrow
+          - left_right_arrow
+          - left_brace
+          - right_brace
     EmbedData:
       type: object
       properties:
@@ -1143,197 +1365,18 @@ components:
           type: string
           description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
           example: https://www.youtube.com/watch?v=HlVSNEiFCBk
-    Parent:
+    modifiedBy:
       type: object
-      description: Contains information about the parent frame for the item.
+      description: Contains information about the user who last modified the item.
       properties:
         id:
           type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    GroupId:
-      type: string
-      description: Unique identifier (ID) of the Group
-      example: 3858764584681774600
-    WidgetDataOutput:
-      type: object
-      description: Contains the item data, such as the item title, content, or description.
-      oneOf:
-      - $ref: '#/components/schemas/TextData'
-      - $ref: '#/components/schemas/EmbedData'
-      - $ref: '#/components/schemas/CardData'
-      - $ref: '#/components/schemas/AppCardData'
-      - $ref: '#/components/schemas/ImageData'
-      - $ref: '#/components/schemas/DocumentData'
-      - $ref: '#/components/schemas/ShapeData'
-      - $ref: '#/components/schemas/FrameData'
-      - $ref: '#/components/schemas/StickyNoteData'
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    Group:
-      type: object
-      required:
-      - id
-      - name
-      - type
-      properties:
-        id:
-          type: string
-          description: User group ID
-          example: '3074457345618265000'
-        name:
-          type: string
-          description: User group name
-          example: My group
-        description:
-          type: string
-          description: User group description
-          example: Info about group
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
         type:
           type: string
-          description: Object type
-          default: user-group
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/GenericItem'
-        limit:
-          type: integer
-          format: int32
-          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
-
-            '
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-        offset:
-          type: integer
-          format: int32
-          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
-          example: 0
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
-          example: 1
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-          example: 1
-        type:
-          type: string
-    ShapeData:
-      type: object
-      description: Contains shape item data, such as the content or shape type of the shape.
-      properties:
-        content:
-          type: string
-          description: The text you want to display on the shape.
-          example: Hello
-        shape:
-          type: string
-          default: rectangle
-          description: Defines the geometric shape of the item when it is rendered on the board.
-          enum:
-          - rectangle
-          - round_rectangle
-          - circle
-          - triangle
-          - rhombus
-          - parallelogram
-          - trapezoid
-          - pentagon
-          - hexagon
-          - octagon
-          - wedge_round_rectangle_callout
-          - star
-          - flow_chart_predefined_process
-          - cloud
-          - cross
-          - can
-          - right_arrow
-          - left_arrow
-          - left_right_arrow
-          - left_brace
-          - right_brace
-    StickyNoteData:
-      type: object
-      description: Contains sticky note item data, such as the content or shape of the sticky note.
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the sticky note item.
-          example: Hello
-        shape:
-          type: string
-          default: square
-          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
-          enum:
-          - square
-          - rectangle
-    GroupResponseShort:
-      type: object
-      description: Contains the result data.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the group.
-          example: '3258764517517852419'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `group`.
-          example: group
-        data:
-          $ref: '#/components/schemas/Group'
-        links:
-          $ref: '#/components/schemas/PageLinks'
-    ImageData:
-      type: object
-      properties:
-        imageUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
-        title:
-          type: string
-          description: A short text header to identify the image.
-          example: Sample image title
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

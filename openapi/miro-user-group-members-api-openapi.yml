@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs User group members API
+  title: Miro Developer Platform User group members API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -46,7 +13,23 @@ tags:
 paths:
   /v2/orgs/{org_id}/groups/{group_id}/members:
     get:
-      description: Retrieves the list of members who are part of a team in an existing organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves the list of members who are part of a team in an existing organization.
+
+
+        Required scope
+
+        organizations:groups:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-group-members
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -72,7 +55,23 @@ paths:
       tags:
       - User group members
     post:
-      description: Adds a member to a user group in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Adds a member to a user group in an organization.
+
+
+        Required scope
+
+        organizations:groups:write
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-create-group-member
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -104,7 +103,23 @@ paths:
       tags:
       - User group members
     patch:
-      description: Add and remove members in one request. For example, remove user A and add user B. You can add or remove up to 500 users at a time.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a> per item. For example, if you want to add 10 users and remove 5, the rate limiting applicable will be 750 credits. This is because each user addition or deletion takes Level 1 rate limiting of 50 credits, so 15 * 50 = 750.<br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Add and remove members in one request. For example, remove user A and add user B. You can add or remove up to 500 users at a time.
+
+
+        Required scope
+
+        organizations:groups:write
+
+
+        Rate limiting
+
+        Level 1 per item. For example, if you want to add 10 users and remove 5, the rate limiting applicable will be 750 credits. This is because each user addition or deletion takes Level 1 rate limiting of 50 credits, so 15 * 50 = 750.
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-update-group-members
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -141,7 +156,23 @@ paths:
       - User group members
   /v2/orgs/{org_id}/groups/{group_id}/members/{member_id}:
     get:
-      description: Retrieves information about a user group member in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:read</a><br/> <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 1</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Retrieves information about a user group member in an organization.
+
+
+        Required scope
+
+        organizations:groups:read
+
+
+        Rate limiting
+
+        Level 1
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-get-group-member
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -168,7 +199,23 @@ paths:
       tags:
       - User group members
     delete:
-      description: Removes a member from a user group in an organization.<br/> <h3>Required scope</h3> <a target=_blank href=https://developers.miro.com/reference/scopes>organizations:groups:write</a><br/> <h3>Rate limiting</h3> <a target=_blank href="/reference/rate-limiting#rate-limit-tiers">Level 4</a><br/> <h3>Enterprise only</h3> <p>This API is available only for <a target=_blank href="/reference/api-reference#enterprise-plan">Enterprise plan</a> users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using <a target=_blank href="https://q2oeb0jrhgi.typeform.com/to/BVPTNWJ9">this form</a>.</p>
+      description: 'Removes a member from a user group in an organization.
+
+
+        Required scope
+
+        organizations:groups:write
+
+
+        Rate limiting
+
+        Level 4
+
+
+        Enterprise only
+
+
+        This API is available only for Enterprise plan users. You can only use this endpoint if you have the role of a Company Admin. You can request temporary access to Enterprise APIs using this form.'
       operationId: enterprise-delete-group-member
       parameters:
       - $ref: '#/components/parameters/pathOrgId'
@@ -192,33 +239,6 @@ paths:
       - User group members
 components:
   schemas:
-    QueryLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-    CreateGroupMemberRequest:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          description: User email
-          example: user@mail.com
-    PageSize:
-      type: integer
-      format: int32
-      minimum: 0
-      maximum: 100
-      default: 100
-      example: 87
-      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    QueryCursor:
-      type: string
-      example: '3055557345821140500'
     GroupMember:
       type: object
       required:
@@ -238,62 +258,27 @@ components:
           type: string
           description: Object type
           default: user-group-member
-    UpdateUserGroupMembersResultOperation:
-      type: string
-      description: The name of the operation that was performed.
-      enum:
-      - addMembers
-      - removeMembers
-    BasicError:
+    UpdateUserGroupMembersRequest:
       type: object
       properties:
-        status:
-          type: number
-          description: HTTP status code.
-        code:
-          type: string
-          description: Description of the status code.
-        message:
-          type: string
-          description: Explanation for the error.
-        type:
-          type: string
-          default: error
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
-    UpdateUserGroupMembersResultError:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
-        status:
-          type: integer
-          description: The HTTP status code for an unsuccessful operation.
-          example: 400
-        error:
-          allOf:
-          - $ref: '#/components/schemas/BasicError'
-          - type: object
-            properties:
-              status:
-                default: 400
-              code:
-                default: invalidParameters
-    UpdateUserGroupMembersResultSuccess:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
-        status:
-          type: integer
-          description: The HTTP status code for a successful operation.
-          example: 200
-        affectedUsers:
+        membersToAdd:
           type: array
+          description: List of user identifiers (can be email or ID) to add to the user group.
           items:
-            $ref: '#/components/schemas/GroupMember'
+            type: string
+            description: User ID or user email.
+          example:
+          - '3074457345618265000'
+          - user0@example.com
+        membersToRemove:
+          type: array
+          description: List of user identifiers (can be email or ID) to remove from the user group.
+          items:
+            type: string
+            description: User ID or user email.
+          example:
+          - '3074457345618265001'
+          - user1@example.com
     UpdateUserGroupMembersResult:
       type: array
       items:
@@ -329,35 +314,97 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
+    QueryCursor:
+      type: string
+      example: '3055557345821140500'
     PageType:
       type: string
       description: Type of the object returned.
       default: cursor-list
-    UpdateUserGroupMembersRequest:
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    UpdateUserGroupMembersResultOperation:
+      type: string
+      description: The name of the operation that was performed.
+      enum:
+      - addMembers
+      - removeMembers
+    UpdateUserGroupMembersResultSuccess:
       type: object
       properties:
-        membersToAdd:
+        operation:
+          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
+        status:
+          type: integer
+          description: The HTTP status code for a successful operation.
+          example: 200
+        affectedUsers:
           type: array
-          description: List of user identifiers (can be email or ID) to add to the user group.
           items:
-            type: string
-            description: User ID or user email.
-          example:
-          - '3074457345618265000'
-          - user0@example.com
-        membersToRemove:
-          type: array
-          description: List of user identifiers (can be email or ID) to remove from the user group.
-          items:
-            type: string
-            description: User ID or user email.
-          example:
-          - '3074457345618265001'
-          - user1@example.com
+            $ref: '#/components/schemas/GroupMember'
+    UpdateUserGroupMembersResultError:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
+        status:
+          type: integer
+          description: The HTTP status code for an unsuccessful operation.
+          example: 400
+        error:
+          allOf:
+          - $ref: '#/components/schemas/BasicError'
+          - type: object
+            properties:
+              status:
+                default: 400
+              code:
+                default: invalidParameters
+    BasicError:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+        code:
+          type: string
+          description: Description of the status code.
+        message:
+          type: string
+          description: Explanation for the error.
+        type:
+          type: string
+          default: error
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+    CreateGroupMemberRequest:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: User email
+          example: user@mail.com
+    QueryLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
   parameters:
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
       in: path
       required: true
       schema:
@@ -369,6 +416,12 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/QueryLimit'
+    queryCursorGroupMembers:
+      name: cursor
+      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryCursor'
     pathGroupMemberId:
       name: member_id
       description: The ID of a group member.
@@ -377,15 +430,9 @@ components:
       schema:
         type: string
       example: '3074457345618265000'
-    queryCursorGroupMembers:
-      name: cursor
-      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryCursor'
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
       in: path
       required: true
       schema:

@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs User API
+  title: Miro Developer Platform User API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -48,7 +15,10 @@ paths:
     get:
       tags:
       - User
-      description: 'Retrieves the list of users in your organization. <br><b> <br>Note</b>: The API returns users that are members in the organization, it does not return users that are added in the organization as guests.'
+      description: 'Retrieves the list of users in your organization.
+
+
+        Note: The API returns users that are members in the organization, it does not return users that are added in the organization as guests.'
       parameters:
       - name: attributes
         in: query
@@ -165,7 +135,10 @@ paths:
     post:
       tags:
       - User
-      description: 'Creates a new user in the organization. <br><br> <br>Note</b>: All newly provisioned users are added to the default team.'
+      description: 'Creates a new user in the organization.
+
+
+        Note: All newly provisioned users are added to the default team.'
       requestBody:
         content:
           application/scim+json:
@@ -250,7 +223,10 @@ paths:
     get:
       tags:
       - User
-      description: 'Retrieves a single user resource. <br><b> <br>Note</b>: Returns only users that are members in the organization. It does not return users that are added in the organization as guests.'
+      description: 'Retrieves a single user resource.
+
+
+        Note: Returns only users that are members in the organization. It does not return users that are added in the organization as guests.'
       parameters:
       - name: id
         in: path
@@ -328,7 +304,17 @@ paths:
     put:
       tags:
       - User
-      description: 'Updates an existing user resource. This is the easiest way to replace user information. <br><br> If the user is deactivated, <br> userName, userType, and roles.value cannot be updated. <br> emails.value, emails.display, emails.primary get ignored and do not return any error. <br><br> Note: If the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated. '
+      description: 'Updates an existing user resource. This is the easiest way to replace user information.
+
+
+        If the user is deactivated,
+
+        userName, userType, and roles.value cannot be updated.
+
+        emails.value, emails.display, emails.primary get ignored and do not return any error.
+
+
+        Note: If the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated.'
       parameters:
       - name: id
         in: path
@@ -417,7 +403,10 @@ paths:
     patch:
       tags:
       - User
-      description: 'Updates an existing user resource, overwriting values for specified attributes. Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided. <br><br> Note: If  the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated. '
+      description: 'Updates an existing user resource, overwriting values for specified attributes. Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided.
+
+
+        Note: If the user is not a member in the organization, they cannot be updated. Additionally, users with guest role in the organization cannot be updated.'
       parameters:
       - name: id
         in: path
@@ -508,7 +497,13 @@ paths:
       - User
       operationId: deleteUser
       summary: Delete user
-      description: 'Deletes a single user from the organization.<br><br> Note: A user who is the last admin in the team or the last admin in the organization cannot be deleted. User must be a member in the organization to be deleted. Users that have guest role in the organization cannot be deleted. <br><br> After a user is deleted, the ownership of all the boards that belong to the deleted user is transferred to the oldest team member who currently has an admin role.'
+      description: 'Deletes a single user from the organization.
+
+
+        Note: A user who is the last admin in the team or the last admin in the organization cannot be deleted. User must be a member in the organization to be deleted. Users that have guest role in the organization cannot be deleted.
+
+
+        After a user is deleted, the ownership of all the boards that belong to the deleted user is transferred to the oldest team member who currently has an admin role.'
       parameters:
       - name: id
         in: path
@@ -535,50 +530,6 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
-    CreateUserResponse:
-      $ref: '#/components/schemas/UserResource'
-    PatchUserResource:
-      type: object
-      required:
-      - schemas
-      - Operations
-      properties:
-        schemas:
-          type: array
-          description: Identifies which schema(s) this resource used. In this case, identifies the request as a SCIM PatchOp.
-          items:
-            type: string
-            enum:
-            - urn:ietf:params:scim:api:messages:2.0:PatchOp
-            example: urn:ietf:params:scim:api:messages:2.0:PatchOp
-        Operations:
-          type: array
-          description: 'A list of patch operations. <br><br>
-
-            Updating the user to deactivated/reactivated, <br> { "op": "Replace", "path": "active", "value": "true/false" } must be provided in the Operations array.<br><br> Renaming the user, <br> { "op": "Replace", "path": "displayName", "value": "New displayName" } must be provided in the Operations array.<br><br> Upgrading userType (license) to Full, <br> { "op": "Replace", "path": "userType", "value": "Full" } must be provided in the Operations array. Note that userType (license) cannot be downgraded using this operation.<br><br> Updating userName of the user, <br> { "op": "Replace", "path": "userName", "value": "oleg@test.com" } must be provided in the Operations array. <br><br> Updating userRole of the user, { "op": "Replace", <br> "path": "roles[primary eq true].value", "value": "ORGANIZATION_INTERNAL_ADMIN" must be provided in the Operations array. Note that ORGANIZATION_INTERNAL_ADMIN and ORGANIZATION_INTERNAL_USER are the only supported primary user roles and guest roles are not supported. <br><br> Adding an admin role, <br> { "op": "Add", "path": "roles", "value": [{"value": "Content Admin", "type": "organization_admin_role", "primary": false}]} must be provided in the Operations array. <br><br> Removing an admin role, <br> { "op": "Remove", "path":"roles[value eq \"Content Admin\"]" } must be provided in the Operations array. <br><br> Updating department of the user, <br> { "op": "Replace", "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department", "value": "IT" } must be provided in the Operations array. Similarly, attributes such as employeeNumber, costCentre, organization, division, manager (displayName and value) can also be updated. '
-          items:
-            type: object
-            required:
-            - op
-            - path
-            - value
-            properties:
-              op:
-                type: string
-                description: The operation to perform.
-                enum:
-                - Add
-                - Remove
-                - Replace
-                example: Replace
-              path:
-                type: string
-                description: Attribute path being modified.
-                example: userType
-              value:
-                type: string
-                description: The value to apply in the operation.
-                example: Full
     CreateUserResource:
       type: object
       required:
@@ -698,31 +649,8 @@ components:
                 value:
                   type: string
                   description: The "value" field has String type in SCIM standard but the managerId internal Miro field has Long type. If the "value" attribute is not a numeric value, we ignore the value.
-    UserListResponse:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse — a paginated wrapper around a set of resources (such as Users or Groups).
-          items:
-            type: string
-            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
-        totalResults:
-          type: number
-          description: The total number of results matching the request.
-          example: 12
-        startIndex:
-          type: number
-          description: The index of the first returned result in the current page.
-          example: 1
-        itemsPerPage:
-          type: number
-          description: The number of items returned in the response.
-          example: 10
-        Resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResource'
+    CreateUserResponse:
+      $ref: '#/components/schemas/UserResource'
     UserResource:
       type: object
       properties:
@@ -886,6 +814,73 @@ components:
                 value:
                   type: string
                   description: The "value" field has String type in SCIM standard but the managerId internal Miro field has Long type. If the "value" attribute is not a numeric value, we ignore the value.
+    UserListResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse — a paginated wrapper around a set of resources (such as Users or Groups).
+          items:
+            type: string
+            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
+        totalResults:
+          type: number
+          description: The total number of results matching the request.
+          example: 12
+        startIndex:
+          type: number
+          description: The index of the first returned result in the current page.
+          example: 1
+        itemsPerPage:
+          type: number
+          description: The number of items returned in the response.
+          example: 10
+        Resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResource'
+    PatchUserResource:
+      type: object
+      required:
+      - schemas
+      - Operations
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource used. In this case, identifies the request as a SCIM PatchOp.
+          items:
+            type: string
+            enum:
+            - urn:ietf:params:scim:api:messages:2.0:PatchOp
+            example: urn:ietf:params:scim:api:messages:2.0:PatchOp
+        Operations:
+          type: array
+          description: 'A list of patch operations. <br><br>
+
+            Updating the user to deactivated/reactivated, <br> { "op": "Replace", "path": "active", "value": "true/false" } must be provided in the Operations array.<br><br> Renaming the user, <br> { "op": "Replace", "path": "displayName", "value": "New displayName" } must be provided in the Operations array.<br><br> Upgrading userType (license) to Full, <br> { "op": "Replace", "path": "userType", "value": "Full" } must be provided in the Operations array. Note that userType (license) cannot be downgraded using this operation.<br><br> Updating userName of the user, <br> { "op": "Replace", "path": "userName", "value": "oleg@test.com" } must be provided in the Operations array. <br><br> Updating userRole of the user, { "op": "Replace", <br> "path": "roles[primary eq true].value", "value": "ORGANIZATION_INTERNAL_ADMIN" must be provided in the Operations array. Note that ORGANIZATION_INTERNAL_ADMIN and ORGANIZATION_INTERNAL_USER are the only supported primary user roles and guest roles are not supported. <br><br> Adding an admin role, <br> { "op": "Add", "path": "roles", "value": [{"value": "Content Admin", "type": "organization_admin_role", "primary": false}]} must be provided in the Operations array. <br><br> Removing an admin role, <br> { "op": "Remove", "path":"roles[value eq \"Content Admin\"]" } must be provided in the Operations array. <br><br> Updating department of the user, <br> { "op": "Replace", "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department", "value": "IT" } must be provided in the Operations array. Similarly, attributes such as employeeNumber, costCentre, organization, division, manager (displayName and value) can also be updated. '
+          items:
+            type: object
+            required:
+            - op
+            - path
+            - value
+            properties:
+              op:
+                type: string
+                description: The operation to perform.
+                enum:
+                - Add
+                - Remove
+                - Replace
+                example: Replace
+              path:
+                type: string
+                description: Attribute path being modified.
+                example: userType
+              value:
+                type: string
+                description: The value to apply in the operation.
+                example: Full
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

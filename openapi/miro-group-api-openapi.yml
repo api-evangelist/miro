@@ -1,44 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Miro Developer Platform AI Interaction Logs Group API
+  title: Miro Developer Platform Group API
   version: v2.0
-  description: '<img src="https://content.pstmn.io/47449ea6-0ef7-4af2-bac1-e58a70e61c58/aW1hZ2UucG5n" width="1685" height="593">
+  description: '### Miro Developer Platform concepts
 
 
-    ### Miro Developer Platform concepts
-
-
-    - New to the Miro Developer Platform? Interested in learning more about platform concepts??
-
-    [Read our introduction page](https://beta.developers.miro.com/docs/introduction) and familiarize yourself with the Miro Developer Platform capabilities in a few minutes.
-
-
-
-    ### Getting started with the Miro REST API
-
-
-    - [Quickstart (video):](https://beta.developers.miro.com/docs/try-out-the-rest-api-in-less-than-3-minutes) try the REST API in less than 3 minutes.
-
-    - [Quickstart (article):](https://beta.developers.miro.com/docs/build-your-first-hello-world-app-1) get started and try the REST API in less than 3 minutes.
-
-
-
-    ### Miro REST API tutorials
-
-
-    Check out our how-to articles with step-by-step instructions and code examples so you can:
-
-
-    - [Get started with OAuth 2.0 and Miro](https://beta.developers.miro.com/docs/getting-started-with-oauth)
-
-
-
-    ### Miro App Examples
-
-
-    Clone our [Miro App Examples repository](https://github.com/miroapp/app-examples) to get inspiration, customize, and explore apps built on top of Miro''s Developer Platform 2.0.
-
-    '
+    - New to the Miro Developer Platform?'
 servers:
 - url: https://api.miro.com/
 tags:
@@ -48,7 +15,10 @@ paths:
     get:
       tags:
       - Group
-      description: 'Retrieves the list of groups (teams) in the organization.<br><br> Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
+      description: 'Retrieves the list of groups (teams) in the organization.
+
+
+        Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
       parameters:
       - name: attributes
         in: query
@@ -160,7 +130,9 @@ paths:
     get:
       tags:
       - Group
-      description: 'Retrieves a single Group resource.<br><b> Note</b>: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
+      description: 'Retrieves a single Group resource.
+
+        Note: Along with groups (teams), the users that are part of those groups (teams) are also retrieved. Only users that have member role in the organization are fetched.'
       parameters:
       - name: id
         in: path
@@ -241,7 +213,34 @@ paths:
     patch:
       tags:
       - Group
-      description: 'Updates an existing group resource, i.e. a team, overwriting values for specified attributes. Patch operation for group can be used to add, remove, or replace team members and to update the display name of the group (team). <br><br> To add a user to the group (team), use add operation. <br> To remove a user from a group (team), use remove operation. <br> To update a user resource, use the replace operation. <br> The last team admin cannot be removed from the team. <br><br> Note: Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided. <br><br> Team members removal specifics: <br> For remove or replace operations, the team member is removed from the team and from all team boards. The ownership of boards that belong to the removed team member is transferred to the oldest team member who currently has an admin role. After you remove a team member, adding the team member again to the team does not automatically restore their previous ownership of the boards. If the user is not registered fully in Miro and is not assigned to any other team, the user is also removed from the organization. <br><br> Add team members specifics: <br> All added team members are reactivated or recreated if they were deactivated or deleted earlier. <br><br> External users specifics: <br> When adding existing users with the role ORGANIZATION_EXTERNAL_USER or ORGANIZATION_TEAM_GUEST_USER to a team, we set FULL license and ORGANIZATION_INTERNAL_USER roles. '
+      description: 'Updates an existing group resource, i.e. a team, overwriting values for specified attributes. Patch operation for group can be used to add, remove, or replace team members and to update the display name of the group (team).
+
+
+        To add a user to the group (team), use add operation.
+
+        To remove a user from a group (team), use remove operation.
+
+        To update a user resource, use the replace operation.
+
+        The last team admin cannot be removed from the team.
+
+
+        Note: Attributes that are not provided will remain unchanged. PATCH operation only updates the fields provided.
+
+
+        Team members removal specifics:
+
+        For remove or replace operations, the team member is removed from the team and from all team boards. The ownership of boards that belong to the removed team member is transferred to the oldest team member who currently has an admin role. After you remove a team member, adding the team member again to the team does not automatically restore their previous ownership of the boards. If the user is not registered fully in Miro and is not assigned to any other team, the user is also removed from the organization.
+
+
+        Add team members specifics:
+
+        All added team members are reactivated or recreated if they were deactivated or deleted earlier.
+
+
+        External users specifics:
+
+        When adding existing users with the role ORGANIZATION_EXTERNAL_USER or ORGANIZATION_TEAM_GUEST_USER to a team, we set FULL license and ORGANIZATION_INTERNAL_USER roles.'
       parameters:
       - name: id
         in: path
@@ -430,6 +429,53 @@ components:
                     description: URI of resource.
                     example: http://api-synai:9111/api/v1/scim/Groups/3074457365836251622
       description: list of groups (teams)
+    GroupResource:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
+          items:
+            type: string
+            example: urn:ietf:params:scim:schemas:core:2.0:Group
+        id:
+          type: string
+          description: A server-assigned, unique identifier for this Group (team).
+          example: '3074457365836251622'
+        meta:
+          type: object
+          description: Metadata about the resource.
+          properties:
+            resourceType:
+              type: string
+              description: Type of resource.
+              example: Group
+            location:
+              type: string
+              description: URI of resource.
+              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
+        displayName:
+          type: string
+          description: A human readable name for the Group (team).
+          example: Product
+        members:
+          type: array
+          description: A list of all members that are part of the Group (team).
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: A server-assigned, unique identifier for the user (member).
+                example: '3074457365265951581'
+              type:
+                type: string
+                description: Type of item - in this case it is User for all members.
+                example: User
+              display:
+                type: string
+                description: A human-readable name for the user (member), typically the full name.
+                example: John Doe
     PatchGroupResource:
       type: object
       required:
@@ -478,53 +524,6 @@ components:
                         example: '3074457364156964977'
                 - type: string
                   description: Human-readable name of the group to be updated.
-    GroupResource:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
-          items:
-            type: string
-            example: urn:ietf:params:scim:schemas:core:2.0:Group
-        id:
-          type: string
-          description: A server-assigned, unique identifier for this Group (team).
-          example: '3074457365836251622'
-        meta:
-          type: object
-          description: Metadata about the resource.
-          properties:
-            resourceType:
-              type: string
-              description: Type of resource.
-              example: Group
-            location:
-              type: string
-              description: URI of resource.
-              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
-        displayName:
-          type: string
-          description: A human readable name for the Group (team).
-          example: Product
-        members:
-          type: array
-          description: A list of all members that are part of the Group (team).
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-                description: A server-assigned, unique identifier for the user (member).
-                example: '3074457365265951581'
-              type:
-                type: string
-                description: Type of item - in this case it is User for all members.
-                example: User
-              display:
-                type: string
-                description: A human-readable name for the user (member), typically the full name.
-                example: John Doe
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2
