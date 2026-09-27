@@ -240,20 +240,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AdminRole'
-    AdminRole:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of the admin role prebuilt or custom
-          example: prebuilt
-          enum:
-          - prebuilt
-          - custom
-        name:
-          type: string
-          description: Name of the admin role
-          example: User Admin
     OrganizationMembersSearchResponse:
       type: object
       description: Response for query by cursor and filter parameters
@@ -280,6 +266,20 @@ components:
           type: string
           description: Type of the object returned.
           default: cursor-list
+    AdminRole:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the admin role prebuilt or custom
+          example: prebuilt
+          enum:
+          - prebuilt
+          - custom
+        name:
+          type: string
+          description: Name of the admin role
+          example: User Admin
     OrganizationMembersSearchByEmailsResponse:
       description: Response for search organization members by user emails
       type: array

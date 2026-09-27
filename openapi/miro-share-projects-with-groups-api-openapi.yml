@@ -151,29 +151,29 @@ paths:
       - Share projects with groups
 components:
   parameters:
-    queryLimitProjectUserGroups:
-      name: limit
-      description: The maximum number of user groups in the result list.
-      in: query
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
+      in: path
+      required: true
       schema:
-        $ref: '#/components/schemas/QueryLimit'
+        type: string
+      example: '3074457345618265000'
     queryCursorProjectUserGroups:
       name: cursor
       description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
       in: query
       schema:
         $ref: '#/components/schemas/QueryCursorProjectUserGroups'
+    queryLimitProjectUserGroups:
+      name: limit
+      description: The maximum number of user groups in the result list.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryLimit'
     pathProjectId:
       name: project_id
       description: The ID of the project.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
       in: path
       required: true
       schema:
@@ -188,6 +188,31 @@ components:
         type: string
       example: '3074457345618265000'
   schemas:
+    ProjectUserGroupsPage:
+      type: object
+      description: Page of user groups that with access to the project.
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+        size:
+          $ref: '#/components/schemas/PageSize'
+        data:
+          type: array
+          description: List of user groups.
+          items:
+            $ref: '#/components/schemas/ProjectUserGroup'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        type:
+          $ref: '#/components/schemas/PageType'
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
     PageSize:
       type: integer
       format: int32
@@ -204,35 +229,6 @@ components:
       default: 100
       example: 100
       description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    QueryCursorProjectUserGroups:
-      type: string
-      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
-    CreateProjectUserGroupsRequest:
-      type: object
-      required:
-      - userGroupIds
-      - role
-      properties:
-        userGroupIds:
-          type: array
-          description: List of user group ids.
-          items:
-            type: string
-            description: User group ID.
-            example: '3074457345618265000'
-        role:
-          type: string
-          description: Role of the user group on the project.
-          enum:
-          - VIEWER
-          - COMMENTER
-          - EDITOR
-          default: VIEWER
-          example: VIEWER
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
     QueryLimit:
       type: integer
       format: int32
@@ -240,6 +236,9 @@ components:
       maximum: 100
       default: 100
       example: 100
+    QueryCursorProjectUserGroups:
+      type: string
+      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
     PageCursor:
       type: string
       description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
@@ -265,27 +264,28 @@ components:
         type:
           description: Object type
           default: project-user-group
-    ProjectUserGroupsPage:
+    CreateProjectUserGroupsRequest:
       type: object
-      description: Page of user groups that with access to the project.
       required:
-      - limit
-      - size
-      - data
+      - userGroupIds
+      - role
       properties:
-        limit:
-          $ref: '#/components/schemas/PageLimit'
-        size:
-          $ref: '#/components/schemas/PageSize'
-        data:
+        userGroupIds:
           type: array
-          description: List of user groups.
+          description: List of user group ids.
           items:
-            $ref: '#/components/schemas/ProjectUserGroup'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        type:
-          $ref: '#/components/schemas/PageType'
+            type: string
+            description: User group ID.
+            example: '3074457345618265000'
+        role:
+          type: string
+          description: Role of the user group on the project.
+          enum:
+          - VIEWER
+          - COMMENTER
+          - EDITOR
+          default: VIEWER
+          example: VIEWER
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

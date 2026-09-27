@@ -429,53 +429,6 @@ components:
                     description: URI of resource.
                     example: http://api-synai:9111/api/v1/scim/Groups/3074457365836251622
       description: list of groups (teams)
-    GroupResource:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
-          items:
-            type: string
-            example: urn:ietf:params:scim:schemas:core:2.0:Group
-        id:
-          type: string
-          description: A server-assigned, unique identifier for this Group (team).
-          example: '3074457365836251622'
-        meta:
-          type: object
-          description: Metadata about the resource.
-          properties:
-            resourceType:
-              type: string
-              description: Type of resource.
-              example: Group
-            location:
-              type: string
-              description: URI of resource.
-              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
-        displayName:
-          type: string
-          description: A human readable name for the Group (team).
-          example: Product
-        members:
-          type: array
-          description: A list of all members that are part of the Group (team).
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-                description: A server-assigned, unique identifier for the user (member).
-                example: '3074457365265951581'
-              type:
-                type: string
-                description: Type of item - in this case it is User for all members.
-                example: User
-              display:
-                type: string
-                description: A human-readable name for the user (member), typically the full name.
-                example: John Doe
     PatchGroupResource:
       type: object
       required:
@@ -524,6 +477,53 @@ components:
                         example: '3074457364156964977'
                 - type: string
                   description: Human-readable name of the group to be updated.
+    GroupResource:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
+          items:
+            type: string
+            example: urn:ietf:params:scim:schemas:core:2.0:Group
+        id:
+          type: string
+          description: A server-assigned, unique identifier for this Group (team).
+          example: '3074457365836251622'
+        meta:
+          type: object
+          description: Metadata about the resource.
+          properties:
+            resourceType:
+              type: string
+              description: Type of resource.
+              example: Group
+            location:
+              type: string
+              description: URI of resource.
+              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
+        displayName:
+          type: string
+          description: A human readable name for the Group (team).
+          example: Product
+        members:
+          type: array
+          description: A list of all members that are part of the Group (team).
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: A server-assigned, unique identifier for the user (member).
+                example: '3074457365265951581'
+              type:
+                type: string
+                description: Type of item - in this case it is User for all members.
+                example: User
+              display:
+                type: string
+                description: A human-readable name for the user (member), typically the full name.
+                example: John Doe
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

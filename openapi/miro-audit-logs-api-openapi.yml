@@ -92,6 +92,36 @@ paths:
       - Audit Logs
 components:
   schemas:
+    AuditEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Audit event id
+          example: 2023-09-01T09:30:10.840687Z#1234567890123456789-DDB
+        context:
+          $ref: '#/components/schemas/AuditContext'
+        object:
+          $ref: '#/components/schemas/AuditObject'
+        createdAt:
+          type: string
+          description: Time when the audit event has been created
+          format: date-time
+          example: 2023-09-01T09:30:10.840+0000
+        details:
+          type: object
+          description: Details json related to the audit event
+          example: '{ "authType": "SSO", "mfaFactorType": "NONE" }'
+        createdBy:
+          $ref: '#/components/schemas/AuditCreatedBy'
+        event:
+          type: string
+          description: Event type of the audit event
+          example: sign_in_succeeded
+        category:
+          type: string
+          description: Event category of the audit event.
+          example: authentication
     AuditCreatedBy:
       type: object
       description: The details regarding the creator of the audit event
@@ -129,18 +159,18 @@ components:
           $ref: '#/components/schemas/AuditTeam'
         organization:
           $ref: '#/components/schemas/AuditOrganization'
-    AuditOrganization:
+    AuditTeam:
       type: object
-      description: Organization associated with the audit context
+      description: Team associated with the audit context
       properties:
         id:
           type: string
-          description: Id of the organization
+          description: Id of the team
           example: '1234567890123456789'
         name:
           type: string
-          description: Name of the organization
-          example: Example Organization
+          description: Name of the team
+          example: Example Team
     AuditPage:
       type: object
       properties:
@@ -165,18 +195,18 @@ components:
           items:
             $ref: '#/components/schemas/AuditEvent'
           description: Audit events list
-    AuditTeam:
+    AuditOrganization:
       type: object
-      description: Team associated with the audit context
+      description: Organization associated with the audit context
       properties:
         id:
           type: string
-          description: Id of the team
+          description: Id of the organization
           example: '1234567890123456789'
         name:
           type: string
-          description: Name of the team
-          example: Example Team
+          description: Name of the organization
+          example: Example Organization
     AuditObject:
       type: object
       description: The object related with the audit event
@@ -189,36 +219,6 @@ components:
           type: string
           description: Name of the object
           example: Example Object
-    AuditEvent:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Audit event id
-          example: 2023-09-01T09:30:10.840687Z#1234567890123456789-DDB
-        context:
-          $ref: '#/components/schemas/AuditContext'
-        object:
-          $ref: '#/components/schemas/AuditObject'
-        createdAt:
-          type: string
-          description: Time when the audit event has been created
-          format: date-time
-          example: 2023-09-01T09:30:10.840+0000
-        details:
-          type: object
-          description: Details json related to the audit event
-          example: '{ "authType": "SSO", "mfaFactorType": "NONE" }'
-        createdBy:
-          $ref: '#/components/schemas/AuditCreatedBy'
-        event:
-          type: string
-          description: Event type of the audit event
-          example: sign_in_succeeded
-        category:
-          type: string
-          description: Event category of the audit event.
-          example: authentication
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

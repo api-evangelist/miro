@@ -704,35 +704,15 @@ paths:
       - Code widget items (experimental)
 components:
   schemas:
-    Geometry:
+    Parent:
       type: object
-      description: Contains geometrical information about the item, such as its width or height.
+      description: Contains information about the parent frame for the item.
       properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    CodeWidgetCreateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CodeWidgetData'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -757,124 +737,24 @@ components:
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           default: 0
           example: 100
-    Position:
+    Geometry:
       type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      description: Contains geometrical information about the item, such as its width or height.
       properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
+        height:
           type: number
           format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
           type: number
           format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    CreatedBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    CodeWidgetCursorPaged:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/CodeWidgetItem'
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly.
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request.
-          example: 1
-        cursor:
-          type: string
-          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
-          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
-        limit:
-          type: integer
-          format: int32
-          description: Maximum number of results returned based on the `limit` specified in the request.
-          example: 10
-        links:
-          $ref: '#/components/schemas/PageLinks'
-    CodeWidgetData:
-      type: object
-      description: Contains the data properties of a code widget item, such as the code content, programming language, and display settings.
-      properties:
-        code:
-          type: string
-          description: The code content of the widget.
-          maxLength: 6000
-          example: console.log("Hello, World!");
-        language:
-          type: string
-          description: The programming language of the code content. Used for syntax highlighting.
-          example: javascript
-        lineNumbersVisible:
-          type: boolean
-          description: Indicates whether line numbers are visible in the code widget.
-          example: true
-        title:
-          type: string
-          description: The title of the code widget.
-          maxLength: 100
-          example: My Code Snippet
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     CodeWidgetItem:
       type: object
       properties:
@@ -935,9 +815,44 @@ components:
           type: string
           description: Link to retrieve information in the current page of the collection.
           example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    CodeWidgetCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CodeWidgetData'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
     ModifiedBy:
       type: object
       description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    CreatedBy:
+      type: object
+      description: Contains information about the user who created the item.
       properties:
         id:
           type: string
@@ -958,6 +873,91 @@ components:
           $ref: '#/components/schemas/Geometry'
         parent:
           $ref: '#/components/schemas/Parent'
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    CodeWidgetCursorPaged:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/CodeWidgetItem'
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly.
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request.
+          example: 1
+        cursor:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
+          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
+        limit:
+          type: integer
+          format: int32
+          description: Maximum number of results returned based on the `limit` specified in the request.
+          example: 10
+        links:
+          $ref: '#/components/schemas/PageLinks'
+    CodeWidgetData:
+      type: object
+      description: Contains the data properties of a code widget item, such as the code content, programming language, and display settings.
+      properties:
+        code:
+          type: string
+          description: The code content of the widget.
+          maxLength: 6000
+          example: console.log("Hello, World!");
+        language:
+          type: string
+          description: The programming language of the code content. Used for syntax highlighting.
+          example: javascript
+        lineNumbersVisible:
+          type: boolean
+          description: Indicates whether line numbers are visible in the code widget.
+          example: true
+        title:
+          type: string
+          description: The title of the code widget.
+          maxLength: 100
+          example: My Code Snippet
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

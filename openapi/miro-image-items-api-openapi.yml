@@ -199,35 +199,44 @@ paths:
       - Image items
 components:
   schemas:
-    Geometry:
+    FixedRatioGeometry:
       type: object
-      description: Contains geometrical information about the item, such as its width or height.
+      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
       properties:
         height:
           type: number
           format: double
           description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
         width:
           type: number
           format: double
           description: Width of the item, in pixels.
-          example: 320
-    ImageUpdateRequest:
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+    ImageCreateRequest:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ImageUrlDataChanges'
+          $ref: '#/components/schemas/ImageUrlData'
         position:
           $ref: '#/components/schemas/PositionChange'
         geometry:
           $ref: '#/components/schemas/FixedRatioGeometry'
         parent:
           $ref: '#/components/schemas/Parent'
+      required:
+      - data
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -252,101 +261,6 @@ components:
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           default: 0
           example: 100
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    FixedRatioGeometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-    ImageUrlData:
-      type: object
-      description: Contains information about the image URL.
-      properties:
-        title:
-          type: string
-          description: A short text header to identify the image.
-          example: Sample image title
-        url:
-          type: string
-          default: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
-          description: URL of the image.
-          example: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
-      required:
-      - url
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
     ImageItem:
       type: object
       properties:
@@ -385,6 +299,36 @@ components:
       required:
       - id
       - type
+    ImageUrlDataChanges:
+      type: object
+      description: Contains information about the image URL.
+      properties:
+        title:
+          type: string
+          description: A short text header to identify the image.
+          example: Test image title
+        url:
+          type: string
+          description: URL of the image.
+          example: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     ParentLinksEnvelope:
       type: object
       description: Contains information about the parent frame for the item.
@@ -396,6 +340,76 @@ components:
           example: '3074457362577955300'
         links:
           $ref: '#/components/schemas/SelfLink'
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    ImageUrlData:
+      type: object
+      description: Contains information about the image URL.
+      properties:
+        title:
+          type: string
+          description: A short text header to identify the image.
+          example: Sample image title
+        url:
+          type: string
+          default: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
+          description: URL of the image.
+          example: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
+      required:
+      - url
     createdBy:
       type: object
       description: Contains information about the user who created the item.
@@ -408,19 +422,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    ImageCreateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ImageUrlData'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/FixedRatioGeometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-      required:
-      - data
     ImageData:
       type: object
       properties:
@@ -440,6 +441,17 @@ components:
           type: string
           description: A short text header to identify the image.
           example: Sample image title
+    ImageUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ImageUrlDataChanges'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/FixedRatioGeometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
     modifiedBy:
       type: object
       description: Contains information about the user who last modified the item.
@@ -452,18 +464,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    ImageUrlDataChanges:
-      type: object
-      description: Contains information about the image URL.
-      properties:
-        title:
-          type: string
-          description: A short text header to identify the image.
-          example: Test image title
-        url:
-          type: string
-          description: URL of the image.
-          example: https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

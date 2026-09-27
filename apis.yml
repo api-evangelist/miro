@@ -39,12 +39,14 @@ tags:
   - Visual Collaboration
   - Diagramming
   - Software-as-a-Service
+  - Collaboration
 tags_raw:
   - Productivity
   - Whiteboard
   - Visual Collaboration
   - Diagramming
   - SaaS
+  - Collaboration
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.23'
@@ -746,7 +748,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-documents-api
-  name: Miro documents API
+  name: Miro Documents API
   description: The documents API from Miro — 2 operation(s) for documents.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
@@ -863,7 +865,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-frames-api
-  name: Miro frames API
+  name: Miro Frames API
   description: The frames API from Miro — 2 operation(s) for frames.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
@@ -941,7 +943,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-groups-api
-  name: Miro groups API
+  name: Miro Groups API
   description: The groups API from Miro — 4 operation(s) for groups.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
@@ -1019,7 +1021,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-images-api
-  name: Miro images API
+  name: Miro Images API
   description: The images API from Miro — 2 operation(s) for images.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
@@ -1565,7 +1567,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-tags-api
-  name: Miro tags API
+  name: Miro Tags API
   description: The tags API from Miro — 5 operation(s) for tags.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2
@@ -1797,7 +1799,7 @@ apis:
   - type: GitHub
     url: https://github.com/miroapp
 - aid: miro:miro-tokens-api
-  name: Miro tokens API
+  name: Miro Tokens API
   description: The tokens API from Miro — 2 operation(s) for tokens.
   humanURL: https://developers.miro.com/reference/boards
   baseURL: https://api.miro.com/v2

@@ -211,40 +211,11 @@ components:
         type:
           type: string
           default: error
-    ProjectSettings:
+    UpdateProjectSettingsRequest:
       type: object
-      required:
-      - sharingPolicySettings
-      - type
       properties:
         sharingPolicySettings:
           $ref: '#/components/schemas/SharingPolicySettings'
-        type:
-          type: string
-          description: Type of the object
-          default: project_settings
-    SharingPolicySettings:
-      type: object
-      properties:
-        teamAccess:
-          $ref: '#/components/schemas/TeamAccess'
-    Error429:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 429
-        code:
-          type: string
-          description: Description of the status code.
-          example: tooManyRequests
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
     TeamAccess:
       type: string
       description: 'Team access
@@ -276,23 +247,18 @@ components:
         type:
           type: string
           default: error
-    Error400:
+    ProjectSettings:
       type: object
+      required:
+      - sharingPolicySettings
+      - type
       properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 400
-        code:
-          type: string
-          description: Description of the status code.
-          default: invalidParameters
-        message:
-          type: string
-          description: Explanation of the error.
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
         type:
           type: string
-          default: error
+          description: Type of the object
+          default: project_settings
     Error409:
       type: object
       properties:
@@ -304,6 +270,45 @@ components:
           type: string
           description: Description of the status code.
           example: conflict
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error429:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 429
+        code:
+          type: string
+          description: Description of the status code.
+          example: tooManyRequests
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    SharingPolicySettings:
+      type: object
+      properties:
+        teamAccess:
+          $ref: '#/components/schemas/TeamAccess'
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
         message:
           type: string
           description: Explanation of the error.
@@ -327,11 +332,6 @@ components:
         type:
           type: string
           default: error
-    UpdateProjectSettingsRequest:
-      type: object
-      properties:
-        sharingPolicySettings:
-          $ref: '#/components/schemas/SharingPolicySettings'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

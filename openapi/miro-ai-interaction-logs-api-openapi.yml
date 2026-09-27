@@ -153,73 +153,6 @@ paths:
       - AI Interaction Logs
 components:
   schemas:
-    AiInteractionLogList:
-      type: array
-      description: Contains the list of AI interaction logs.
-      items:
-        $ref: '#/components/schemas/AiInteractionLog'
-    AiInteractionLogObject:
-      type: object
-      description: Contains information about the Miro object involved in the AI interaction.
-      properties:
-        id:
-          type: string
-          description: 'Unique identifier of the Miro object involved in the AI interaction, e.g., Board ID or Organization ID.
-
-            '
-          example: '3458764549483493025'
-        type:
-          type: string
-          description: Type of the Miro object involved in the AI interaction, e.g., "board, "organization".
-          example: board
-    GetAiInteractionLogsResponse:
-      type: object
-      description: Response for query using cursor and filter parameters.
-      properties:
-        limit:
-          type: integer
-          description: 'The maximum number of results to return per call. If the number of logs in the response is
-
-            greater than the limit specified, the response returns the cursor parameter with a value.
-
-            '
-          format: int32
-          example: 100
-        size:
-          type: integer
-          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-
-            '
-          format: int32
-          example: 1
-        data:
-          $ref: '#/components/schemas/AiInteractionLogList'
-        cursor:
-          type: string
-          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-
-            '
-          example: MTY2OTg4NTIwMDAwMHwxMjM=
-        type:
-          type: string
-          description: Type of the object returned.
-          default: cursor-list
-    AiInteractionLogActor:
-      type: object
-      description: Contains information about the user who performed the AI interaction.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the user who performed the AI interaction.
-          example: '3458764517517852417'
-        email:
-          type: string
-          description: Email of the user who performed the AI interaction.
-          example: john.smith.demo@miro.com
-        name:
-          type: string
-          description: Name of the user who performed the AI interaction.
-          example: John Smith
     AiInteractionLog:
       type: object
       description: Contains information about a single AI interaction log entry.
@@ -268,6 +201,73 @@ components:
           additionalProperties: true
           example:
             text: '{\"text\":\"Generate me 1 sticker with the text \\\"AI generates content\\\"\",\"board_context\":{\"selection\":{\"selected_nodes\":[],\"reference_images\":[],\"design_reference_images\":[],\"comments\":[]},\"talktracks\":[],\"config\":{\"processing_method\":\"none\",\"ai_feature\":\"ai_generate_sticky_notes\"},\"context_prototype\":null,\"prototype_description\":null,\"screens\":null}}'
+    AiInteractionLogList:
+      type: array
+      description: Contains the list of AI interaction logs.
+      items:
+        $ref: '#/components/schemas/AiInteractionLog'
+    AiInteractionLogActor:
+      type: object
+      description: Contains information about the user who performed the AI interaction.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user who performed the AI interaction.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: Email of the user who performed the AI interaction.
+          example: john.smith.demo@miro.com
+        name:
+          type: string
+          description: Name of the user who performed the AI interaction.
+          example: John Smith
+    AiInteractionLogObject:
+      type: object
+      description: Contains information about the Miro object involved in the AI interaction.
+      properties:
+        id:
+          type: string
+          description: 'Unique identifier of the Miro object involved in the AI interaction, e.g., Board ID or Organization ID.
+
+            '
+          example: '3458764549483493025'
+        type:
+          type: string
+          description: Type of the Miro object involved in the AI interaction, e.g., "board, "organization".
+          example: board
+    GetAiInteractionLogsResponse:
+      type: object
+      description: Response for query using cursor and filter parameters.
+      properties:
+        limit:
+          type: integer
+          description: 'The maximum number of results to return per call. If the number of logs in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+          format: int32
+          example: 100
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        data:
+          $ref: '#/components/schemas/AiInteractionLogList'
+        cursor:
+          type: string
+          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+
+            '
+          example: MTY2OTg4NTIwMDAwMHwxMjM=
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

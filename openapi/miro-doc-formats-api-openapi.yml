@@ -150,6 +150,25 @@ paths:
       - doc formats
 components:
   schemas:
+    DocFormatData:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/DocFormatHtmlData'
+      - $ref: '#/components/schemas/DocFormatMarkdownData'
+      discriminator:
+        propertyName: contentType
+        mapping:
+          html: '#/components/schemas/DocFormatHtmlData'
+          markdown: '#/components/schemas/DocFormatMarkdownData'
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -224,14 +243,17 @@ components:
 
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           example: 100
-    SelfLink:
+    ParentLinksEnvelope:
       type: object
-      description: Contains applicable links for the current object.
+      description: Contains information about the parent frame for the item.
       properties:
-        self:
+        id:
           type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
     WidgetLinks:
       type: object
       description: Contains applicable links for the item.
@@ -244,6 +266,29 @@ components:
           type: string
           description: Link to obtain information about the current item.
           example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    DocFormatHtmlData:
+      type: object
+      properties:
+        contentType:
+          type: string
+          enum:
+          - html
+        content:
+          type: string
+          description: a string of html text
+        contentVersion:
+          type: number
+      required:
+      - contentType
+      - content
     DocFormatItem:
       type: object
       properties:
@@ -280,66 +325,9 @@ components:
       required:
       - id
       - type
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    ParentLinksEnvelope:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-        links:
-          $ref: '#/components/schemas/SelfLink'
-    DocFormatData:
-      type: object
-      oneOf:
-      - $ref: '#/components/schemas/DocFormatHtmlData'
-      - $ref: '#/components/schemas/DocFormatMarkdownData'
-      discriminator:
-        propertyName: contentType
-        mapping:
-          html: '#/components/schemas/DocFormatHtmlData'
-          markdown: '#/components/schemas/DocFormatMarkdownData'
     createdBy:
       type: object
       description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    DocFormatHtmlData:
-      type: object
-      properties:
-        contentType:
-          type: string
-          enum:
-          - html
-        content:
-          type: string
-          description: a string of html text
-        contentVersion:
-          type: number
-      required:
-      - contentType
-      - content
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
       properties:
         id:
           type: string
@@ -360,6 +348,18 @@ components:
           $ref: '#/components/schemas/Parent'
       required:
       - data
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

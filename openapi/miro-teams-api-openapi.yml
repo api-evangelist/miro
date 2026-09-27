@@ -252,7 +252,58 @@ paths:
       tags:
       - Teams
 components:
+  parameters:
+    pathTeamId:
+      name: team_id
+      description: The ID of a team.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   schemas:
+    TeamsPage:
+      type: object
+      description: Page of teams that match the search query.
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+        size:
+          $ref: '#/components/schemas/PageSize'
+        data:
+          type: array
+          description: List of teams
+          items:
+            $ref: '#/components/schemas/Team'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        type:
+          $ref: '#/components/schemas/PageType'
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
+    TeamChanges:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the team.
+          maxLength: 60
+          minLength: 1
+          example: My Team
     CreateTeamRequest:
       required:
       - name
@@ -280,60 +331,6 @@ components:
       default: 100
       example: 100
       description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    TeamsPage:
-      type: object
-      description: Page of teams that match the search query.
-      required:
-      - limit
-      - size
-      - data
-      properties:
-        limit:
-          $ref: '#/components/schemas/PageLimit'
-        size:
-          $ref: '#/components/schemas/PageSize'
-        data:
-          type: array
-          description: List of teams
-          items:
-            $ref: '#/components/schemas/Team'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        type:
-          $ref: '#/components/schemas/PageType'
-    Team:
-      required:
-      - id
-      - name
-      type: object
-      properties:
-        id:
-          type: string
-          description: Team id
-          example: '3074457345618265000'
-        name:
-          type: string
-          description: Team name
-          example: My Team
-        picture:
-          $ref: '#/components/schemas/Picture'
-        type:
-          type: string
-          description: Type of the object returned.
-          default: team
-    TeamChanges:
-      type: object
-      properties:
-        name:
-          type: string
-          description: New name for the team.
-          maxLength: 60
-          minLength: 1
-          example: My Team
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
     Picture:
       type: object
       properties:
@@ -358,23 +355,26 @@ components:
       type: string
       description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
       example: '3074457345821140946'
-  parameters:
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathTeamId:
-      name: team_id
-      description: The ID of a team.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
+    Team:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+          description: Team id
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: Team name
+          example: My Team
+        picture:
+          $ref: '#/components/schemas/Picture'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: team
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

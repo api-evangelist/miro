@@ -243,25 +243,70 @@ paths:
       - Connectors
 components:
   schemas:
-    ItemConnectionChangesData:
+    createdBy:
       type: object
-      description: The ending point of the connector. If startItem is also provided, endItem.id must be different from startItem.id
+      description: Contains information about the user who created the item.
       properties:
         id:
           type: string
-          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
-          example: '3458764517517818867'
-        position:
-          $ref: '#/components/schemas/RelativeOffset'
-        snapTo:
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
           type: string
-          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    ConnectorsCursorPaged:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
+          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/ConnectorWithLinks'
+        limit:
+          type: integer
+          format: int32
+          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+          example: 1
+        total:
+          type: integer
+          format: int64
+    ConnectorChangesData:
+      type: object
+      description: If both are provided, startItem.id must be different from endItem.id
+      properties:
+        startItem:
+          $ref: '#/components/schemas/ItemConnectionChangesData'
+        endItem:
+          $ref: '#/components/schemas/ItemConnectionChangesData'
+        shape:
+          type: string
+          description: 'The path type of the connector line, defines curvature. Default: curved.'
           enum:
-          - auto
-          - top
-          - right
-          - bottom
-          - left
+          - straight
+          - elbowed
+          - curved
+        captions:
+          type: array
+          description: Blocks of text you want to display on the connector.
+          items:
+            $ref: '#/components/schemas/Caption'
+          maxItems: 20
+          maxLength: 20
+          minItems: 0
+        style:
+          $ref: '#/components/schemas/UpdateConnectorStyle'
     ConnectorCreationData:
       type: object
       description: startItem.id must be different from endItem.id
@@ -290,204 +335,25 @@ components:
       required:
       - endItem
       - startItem
-    ConnectorStyle:
+    ItemConnectionCreationData:
       type: object
-      description: Contains information about the style of a connector, such as the color or caption font size
+      description: The end point of the connector. endItem.id must be different from startItem.id
       properties:
-        color:
-          type: string
-          description: 'Hex value representing the color for the captions on the connector. Default: `#1a1a1a`'
-          example: '#9510ac'
-        endStrokeCap:
-          type: string
-          description: 'The decoration cap of the connector end, like an arrow or circle. Default: stealth.'
-          enum:
-          - none
-          - stealth
-          - rounded_stealth
-          - diamond
-          - filled_diamond
-          - oval
-          - filled_oval
-          - arrow
-          - triangle
-          - filled_triangle
-          - erd_one
-          - erd_many
-          - erd_only_one
-          - erd_zero_or_one
-          - erd_one_or_many
-          - erd_zero_or_many
-          - unknown
-        fontSize:
-          type: string
-          description: 'Defines the font size, in dp, for the captions on the connector. Default: 14'
-          example: '15'
-          maximum: 288
-          minimum: 10
-        startStrokeCap:
-          type: string
-          description: 'The decoration cap of the connector end, like an arrow or circle. Default: none.'
-          enum:
-          - none
-          - stealth
-          - rounded_stealth
-          - diamond
-          - filled_diamond
-          - oval
-          - filled_oval
-          - arrow
-          - triangle
-          - filled_triangle
-          - erd_one
-          - erd_many
-          - erd_only_one
-          - erd_zero_or_one
-          - erd_one_or_many
-          - erd_zero_or_many
-          - unknown
-        strokeColor:
-          type: string
-          description: 'Hex value of the color of the connector line. Default: #000000.'
-          example: '#2d9bf0'
-        strokeStyle:
-          type: string
-          description: 'The stroke pattern of the connector line. Default: normal.'
-          enum:
-          - normal
-          - dotted
-          - dashed
-        strokeWidth:
-          type: string
-          description: 'The thickness of the connector line, in dp. Default: 1.0.'
-          example: '2.0'
-          maximum: 24
-          minimum: 1
-        textOrientation:
-          type: string
-          description: 'The captions orientation relatively to the connector line curvature. Default: aligned.'
-          enum:
-          - horizontal
-          - aligned
-    RelativeOffset:
-      type: object
-      description: The relative position of the point on an item where the connector is attached. Position with x=0% and y=0% correspond to the top-left corner of the item, x=100% and y=100% correspond to the right-bottom corner.
-      properties:
-        x:
-          type: string
-          description: X-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
-          example: 50%
-        y:
-          type: string
-          description: Y-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
-          example: 0%
-    Caption:
-      type: object
-      description: Contains the connector's caption data, such as content and its position.
-      properties:
-        content:
-          type: string
-          description: The text you want to display on the connector. Supports inline HTML tags.
-          example: <p>Caption text</p>
-          maxLength: 200
-          minLength: 0
-        position:
-          type: string
-          description: 'The relative position of the text on the connector, in percentage, minimum 0%, maximum 100%. With 50% value, the text will be placed in the middle of the connector line. Default: 50%'
-          example: 50%
-        textAlignVertical:
-          type: string
-          description: 'The vertical position of the text on the connector. Default: middle'
-          enum:
-          - top
-          - middle
-          - bottom
-      required:
-      - content
-    ConnectorChangesData:
-      type: object
-      description: If both are provided, startItem.id must be different from endItem.id
-      properties:
-        startItem:
-          $ref: '#/components/schemas/ItemConnectionChangesData'
-        endItem:
-          $ref: '#/components/schemas/ItemConnectionChangesData'
-        shape:
-          type: string
-          description: 'The path type of the connector line, defines curvature. Default: curved.'
-          enum:
-          - straight
-          - elbowed
-          - curved
-        captions:
-          type: array
-          description: Blocks of text you want to display on the connector.
-          items:
-            $ref: '#/components/schemas/Caption'
-          maxItems: 20
-          maxLength: 20
-          minItems: 0
-        style:
-          $ref: '#/components/schemas/UpdateConnectorStyle'
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    ConnectorWithLinks:
-      type: object
-      description: Contains the result data.
-      properties:
-        captions:
-          type: array
-          description: Blocks of text you want to display on the connector.
-          items:
-            $ref: '#/components/schemas/Caption'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the connector was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        endItem:
-          $ref: '#/components/schemas/ItemConnectionWithLinks'
         id:
           type: string
-          description: Unique identifier (ID) of a connector.
+          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
           example: '3458764517517818867'
-        isSupported:
-          type: boolean
-          description: Indicates whether the connector is supported at the moment. If this parameter returns `false`, we do not support the connector at the moment. We do not allow updates for unsupported connectors and we might not return all data about the connector, such as intermediate points and connection points to the canvas.
-        links:
-          $ref: '#/components/schemas/SelfLink'
-        modifiedAt:
+        position:
+          $ref: '#/components/schemas/RelativeOffset'
+        snapTo:
           type: string
-          format: date-time
-          description: 'Date and time when the connector was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        shape:
-          type: string
-          default: curved
-          description: 'The path type of the connector line, defines curvature. Default: curved.'
+          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
           enum:
-          - straight
-          - elbowed
-          - curved
-        startItem:
-          $ref: '#/components/schemas/ItemConnectionWithLinks'
-        style:
-          $ref: '#/components/schemas/ConnectorStyle'
-        type:
-          type: string
-          description: Type of board object that is returned.
-      required:
-      - id
+          - auto
+          - top
+          - right
+          - bottom
+          - left
     UpdateConnectorStyle:
       type: object
       description: Contains information about the style of a connector, such as the color or caption font size
@@ -567,6 +433,116 @@ components:
           enum:
           - horizontal
           - aligned
+    RelativeOffset:
+      type: object
+      description: The relative position of the point on an item where the connector is attached. Position with x=0% and y=0% correspond to the top-left corner of the item, x=100% and y=100% correspond to the right-bottom corner.
+      properties:
+        x:
+          type: string
+          description: X-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
+          example: 50%
+        y:
+          type: string
+          description: Y-axis relative coordinate of the location where the connector connects with an item, in percentage, minimum 0%, maximum 100%.
+          example: 0%
+    ConnectorStyle:
+      type: object
+      description: Contains information about the style of a connector, such as the color or caption font size
+      properties:
+        color:
+          type: string
+          description: 'Hex value representing the color for the captions on the connector. Default: `#1a1a1a`'
+          example: '#9510ac'
+        endStrokeCap:
+          type: string
+          description: 'The decoration cap of the connector end, like an arrow or circle. Default: stealth.'
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        fontSize:
+          type: string
+          description: 'Defines the font size, in dp, for the captions on the connector. Default: 14'
+          example: '15'
+          maximum: 288
+          minimum: 10
+        startStrokeCap:
+          type: string
+          description: 'The decoration cap of the connector end, like an arrow or circle. Default: none.'
+          enum:
+          - none
+          - stealth
+          - rounded_stealth
+          - diamond
+          - filled_diamond
+          - oval
+          - filled_oval
+          - arrow
+          - triangle
+          - filled_triangle
+          - erd_one
+          - erd_many
+          - erd_only_one
+          - erd_zero_or_one
+          - erd_one_or_many
+          - erd_zero_or_many
+          - unknown
+        strokeColor:
+          type: string
+          description: 'Hex value of the color of the connector line. Default: #000000.'
+          example: '#2d9bf0'
+        strokeStyle:
+          type: string
+          description: 'The stroke pattern of the connector line. Default: normal.'
+          enum:
+          - normal
+          - dotted
+          - dashed
+        strokeWidth:
+          type: string
+          description: 'The thickness of the connector line, in dp. Default: 1.0.'
+          example: '2.0'
+          maximum: 24
+          minimum: 1
+        textOrientation:
+          type: string
+          description: 'The captions orientation relatively to the connector line curvature. Default: aligned.'
+          enum:
+          - horizontal
+          - aligned
+    ItemConnectionChangesData:
+      type: object
+      description: The ending point of the connector. If startItem is also provided, endItem.id must be different from startItem.id
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
+          example: '3458764517517818867'
+        position:
+          $ref: '#/components/schemas/RelativeOffset'
+        snapTo:
+          type: string
+          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
+          enum:
+          - auto
+          - top
+          - right
+          - bottom
+          - left
     PageLinks:
       type: object
       description: Contains pagination links for the collection.
@@ -603,45 +579,88 @@ components:
           $ref: '#/components/schemas/SelfLink'
         position:
           $ref: '#/components/schemas/RelativeOffset'
-    ConnectorsCursorPaged:
+    SelfLink:
       type: object
+      description: Contains applicable links for the current object.
       properties:
-        cursor:
+        self:
           type: string
-          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
-          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/ConnectorWithLinks'
-        limit:
-          type: integer
-          format: int32
-          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-          example: 1
-        total:
-          type: integer
-          format: int64
-    createdBy:
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    Caption:
       type: object
-      description: Contains information about the user who created the item.
+      description: Contains the connector's caption data, such as content and its position.
       properties:
+        content:
+          type: string
+          description: The text you want to display on the connector. Supports inline HTML tags.
+          example: <p>Caption text</p>
+          maxLength: 200
+          minLength: 0
+        position:
+          type: string
+          description: 'The relative position of the text on the connector, in percentage, minimum 0%, maximum 100%. With 50% value, the text will be placed in the middle of the connector line. Default: 50%'
+          example: 50%
+        textAlignVertical:
+          type: string
+          description: 'The vertical position of the text on the connector. Default: middle'
+          enum:
+          - top
+          - middle
+          - bottom
+      required:
+      - content
+    ConnectorWithLinks:
+      type: object
+      description: Contains the result data.
+      properties:
+        captions:
+          type: array
+          description: Blocks of text you want to display on the connector.
+          items:
+            $ref: '#/components/schemas/Caption'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the connector was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        endItem:
+          $ref: '#/components/schemas/ItemConnectionWithLinks'
         id:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
+          description: Unique identifier (ID) of a connector.
+          example: '3458764517517818867'
+        isSupported:
+          type: boolean
+          description: Indicates whether the connector is supported at the moment. If this parameter returns `false`, we do not support the connector at the moment. We do not allow updates for unsupported connectors and we might not return all data about the connector, such as intermediate points and connection points to the canvas.
+        links:
+          $ref: '#/components/schemas/SelfLink'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the connector was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        shape:
+          type: string
+          default: curved
+          description: 'The path type of the connector line, defines curvature. Default: curved.'
+          enum:
+          - straight
+          - elbowed
+          - curved
+        startItem:
+          $ref: '#/components/schemas/ItemConnectionWithLinks'
+        style:
+          $ref: '#/components/schemas/ConnectorStyle'
         type:
           type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
+          description: Type of board object that is returned.
+      required:
+      - id
     modifiedBy:
       type: object
       description: Contains information about the user who last modified the item.
@@ -654,25 +673,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    ItemConnectionCreationData:
-      type: object
-      description: The end point of the connector. endItem.id must be different from startItem.id
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the item to which you want to attach the connector. Note that Frames are not supported at the moment.
-          example: '3458764517517818867'
-        position:
-          $ref: '#/components/schemas/RelativeOffset'
-        snapTo:
-          type: string
-          description: 'The side of the item connector should be attached to, the connection point will be placed in the middle of that side. Option `auto` allows to pick a connection point automatically. Only either `position` or `snapTo` parameter is allowed to be set, if neither provided `snapTo: auto` will be used by default.'
-          enum:
-          - auto
-          - top
-          - right
-          - bottom
-          - left
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

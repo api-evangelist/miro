@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Miro Developer Platform O Auth API
+  title: Miro Developer Platform OAuth API
   version: v2.0
   description: '### Miro Developer Platform concepts
 
@@ -35,22 +35,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    RevokeTokenRequest:
-      type: object
-      properties:
-        accessToken:
-          type: string
-          description: The access token to be revoked.
-        clientId:
-          type: string
-          description: The client ID associated with the access token.
-        clientSecret:
-          type: string
-          description: The client secret associated with the access token.
-      required:
-      - accessToken
-      - clientId
-      - clientSecret
     ErrorResponse:
       type: object
       properties:
@@ -67,6 +51,22 @@ components:
           type: string
           description: Type of the object returned.
           default: error
+    RevokeTokenRequest:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: The access token to be revoked.
+        clientId:
+          type: string
+          description: The client ID associated with the access token.
+        clientSecret:
+          type: string
+          description: The client secret associated with the access token.
+      required:
+      - accessToken
+      - clientId
+      - clientSecret
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

@@ -208,118 +208,6 @@ paths:
       - Documents
 components:
   schemas:
-    DocumentData:
-      type: object
-      properties:
-        documentUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
-        title:
-          type: string
-          description: A short text header to identify the document.
-          example: Sample document title
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    PositionChange:
-      type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
-      properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     FixedRatioGeometry:
       type: object
       description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
@@ -336,6 +224,15 @@ components:
           type: number
           format: double
           description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     DocumentItem:
       type: object
       properties:
@@ -374,15 +271,48 @@ components:
       required:
       - id
       - type
-    Parent:
+    PositionChange:
       type: object
-      description: Contains information about the parent frame for the item.
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     ParentLinksEnvelope:
       type: object
       description: Contains information about the parent frame for the item.
@@ -394,18 +324,76 @@ components:
           example: '3074457362577955300'
         links:
           $ref: '#/components/schemas/SelfLink'
-    modifiedBy:
+    Position:
       type: object
-      description: Contains information about the user who last modified the item.
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
       properties:
-        id:
+        origin:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
           type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    DocumentData:
+      type: object
+      properties:
+        documentUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+        title:
+          type: string
+          description: A short text header to identify the document.
+          example: Sample document title
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
     createdBy:
       type: object
       description: Contains information about the user who created the item.
@@ -444,6 +432,18 @@ components:
           description: Select a file to upload. Maximum file size is 6 MB.
       required:
       - resource
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

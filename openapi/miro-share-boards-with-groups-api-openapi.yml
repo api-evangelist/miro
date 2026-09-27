@@ -151,9 +151,10 @@ paths:
       - Share boards with groups
 components:
   schemas:
-    QueryCursorBoardUserGroups:
+    PageType:
       type: string
-      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
+      description: Type of the object returned.
+      default: cursor-list
     CreateBoardUserGroupsRequest:
       type: object
       required:
@@ -176,6 +177,9 @@ components:
           - EDITOR
           default: VIEWER
           example: VIEWER
+    QueryCursorBoardUserGroups:
+      type: string
+      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
     PageSize:
       type: integer
       format: int32
@@ -192,10 +196,6 @@ components:
       default: 100
       example: 100
       description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
     QueryLimit:
       type: integer
       format: int32
@@ -203,27 +203,6 @@ components:
       maximum: 100
       default: 100
       example: 100
-    BoardUserGroupsPage:
-      type: object
-      description: Page of user groups that with access to the board.
-      required:
-      - limit
-      - size
-      - data
-      properties:
-        limit:
-          $ref: '#/components/schemas/PageLimit'
-        size:
-          $ref: '#/components/schemas/PageSize'
-        data:
-          type: array
-          description: List of user groups.
-          items:
-            $ref: '#/components/schemas/BoardUserGroup'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        type:
-          $ref: '#/components/schemas/PageType'
     PageCursor:
       type: string
       description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
@@ -249,6 +228,27 @@ components:
         type:
           description: Object type
           default: board-user-group
+    BoardUserGroupsPage:
+      type: object
+      description: Page of user groups that with access to the board.
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+        size:
+          $ref: '#/components/schemas/PageSize'
+        data:
+          type: array
+          description: List of user groups.
+          items:
+            $ref: '#/components/schemas/BoardUserGroup'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        type:
+          $ref: '#/components/schemas/PageType'
   parameters:
     queryCursorBoardUserGroups:
       name: cursor
@@ -264,17 +264,17 @@ components:
       schema:
         type: string
       example: uXjVOfjm6tI=
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
       in: path
       required: true
       schema:
         type: string
       example: '3074457345618265000'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
       in: path
       required: true
       schema:

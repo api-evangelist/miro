@@ -275,6 +275,10 @@ paths:
       - Team Members
 components:
   schemas:
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
     TeamMembersPage:
       type: object
       description: Page of team members that match the search query.
@@ -296,30 +300,6 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
-    PageSize:
-      type: integer
-      format: int32
-      minimum: 0
-      maximum: 100
-      default: 100
-      example: 87
-      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    PageLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
     TeamMember:
       required:
       - id
@@ -374,6 +354,14 @@ components:
           description: Type of the object returned.
           type: string
           default: team-member
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
     TeamMemberInvite:
       type: object
       required:
@@ -398,6 +386,18 @@ components:
           enum:
           - member
           - admin
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
     TeamMemberChanges:
       type: object
       properties:

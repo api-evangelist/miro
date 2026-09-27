@@ -56,9 +56,7 @@
     "miro-tags-api-openapi.yml",
     "miro-tokens-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [
     "miro-openapi.json: dangling $ref: #/components/responses/400",
     "miro-openapi.json: dangling $ref: #/components/responses/401",
@@ -136,8 +134,7 @@
     "miro-openapi.json: declared missing tag: items",
     "miro-openapi.json: declared missing tag: tags",
     "miro-openapi.json: declared missing tag: tokens",
-    "superseded outputs removed: miro-o-auth-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 51 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "miro-ai-interaction-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -169,7 +166,7 @@
     "miro-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "miro-legal-holds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "miro-mind-map-nodes-experimental-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "miro-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "miro-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "miro-organization-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "miro-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "miro-project-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
