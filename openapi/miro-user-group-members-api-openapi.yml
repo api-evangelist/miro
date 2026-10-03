@@ -238,30 +238,114 @@ paths:
       tags:
       - User group members
 components:
+  parameters:
+    queryLimitGroupMembers:
+      name: limit
+      description: The maximum number of members in the result list.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryLimit'
+    pathGroupMemberId:
+      name: member_id
+      description: The ID of a group member.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    queryCursorGroupMembers:
+      name: cursor
+      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryCursor'
   schemas:
-    UpdateUserGroupMembersResultSuccess:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
-        status:
-          type: integer
-          description: The HTTP status code for a successful operation.
-          example: 200
-        affectedUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
-    QueryLimit:
+    PageLimit:
       type: integer
       format: int32
       minimum: 1
       maximum: 100
       default: 100
       example: 100
-    QueryCursor:
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    GroupMember:
+      type: object
+      required:
+      - id
+      - email
+      - type
+      properties:
+        id:
+          type: string
+          description: User ID
+          example: '3074457345618265000'
+        email:
+          type: string
+          description: User email
+          example: user@mail.com
+        type:
+          type: string
+          description: Object type
+          default: user-group-member
+    PageCursor:
       type: string
-      example: '3055557345821140500'
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+    UpdateUserGroupMembersResult:
+      type: array
+      items:
+        oneOf:
+        - $ref: '#/components/schemas/UpdateUserGroupMembersResultSuccess'
+        - $ref: '#/components/schemas/UpdateUserGroupMembersResultError'
+    GroupMembersPage:
+      type: object
+      description: Page of members that match the search query.
+      required:
+      - limit
+      - size
+      - data
+      properties:
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+        size:
+          $ref: '#/components/schemas/PageSize'
+        data:
+          type: array
+          description: List of group members.
+          items:
+            $ref: '#/components/schemas/GroupMember'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        type:
+          $ref: '#/components/schemas/PageType'
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
     UpdateUserGroupMembersResultError:
       type: object
       properties:
@@ -280,6 +364,28 @@ components:
                 default: 400
               code:
                 default: invalidParameters
+    UpdateUserGroupMembersResultSuccess:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
+        status:
+          type: integer
+          description: The HTTP status code for a successful operation.
+          example: 200
+        affectedUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    CreateGroupMemberRequest:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: User email
+          example: user@mail.com
     UpdateUserGroupMembersRequest:
       type: object
       properties:
@@ -316,128 +422,22 @@ components:
         type:
           type: string
           default: error
-    GroupMember:
-      type: object
-      required:
-      - id
-      - email
-      - type
-      properties:
-        id:
-          type: string
-          description: User ID
-          example: '3074457345618265000'
-        email:
-          type: string
-          description: User email
-          example: user@mail.com
-        type:
-          type: string
-          description: Object type
-          default: user-group-member
-    PageLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    CreateGroupMemberRequest:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          description: User email
-          example: user@mail.com
-    GroupMembersPage:
-      type: object
-      description: Page of members that match the search query.
-      required:
-      - limit
-      - size
-      - data
-      properties:
-        limit:
-          $ref: '#/components/schemas/PageLimit'
-        size:
-          $ref: '#/components/schemas/PageSize'
-        data:
-          type: array
-          description: List of group members.
-          items:
-            $ref: '#/components/schemas/GroupMember'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        type:
-          $ref: '#/components/schemas/PageType'
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
-    PageSize:
-      type: integer
-      format: int32
-      minimum: 0
-      maximum: 100
-      default: 100
-      example: 87
-      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
-    UpdateUserGroupMembersResult:
-      type: array
-      items:
-        oneOf:
-        - $ref: '#/components/schemas/UpdateUserGroupMembersResultSuccess'
-        - $ref: '#/components/schemas/UpdateUserGroupMembersResultError'
     UpdateUserGroupMembersResultOperation:
       type: string
       description: The name of the operation that was performed.
       enum:
       - addMembers
       - removeMembers
-  parameters:
-    queryCursorGroupMembers:
-      name: cursor
-      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryCursor'
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    queryLimitGroupMembers:
-      name: limit
-      description: The maximum number of members in the result list.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryLimit'
-    pathGroupMemberId:
-      name: member_id
-      description: The ID of a group member.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
+    QueryCursor:
+      type: string
+      example: '3055557345821140500'
+    QueryLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

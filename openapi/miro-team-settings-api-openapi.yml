@@ -153,50 +153,21 @@ paths:
       tags:
       - Team Settings
 components:
-  parameters:
-    pathTeamId:
-      name: team_id
-      description: The ID of a team.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
   schemas:
-    TeamSettings:
+    TeamSettingsChanges:
       type: object
       properties:
-        organizationId:
-          type: string
-          description: Organization id
-          example: '3074457345618265000'
         teamAccountDiscoverySettings:
-          $ref: '#/components/schemas/TeamAccountDiscoverySettings'
+          $ref: '#/components/schemas/TeamAccountDiscoverySettingsChanges'
         teamCollaborationSettings:
-          $ref: '#/components/schemas/TeamCollaborationSettings'
+          $ref: '#/components/schemas/TeamCollaborationSettingsChanges'
         teamCopyAccessLevelSettings:
-          $ref: '#/components/schemas/TeamCopyAccessLevelSettings'
-        teamId:
-          type: string
-          description: Team id
-          example: '3074457345618265000'
+          $ref: '#/components/schemas/TeamCopyAccessLevelSettingsChanges'
         teamInvitationSettings:
-          $ref: '#/components/schemas/TeamInvitationSettings'
+          $ref: '#/components/schemas/TeamInvitationSettingsChanges'
         teamSharingPolicySettings:
-          $ref: '#/components/schemas/TeamSharingPolicySettings'
-        type:
-          type: string
-          description: Type of the object returned.
-          default: team-settings
-    TeamCollaborationSettingsChanges:
+          $ref: '#/components/schemas/TeamSharingPolicySettingsChanges'
+    TeamCollaborationSettings:
       type: object
       properties:
         coOwnerRole:
@@ -212,6 +183,25 @@ components:
           - enabled
           - disabled
       description: Team collaboration settings
+    TeamAccountDiscoverySettings:
+      type: object
+      properties:
+        accountDiscovery:
+          type: string
+          description: '
+
+            * "hidden":  Only invited users can see and access the team.
+
+            * "request": Members of organization can find and request to join with admin approval.
+
+            * "join":    Members of organization can find and join.
+
+            '
+          enum:
+          - hidden
+          - request
+          - join
+      description: Team account discovery settings
     TeamCopyAccessLevelSettingsChanges:
       type: object
       properties:
@@ -409,6 +399,128 @@ components:
           - allowed_with_editing
           - not_allowed
       description: Team sharing policy settings
+    TeamCollaborationSettingsChanges:
+      type: object
+      properties:
+        coOwnerRole:
+          type: string
+          description: '
+
+            * "enabled": Enable Co-owner role on boards and projects
+
+            * "disabled": Disabled Co-owner role on boards and projects
+
+            '
+          enum:
+          - enabled
+          - disabled
+      description: Team collaboration settings
+    TeamAccountDiscoverySettingsChanges:
+      type: object
+      properties:
+        accountDiscovery:
+          type: string
+          description: '
+
+            * "hidden":  Only invited users can see and access the team.
+
+            * "request": Members of organization can find and request to join with admin approval.
+
+            * "join":    Members of organization can find and join.
+
+            '
+          enum:
+          - hidden
+          - request
+          - join
+      description: Team account discovery settings
+    TeamInvitationSettingsChanges:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
+    TeamSettings:
+      type: object
+      properties:
+        organizationId:
+          type: string
+          description: Organization id
+          example: '3074457345618265000'
+        teamAccountDiscoverySettings:
+          $ref: '#/components/schemas/TeamAccountDiscoverySettings'
+        teamCollaborationSettings:
+          $ref: '#/components/schemas/TeamCollaborationSettings'
+        teamCopyAccessLevelSettings:
+          $ref: '#/components/schemas/TeamCopyAccessLevelSettings'
+        teamId:
+          type: string
+          description: Team id
+          example: '3074457345618265000'
+        teamInvitationSettings:
+          $ref: '#/components/schemas/TeamInvitationSettings'
+        teamSharingPolicySettings:
+          $ref: '#/components/schemas/TeamSharingPolicySettings'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: team-settings
+    TeamInvitationSettings:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
     TeamCopyAccessLevelSettings:
       type: object
       properties:
@@ -443,37 +555,6 @@ components:
           - anyone
           - team_members
       description: Team copy access settings
-    TeamInvitationSettings:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
     TeamSharingPolicySettings:
       type: object
       properties:
@@ -636,104 +717,23 @@ components:
           - allowed_with_editing
           - not_allowed
       description: Team sharing policy settings
-    TeamAccountDiscoverySettings:
-      type: object
-      properties:
-        accountDiscovery:
-          type: string
-          description: '
-
-            * "hidden":  Only invited users can see and access the team.
-
-            * "request": Members of organization can find and request to join with admin approval.
-
-            * "join":    Members of organization can find and join.
-
-            '
-          enum:
-          - hidden
-          - request
-          - join
-      description: Team account discovery settings
-    TeamAccountDiscoverySettingsChanges:
-      type: object
-      properties:
-        accountDiscovery:
-          type: string
-          description: '
-
-            * "hidden":  Only invited users can see and access the team.
-
-            * "request": Members of organization can find and request to join with admin approval.
-
-            * "join":    Members of organization can find and join.
-
-            '
-          enum:
-          - hidden
-          - request
-          - join
-      description: Team account discovery settings
-    TeamSettingsChanges:
-      type: object
-      properties:
-        teamAccountDiscoverySettings:
-          $ref: '#/components/schemas/TeamAccountDiscoverySettingsChanges'
-        teamCollaborationSettings:
-          $ref: '#/components/schemas/TeamCollaborationSettingsChanges'
-        teamCopyAccessLevelSettings:
-          $ref: '#/components/schemas/TeamCopyAccessLevelSettingsChanges'
-        teamInvitationSettings:
-          $ref: '#/components/schemas/TeamInvitationSettingsChanges'
-        teamSharingPolicySettings:
-          $ref: '#/components/schemas/TeamSharingPolicySettingsChanges'
-    TeamCollaborationSettings:
-      type: object
-      properties:
-        coOwnerRole:
-          type: string
-          description: '
-
-            * "enabled": Enable Co-owner role on boards and projects
-
-            * "disabled": Disabled Co-owner role on boards and projects
-
-            '
-          enum:
-          - enabled
-          - disabled
-      description: Team collaboration settings
-    TeamInvitationSettingsChanges:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
+  parameters:
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathTeamId:
+      name: team_id
+      description: The ID of a team.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

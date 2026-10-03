@@ -462,6 +462,98 @@ components:
                     description: The URI of the resource.
                     example: https://miro.com/api/v1/scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User
       description: Metadata about Users, Groups and extension attributes that are currently supported.
+    ResourceTypeListResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse response containing list of supported resource types.
+          items:
+            type: string
+            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
+        totalResults:
+          type: number
+          description: Number of resource types returned in the response.
+          example: 2
+        Resources:
+          type: array
+          items:
+            type: object
+            properties:
+              schemas:
+                type: array
+                description: An array of URNs that identify the schema(s) that define the structure of this resource type.
+                items:
+                  type: string
+                  example: urn:ietf:params:scim:schemas:core:2.0:ResourceType
+              id:
+                type: string
+                description: Identifier of the resource type. Since Miro supports Users and Groups, the values are User or Group.
+                example: User
+              name:
+                type: string
+                description: Name of the resource type. Since Miro supports Users and Groups, the values are User or Group.
+                example: User
+              description:
+                type: string
+                description: Description of the resource type. Since Miro supports Users and Groups, the values are User or Group.
+                example: User
+              endpoint:
+                type: string
+                description: Endpoint extension of the resource type. Since Miro supports Users and Groups, the values are /Users or /Groups.
+                example: /Users
+              schema:
+                type: string
+                description: Schema URI of the resource type. Since Miro supports Users and Groups, the values are urn:ietf:params:scim:schemas:core:2.0:User or urn:ietf:params:scim:schemas:core:2.0:Group.
+                example: urn:ietf:params:scim:schemas:core:2.0:User
+              schemaExtensions:
+                type: array
+                description: Schema extensions supported for the resource type.
+                items:
+                  type: object
+                  properties:
+                    schema:
+                      type: string
+                      description: Schema extension URI of the resource type.
+                      example: urn:ietf:params:scim:schemas:extension:enterprise:2.0:User
+                    required:
+                      type: boolean
+                      description: Indicator of whether the schema extension is required.
+                      example: false
+      description: Information about the supported resource types. Currently Miro supports Users and Groups.
+    SchemaResource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier of the schema resource.
+          example: urn:ietf:params:scim:schemas:core:2.0:User
+        name:
+          type: string
+          description: Name of the schema resource.
+          example: User
+        description:
+          type: string
+          description: Description of the schema resource.
+          example: User Account
+        attributes:
+          type: array
+          description: Attributes that are currently supported.
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+        meta:
+          type: object
+          description: Metadata about the schema resource.
+          properties:
+            resourceType:
+              type: string
+              description: Type of the resource.
+              example: Schema
+            location:
+              type: string
+              description: The URI of the resource.
+              example: https://miro.com/api/v1/scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User
+      description: Information on how users, groups, and enterprise-user attributes are formatted.
     ServiceProviderConfigResponse:
       type: object
       properties:
@@ -562,65 +654,6 @@ components:
                 description: Returns true if this is the primary authentication scheme of the service provider.
                 example: true
       description: Supported operations and SCIM API basic configuration.
-    ResourceTypeListResponse:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse response containing list of supported resource types.
-          items:
-            type: string
-            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
-        totalResults:
-          type: number
-          description: Number of resource types returned in the response.
-          example: 2
-        Resources:
-          type: array
-          items:
-            type: object
-            properties:
-              schemas:
-                type: array
-                description: An array of URNs that identify the schema(s) that define the structure of this resource type.
-                items:
-                  type: string
-                  example: urn:ietf:params:scim:schemas:core:2.0:ResourceType
-              id:
-                type: string
-                description: Identifier of the resource type. Since Miro supports Users and Groups, the values are User or Group.
-                example: User
-              name:
-                type: string
-                description: Name of the resource type. Since Miro supports Users and Groups, the values are User or Group.
-                example: User
-              description:
-                type: string
-                description: Description of the resource type. Since Miro supports Users and Groups, the values are User or Group.
-                example: User
-              endpoint:
-                type: string
-                description: Endpoint extension of the resource type. Since Miro supports Users and Groups, the values are /Users or /Groups.
-                example: /Users
-              schema:
-                type: string
-                description: Schema URI of the resource type. Since Miro supports Users and Groups, the values are urn:ietf:params:scim:schemas:core:2.0:User or urn:ietf:params:scim:schemas:core:2.0:Group.
-                example: urn:ietf:params:scim:schemas:core:2.0:User
-              schemaExtensions:
-                type: array
-                description: Schema extensions supported for the resource type.
-                items:
-                  type: object
-                  properties:
-                    schema:
-                      type: string
-                      description: Schema extension URI of the resource type.
-                      example: urn:ietf:params:scim:schemas:extension:enterprise:2.0:User
-                    required:
-                      type: boolean
-                      description: Indicator of whether the schema extension is required.
-                      example: false
-      description: Information about the supported resource types. Currently Miro supports Users and Groups.
     SchemaAttribute:
       type: object
       properties:
@@ -673,39 +706,6 @@ components:
           description: Indicates the uniqueness of the attribute.
           example: server
       description: Definition of schema attributes.
-    SchemaResource:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Identifier of the schema resource.
-          example: urn:ietf:params:scim:schemas:core:2.0:User
-        name:
-          type: string
-          description: Name of the schema resource.
-          example: User
-        description:
-          type: string
-          description: Description of the schema resource.
-          example: User Account
-        attributes:
-          type: array
-          description: Attributes that are currently supported.
-          items:
-            $ref: '#/components/schemas/SchemaAttribute'
-        meta:
-          type: object
-          description: Metadata about the schema resource.
-          properties:
-            resourceType:
-              type: string
-              description: Type of the resource.
-              example: Schema
-            location:
-              type: string
-              description: The URI of the resource.
-              example: https://miro.com/api/v1/scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User
-      description: Information on how users, groups, and enterprise-user attributes are formatted.
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

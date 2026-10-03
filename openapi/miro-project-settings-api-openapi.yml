@@ -194,28 +194,62 @@ paths:
       - Project Settings
 components:
   schemas:
-    Error404:
+    SharingPolicySettings:
+      type: object
+      properties:
+        teamAccess:
+          $ref: '#/components/schemas/TeamAccess'
+    Error429:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 404
+          default: 429
         code:
           type: string
           description: Description of the status code.
-          example: notFound
+          example: tooManyRequests
         message:
           type: string
           description: Explanation of the error.
         type:
           type: string
           default: error
-    UpdateProjectSettingsRequest:
+    Error403:
       type: object
       properties:
-        sharingPolicySettings:
-          $ref: '#/components/schemas/SharingPolicySettings'
+        status:
+          type: number
+          description: HTTP status code.
+          default: 403
+        code:
+          type: string
+          description: Description of the status code.
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error401:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 401
+        code:
+          type: string
+          description: Description of the status code.
+          default: tokenNotProvided
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
     TeamAccess:
       type: string
       description: 'Team access
@@ -230,17 +264,34 @@ components:
       - view
       default: private
       example: private
-    Error403:
+    Error400:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 403
+          default: 400
         code:
           type: string
           description: Description of the status code.
-          example: forbiddenAccess
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error409:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 409
+        code:
+          type: string
+          description: Description of the status code.
+          example: conflict
         message:
           type: string
           description: Explanation of the error.
@@ -259,73 +310,22 @@ components:
           type: string
           description: Type of the object
           default: project_settings
-    Error409:
+    UpdateProjectSettingsRequest:
+      type: object
+      properties:
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
+    Error404:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 409
+          default: 404
         code:
           type: string
           description: Description of the status code.
-          example: conflict
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error429:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 429
-        code:
-          type: string
-          description: Description of the status code.
-          example: tooManyRequests
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    SharingPolicySettings:
-      type: object
-      properties:
-        teamAccess:
-          $ref: '#/components/schemas/TeamAccess'
-    Error400:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 400
-        code:
-          type: string
-          description: Description of the status code.
-          default: invalidParameters
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error401:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 401
-        code:
-          type: string
-          description: Description of the status code.
-          default: tokenNotProvided
+          example: notFound
         message:
           type: string
           description: Explanation of the error.

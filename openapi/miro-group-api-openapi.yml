@@ -358,6 +358,101 @@ paths:
         source: "const res = await fetch(\n  'https://api.miro.com/api/v1/scim/Groups/{id}',\n  {\n    method: 'PATCH',\n    headers: {\n      'Authorization': 'Bearer <token>',\n      'Content-Type': 'application/scim+json'\n    },\n    body: JSON.stringify({\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n  ],\n  \"Operations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"members\",\n      \"value\": [\n        {\n          \"value\": \"<userId>\"\n        }\n      ]\n    }\n  ]\n})\n  }\n);\nconst data = await res.json();\nconsole.log(data);"
 components:
   schemas:
+    GroupResource:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
+          items:
+            type: string
+            example: urn:ietf:params:scim:schemas:core:2.0:Group
+        id:
+          type: string
+          description: A server-assigned, unique identifier for this Group (team).
+          example: '3074457365836251622'
+        meta:
+          type: object
+          description: Metadata about the resource.
+          properties:
+            resourceType:
+              type: string
+              description: Type of resource.
+              example: Group
+            location:
+              type: string
+              description: URI of resource.
+              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
+        displayName:
+          type: string
+          description: A human readable name for the Group (team).
+          example: Product
+        members:
+          type: array
+          description: A list of all members that are part of the Group (team).
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: A server-assigned, unique identifier for the user (member).
+                example: '3074457365265951581'
+              type:
+                type: string
+                description: Type of item - in this case it is User for all members.
+                example: User
+              display:
+                type: string
+                description: A human-readable name for the user (member), typically the full name.
+                example: John Doe
+    PatchGroupResource:
+      type: object
+      required:
+      - schemas
+      - Operations
+      properties:
+        schemas:
+          type: array
+          description: Identifies which schema(s) this resource uses. In this case it is the PatchOp schema.
+          enum:
+          - urn:ietf:params:scim:api:messages:2.0:PatchOp
+          items:
+            type: string
+        Operations:
+          type: array
+          description: 'A list of patch operations. <br><br> Multiple users can be added or removed from the group (team) in one request. use the array to add or remove multiple users.<br><br> For updating security group name: <br> "op"="replace", "value"={"id":"13266533725732", "displayName":"New group name"} must be provided in the Operations array.'
+          items:
+            type: object
+            required:
+            - op
+            properties:
+              op:
+                type: string
+                description: Supported operations for this Patch request.
+                enum:
+                - Add
+                - Remove
+                - Replace
+              path:
+                type: string
+                description: 'The "path" attribute value is a string containing an attribute path describing the target of the operation. The "path" attribute is optional for the "add", and "replace" operations and is required for the "remove" operation. <br><br> '
+                enum:
+                - members
+                - displayName
+              value:
+                oneOf:
+                - type: array
+                  items:
+                    type: object
+                    required:
+                    - value
+                    properties:
+                      value:
+                        type: string
+                        description: A server-assigned, unique identifier for the user to be added, removed, or replaced.
+                        example: '3074457364156964977'
+                - type: string
+                  description: Human-readable name of the group to be updated.
     GroupListResponse:
       type: object
       properties:
@@ -429,101 +524,6 @@ components:
                     description: URI of resource.
                     example: http://api-synai:9111/api/v1/scim/Groups/3074457365836251622
       description: list of groups (teams)
-    PatchGroupResource:
-      type: object
-      required:
-      - schemas
-      - Operations
-      properties:
-        schemas:
-          type: array
-          description: Identifies which schema(s) this resource uses. In this case it is the PatchOp schema.
-          enum:
-          - urn:ietf:params:scim:api:messages:2.0:PatchOp
-          items:
-            type: string
-        Operations:
-          type: array
-          description: 'A list of patch operations. <br><br> Multiple users can be added or removed from the group (team) in one request. use the array to add or remove multiple users.<br><br> For updating security group name: <br> "op"="replace", "value"={"id":"13266533725732", "displayName":"New group name"} must be provided in the Operations array.'
-          items:
-            type: object
-            required:
-            - op
-            properties:
-              op:
-                type: string
-                description: Supported operations for this Patch request.
-                enum:
-                - Add
-                - Remove
-                - Replace
-              path:
-                type: string
-                description: 'The "path" attribute value is a string containing an attribute path describing the target of the operation. The "path" attribute is optional for the "add", and "replace" operations and is required for the "remove" operation. <br><br> '
-                enum:
-                - members
-                - displayName
-              value:
-                oneOf:
-                - type: array
-                  items:
-                    type: object
-                    required:
-                    - value
-                    properties:
-                      value:
-                        type: string
-                        description: A server-assigned, unique identifier for the user to be added, removed, or replaced.
-                        example: '3074457364156964977'
-                - type: string
-                  description: Human-readable name of the group to be updated.
-    GroupResource:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: Identifies which schema(s) this resource uses. In this case it is the SCIM core Groups schema.
-          items:
-            type: string
-            example: urn:ietf:params:scim:schemas:core:2.0:Group
-        id:
-          type: string
-          description: A server-assigned, unique identifier for this Group (team).
-          example: '3074457365836251622'
-        meta:
-          type: object
-          description: Metadata about the resource.
-          properties:
-            resourceType:
-              type: string
-              description: Type of resource.
-              example: Group
-            location:
-              type: string
-              description: URI of resource.
-              example: http://api-xochitl:9111/api/v1/scim/Groups/3074457365836251622
-        displayName:
-          type: string
-          description: A human readable name for the Group (team).
-          example: Product
-        members:
-          type: array
-          description: A list of all members that are part of the Group (team).
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-                description: A server-assigned, unique identifier for the user (member).
-                example: '3074457365265951581'
-              type:
-                type: string
-                description: Type of item - in this case it is User for all members.
-                example: User
-              display:
-                type: string
-                description: A human-readable name for the user (member), typically the full name.
-                example: John Doe
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

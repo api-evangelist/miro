@@ -152,54 +152,6 @@ paths:
       - Board Content Logs
 components:
   schemas:
-    Actor:
-      type: object
-      description: Contains information about the user who performed the action.
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the user who performed the action.
-          example: '3458764517517852417'
-        email:
-          type: string
-          description: Email of the user who performed the action.
-          example: john.smith.demo@miro.com
-        name:
-          type: string
-          description: Name of the user who performed the action.
-          example: John Smith
-    GetBoardItemContentLogsResponse:
-      type: object
-      description: Response for query using cursor and filter parameters.
-      properties:
-        limit:
-          type: integer
-          description: 'The maximum number of results to return per call. If the number of logs in the response is
-
-            greater than the limit specified, the response returns the cursor parameter with a value.
-
-            '
-          format: int32
-          example: 20
-        size:
-          type: integer
-          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-
-            '
-          format: int32
-          example: 1
-        data:
-          $ref: '#/components/schemas/BoardItemContentLogList'
-        cursor:
-          type: string
-          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-
-            '
-          example: MTY2OTg4NTIwMDAwMHwxMjM=
-        type:
-          type: string
-          description: Type of the object returned.
-          default: cursor-list
     Relationship:
       type: object
       description: Object that contains information about a related board item for the current item.
@@ -264,14 +216,62 @@ components:
           description: Contains the list of items related to the current board item.
           items:
             $ref: '#/components/schemas/Relationship'
-    State:
-      type: object
-      description: Object that contains information about the state of the board item after the action was performed.
     BoardItemContentLogList:
       type: array
       description: Contains the list of content logs for a board item.
       items:
         $ref: '#/components/schemas/BoardItemContentLog'
+    Actor:
+      type: object
+      description: Contains information about the user who performed the action.
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user who performed the action.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: Email of the user who performed the action.
+          example: john.smith.demo@miro.com
+        name:
+          type: string
+          description: Name of the user who performed the action.
+          example: John Smith
+    State:
+      type: object
+      description: Object that contains information about the state of the board item after the action was performed.
+    GetBoardItemContentLogsResponse:
+      type: object
+      description: Response for query using cursor and filter parameters.
+      properties:
+        limit:
+          type: integer
+          description: 'The maximum number of results to return per call. If the number of logs in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+          format: int32
+          example: 20
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        data:
+          $ref: '#/components/schemas/BoardItemContentLogList'
+        cursor:
+          type: string
+          description: 'Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+
+            '
+          example: MTY2OTg4NTIwMDAwMHwxMjM=
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

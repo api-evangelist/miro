@@ -191,69 +191,6 @@ paths:
       - App card items
 components:
   schemas:
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    PositionChange:
-      type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
-      properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
     ParentLinksEnvelope:
       type: object
       description: Contains information about the parent frame for the item.
@@ -265,6 +202,80 @@ components:
           example: '3074457362577955300'
         links:
           $ref: '#/components/schemas/SelfLink'
+    CustomField:
+      type: object
+      description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+      properties:
+        fillColor:
+          type: string
+          description: Hex value representing the color that fills the background area of the preview field, when it's displayed on the app card.
+          example: '#2fa9e3'
+        iconShape:
+          type: string
+          default: round
+          description: The shape of the icon on the preview field.
+          enum:
+          - round
+          - square
+        iconUrl:
+          type: string
+          description: 'A valid URL pointing to an image available online.
+
+            The transport protocol must be HTTPS.
+
+            Possible image file formats: JPG/JPEG, PNG, SVG.'
+          example: https://cdn-icons-png.flaticon.com/512/5695/5695864.png
+        textColor:
+          type: string
+          description: Hex value representing the color of the text string assigned to `value`.
+          example: '#1a1a1a'
+        tooltip:
+          type: string
+          description: A short text displayed in a tooltip when clicking or hovering over the preview field.
+          example: Completion status indicator
+        value:
+          type: string
+          description: 'The actual data value of the custom field.
+
+            It can be any type of information that you want to convey.'
+          example: 'Status: in progress'
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    AppCardDataChanges:
+      type: object
+      description: Contains app card item data, such as the title, description, or fields.
+      properties:
+        description:
+          type: string
+          description: A short text description to add context about the app card.
+          example: Sample app card description
+        fields:
+          type: array
+          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          items:
+            $ref: '#/components/schemas/CustomField'
+        status:
+          type: string
+          default: disconnected
+          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+          enum:
+          - disconnected
+          - connected
+          - disabled
+        title:
+          type: string
+          default: sample app card item
+          description: A short text header to identify the app card.
     Position:
       type: object
       description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
@@ -312,74 +323,24 @@ components:
           type: string
           description: Link to obtain information about the current item.
           example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    UpdateAppCardStyle:
+    Geometry:
       type: object
-      description: Contains information about the style of an app card item, such as the fill color.
+      description: Contains geometrical information about the item, such as its width or height.
       properties:
-        fillColor:
-          type: string
-          description: Hex value of the border color of the app card.
-          example: '#2d9bf0'
-    CustomField:
-      type: object
-      description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
-      properties:
-        fillColor:
-          type: string
-          description: Hex value representing the color that fills the background area of the preview field, when it's displayed on the app card.
-          example: '#2fa9e3'
-        iconShape:
-          type: string
-          default: round
-          description: The shape of the icon on the preview field.
-          enum:
-          - round
-          - square
-        iconUrl:
-          type: string
-          description: 'A valid URL pointing to an image available online.
-
-            The transport protocol must be HTTPS.
-
-            Possible image file formats: JPG/JPEG, PNG, SVG.'
-          example: https://cdn-icons-png.flaticon.com/512/5695/5695864.png
-        textColor:
-          type: string
-          description: Hex value representing the color of the text string assigned to `value`.
-          example: '#1a1a1a'
-        tooltip:
-          type: string
-          description: A short text displayed in a tooltip when clicking or hovering over the preview field.
-          example: Completion status indicator
-        value:
-          type: string
-          description: 'The actual data value of the custom field.
-
-            It can be any type of information that you want to convey.'
-          example: 'Status: in progress'
-    AppCardStyle:
-      type: object
-      description: Contains information about the style of an app card item, such as the fill color.
-      properties:
-        fillColor:
-          type: string
-          description: 'Hex value of the border color of the app card.
-
-            Default: `#2d9bf0`.'
-          example: '#2d9bf0'
-    AppCardUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AppCardDataChanges'
-        style:
-          $ref: '#/components/schemas/UpdateAppCardStyle'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     SelfLink:
       type: object
       description: Contains applicable links for the current object.
@@ -415,9 +376,73 @@ components:
           type: string
           description: A short text header to identify the app card.
           example: sample app card item
-    createdBy:
+    Parent:
       type: object
-      description: Contains information about the user who created the item.
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    PositionChange:
+      type: object
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
+      properties:
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    AppCardStyle:
+      type: object
+      description: Contains information about the style of an app card item, such as the fill color.
+      properties:
+        fillColor:
+          type: string
+          description: 'Hex value of the border color of the app card.
+
+            Default: `#2d9bf0`.'
+          example: '#2d9bf0'
+    AppCardUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AppCardDataChanges'
+        style:
+          $ref: '#/components/schemas/UpdateAppCardStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    UpdateAppCardStyle:
+      type: object
+      description: Contains information about the style of an app card item, such as the fill color.
+      properties:
+        fillColor:
+          type: string
+          description: Hex value of the border color of the app card.
+          example: '#2d9bf0'
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
       properties:
         id:
           type: string
@@ -427,31 +452,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    AppCardDataChanges:
-      type: object
-      description: Contains app card item data, such as the title, description, or fields.
-      properties:
-        description:
-          type: string
-          description: A short text description to add context about the app card.
-          example: Sample app card description
-        fields:
-          type: array
-          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
-          items:
-            $ref: '#/components/schemas/CustomField'
-        status:
-          type: string
-          default: disconnected
-          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
-          enum:
-          - disconnected
-          - connected
-          - disabled
-        title:
-          type: string
-          default: sample app card item
-          description: A short text header to identify the app card.
     AppCardItem:
       type: object
       properties:

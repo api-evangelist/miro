@@ -1042,6 +1042,63 @@ paths:
       - Tags
 components:
   schemas:
+    GetTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    StickyNoteData:
+      type: object
+      description: Contains sticky note item data, such as the content or shape of the sticky note.
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the sticky note item.
+          example: Hello
+        shape:
+          type: string
+          default: square
+          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
+          enum:
+          - square
+          - rectangle
     TextData:
       type: object
       description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
@@ -1052,6 +1109,176 @@ components:
           example: Hello
       required:
       - content
+    WidgetDataOutput:
+      type: object
+      description: Contains the item data, such as the item title, content, or description.
+      oneOf:
+      - $ref: '#/components/schemas/TextData'
+      - $ref: '#/components/schemas/EmbedData'
+      - $ref: '#/components/schemas/CardData'
+      - $ref: '#/components/schemas/AppCardData'
+      - $ref: '#/components/schemas/ImageData'
+      - $ref: '#/components/schemas/DocumentData'
+      - $ref: '#/components/schemas/ShapeData'
+      - $ref: '#/components/schemas/FrameData'
+      - $ref: '#/components/schemas/StickyNoteData'
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    EmbedData:
+      type: object
+      properties:
+        contentType:
+          type: string
+          description: Type of the embedded item's content.
+          example: video
+        description:
+          type: string
+          description: Short description of the embedded item.
+          example: So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...
+        html:
+          type: string
+          description: Html code of the embedded item.
+          example: <iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\" width=\"854\" height=\"480\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>
+        mode:
+          type: string
+          description: 'Defines how the content in the embed item is displayed on the board.
+
+            `inline`: The embedded content is displayed directly on the board.
+
+            `modal`: The embedded content is displayed inside a modal overlay on the board.'
+          enum:
+          - inline
+          - modal
+        previewUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+        providerName:
+          type: string
+          description: Name of the content's provider.
+          example: YouTube
+        providerUrl:
+          type: string
+          description: Url of the content's provider.
+          example: https://www.youtube.com/
+        title:
+          type: string
+          description: Title of the embedded item.
+          example: HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour
+        url:
+          type: string
+          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
+          example: https://www.youtube.com/watch?v=HlVSNEiFCBk
+    GenericItem:
+      type: object
+      description: Contains the result data.
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        data:
+          $ref: '#/components/schemas/WidgetDataOutput'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        parent:
+          $ref: '#/components/schemas/Parent'
+        position:
+          $ref: '#/components/schemas/Position'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: sticky_note
+      required:
+      - id
+      - type
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/GenericItem'
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
+
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        type:
+          type: string
     FrameData:
       type: object
       description: Contains frame item data, such as the title, frame type, or frame format.
@@ -1121,116 +1348,62 @@ components:
 
             It can be any type of information that you want to convey.'
           example: 'Status: in progress'
-    TagUpdateRequest:
+    TagsPagedResponse:
       type: object
       properties:
-        fillColor:
-          type: string
-          description: Fill color for the tag.
-          enum:
-          - red
-          - light_green
-          - cyan
-          - yellow
-          - magenta
-          - green
-          - blue
-          - gray
-          - violet
-          - dark_green
-          - dark_blue
-          - black
-        title:
-          type: string
-          description: Text of the tag. Case-sensitive. Must be unique.
-          example: done
-          maxLength: 120
-          minLength: 0
-    GetTagsResponse:
-      type: object
-      properties:
-        tags:
+        data:
           type: array
+          description: Contains the result data.
           items:
             $ref: '#/components/schemas/Tag'
-    AppCardData:
-      type: object
-      description: Contains app card item data, such as the title, description, or fields.
-      properties:
-        description:
-          type: string
-          description: A short text description to add context about the app card.
-          example: Sample app card description
-        fields:
-          type: array
-          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
-          items:
-            $ref: '#/components/schemas/CustomField'
-        owned:
-          type: boolean
-          description: Defines whether the card is owned by the application making the call.
-        status:
-          type: string
-          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
-          enum:
-          - disconnected
-          - connected
-          - disabled
-        title:
-          type: string
-          description: A short text header to identify the app card.
-          example: sample app card item
-    StickyNoteData:
-      type: object
-      description: Contains sticky note item data, such as the content or shape of the sticky note.
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the sticky note item.
-          example: Hello
-        shape:
-          type: string
-          default: square
-          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
-          enum:
-          - square
-          - rectangle
-    Tag:
-      type: object
-      properties:
-        fillColor:
-          type: string
-          description: Background color of the tag.
-          enum:
-          - red
-          - light_green
-          - cyan
-          - yellow
-          - magenta
-          - green
-          - blue
-          - gray
-          - violet
-          - dark_green
-          - dark_blue
-          - black
-          example: red
-        id:
-          type: string
-          description: Unique identifier of the tag.
-          example: '3074457363306854000'
-        title:
-          type: string
-          description: Text of the tag.
-          example: delayed
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+          example: 1
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
+          example: 1
+        offset:
+          type: integer
+          format: int32
+          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
+          example: 0
+        limit:
+          type: integer
+          format: int32
+          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
+
+            '
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
         type:
           type: string
-          description: Type of the object that is returned. In this case, type returns `tag`.
-      required:
-      - fillColor
-      - id
-      - title
-      - type
+    CardData:
+      type: object
+      description: Contains card item data, such as the title, description, due date, or assignee ID.
+      properties:
+        assigneeId:
+          type: string
+          format: int64
+          description: Unique user identifier. In the GUI, the user ID is mapped to the name of the user who is assigned as the owner of the task or activity described in the card. The identifier is numeric, and it is automatically assigned to a user when they first sign up.
+          example: '3074457362577955300'
+        description:
+          type: string
+          description: A short text description to add context about the card.
+          example: sample card description
+        dueDate:
+          type: string
+          format: date-time
+          description: 'The date when the task or activity described in the card is due to be completed. In the GUI, users can select the due date from a calendar. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2023-10-12T22:00:55.000Z'
+        title:
+          type: string
+          description: A short text header for the card.
+          example: sample card item
     TagWithLinks:
       type: object
       properties:
@@ -1287,161 +1460,6 @@ components:
           format: double
           description: Width of the item, in pixels.
           example: 320
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    TagsPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/Tag'
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-          example: 1
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
-          example: 1
-        offset:
-          type: integer
-          format: int32
-          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
-          example: 0
-        limit:
-          type: integer
-          format: int32
-          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
-
-            '
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-        type:
-          type: string
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    EmbedData:
-      type: object
-      properties:
-        contentType:
-          type: string
-          description: Type of the embedded item's content.
-          example: video
-        description:
-          type: string
-          description: Short description of the embedded item.
-          example: So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...
-        html:
-          type: string
-          description: Html code of the embedded item.
-          example: <iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\" width=\"854\" height=\"480\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>
-        mode:
-          type: string
-          description: 'Defines how the content in the embed item is displayed on the board.
-
-            `inline`: The embedded content is displayed directly on the board.
-
-            `modal`: The embedded content is displayed inside a modal overlay on the board.'
-          enum:
-          - inline
-          - modal
-        previewUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
-        providerName:
-          type: string
-          description: Name of the content's provider.
-          example: YouTube
-        providerUrl:
-          type: string
-          description: Url of the content's provider.
-          example: https://www.youtube.com/
-        title:
-          type: string
-          description: Title of the embedded item.
-          example: HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour
-        url:
-          type: string
-          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
-          example: https://www.youtube.com/watch?v=HlVSNEiFCBk
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
     DocumentData:
       type: object
       properties:
@@ -1457,13 +1475,58 @@ components:
           type: string
           description: A short text header to identify the document.
           example: Sample document title
-    TagCreateRequest:
+    AppCardData:
+      type: object
+      description: Contains app card item data, such as the title, description, or fields.
+      properties:
+        description:
+          type: string
+          description: A short text description to add context about the app card.
+          example: Sample app card description
+        fields:
+          type: array
+          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          items:
+            $ref: '#/components/schemas/CustomField'
+        owned:
+          type: boolean
+          description: Defines whether the card is owned by the application making the call.
+        status:
+          type: string
+          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+          enum:
+          - disconnected
+          - connected
+          - disabled
+        title:
+          type: string
+          description: A short text header to identify the app card.
+          example: sample app card item
+    ImageData:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+        title:
+          type: string
+          description: A short text header to identify the image.
+          example: Sample image title
+    Tag:
       type: object
       properties:
         fillColor:
           type: string
-          default: red
-          description: Fill color for the tag.
+          description: Background color of the tag.
           enum:
           - red
           - light_green
@@ -1477,58 +1540,22 @@ components:
           - dark_green
           - dark_blue
           - black
-        title:
-          type: string
-          description: Text of the tag. Case-sensitive. Must be unique.
-          example: to do
-          maxLength: 120
-          minLength: 0
-      required:
-      - title
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    GenericItem:
-      type: object
-      description: Contains the result data.
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        data:
-          $ref: '#/components/schemas/WidgetDataOutput'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
+          example: red
         id:
           type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        modifiedAt:
+          description: Unique identifier of the tag.
+          example: '3074457363306854000'
+        title:
           type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        parent:
-          $ref: '#/components/schemas/Parent'
-        position:
-          $ref: '#/components/schemas/Position'
+          description: Text of the tag.
+          example: delayed
         type:
           type: string
-          description: Type of item that is returned.
-          example: sticky_note
+          description: Type of the object that is returned. In this case, type returns `tag`.
       required:
+      - fillColor
       - id
+      - title
       - type
     createdBy:
       type: object
@@ -1542,75 +1569,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    WidgetDataOutput:
-      type: object
-      description: Contains the item data, such as the item title, content, or description.
-      oneOf:
-      - $ref: '#/components/schemas/TextData'
-      - $ref: '#/components/schemas/EmbedData'
-      - $ref: '#/components/schemas/CardData'
-      - $ref: '#/components/schemas/AppCardData'
-      - $ref: '#/components/schemas/ImageData'
-      - $ref: '#/components/schemas/DocumentData'
-      - $ref: '#/components/schemas/ShapeData'
-      - $ref: '#/components/schemas/FrameData'
-      - $ref: '#/components/schemas/StickyNoteData'
-    CardData:
-      type: object
-      description: Contains card item data, such as the title, description, due date, or assignee ID.
-      properties:
-        assigneeId:
-          type: string
-          format: int64
-          description: Unique user identifier. In the GUI, the user ID is mapped to the name of the user who is assigned as the owner of the task or activity described in the card. The identifier is numeric, and it is automatically assigned to a user when they first sign up.
-          example: '3074457362577955300'
-        description:
-          type: string
-          description: A short text description to add context about the card.
-          example: sample card description
-        dueDate:
-          type: string
-          format: date-time
-          description: 'The date when the task or activity described in the card is due to be completed. In the GUI, users can select the due date from a calendar. Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2023-10-12T22:00:55.000Z'
-        title:
-          type: string
-          description: A short text header for the card.
-          example: sample card item
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/GenericItem'
-        limit:
-          type: integer
-          format: int32
-          description: 'Maximum number of results returned based on the `limit` specified in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the offset parameter. In this example, you will set the offset parameter to 20 as the offset is zero-based.
-
-            '
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-        offset:
-          type: integer
-          format: int32
-          description: Zero-based index of the first item in the collection. For example, If there are `30` results, and the request has the offset set to `28`, the response will return `2` results.
-          example: 0
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response. The `size` is the number of results returned considering the `offset` and the `limit` values sent in the request. For example, if there are `30` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `20`.<br>If there are `10` results, and the request has the offset set to `0` and the `limit` set to `20`, the `size` of the results will be `10`.<br>If there are `30` results, and the request has the offset set to `28` and the `limit` set to `20`, the `size` of the results will be `2` as the `offset` is the zero-based offset of the first item in the collection.
-          example: 1
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-          example: 1
-        type:
-          type: string
     ShapeData:
       type: object
       description: Contains shape item data, such as the content or shape type of the shape.
@@ -1645,25 +1603,39 @@ components:
           - left_right_arrow
           - left_brace
           - right_brace
-    ImageData:
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    TagUpdateRequest:
       type: object
       properties:
-        imageUrl:
+        fillColor:
           type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+          description: Fill color for the tag.
+          enum:
+          - red
+          - light_green
+          - cyan
+          - yellow
+          - magenta
+          - green
+          - blue
+          - gray
+          - violet
+          - dark_green
+          - dark_blue
+          - black
         title:
           type: string
-          description: A short text header to identify the image.
-          example: Sample image title
+          description: Text of the tag. Case-sensitive. Must be unique.
+          example: done
+          maxLength: 120
+          minLength: 0
     modifiedBy:
       type: object
       description: Contains information about the user who last modified the item.
@@ -1676,6 +1648,34 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
+    TagCreateRequest:
+      type: object
+      properties:
+        fillColor:
+          type: string
+          default: red
+          description: Fill color for the tag.
+          enum:
+          - red
+          - light_green
+          - cyan
+          - yellow
+          - magenta
+          - green
+          - blue
+          - gray
+          - violet
+          - dark_green
+          - dark_blue
+          - black
+        title:
+          type: string
+          description: Text of the tag. Case-sensitive. Must be unique.
+          example: to do
+          maxLength: 120
+          minLength: 0
+      required:
+      - title
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

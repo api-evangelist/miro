@@ -61,6 +61,22 @@ paths:
       - 'Board classification: Organization level'
 components:
   schemas:
+    DataClassificationOrganizationSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Data classification enabled for organization
+          example: true
+        labels:
+          type: array
+          description: Data classification labels
+          items:
+            $ref: '#/components/schemas/DataClassificationLabel'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: data-classification-organization-settings
     DataClassificationLabel:
       description: Data classification label
       type: object
@@ -102,22 +118,6 @@ components:
           type: string
           description: Type of the object returned.
           default: data-classification-label
-    DataClassificationOrganizationSettings:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Data classification enabled for organization
-          example: true
-        labels:
-          type: array
-          description: Data classification labels
-          items:
-            $ref: '#/components/schemas/DataClassificationLabel'
-        type:
-          type: string
-          description: Type of the object returned.
-          default: data-classification-organization-settings
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

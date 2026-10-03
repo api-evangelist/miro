@@ -92,6 +92,79 @@ paths:
       - Audit Logs
 components:
   schemas:
+    AuditCreatedBy:
+      type: object
+      description: The details regarding the creator of the audit event
+      properties:
+        type:
+          type: string
+          description: Type of the creator
+          example: user
+          enum:
+          - user
+          - application
+          - scim_provisioner
+          - miro_automation
+        id:
+          type: string
+          description: Id of the creator
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the creator
+          example: John Smith
+        email:
+          type: string
+          description: Email of the creator
+          example: john.smith@miro.com
+    AuditTeam:
+      type: object
+      description: Team associated with the audit context
+      properties:
+        id:
+          type: string
+          description: Id of the team
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the team
+          example: Example Team
+    AuditObject:
+      type: object
+      description: The object related with the audit event
+      properties:
+        id:
+          type: string
+          description: Id of the object
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the object
+          example: Example Object
+    AuditOrganization:
+      type: object
+      description: Organization associated with the audit context
+      properties:
+        id:
+          type: string
+          description: Id of the organization
+          example: '1234567890123456789'
+        name:
+          type: string
+          description: Name of the organization
+          example: Example Organization
+    AuditContext:
+      type: object
+      description: Audit context
+      properties:
+        ip:
+          type: string
+          description: Ip address associated with the audit context
+          example: 0.0.0.0
+        team:
+          $ref: '#/components/schemas/AuditTeam'
+        organization:
+          $ref: '#/components/schemas/AuditOrganization'
     AuditEvent:
       type: object
       properties:
@@ -122,55 +195,6 @@ components:
           type: string
           description: Event category of the audit event.
           example: authentication
-    AuditCreatedBy:
-      type: object
-      description: The details regarding the creator of the audit event
-      properties:
-        type:
-          type: string
-          description: Type of the creator
-          example: user
-          enum:
-          - user
-          - application
-          - scim_provisioner
-          - miro_automation
-        id:
-          type: string
-          description: Id of the creator
-          example: '1234567890123456789'
-        name:
-          type: string
-          description: Name of the creator
-          example: John Smith
-        email:
-          type: string
-          description: Email of the creator
-          example: john.smith@miro.com
-    AuditContext:
-      type: object
-      description: Audit context
-      properties:
-        ip:
-          type: string
-          description: Ip address associated with the audit context
-          example: 0.0.0.0
-        team:
-          $ref: '#/components/schemas/AuditTeam'
-        organization:
-          $ref: '#/components/schemas/AuditOrganization'
-    AuditTeam:
-      type: object
-      description: Team associated with the audit context
-      properties:
-        id:
-          type: string
-          description: Id of the team
-          example: '1234567890123456789'
-        name:
-          type: string
-          description: Name of the team
-          example: Example Team
     AuditPage:
       type: object
       properties:
@@ -195,30 +219,6 @@ components:
           items:
             $ref: '#/components/schemas/AuditEvent'
           description: Audit events list
-    AuditOrganization:
-      type: object
-      description: Organization associated with the audit context
-      properties:
-        id:
-          type: string
-          description: Id of the organization
-          example: '1234567890123456789'
-        name:
-          type: string
-          description: Name of the organization
-          example: Example Organization
-    AuditObject:
-      type: object
-      description: The object related with the audit event
-      properties:
-        id:
-          type: string
-          description: Id of the object
-          example: '1234567890123456789'
-        name:
-          type: string
-          description: Name of the object
-          example: Example Object
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

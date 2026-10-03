@@ -206,18 +206,6 @@ components:
           type: string
           description: Type of the object returned.
           default: team-data-classification-settings
-    UpdateBoardsDataClassificationLabelRequest:
-      type: object
-      properties:
-        labelId:
-          type: integer
-          description: Data classification label id for team
-          format: int64
-          example: 3000457366756291000
-        notClassifiedOnly:
-          type: boolean
-          description: Assign data classification label to not-classified only or to all boards of team
-          example: true
     UpdateTeamSettingsRequest:
       type: object
       properties:
@@ -229,6 +217,18 @@ components:
         enabled:
           type: boolean
           description: Data classification enabled for team
+          example: true
+    UpdateBoardsDataClassificationLabelRequest:
+      type: object
+      properties:
+        labelId:
+          type: integer
+          description: Data classification label id for team
+          format: int64
+          example: 3000457366756291000
+        notClassifiedOnly:
+          type: boolean
+          description: Assign data classification label to not-classified only or to all boards of team
           example: true
     UpdateBoardsDataClassificationLabel:
       type: object

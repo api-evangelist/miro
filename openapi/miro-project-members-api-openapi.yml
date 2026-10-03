@@ -510,33 +510,23 @@ paths:
       - Project Members
 components:
   schemas:
-    Error404:
+    Error429:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 404
+          default: 429
         code:
           type: string
           description: Description of the status code.
-          example: notFound
+          example: tooManyRequests
         message:
           type: string
           description: Explanation of the error.
         type:
           type: string
           default: error
-    ProjectRole:
-      type: string
-      description: Role of the project member.
-      enum:
-      - owner
-      - editor
-      - viewer
-      - commentator
-      - coowner
-      example: viewer
     ProjectMember:
       type: object
       required:
@@ -576,34 +566,17 @@ components:
         type:
           type: string
           default: error
-    Error409:
+    Error401:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 409
+          default: 401
         code:
           type: string
           description: Description of the status code.
-          example: conflict
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error429:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 429
-        code:
-          type: string
-          description: Description of the status code.
-          example: tooManyRequests
+          default: tokenNotProvided
         message:
           type: string
           description: Explanation of the error.
@@ -615,6 +588,33 @@ components:
       properties:
         role:
           $ref: '#/components/schemas/ProjectRole'
+    ProjectRole:
+      type: string
+      description: Role of the project member.
+      enum:
+      - owner
+      - editor
+      - viewer
+      - commentator
+      - coowner
+      example: viewer
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
     ProjectMemberPage:
       type: object
       required:
@@ -651,17 +651,17 @@ components:
           type: string
           description: Type of the object returned.
           default: cursor-list
-    Error400:
+    Error409:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 400
+          default: 409
         code:
           type: string
           description: Description of the status code.
-          default: invalidParameters
+          example: conflict
         message:
           type: string
           description: Explanation of the error.
@@ -680,17 +680,17 @@ components:
           example: someone@domain.com
         role:
           $ref: '#/components/schemas/ProjectRole'
-    Error401:
+    Error404:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 401
+          default: 404
         code:
           type: string
           description: Description of the status code.
-          default: tokenNotProvided
+          example: notFound
         message:
           type: string
           description: Explanation of the error.

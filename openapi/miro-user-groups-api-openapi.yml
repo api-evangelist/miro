@@ -233,13 +233,6 @@ paths:
       - User Groups
 components:
   schemas:
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
-    QueryCursor:
-      type: string
-      example: '3055557345821140500'
     PageSize:
       type: integer
       format: int32
@@ -248,21 +241,21 @@ components:
       default: 100
       example: 87
       description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    PageLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    QueryLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
+    UpdateGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the user group being updated.
+          maxLength: 60
+          minLength: 1
+          example: Product user group
+        description:
+          type: string
+          description: New description of the user group.
+          maxLength: 300
+          minLength: 0
+          example: This group contains users that belong to the product team.
     GroupsPage:
       type: object
       description: Page of groups that match the search query.
@@ -284,25 +277,49 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
     PageCursor:
       type: string
       description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
       example: '3074457345821140946'
-    UpdateGroupRequest:
+    QueryCursor:
+      type: string
+      example: '3055557345821140500'
+    QueryLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+    CreateGroupRequest:
       type: object
+      required:
+      - name
       properties:
         name:
           type: string
-          description: New name for the user group being updated.
+          description: User group name.
           maxLength: 60
           minLength: 1
-          example: Product user group
+          example: My user group
         description:
           type: string
-          description: New description of the user group.
+          description: Description of the user group being created.
           maxLength: 300
           minLength: 0
-          example: This group contains users that belong to the product team.
+          example: This user group consists of users from the product team.
     Group:
       type: object
       required:
@@ -326,36 +343,19 @@ components:
           type: string
           description: Object type
           default: user-group
-    CreateGroupRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: User group name.
-          maxLength: 60
-          minLength: 1
-          example: My user group
-        description:
-          type: string
-          description: Description of the user group being created.
-          maxLength: 300
-          minLength: 0
-          example: This user group consists of users from the product team.
   parameters:
-    queryCursorGroups:
-      name: cursor
-      description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryCursor'
     queryLimitGroups:
       name: limit
       description: The maximum number of user groups in the result list.
       in: query
       schema:
         $ref: '#/components/schemas/QueryLimit'
+    queryCursorGroups:
+      name: cursor
+      description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryCursor'
     pathOrgId:
       name: org_id
       description: The ID of an organization.

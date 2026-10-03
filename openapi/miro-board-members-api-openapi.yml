@@ -249,6 +249,35 @@ paths:
       - Board Members
 components:
   schemas:
+    BoardMember:
+      type: object
+      description: Contains the current user's board membership details. The current user could be different from the board owner.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3074457353169356300'
+        name:
+          type: string
+          description: Name of the user.
+          example: John Smith
+        role:
+          type: string
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        type:
+          type: string
+          description: Type of the object that is returned. In this case, `type` returns `board_member`.
+          example: board_member
+      required:
+      - id
+      - name
+      - type
     BoardMemberWithLinks:
       type: object
       properties:
@@ -279,137 +308,6 @@ components:
       - id
       - name
       - type
-    BoardMembersInvite:
-      type: object
-      properties:
-        emails:
-          type: array
-          description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
-          items:
-            type: string
-            example: member@email.com
-            description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
-          maxItems: 20
-          minItems: 1
-        role:
-          type: string
-          default: commenter
-          description: Role of the board member. Inviting users with the role `owner` has the same effect as the role `coowner`.
-          enum:
-          - viewer
-          - commenter
-          - editor
-          - coowner
-          - owner
-        message:
-          type: string
-          description: The message that will be sent in the invitation email.
-          example: Hey there! Join my board and let's collaborate on this project!
-      required:
-      - emails
-    BoardMemberChanges:
-      type: object
-      properties:
-        role:
-          type: string
-          default: commenter
-          description: Role of the board member.
-          enum:
-          - viewer
-          - commenter
-          - editor
-          - coowner
-          - owner
-    InvitationResult:
-      type: object
-      properties:
-        failed:
-          type: array
-          description: Contains information about the invites that failed.
-          items:
-            $ref: '#/components/schemas/InvitationError'
-        successful:
-          type: array
-          description: Contains information about the invites that were successfully sent.
-          example: 3074457350804038700
-          items:
-            type: integer
-            format: int64
-            description: Contains information about the invites that were successfully sent.
-            example: 3074457350804038700
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    BoardMember:
-      type: object
-      description: Contains the current user's board membership details. The current user could be different from the board owner.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3074457353169356300'
-        name:
-          type: string
-          description: Name of the user.
-          example: John Smith
-        role:
-          type: string
-          description: Role of the board member.
-          enum:
-          - viewer
-          - commenter
-          - editor
-          - coowner
-          - owner
-        type:
-          type: string
-          description: Type of the object that is returned. In this case, `type` returns `board_member`.
-          example: board_member
-      required:
-      - id
-      - name
-      - type
-    InvitationError:
-      type: object
-      description: Contains information about the invites that failed.
-      properties:
-        email:
-          type: string
-          description: Email ID for which the invitation failed.
-          example: john.smith.demo@miro.com
-        reason:
-          type: string
-          description: Reason why the invitation failed.
-          example: INVITATION_FAILED
     BoardMembersPagedResponse:
       type: object
       properties:
@@ -444,6 +342,108 @@ components:
           $ref: '#/components/schemas/PageLinks'
         type:
           type: string
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    BoardMemberChanges:
+      type: object
+      properties:
+        role:
+          type: string
+          default: commenter
+          description: Role of the board member.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+    InvitationResult:
+      type: object
+      properties:
+        failed:
+          type: array
+          description: Contains information about the invites that failed.
+          items:
+            $ref: '#/components/schemas/InvitationError'
+        successful:
+          type: array
+          description: Contains information about the invites that were successfully sent.
+          example: 3074457350804038700
+          items:
+            type: integer
+            format: int64
+            description: Contains information about the invites that were successfully sent.
+            example: 3074457350804038700
+    BoardMembersInvite:
+      type: object
+      properties:
+        emails:
+          type: array
+          description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
+          items:
+            type: string
+            example: member@email.com
+            description: Email IDs of the users you want to invite to the board. You can invite up to 20 members per call.
+          maxItems: 20
+          minItems: 1
+        role:
+          type: string
+          default: commenter
+          description: Role of the board member. Inviting users with the role `owner` has the same effect as the role `coowner`.
+          enum:
+          - viewer
+          - commenter
+          - editor
+          - coowner
+          - owner
+        message:
+          type: string
+          description: The message that will be sent in the invitation email.
+          example: Hey there! Join my board and let's collaborate on this project!
+      required:
+      - emails
+    InvitationError:
+      type: object
+      description: Contains information about the invites that failed.
+      properties:
+        email:
+          type: string
+          description: Email ID for which the invitation failed.
+          example: john.smith.demo@miro.com
+        reason:
+          type: string
+          description: Reason why the invitation failed.
+          example: INVITATION_FAILED
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

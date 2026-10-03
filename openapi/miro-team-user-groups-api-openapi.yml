@@ -195,13 +195,6 @@ paths:
       - Team user groups
 components:
   schemas:
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
-    QueryCursor:
-      type: string
-      example: '3055557345821140500'
     PageSize:
       type: integer
       format: int32
@@ -210,6 +203,31 @@ components:
       default: 100
       example: 87
       description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+    TeamGroup:
+      type: object
+      required:
+      - id
+      - role
+      properties:
+        id:
+          type: string
+          description: User group ID.
+          example: '3074457345618265000'
+        role:
+          type: string
+          description: Role of the user group in the team.
+          enum:
+          - member
+          default: member
+          example: member
+        type:
+          type: string
+          description: Object type
+          default: team-user-group
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
     PageLimit:
       type: integer
       format: int32
@@ -234,6 +252,9 @@ components:
           - member
           description: Role of user group in the team.
           example: member
+    QueryCursor:
+      type: string
+      example: '3055557345821140500'
     QueryLimit:
       type: integer
       format: int32
@@ -241,31 +262,6 @@ components:
       maximum: 100
       default: 100
       example: 100
-    TeamGroup:
-      type: object
-      required:
-      - id
-      - role
-      properties:
-        id:
-          type: string
-          description: User group ID.
-          example: '3074457345618265000'
-        role:
-          type: string
-          description: Role of the user group in the team.
-          enum:
-          - member
-          default: member
-          example: member
-        type:
-          type: string
-          description: Object type
-          default: team-user-group
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
     TeamGroupsPage:
       type: object
       description: Page of groups that match the search query.
@@ -287,29 +283,23 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
   parameters:
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
     queryCursorTeamGroups:
       name: cursor
       description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
       in: query
       schema:
         $ref: '#/components/schemas/QueryCursor'
-    pathTeamId:
-      name: team_id
-      description: The ID of a team.
-      in: path
-      required: true
+    queryLimitTeamGroups:
+      name: limit
+      description: The maximum number of user groups in the result list.
+      in: query
       schema:
-        type: string
-      example: '3074457345618265000'
+        $ref: '#/components/schemas/QueryLimit'
     pathOrgId:
       name: org_id
       description: The ID of an organization.
@@ -318,12 +308,22 @@ components:
       schema:
         type: string
       example: '3074457345618265000'
-    queryLimitTeamGroups:
-      name: limit
-      description: The maximum number of user groups in the result list.
-      in: query
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
+      in: path
+      required: true
       schema:
-        $ref: '#/components/schemas/QueryLimit'
+        type: string
+      example: '3074457345618265000'
+    pathTeamId:
+      name: team_id
+      description: The ID of a team.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2
