@@ -208,6 +208,30 @@ paths:
       - Documents
 components:
   schemas:
+    FixedRatioGeometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
     ParentLinksEnvelope:
       type: object
       description: Contains information about the parent frame for the item.
@@ -219,44 +243,6 @@ components:
           example: '3074457362577955300'
         links:
           $ref: '#/components/schemas/SelfLink'
-    createdBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    UploadFileFromDevice:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            title:
-              type: string
-              description: Title for the document.
-              example: foo.png
-            altText:
-              type: string
-              description: A description (alt-text) to help people understand what is depicted here.
-              example: Sample image alt text
-            position:
-              $ref: '#/components/schemas/PositionChange'
-            geometry:
-              $ref: '#/components/schemas/FixedRatioGeometry'
-            parent:
-              $ref: '#/components/schemas/Parent'
-        resource:
-          type: string
-          format: binary
-          description: Select a file to upload. Maximum file size is 6 MB.
-      required:
-      - resource
     DocumentItem:
       type: object
       properties:
@@ -295,22 +281,32 @@ components:
       required:
       - id
       - type
-    FixedRatioGeometry:
+    UploadFileFromDevice:
       type: object
-      description: Contains geometrical information about the item, such as its width or rotation. You can set either the width or height, you cannot set both the width and height at the same time.
       properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        data:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Title for the document.
+              example: foo.png
+            altText:
+              type: string
+              description: A description (alt-text) to help people understand what is depicted here.
+              example: Sample image alt text
+            position:
+              $ref: '#/components/schemas/PositionChange'
+            geometry:
+              $ref: '#/components/schemas/FixedRatioGeometry'
+            parent:
+              $ref: '#/components/schemas/Parent'
+        resource:
+          type: string
+          format: binary
+          description: Select a file to upload. Maximum file size is 6 MB.
+      required:
+      - resource
     Position:
       type: object
       description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
@@ -346,18 +342,30 @@ components:
 
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           example: 100
-    WidgetLinks:
+    modifiedBy:
       type: object
-      description: Contains applicable links for the item.
+      description: Contains information about the user who last modified the item.
       properties:
-        related:
+        id:
           type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
           type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     Geometry:
       type: object
       description: Contains geometrical information about the item, such as its width or height.
@@ -376,6 +384,18 @@ components:
           format: double
           description: Width of the item, in pixels.
           example: 320
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     DocumentData:
       type: object
       properties:
@@ -391,6 +411,15 @@ components:
           type: string
           description: A short text header to identify the document.
           example: Sample document title
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -415,35 +444,6 @@ components:
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           default: 0
           example: 100
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

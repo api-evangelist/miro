@@ -191,6 +191,49 @@ paths:
       - Embed items
 components:
   schemas:
+    FixedRatioNoRotationGeometry:
+      type: object
+      description: Contains geometrical information about the item. You can set either the width or height. You cannot set both the width and height at the same time.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+    EmbedUrlData:
+      type: object
+      description: Contains information about the embed URL.
+      properties:
+        mode:
+          type: string
+          description: 'Defines how the content in the embed item is displayed on the board.
+
+            `inline`: The embedded content is displayed directly on the board.
+
+            `modal`: The embedded content is displayed inside a modal overlay on the board.'
+          enum:
+          - inline
+          - modal
+        previewUrl:
+          type: string
+          description: URL of the image to be used as the preview image for the embedded item.
+        url:
+          type: string
+          default: https://www.youtube.com/watch?v=HlVSNEiFCBk
+          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
+      required:
+      - url
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
     ParentLinksEnvelope:
       type: object
       description: Contains information about the parent frame for the item.
@@ -202,56 +245,41 @@ components:
           example: '3074457362577955300'
         links:
           $ref: '#/components/schemas/SelfLink'
-    createdBy:
+    Position:
       type: object
-      description: Contains information about the user who created the item.
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
       properties:
-        id:
+        origin:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
           type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    EmbedItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        data:
-          $ref: '#/components/schemas/EmbedData'
-        position:
-          $ref: '#/components/schemas/Position'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        parent:
-          $ref: '#/components/schemas/ParentLinksEnvelope'
-        links:
-          $ref: '#/components/schemas/WidgetLinks'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: embed
-      required:
-      - id
-      - type
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
     EmbedCreateRequest:
       type: object
       properties:
@@ -265,6 +293,18 @@ components:
           $ref: '#/components/schemas/Parent'
       required:
       - data
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     EmbedData:
       type: object
       properties:
@@ -318,65 +358,6 @@ components:
           type: string
           description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
           example: https://www.youtube.com/watch?v=HlVSNEiFCBk
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    FixedRatioNoRotationGeometry:
-      type: object
-      description: Contains geometrical information about the item. You can set either the width or height. You cannot set both the width and height at the same time.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     Geometry:
       type: object
       description: Contains geometrical information about the item, such as its width or height.
@@ -395,61 +376,79 @@ components:
           format: double
           description: Width of the item, in pixels.
           example: 320
-    SelfLink:
+    modifiedBy:
       type: object
-      description: Contains applicable links for the current object.
+      description: Contains information about the user who last modified the item.
       properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
         self:
           type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    PositionChange:
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    EmbedItem:
       type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    EmbedUrlData:
-      type: object
-      description: Contains information about the embed URL.
-      properties:
-        mode:
+        id:
           type: string
-          description: 'Defines how the content in the embed item is displayed on the board.
-
-            `inline`: The embedded content is displayed directly on the board.
-
-            `modal`: The embedded content is displayed inside a modal overlay on the board.'
-          enum:
-          - inline
-          - modal
-        previewUrl:
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/EmbedData'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
           type: string
-          description: URL of the image to be used as the preview image for the embedded item.
-        url:
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        modifiedAt:
           type: string
-          default: https://www.youtube.com/watch?v=HlVSNEiFCBk
-          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        parent:
+          $ref: '#/components/schemas/ParentLinksEnvelope'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: embed
       required:
-      - url
+      - id
+      - type
+    EmbedUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/EmbedUrlDataChanges'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/FixedRatioNoRotationGeometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
     EmbedUrlDataChanges:
       type: object
       description: Contains information about the embed URL.
@@ -480,29 +479,30 @@ components:
           format: int64
           description: Unique identifier (ID) of the parent frame for the item.
           example: '3074457362577955300'
-    modifiedBy:
+    PositionChange:
       type: object
-      description: Contains information about the user who last modified the item.
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    EmbedUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/EmbedUrlDataChanges'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/FixedRatioNoRotationGeometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

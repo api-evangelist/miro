@@ -191,6 +191,30 @@ paths:
       - 'Board classification: Team level'
 components:
   schemas:
+    UpdateTeamSettingsRequest:
+      type: object
+      properties:
+        defaultLabelId:
+          type: integer
+          description: Data classification default label id
+          format: int64
+          example: 3000457366756291000
+        enabled:
+          type: boolean
+          description: Data classification enabled for team
+          example: true
+    UpdateBoardsDataClassificationLabel:
+      type: object
+      properties:
+        numberUpdatedBoards:
+          type: integer
+          description: Number of boards updated in the team
+          format: int64
+          example: 10
+        type:
+          type: string
+          description: Type of the object returned.
+          default: boards-data-classification-label-changed
     DataClassificationTeamSettings:
       type: object
       properties:
@@ -206,18 +230,6 @@ components:
           type: string
           description: Type of the object returned.
           default: team-data-classification-settings
-    UpdateTeamSettingsRequest:
-      type: object
-      properties:
-        defaultLabelId:
-          type: integer
-          description: Data classification default label id
-          format: int64
-          example: 3000457366756291000
-        enabled:
-          type: boolean
-          description: Data classification enabled for team
-          example: true
     UpdateBoardsDataClassificationLabelRequest:
       type: object
       properties:
@@ -230,18 +242,6 @@ components:
           type: boolean
           description: Assign data classification label to not-classified only or to all boards of team
           example: true
-    UpdateBoardsDataClassificationLabel:
-      type: object
-      properties:
-        numberUpdatedBoards:
-          type: integer
-          description: Number of boards updated in the team
-          format: int64
-          example: 10
-        type:
-          type: string
-          description: Type of the object returned.
-          default: boards-data-classification-label-changed
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

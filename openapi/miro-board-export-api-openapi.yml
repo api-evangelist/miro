@@ -540,74 +540,29 @@ paths:
       - Board Export
 components:
   schemas:
-    PageTotal:
-      type: integer
-      description: Total number of results in the collection.
-      format: int32
-      example: 15
-    BoardExportJobStatus:
-      required:
-      - jobStatus
+    BoardExportJobTasksList:
       type: object
       properties:
-        jobStatus:
-          $ref: '#/components/schemas/ExportJobStatus'
-    BoardFormat:
+        total:
+          $ref: '#/components/schemas/PageTotal'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardExportTask'
+    ExportTaskErrorType:
       type: string
-      enum:
-      - SVG
-      - HTML
-      - PDF
-      default: SVG
-      description: Specifies the format of the file to which the board will be exported. Supported formats include SVG (default), HTML, and PDF.
-      example: SVG
-    BoardExportJobId:
-      required:
-      - jobId
-      type: object
-      properties:
-        jobId:
-          type: string
-          description: Unique identifier of the board export job.
-          format: uuid
-          example: 92343229-c532-446d-b8cb-2f155bedb807
-    BoardExportTask:
-      type: object
-      required:
-      - id
-      - status
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the board export task.
-          example: 9394a815-86ea-418c-8bfc-71772fdb692d
-        status:
-          $ref: '#/components/schemas/ExportTaskStatus'
-        artifactExpiredAt:
-          type: string
-          format: date-time
-          description: 'The date and time when the artifact will no longer be available in the S3 storage. After this time, the link will no longer be valid and the exported files will not be accessible.
+      description: 'Indicates the type of error encountered during the board export task.
 
-            Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2025-08-24T17:32:28Z'
-        sizeInBytes:
-          type: integer
-          format: int64
-          description: Size of the exported artifact in bytes.
-          example: 1048576
-        errorMessage:
-          type: string
-          description: Contains the description of the error that occurred during a board export task.
-        errorType:
-          $ref: '#/components/schemas/ExportTaskErrorType'
-        board:
-          type: object
-          description: Information about a board in the board export task.
-          properties:
-            key:
-              type: string
-              description: Unique identifier of the board.
-              example: o9J_kzlUDmo=
+        Possible values:
+
+        `TEMPORARY`: the board export task encountered a temporary error. Retry the board export task after some time.
+
+        `FATAL`: the board export failed and cannot be retried. This export will never succeed due to issues such as board corruption, non-existence, or other unrecoverable errors. Please verify the board''s state or contact support if assistance is needed.
+
+        `UNKNOWN`: the board export task encountered an unexpected exception. Retry the board export task after some time.'
+      example: TEMPORARY
     BoardExportJobsList:
       description: List of export jobs.
       type: object
@@ -620,6 +575,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BoardExportJob'
+    BoardFormat:
+      type: string
+      enum:
+      - SVG
+      - HTML
+      - PDF
+      default: SVG
+      description: Specifies the format of the file to which the board will be exported. Supported formats include SVG (default), HTML, and PDF.
+      example: SVG
+    BoardExportJobStatus:
+      required:
+      - jobStatus
+      type: object
+      properties:
+        jobStatus:
+          $ref: '#/components/schemas/ExportJobStatus'
     BoardExportTaskExportLink:
       required:
       - status
@@ -676,18 +647,24 @@ components:
         boardFormat:
           $ref: '#/components/schemas/BoardFormat'
       description: List of board IDs to be exported. Each export job can contain up to 1,000 boards.
-    ExportTaskErrorType:
-      type: string
-      description: 'Indicates the type of error encountered during the board export task.
-
-        Possible values:
-
-        `TEMPORARY`: the board export task encountered a temporary error. Retry the board export task after some time.
-
-        `FATAL`: the board export failed and cannot be retried. This export will never succeed due to issues such as board corruption, non-existence, or other unrecoverable errors. Please verify the board''s state or contact support if assistance is needed.
-
-        `UNKNOWN`: the board export task encountered an unexpected exception. Retry the board export task after some time.'
-      example: TEMPORARY
+    BoardExportResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: Unique identifier of the board export job.
+          format: uuid
+          example: 92343229-c532-446d-b8cb-2f155bedb807
+        results:
+          type: array
+          description: Board export task results.
+          items:
+            $ref: '#/components/schemas/BoardExportTaskResult'
+    PageTotal:
+      type: integer
+      description: Total number of results in the collection.
+      format: int32
+      example: 15
     BoardExportJob:
       description: Board export job.
       type: object
@@ -744,6 +721,92 @@ components:
               type: string
               description: Unique identifier of the user who created the board export job.
               example: '3458764517517852417'
+    ExportTaskStatusFilter:
+      type: string
+      description: 'Indicates the status of the individual board export task.
+
+        Possible values:
+
+        `TASK_STATUS_SUCCESS`: the board export task was completed successfully and the results are available.
+
+        `TASK_STATUS_ERROR`: the board export task encountered an error and failed to complete. The `errorMessage` field provides more information on the error.
+
+        `TASK_STATUS_CANCELLED`: the board export task was cancelled.
+
+        `TASK_STATUS_SCHEDULED`: the board export task has been scheduled and is waiting to be processed.
+
+        `TASK_STATUS_CREATED`: the board export task was created.'
+      example: TASK_STATUS_CREATED
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    BoardExportTask:
+      type: object
+      required:
+      - id
+      - status
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the board export task.
+          example: 9394a815-86ea-418c-8bfc-71772fdb692d
+        status:
+          $ref: '#/components/schemas/ExportTaskStatus'
+        artifactExpiredAt:
+          type: string
+          format: date-time
+          description: 'The date and time when the artifact will no longer be available in the S3 storage. After this time, the link will no longer be valid and the exported files will not be accessible.
+
+            Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2025-08-24T17:32:28Z'
+        sizeInBytes:
+          type: integer
+          format: int64
+          description: Size of the exported artifact in bytes.
+          example: 1048576
+        errorMessage:
+          type: string
+          description: Contains the description of the error that occurred during a board export task.
+        errorType:
+          $ref: '#/components/schemas/ExportTaskErrorType'
+        board:
+          type: object
+          description: Information about a board in the board export task.
+          properties:
+            key:
+              type: string
+              description: Unique identifier of the board.
+              example: o9J_kzlUDmo=
+    ExportJobStatus:
+      type: string
+      description: 'Indicates the current state of the board export job.
+
+        Possible values:
+
+        `CREATED`: the job has been created but not yet started. Retry the status call after some time.
+
+        `IN_PROGRESS`: the job is in progress, and the results are not ready yet. Retry the status call after some time.
+
+        `CANCELLED`: the job has been cancelled and will not produce any more results.
+
+        `FINISHED`: the job is complete. You can now get results for the board export job.'
+      enum:
+      - CREATED
+      - IN_PROGRESS
+      - CANCELLED
+      - FINISHED
+      example: CREATED
+    BoardExportJobId:
+      required:
+      - jobId
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: Unique identifier of the board export job.
+          format: uuid
+          example: 92343229-c532-446d-b8cb-2f155bedb807
     BoardExportTaskResult:
       required:
       - boardId
@@ -765,69 +828,6 @@ components:
         errorType:
           $ref: '#/components/schemas/ExportTaskErrorType'
       description: Board export task results.
-    BoardExportResult:
-      type: object
-      properties:
-        jobId:
-          type: string
-          description: Unique identifier of the board export job.
-          format: uuid
-          example: 92343229-c532-446d-b8cb-2f155bedb807
-        results:
-          type: array
-          description: Board export task results.
-          items:
-            $ref: '#/components/schemas/BoardExportTaskResult'
-    BoardExportJobTasksList:
-      type: object
-      properties:
-        total:
-          $ref: '#/components/schemas/PageTotal'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BoardExportTask'
-    ExportTaskStatusFilter:
-      type: string
-      description: 'Indicates the status of the individual board export task.
-
-        Possible values:
-
-        `TASK_STATUS_SUCCESS`: the board export task was completed successfully and the results are available.
-
-        `TASK_STATUS_ERROR`: the board export task encountered an error and failed to complete. The `errorMessage` field provides more information on the error.
-
-        `TASK_STATUS_CANCELLED`: the board export task was cancelled.
-
-        `TASK_STATUS_SCHEDULED`: the board export task has been scheduled and is waiting to be processed.
-
-        `TASK_STATUS_CREATED`: the board export task was created.'
-      example: TASK_STATUS_CREATED
-    ExportJobStatus:
-      type: string
-      description: 'Indicates the current state of the board export job.
-
-        Possible values:
-
-        `CREATED`: the job has been created but not yet started. Retry the status call after some time.
-
-        `IN_PROGRESS`: the job is in progress, and the results are not ready yet. Retry the status call after some time.
-
-        `CANCELLED`: the job has been cancelled and will not produce any more results.
-
-        `FINISHED`: the job is complete. You can now get results for the board export job.'
-      enum:
-      - CREATED
-      - IN_PROGRESS
-      - CANCELLED
-      - FINISHED
-      example: CREATED
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
     ExportTaskStatus:
       type: string
       description: 'Indicates the status of the individual board export task.

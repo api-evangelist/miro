@@ -238,52 +238,22 @@ paths:
       tags:
       - User group members
 components:
-  parameters:
-    queryLimitGroupMembers:
-      name: limit
-      description: The maximum number of members in the result list.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryLimit'
-    pathGroupMemberId:
-      name: member_id
-      description: The ID of a group member.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    queryCursorGroupMembers:
-      name: cursor
-      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryCursor'
   schemas:
-    PageLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    BasicError:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+        code:
+          type: string
+          description: Description of the status code.
+        message:
+          type: string
+          description: Explanation for the error.
+        type:
+          type: string
+          default: error
     GroupMember:
       type: object
       required:
@@ -303,24 +273,6 @@ components:
           type: string
           description: Object type
           default: user-group-member
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
-    PageSize:
-      type: integer
-      format: int32
-      minimum: 0
-      maximum: 100
-      default: 100
-      example: 87
-      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    UpdateUserGroupMembersResult:
-      type: array
-      items:
-        oneOf:
-        - $ref: '#/components/schemas/UpdateUserGroupMembersResultSuccess'
-        - $ref: '#/components/schemas/UpdateUserGroupMembersResultError'
     GroupMembersPage:
       type: object
       description: Page of members that match the search query.
@@ -342,10 +294,15 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
+    CreateGroupMemberRequest:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          description: User email
+          example: user@mail.com
     UpdateUserGroupMembersResultError:
       type: object
       properties:
@@ -364,28 +321,20 @@ components:
                 default: 400
               code:
                 default: invalidParameters
-    UpdateUserGroupMembersResultSuccess:
-      type: object
-      properties:
-        operation:
-          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
-        status:
-          type: integer
-          description: The HTTP status code for a successful operation.
-          example: 200
-        affectedUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMember'
-    CreateGroupMemberRequest:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          description: User email
-          example: user@mail.com
+    UpdateUserGroupMembersResult:
+      type: array
+      items:
+        oneOf:
+        - $ref: '#/components/schemas/UpdateUserGroupMembersResultSuccess'
+        - $ref: '#/components/schemas/UpdateUserGroupMembersResultError'
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
     UpdateUserGroupMembersRequest:
       type: object
       properties:
@@ -407,21 +356,42 @@ components:
           example:
           - '3074457345618265001'
           - user1@example.com
-    BasicError:
+    UpdateUserGroupMembersResultSuccess:
       type: object
       properties:
+        operation:
+          $ref: '#/components/schemas/UpdateUserGroupMembersResultOperation'
         status:
-          type: number
-          description: HTTP status code.
-        code:
-          type: string
-          description: Description of the status code.
-        message:
-          type: string
-          description: Explanation for the error.
-        type:
-          type: string
-          default: error
+          type: integer
+          description: The HTTP status code for a successful operation.
+          example: 200
+        affectedUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+    QueryLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
     UpdateUserGroupMembersResultOperation:
       type: string
       description: The name of the operation that was performed.
@@ -431,13 +401,43 @@ components:
     QueryCursor:
       type: string
       example: '3055557345821140500'
-    QueryLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
+  parameters:
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    queryLimitGroupMembers:
+      name: limit
+      description: The maximum number of members in the result list.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryLimit'
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    queryCursorGroupMembers:
+      name: cursor
+      description: A representation of the position of a member in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryCursor'
+    pathGroupMemberId:
+      name: member_id
+      description: The ID of a group member.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

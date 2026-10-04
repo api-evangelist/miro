@@ -175,46 +175,6 @@ paths:
       - Organization Members
 components:
   schemas:
-    AdminRole:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of the admin role prebuilt or custom
-          example: prebuilt
-          enum:
-          - prebuilt
-          - custom
-        name:
-          type: string
-          description: Name of the admin role
-          example: User Admin
-    OrganizationMembersSearchResponse:
-      type: object
-      description: Response for query by cursor and filter parameters
-      properties:
-        limit:
-          type: integer
-          description: Maximum number of results returned based on the limit specified in the request. For example, if there are 20 results, the request has no cursor value, and the limit is set to 20, the size of the results will be 20. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the cursor parameter value.
-          format: int32
-          example: 20
-        size:
-          type: integer
-          description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10.
-          format: int32
-          example: 1
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationMember'
-        cursor:
-          type: string
-          description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-          example: '3074457345821140946'
-        type:
-          type: string
-          description: Type of the object returned.
-          default: cursor-list
     OrganizationMember:
       description: Organization member
       required:
@@ -285,6 +245,46 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/OrganizationMember'
+    OrganizationMembersSearchResponse:
+      type: object
+      description: Response for query by cursor and filter parameters
+      properties:
+        limit:
+          type: integer
+          description: Maximum number of results returned based on the limit specified in the request. For example, if there are 20 results, the request has no cursor value, and the limit is set to 20, the size of the results will be 20. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the cursor parameter value.
+          format: int32
+          example: 20
+        size:
+          type: integer
+          description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10.
+          format: int32
+          example: 1
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationMember'
+        cursor:
+          type: string
+          description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+          example: '3074457345821140946'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: cursor-list
+    AdminRole:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of the admin role prebuilt or custom
+          example: prebuilt
+          enum:
+          - prebuilt
+          - custom
+        name:
+          type: string
+          description: Name of the admin role
+          example: User Admin
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

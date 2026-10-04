@@ -705,130 +705,6 @@ paths:
       - Flowchart shapes (experimental)
 components:
   schemas:
-    ShapeDataForUpdate:
-      type: object
-      description: Contains shape item data, such as the content or the type of the shape.
-      properties:
-        content:
-          type: string
-          description: "The text you want to display on the shape.\n**Note: When updating a shape type to one of the types below, existing `content` will be lost.**\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
-          example: Hello
-        shape:
-          type: string
-          default: rectangle
-          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    StickyNoteData:
-      type: object
-      description: Contains sticky note item data, such as the content or shape of the sticky note.
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the sticky note item.
-          example: Hello
-        shape:
-          type: string
-          default: square
-          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
-          enum:
-          - square
-          - rectangle
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    ShapeItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        data:
-          $ref: '#/components/schemas/ShapeDataForCreate'
-        style:
-          $ref: '#/components/schemas/ShapeStyleForCreate'
-        position:
-          $ref: '#/components/schemas/Position'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/CreatedBy'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/ModifiedBy'
-        parent:
-          $ref: '#/components/schemas/ParentLinksEnvelope'
-        links:
-          $ref: '#/components/schemas/WidgetLinks'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: shape
-      required:
-      - id
-      - type
-    TextData:
-      type: object
-      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
-      properties:
-        content:
-          type: string
-          description: The actual text (content) that appears in the text item.
-          example: Hello
-      required:
-      - content
     ShapeStyleForCreate:
       type: object
       description: "Contains information about the shape style, such as the border color or opacity. <br> All properties in style object are supported for shape types aren't listed below. <br> <table>\n  <tr>\n    <th align=\"left\">Shape type</th>\n    <th align=\"left\">Unsupported properties</th>\n  </tr>\n  <tr>\n    <td>flow_chart_or</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_summing_junction</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_left</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_right</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_square</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n</table>"
@@ -973,116 +849,6 @@ components:
           - middle
           - bottom
           - unknown
-    WidgetDataOutput:
-      type: object
-      description: Contains the item data, such as the item title, content, or description.
-      oneOf:
-      - $ref: '#/components/schemas/TextData'
-      - $ref: '#/components/schemas/EmbedData'
-      - $ref: '#/components/schemas/CardData'
-      - $ref: '#/components/schemas/AppCardData'
-      - $ref: '#/components/schemas/ImageData'
-      - $ref: '#/components/schemas/DocumentData'
-      - $ref: '#/components/schemas/ShapeData'
-      - $ref: '#/components/schemas/FrameData'
-      - $ref: '#/components/schemas/StickyNoteData'
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    ParentLinksEnvelope:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-        links:
-          $ref: '#/components/schemas/SelfLink'
-    EmbedData:
-      type: object
-      properties:
-        contentType:
-          type: string
-          description: Type of the embedded item's content.
-          example: video
-        description:
-          type: string
-          description: Short description of the embedded item.
-          example: So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...
-        html:
-          type: string
-          description: Html code of the embedded item.
-          example: <iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\" width=\"854\" height=\"480\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>
-        mode:
-          type: string
-          description: 'Defines how the content in the embed item is displayed on the board.
-
-            `inline`: The embedded content is displayed directly on the board.
-
-            `modal`: The embedded content is displayed inside a modal overlay on the board.'
-          enum:
-          - inline
-          - modal
-        previewUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
-        providerName:
-          type: string
-          description: Name of the content's provider.
-          example: YouTube
-        providerUrl:
-          type: string
-          description: Url of the content's provider.
-          example: https://www.youtube.com/
-        title:
-          type: string
-          description: Title of the embedded item.
-          example: HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour
-        url:
-          type: string
-          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
-          example: https://www.youtube.com/watch?v=HlVSNEiFCBk
     GenericItem:
       type: object
       description: Contains the result data.
@@ -1120,38 +886,6 @@ components:
       required:
       - id
       - type
-    FrameData:
-      type: object
-      description: Contains frame item data, such as the title, frame type, or frame format.
-      properties:
-        format:
-          type: string
-          default: custom
-          description: Only custom frames are supported at the moment.
-          enum:
-          - custom
-          - desktop
-          - phone
-          - tablet
-          - a4
-          - letter
-          - ratio_1x1
-          - ratio_4x3
-          - ratio_16x9
-        title:
-          type: string
-          description: Title of the frame. This title appears at the top of the frame.
-          example: Sample frame title
-        type:
-          type: string
-          default: freeform
-          description: Only free form frames are supported at the moment.
-          enum:
-          - freeform
-          - heap
-          - grid
-          - rows
-          - columns
     ShapeStyleForUpdate:
       type: object
       description: "Contains information about the shape style, such as the border color or opacity. <br> All properties in style object are supported for shape types aren't listed below. <br> <table>\n  <tr>\n    <th align=\"left\">Shape type</th>\n    <th align=\"left\">Unsupported properties</th>\n  </tr>\n  <tr>\n    <td>flow_chart_or</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_summing_junction</td>\n    <td>fontSize, fontFamily, color, textAlign, textAlignVertical</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_left</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_curly_right</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n  <tr>\n    <td>flow_chart_note_square</td>\n    <td>fillColor, fillOpacity</td>\n  </tr>\n</table>"
@@ -1258,6 +992,477 @@ components:
           - top
           - middle
           - bottom
+    WidgetDataOutput:
+      type: object
+      description: Contains the item data, such as the item title, content, or description.
+      oneOf:
+      - $ref: '#/components/schemas/TextData'
+      - $ref: '#/components/schemas/EmbedData'
+      - $ref: '#/components/schemas/CardData'
+      - $ref: '#/components/schemas/AppCardData'
+      - $ref: '#/components/schemas/ImageData'
+      - $ref: '#/components/schemas/DocumentData'
+      - $ref: '#/components/schemas/ShapeData'
+      - $ref: '#/components/schemas/FrameData'
+      - $ref: '#/components/schemas/StickyNoteData'
+    ParentLinksEnvelope:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+    PositionChange:
+      type: object
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
+      properties:
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+    TextData:
+      type: object
+      description: Contains text item data, such as the title, content, or description. For more information on the JSON properties, see [Data](https://developers.miro.com/reference/data).
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the text item.
+          example: Hello
+      required:
+      - content
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    ShapeDataForCreate:
+      type: object
+      description: Contains shape item data, such as the content or the type of the shape.
+      properties:
+        content:
+          type: string
+          description: "The text you want to display on the shape.\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
+          example: Hello
+        shape:
+          type: string
+          default: rectangle
+          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    ShapeUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShapeDataForUpdate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForUpdate'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    ModifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    StickyNoteData:
+      type: object
+      description: Contains sticky note item data, such as the content or shape of the sticky note.
+      properties:
+        content:
+          type: string
+          description: The actual text (content) that appears in the sticky note item.
+          example: Hello
+        shape:
+          type: string
+          default: square
+          description: Defines the geometric shape of the sticky note and aspect ratio for its dimensions.
+          enum:
+          - square
+          - rectangle
+    EmbedData:
+      type: object
+      properties:
+        contentType:
+          type: string
+          description: Type of the embedded item's content.
+          example: video
+        description:
+          type: string
+          description: Short description of the embedded item.
+          example: So this is how to organize your life with Miro (a virtual whiteboard) for collaboration, brainstorming, and project management. Students, designers, agile en...
+        html:
+          type: string
+          description: Html code of the embedded item.
+          example: <iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=...&display_name=YouTube&url=...&schema=youtube\" width=\"854\" height=\"480\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>
+        mode:
+          type: string
+          description: 'Defines how the content in the embed item is displayed on the board.
+
+            `inline`: The embedded content is displayed directly on the board.
+
+            `modal`: The embedded content is displayed inside a modal overlay on the board.'
+          enum:
+          - inline
+          - modal
+        previewUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+        providerName:
+          type: string
+          description: Name of the content's provider.
+          example: YouTube
+        providerUrl:
+          type: string
+          description: Url of the content's provider.
+          example: https://www.youtube.com/
+        title:
+          type: string
+          description: Title of the embedded item.
+          example: HOW TO ORGANIZE YOUR LIFE WITH MIRO! ✏ Virtual Whiteboard Tour
+        url:
+          type: string
+          description: 'A [valid URL](https://developers.miro.com/reference/data#embeddata) pointing to the content resource that you want to embed in the board. Possible transport protocols: HTTP, HTTPS.'
+          example: https://www.youtube.com/watch?v=HlVSNEiFCBk
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    ImageData:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL.
+
+            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
+
+            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
+        title:
+          type: string
+          description: A short text header to identify the image.
+          example: Sample image title
+    DocumentData:
+      type: object
+      properties:
+        documentUrl:
+          type: string
+          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
+
+            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
+
+            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
+          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
+        title:
+          type: string
+          description: A short text header to identify the document.
+          example: Sample document title
+    ShapeItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
+        data:
+          $ref: '#/components/schemas/ShapeDataForCreate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForCreate'
+        position:
+          $ref: '#/components/schemas/Position'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/CreatedBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/ModifiedBy'
+        parent:
+          $ref: '#/components/schemas/ParentLinksEnvelope'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: shape
+      required:
+      - id
+      - type
+    Parent:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+    FrameData:
+      type: object
+      description: Contains frame item data, such as the title, frame type, or frame format.
+      properties:
+        format:
+          type: string
+          default: custom
+          description: Only custom frames are supported at the moment.
+          enum:
+          - custom
+          - desktop
+          - phone
+          - tablet
+          - a4
+          - letter
+          - ratio_1x1
+          - ratio_4x3
+          - ratio_16x9
+        title:
+          type: string
+          description: Title of the frame. This title appears at the top of the frame.
+          example: Sample frame title
+        type:
+          type: string
+          default: freeform
+          description: Only free form frames are supported at the moment.
+          enum:
+          - freeform
+          - heap
+          - grid
+          - rows
+          - columns
+    ShapeCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ShapeDataForCreate'
+        style:
+          $ref: '#/components/schemas/ShapeStyleForCreate'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    GenericItemCursorPaged:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Contains the result data.
+          items:
+            $ref: '#/components/schemas/GenericItem'
+        total:
+          type: integer
+          format: int64
+          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
+        size:
+          type: integer
+          format: int32
+          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+          example: 1
+        cursor:
+          type: string
+          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
+          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
+        limit:
+          type: integer
+          format: int32
+          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.
+          example: 20
+        links:
+          $ref: '#/components/schemas/PageLinks'
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    ShapeData:
+      type: object
+      description: Contains shape item data, such as the content or shape type of the shape.
+      properties:
+        content:
+          type: string
+          description: The text you want to display on the shape.
+          example: Hello
+        shape:
+          type: string
+          default: rectangle
+          description: Defines the geometric shape of the item when it is rendered on the board.
+          enum:
+          - rectangle
+          - round_rectangle
+          - circle
+          - triangle
+          - rhombus
+          - parallelogram
+          - trapezoid
+          - pentagon
+          - hexagon
+          - octagon
+          - wedge_round_rectangle_callout
+          - star
+          - flow_chart_predefined_process
+          - cloud
+          - cross
+          - can
+          - right_arrow
+          - left_arrow
+          - left_right_arrow
+          - left_brace
+          - right_brace
+    AppCardData:
+      type: object
+      description: Contains app card item data, such as the title, description, or fields.
+      properties:
+        description:
+          type: string
+          description: A short text description to add context about the app card.
+          example: Sample app card description
+        fields:
+          type: array
+          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
+          items:
+            $ref: '#/components/schemas/CustomField'
+        owned:
+          type: boolean
+          description: Defines whether the card is owned by the application making the call.
+        status:
+          type: string
+          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
+          enum:
+          - disconnected
+          - connected
+          - disabled
+        title:
+          type: string
+          description: A short text header to identify the app card.
+          example: sample app card item
     CustomField:
       type: object
       description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
@@ -1295,19 +1500,7 @@ components:
 
             It can be any type of information that you want to convey.'
           example: 'Status: in progress'
-    ModifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    CreatedBy:
+    createdBy:
       type: object
       description: Contains information about the user who created the item.
       properties:
@@ -1319,6 +1512,24 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
     CardData:
       type: object
       description: Contains card item data, such as the title, description, due date, or assignee ID.
@@ -1341,123 +1552,19 @@ components:
           type: string
           description: A short text header for the card.
           example: sample card item
-    ShapeUpdateRequest:
+    ShapeDataForUpdate:
       type: object
+      description: Contains shape item data, such as the content or the type of the shape.
       properties:
-        data:
-          $ref: '#/components/schemas/ShapeDataForUpdate'
-        style:
-          $ref: '#/components/schemas/ShapeStyleForUpdate'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    DocumentData:
-      type: object
-      properties:
-        documentUrl:
+        content:
           type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL. The URL contains the `redirect` parameter to control the request execution.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned is `application/octet-stream`.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?redirect=false
-        title:
+          description: "The text you want to display on the shape.\n**Note: When updating a shape type to one of the types below, existing `content` will be lost.**\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
+          example: Hello
+        shape:
           type: string
-          description: A short text header to identify the document.
-          example: Sample document title
-    PositionChange:
-      type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
-      properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    AppCardData:
-      type: object
-      description: Contains app card item data, such as the title, description, or fields.
-      properties:
-        description:
-          type: string
-          description: A short text description to add context about the app card.
-          example: Sample app card description
-        fields:
-          type: array
-          description: Array where each object represents a custom preview field. Preview fields are displayed on the bottom half of the app card in the compact view.
-          items:
-            $ref: '#/components/schemas/CustomField'
-        owned:
-          type: boolean
-          description: Defines whether the card is owned by the application making the call.
-        status:
-          type: string
-          description: Status indicating whether an app card is connected and in sync with the source. When the source for the app card is deleted, the status returns `disabled`.
-          enum:
-          - disconnected
-          - connected
-          - disabled
-        title:
-          type: string
-          description: A short text header to identify the app card.
-          example: sample app card item
-    ImageData:
-      type: object
-      properties:
-        imageUrl:
-          type: string
-          description: 'The URL to download the resource. You must use your access token to access the URL.
-
-            The URL contains the `redirect` parameter and the `format` parameter to control the request execution as described in the following parameters:
-
-            `format` parameter: By default, the image format is set to the preview image. If you want to download the original image, set the `format` parameter in the URL to `original`.
-
-            `redirect`: By default, the `redirect` parameter is set to `false` and the resource object containing the URL and the resource type is returned with a 200 OK HTTP code. This URL is valid for 60 seconds. You can use this URL to retrieve the resource file.
-
-            If the `redirect` parameter is set to `true`, a 307 TEMPORARY_REDIRECT HTTP response is returned. If you follow HTTP 3xx responses as redirects, you will automatically be redirected to the resource file and the content type returned can be `image/png`, ''image/svg'', or ''image/jpg'', depending on the original image type.'
-          example: https://api.miro.com/v2/boards/uXjVOfjkmAk=/resources/98765467890987654?format=preview&redirect=false
-        title:
-          type: string
-          description: A short text header to identify the image.
-          example: Sample image title
-    createdBy:
+          default: rectangle
+          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
+    CreatedBy:
       type: object
       description: Contains information about the user who created the item.
       properties:
@@ -1469,113 +1576,6 @@ components:
           type: string
           description: Indicates the type of object returned. In this case, `type` returns `user`.
           example: user
-    GenericItemCursorPaged:
-      type: object
-      properties:
-        data:
-          type: array
-          description: Contains the result data.
-          items:
-            $ref: '#/components/schemas/GenericItem'
-        total:
-          type: integer
-          format: int64
-          description: Total number of results available. If the value of the `total` parameter is higher than the value of the `size` parameter, this means that there are more results that you can retrieve. To retrieve more results, you can make another request and set the `offset` value accordingly. For example, if there are `30` results, and the request has the `offset` set to `0` and the `limit` set to `20`, the `size` parameter will return `20` and the `total` parameter will return `30`. This means that there are 9 more results to retrieve (as the offset is zero-based).
-        size:
-          type: integer
-          format: int32
-          description: Number of results returned in the response considering the `cursor` and the `limit` values sent in the request. For example, if there are `20` results, the request does not have a `cursor` value, and the `limit` set to `10`, the `size` of the results will be `10`.<br>In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-          example: 1
-        cursor:
-          type: string
-          description: A cursor-paginated method returns a portion of the total set of results based on the `limit` specified and a `cursor` that points to the next portion of the results. To retrieve the next set of results of the collection, set the `cursor` parameter in your next request to the value returned in this parameter.
-          example: MzQ1ODc2NDUyMjQ5MDA4Mjg5NX4=
-        limit:
-          type: integer
-          format: int32
-          description: Maximum number of results returned based on the `limit` specified in the request. For example, if there are `20` results, the request has no `cursor` value, and the `limit` is set to `20`,the `size` of the results will be `20`. The rest of the results will not be returned. To retrieve the rest of the results, you must make another request and set the appropriate value for the `cursor` parameter value that you obtained from the response.
-          example: 20
-        links:
-          $ref: '#/components/schemas/PageLinks'
-    ShapeData:
-      type: object
-      description: Contains shape item data, such as the content or shape type of the shape.
-      properties:
-        content:
-          type: string
-          description: The text you want to display on the shape.
-          example: Hello
-        shape:
-          type: string
-          default: rectangle
-          description: Defines the geometric shape of the item when it is rendered on the board.
-          enum:
-          - rectangle
-          - round_rectangle
-          - circle
-          - triangle
-          - rhombus
-          - parallelogram
-          - trapezoid
-          - pentagon
-          - hexagon
-          - octagon
-          - wedge_round_rectangle_callout
-          - star
-          - flow_chart_predefined_process
-          - cloud
-          - cross
-          - can
-          - right_arrow
-          - left_arrow
-          - left_right_arrow
-          - left_brace
-          - right_brace
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
-    ShapeDataForCreate:
-      type: object
-      description: Contains shape item data, such as the content or the type of the shape.
-      properties:
-        content:
-          type: string
-          description: "The text you want to display on the shape.\n<br>**Not supported for shapes:**\n<ul>\n  <li>flow_chart_or</li>\n  <li>flow_chart_summing_junction</li>\n</ul>"
-          example: Hello
-        shape:
-          type: string
-          default: rectangle
-          description: "Defines the geometric shape of the item when it is rendered on the board. <details>\n  <summary>Basic shapes</summary>\n  <ul>\n    <li>rectangle</li>\n    <li>round_rectangle</li>\n    <li>circle</li>\n    <li>triangle</li>\n    <li>rhombus</li>\n    <li>parallelogram</li>\n    <li>trapezoid</li>\n    <li>pentagon</li>\n    <li>hexagon</li>\n    <li>octagon</li>\n    <li>wedge_round_rectangle_callout</li>\n    <li>star</li>\n    <li>flow_chart_predefined_process</li>\n    <li>cloud</li>\n    <li>cross</li>\n    <li>can</li>\n    <li>right_arrow</li>\n    <li>left_arrow</li>\n    <li>left_right_arrow</li>\n    <li>left_brace</li>\n    <li>right_brace</li>\n  </ul>\n</details>\n<details>\n  <summary>Flowchart shapes</summary>\n  <ul>\n    <li>flow_chart_connector</li>\n    <li>flow_chart_magnetic_disk</li>\n    <li>flow_chart_input_output</li>\n    <li>flow_chart_decision</li>\n    <li>flow_chart_delay</li>\n    <li>flow_chart_display</li>\n    <li>flow_chart_document</li>\n    <li>flow_chart_magnetic_drum</li>\n    <li>flow_chart_internal_storage</li>\n    <li>flow_chart_manual_input</li>\n    <li>flow_chart_manual_operation</li>\n    <li>flow_chart_merge</li>\n    <li>flow_chart_multidocuments</li>\n    <li>flow_chart_note_curly_left</li>\n    <li>flow_chart_note_curly_right</li>\n    <li>flow_chart_note_square</li>\n    <li>flow_chart_offpage_connector</li>\n    <li>flow_chart_or</li>\n    <li>flow_chart_predefined_process_2</li>\n    <li>flow_chart_preparation</li>\n    <li>flow_chart_process</li>\n    <li>flow_chart_online_storage</li>\n    <li>flow_chart_summing_junction</li>\n    <li>flow_chart_terminator</li>\n  </ul>\n</details>"
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    ShapeCreateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ShapeDataForCreate'
-        style:
-          $ref: '#/components/schemas/ShapeStyleForCreate'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

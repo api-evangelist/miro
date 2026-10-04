@@ -530,6 +530,33 @@ paths:
           $ref: '#/components/responses/500'
 components:
   schemas:
+    CreateUserResponse:
+      $ref: '#/components/schemas/UserResource'
+    UserListResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse — a paginated wrapper around a set of resources (such as Users or Groups).
+          items:
+            type: string
+            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
+        totalResults:
+          type: number
+          description: The total number of results matching the request.
+          example: 12
+        startIndex:
+          type: number
+          description: The index of the first returned result in the current page.
+          example: 1
+        itemsPerPage:
+          type: number
+          description: The number of items returned in the response.
+          example: 10
+        Resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResource'
     CreateUserResource:
       type: object
       required:
@@ -854,33 +881,6 @@ components:
                 value:
                   type: string
                   description: The "value" field has String type in SCIM standard but the managerId internal Miro field has Long type. If the "value" attribute is not a numeric value, we ignore the value.
-    UserListResponse:
-      type: object
-      properties:
-        schemas:
-          type: array
-          description: An array of URNs that identify the schema(s) that define the structure of this response. <br><br> In this case, it contains urn:ietf:params:scim:api:messages:2.0:ListResponse, which indicates that this is a SCIM ListResponse — a paginated wrapper around a set of resources (such as Users or Groups).
-          items:
-            type: string
-            example: urn:ietf:params:scim:api:messages:2.0:ListResponse
-        totalResults:
-          type: number
-          description: The total number of results matching the request.
-          example: 12
-        startIndex:
-          type: number
-          description: The index of the first returned result in the current page.
-          example: 1
-        itemsPerPage:
-          type: number
-          description: The number of items returned in the response.
-          example: 10
-        Resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResource'
-    CreateUserResponse:
-      $ref: '#/components/schemas/UserResource'
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

@@ -510,23 +510,16 @@ paths:
       - Project Members
 components:
   schemas:
-    Error429:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 429
-        code:
-          type: string
-          description: Description of the status code.
-          example: tooManyRequests
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
+    ProjectRole:
+      type: string
+      description: Role of the project member.
+      enum:
+      - owner
+      - editor
+      - viewer
+      - commentator
+      - coowner
+      example: viewer
     ProjectMember:
       type: object
       required:
@@ -549,23 +542,28 @@ components:
           type: string
           description: Type of the object
           default: project_member
-    Error403:
+    Error409:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 403
+          default: 409
         code:
           type: string
           description: Description of the status code.
-          example: forbiddenAccess
+          example: conflict
         message:
           type: string
           description: Explanation of the error.
         type:
           type: string
           default: error
+    UpdateProjectMemberRequest:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/ProjectRole'
     Error401:
       type: object
       properties:
@@ -583,32 +581,17 @@ components:
         type:
           type: string
           default: error
-    UpdateProjectMemberRequest:
-      type: object
-      properties:
-        role:
-          $ref: '#/components/schemas/ProjectRole'
-    ProjectRole:
-      type: string
-      description: Role of the project member.
-      enum:
-      - owner
-      - editor
-      - viewer
-      - commentator
-      - coowner
-      example: viewer
-    Error400:
+    Error429:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 400
+          default: 429
         code:
           type: string
           description: Description of the status code.
-          default: invalidParameters
+          example: tooManyRequests
         message:
           type: string
           description: Explanation of the error.
@@ -651,17 +634,51 @@ components:
           type: string
           description: Type of the object returned.
           default: cursor-list
-    Error409:
+    Error403:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 409
+          default: 403
         code:
           type: string
           description: Description of the status code.
-          example: conflict
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error404:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 404
+        code:
+          type: string
+          description: Description of the status code.
+          example: notFound
         message:
           type: string
           description: Explanation of the error.
@@ -680,23 +697,6 @@ components:
           example: someone@domain.com
         role:
           $ref: '#/components/schemas/ProjectRole'
-    Error404:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 404
-        code:
-          type: string
-          description: Description of the status code.
-          example: notFound
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

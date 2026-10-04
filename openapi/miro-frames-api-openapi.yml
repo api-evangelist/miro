@@ -490,68 +490,6 @@ paths:
       - Frames
 components:
   schemas:
-    FrameItem:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of an item.
-          example: '3458764517517819000'
-        data:
-          $ref: '#/components/schemas/FrameData'
-        style:
-          $ref: '#/components/schemas/FrameStyle'
-        position:
-          $ref: '#/components/schemas/Position'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        createdAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        createdBy:
-          $ref: '#/components/schemas/createdBy'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
-          example: '2022-03-30T17:26:50.000Z'
-        modifiedBy:
-          $ref: '#/components/schemas/modifiedBy'
-        links:
-          $ref: '#/components/schemas/WidgetLinks'
-        type:
-          type: string
-          description: Type of item that is returned.
-          example: frame
-      required:
-      - id
-      - type
-    createdBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    FrameStyle:
-      type: object
-      description: Contains information about the style of a frame item, such as the fill color.
-      properties:
-        fillColor:
-          type: string
-          description: 'Fill color for the frame.
-
-            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`
-
-            Default: #ffffffff (transparent).'
-          example: '#ffffffff'
     FrameChanges:
       type: object
       description: Contains frame item data, such as the title, frame type, or frame format.
@@ -611,18 +549,76 @@ components:
 
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           example: 100
-    WidgetLinks:
+    GeometryNoRotation:
       type: object
-      description: Contains applicable links for the item.
+      description: Contains geometrical information about the item, such as its width or height.
       properties:
-        related:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
           type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
           type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    FrameCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FrameChanges'
+        style:
+          $ref: '#/components/schemas/FrameStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/GeometryNoRotation'
+      required:
+      - data
+    UpdateFrameStyle:
+      type: object
+      description: Contains information about the style of a frame item, such as the fill color.
+      properties:
+        fillColor:
+          type: string
+          description: 'Fill color for the frame.
+
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`'
+          example: '#ffffffff'
+    FrameUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FrameChanges'
+        style:
+          $ref: '#/components/schemas/UpdateFrameStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/GeometryNoRotation'
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
     Geometry:
       type: object
       description: Contains geometrical information about the item, such as its width or height.
@@ -641,7 +637,7 @@ components:
           format: double
           description: Width of the item, in pixels.
           example: 320
-    UpdateFrameStyle:
+    FrameStyle:
       type: object
       description: Contains information about the style of a frame item, such as the fill color.
       properties:
@@ -649,43 +645,22 @@ components:
           type: string
           description: 'Fill color for the frame.
 
-            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`'
+            Hex values: `#f5f6f8` `#d5f692` `#d0e17a` `#93d275` `#67c6c0` `#23bfe7` `#a6ccf5` `#7b92ff` `#fff9b1` `#f5d128` `#ff9d48` `#f16c7f` `#ea94bb` `#ffcee0` `#b384bb` `#000000`
+
+            Default: #ffffffff (transparent).'
           example: '#ffffffff'
-    PositionChange:
+    WidgetLinks:
       type: object
-      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
+      description: Contains applicable links for the item.
       properties:
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          default: 0
-          example: 100
-    FrameUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FrameChanges'
-        style:
-          $ref: '#/components/schemas/UpdateFrameStyle'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/GeometryNoRotation'
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     FrameData:
       type: object
       description: Contains frame item data, such as the title, frame type, or frame format.
@@ -718,43 +693,68 @@ components:
           - grid
           - rows
           - columns
-    modifiedBy:
+    FrameItem:
       type: object
-      description: Contains information about the user who last modified the item.
       properties:
         id:
           type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    FrameCreateRequest:
-      type: object
-      properties:
+          description: Unique identifier (ID) of an item.
+          example: '3458764517517819000'
         data:
-          $ref: '#/components/schemas/FrameChanges'
+          $ref: '#/components/schemas/FrameData'
         style:
           $ref: '#/components/schemas/FrameStyle'
         position:
-          $ref: '#/components/schemas/PositionChange'
+          $ref: '#/components/schemas/Position'
         geometry:
-          $ref: '#/components/schemas/GeometryNoRotation'
+          $ref: '#/components/schemas/Geometry'
+        createdAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was created. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: 'Date and time when the item was last modified. <br>Format: UTC, adheres to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), includes a [trailing Z offset](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC)).'
+          example: '2022-03-30T17:26:50.000Z'
+        modifiedBy:
+          $ref: '#/components/schemas/modifiedBy'
+        links:
+          $ref: '#/components/schemas/WidgetLinks'
+        type:
+          type: string
+          description: Type of item that is returned.
+          example: frame
       required:
-      - data
-    GeometryNoRotation:
+      - id
+      - type
+    PositionChange:
       type: object
-      description: Contains geometrical information about the item, such as its width or height.
+      description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
       properties:
-        height:
+        x:
           type: number
           format: double
-          description: Height of the item, in pixels.
-        width:
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
+        y:
           type: number
           format: double
-          description: Width of the item, in pixels.
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: `0`.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          default: 0
+          example: 100
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

@@ -150,37 +150,44 @@ paths:
       tags:
       - Share boards with groups
 components:
+  parameters:
+    queryCursorBoardUserGroups:
+      name: cursor
+      description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryCursorBoardUserGroups'
+    pathOrgId:
+      name: org_id
+      description: The ID of an organization.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
+    pathBoardId:
+      name: board_id
+      description: The ID of the board.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: uXjVOfjm6tI=
+    queryLimitBoardUserGroups:
+      name: limit
+      description: The maximum number of user groups in the result list.
+      in: query
+      schema:
+        $ref: '#/components/schemas/QueryLimit'
+    pathGroupId:
+      name: group_id
+      description: The ID of a user group.
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '3074457345618265000'
   schemas:
-    PageSize:
-      type: integer
-      format: int32
-      minimum: 0
-      maximum: 100
-      default: 100
-      example: 87
-      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-    PageType:
-      type: string
-      description: Type of the object returned.
-      default: cursor-list
-    PageLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
-    QueryCursorBoardUserGroups:
-      type: string
-      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
-    QueryLimit:
-      type: integer
-      format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
     BoardUserGroup:
       type: object
       required:
@@ -202,6 +209,22 @@ components:
         type:
           description: Object type
           default: board-user-group
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+    PageSize:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 100
+      default: 100
+      example: 87
+      description: Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
     CreateBoardUserGroupsRequest:
       type: object
       required:
@@ -224,6 +247,13 @@ components:
           - EDITOR
           default: VIEWER
           example: VIEWER
+    QueryLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
     PageCursor:
       type: string
       description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
@@ -249,43 +279,13 @@ components:
           $ref: '#/components/schemas/PageCursor'
         type:
           $ref: '#/components/schemas/PageType'
-  parameters:
-    queryCursorBoardUserGroups:
-      name: cursor
-      description: A representation of the position of a user group in the full set of results. It is used to determine the first item of the resulting set. Leave empty to retrieve items from the beginning.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryCursorBoardUserGroups'
-    pathOrgId:
-      name: org_id
-      description: The ID of an organization.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
-    queryLimitBoardUserGroups:
-      name: limit
-      description: The maximum number of user groups in the result list.
-      in: query
-      schema:
-        $ref: '#/components/schemas/QueryLimit'
-    pathBoardId:
-      name: board_id
-      description: The ID of the board.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: uXjVOfjm6tI=
-    pathGroupId:
-      name: group_id
-      description: The ID of a user group.
-      in: path
-      required: true
-      schema:
-        type: string
-      example: '3074457345618265000'
+    PageType:
+      type: string
+      description: Type of the object returned.
+      default: cursor-list
+    QueryCursorBoardUserGroups:
+      type: string
+      example: MlR5YnRrRUJBV0N2OUxnbWxTNnJ5THwzNDU4NzY0NjEzMTE0Nzk4ODA1fEdST1VQ
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

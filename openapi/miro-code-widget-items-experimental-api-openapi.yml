@@ -704,6 +704,121 @@ paths:
       - Code widget items (experimental)
 components:
   schemas:
+    CodeWidgetData:
+      type: object
+      description: Contains the data properties of a code widget item, such as the code content, programming language, and display settings.
+      properties:
+        code:
+          type: string
+          description: The code content of the widget.
+          maxLength: 6000
+          example: console.log("Hello, World!");
+        language:
+          type: string
+          description: The programming language of the code content. Used for syntax highlighting.
+          example: javascript
+        lineNumbersVisible:
+          type: boolean
+          description: Indicates whether line numbers are visible in the code widget.
+          example: true
+        title:
+          type: string
+          description: The title of the code widget.
+          maxLength: 100
+          example: My Code Snippet
+    PageLinks:
+      type: object
+      description: Contains pagination links for the collection.
+      properties:
+        first:
+          type: string
+          description: Link to retrieve information in the first page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
+        last:
+          type: string
+          description: Link to the retrieve information in the last page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
+        next:
+          type: string
+          description: Link to retrieve information in the next page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
+        prev:
+          type: string
+          description: Link to retrieve information in the previous page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
+        self:
+          type: string
+          description: Link to retrieve information in the current page of the collection.
+          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
+    CodeWidgetUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CodeWidgetData'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    ModifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    CodeWidgetCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CodeWidgetData'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
     CodeWidgetItem:
       type: object
       properties:
@@ -740,106 +855,6 @@ components:
       required:
       - id
       - type
-    ModifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    CodeWidgetUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CodeWidgetData'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-    CreatedBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    Position:
-      type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
-      properties:
-        origin:
-          type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -864,28 +879,36 @@ components:
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           default: 0
           example: 100
-    CodeWidgetData:
+    Geometry:
       type: object
-      description: Contains the data properties of a code widget item, such as the code content, programming language, and display settings.
+      description: Contains geometrical information about the item, such as its width or height.
       properties:
-        code:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
           type: string
-          description: The code content of the widget.
-          maxLength: 6000
-          example: console.log("Hello, World!");
-        language:
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
           type: string
-          description: The programming language of the code content. Used for syntax highlighting.
-          example: javascript
-        lineNumbersVisible:
-          type: boolean
-          description: Indicates whether line numbers are visible in the code widget.
-          example: true
-        title:
-          type: string
-          description: The title of the code widget.
-          maxLength: 100
-          example: My Code Snippet
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     CodeWidgetCursorPaged:
       type: object
       properties:
@@ -914,41 +937,6 @@ components:
           example: 10
         links:
           $ref: '#/components/schemas/PageLinks'
-    PageLinks:
-      type: object
-      description: Contains pagination links for the collection.
-      properties:
-        first:
-          type: string
-          description: Link to retrieve information in the first page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NaSDN&#RDMDA3MzYyOX==
-        last:
-          type: string
-          description: Link to the retrieve information in the last page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDUyMDA3MzYyOX==
-        next:
-          type: string
-          description: Link to retrieve information in the next page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1ODc2NDUyNDsdgsFEwfFJCw==
-        prev:
-          type: string
-          description: Link to retrieve information in the previous page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=
-        self:
-          type: string
-          description: Link to retrieve information in the current page of the collection.
-          example: http://api.miro.com/v2/boards/o9J_lJWSHdg=/items?limit=10&cursor=MzQ1OD1245643FWUyMDA3MzYyOX==
-    CodeWidgetCreateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CodeWidgetData'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
     Parent:
       type: object
       description: Contains information about the parent frame for the item.
@@ -958,6 +946,18 @@ components:
           format: int64
           description: Unique identifier (ID) of the parent frame for the item.
           example: '3074457362577955300'
+    CreatedBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

@@ -466,17 +466,17 @@ paths:
       - Projects
 components:
   schemas:
-    Error429:
+    Error409:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 429
+          default: 409
         code:
           type: string
           description: Description of the status code.
-          example: tooManyRequests
+          example: conflict
         message:
           type: string
           description: Explanation of the error.
@@ -519,23 +519,6 @@ components:
           type: string
           description: Type of the object returned.
           default: cursor-list
-    Error403:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 403
-        code:
-          type: string
-          description: Description of the status code.
-          example: forbiddenAccess
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
     Error401:
       type: object
       properties:
@@ -553,56 +536,17 @@ components:
         type:
           type: string
           default: error
-    CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Project name.
-          maxLength: 60
-          minLength: 1
-          example: My project
-    Error400:
+    Error429:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 400
+          default: 429
         code:
           type: string
           description: Description of the status code.
-          default: invalidParameters
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    UpdateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: New name of the project.
-          maxLength: 60
-          minLength: 1
-          example: My project
-    Error409:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 409
-        code:
-          type: string
-          description: Description of the status code.
-          example: conflict
+          example: tooManyRequests
         message:
           type: string
           description: Explanation of the error.
@@ -628,6 +572,62 @@ components:
           type: string
           description: Type of the object returned.
           default: project
+    CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Project name.
+          maxLength: 60
+          minLength: 1
+          example: My project
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: New name of the project.
+          maxLength: 60
+          minLength: 1
+          example: My project
+    Error403:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 403
+        code:
+          type: string
+          description: Description of the status code.
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    Error400:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 400
+        code:
+          type: string
+          description: Description of the status code.
+          default: invalidParameters
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
     Error404:
       type: object
       properties:

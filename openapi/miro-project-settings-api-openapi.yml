@@ -194,39 +194,17 @@ paths:
       - Project Settings
 components:
   schemas:
-    SharingPolicySettings:
-      type: object
-      properties:
-        teamAccess:
-          $ref: '#/components/schemas/TeamAccess'
-    Error429:
+    Error409:
       type: object
       properties:
         status:
           type: number
           description: HTTP status code.
-          default: 429
+          default: 409
         code:
           type: string
           description: Description of the status code.
-          example: tooManyRequests
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    Error403:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 403
-        code:
-          type: string
-          description: Description of the status code.
-          example: forbiddenAccess
+          example: conflict
         message:
           type: string
           description: Explanation of the error.
@@ -250,20 +228,50 @@ components:
         type:
           type: string
           default: error
-    TeamAccess:
-      type: string
-      description: 'Team access
-
-        * "private": Only the members of the project can access the information within the project.
-
-        * "view":    Anyone in the team can view the information in within the project.
-
-        '
-      enum:
-      - private
-      - view
-      default: private
-      example: private
+    SharingPolicySettings:
+      type: object
+      properties:
+        teamAccess:
+          $ref: '#/components/schemas/TeamAccess'
+    Error429:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 429
+        code:
+          type: string
+          description: Description of the status code.
+          example: tooManyRequests
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
+    UpdateProjectSettingsRequest:
+      type: object
+      properties:
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
+    Error403:
+      type: object
+      properties:
+        status:
+          type: number
+          description: HTTP status code.
+          default: 403
+        code:
+          type: string
+          description: Description of the status code.
+          example: forbiddenAccess
+        message:
+          type: string
+          description: Explanation of the error.
+        type:
+          type: string
+          default: error
     Error400:
       type: object
       properties:
@@ -281,40 +289,6 @@ components:
         type:
           type: string
           default: error
-    Error409:
-      type: object
-      properties:
-        status:
-          type: number
-          description: HTTP status code.
-          default: 409
-        code:
-          type: string
-          description: Description of the status code.
-          example: conflict
-        message:
-          type: string
-          description: Explanation of the error.
-        type:
-          type: string
-          default: error
-    ProjectSettings:
-      type: object
-      required:
-      - sharingPolicySettings
-      - type
-      properties:
-        sharingPolicySettings:
-          $ref: '#/components/schemas/SharingPolicySettings'
-        type:
-          type: string
-          description: Type of the object
-          default: project_settings
-    UpdateProjectSettingsRequest:
-      type: object
-      properties:
-        sharingPolicySettings:
-          $ref: '#/components/schemas/SharingPolicySettings'
     Error404:
       type: object
       properties:
@@ -332,6 +306,32 @@ components:
         type:
           type: string
           default: error
+    TeamAccess:
+      type: string
+      description: 'Team access
+
+        * "private": Only the members of the project can access the information within the project.
+
+        * "view":    Anyone in the team can view the information in within the project.
+
+        '
+      enum:
+      - private
+      - view
+      default: private
+      example: private
+    ProjectSettings:
+      type: object
+      required:
+      - sharingPolicySettings
+      - type
+      properties:
+        sharingPolicySettings:
+          $ref: '#/components/schemas/SharingPolicySettings'
+        type:
+          type: string
+          description: Type of the object
+          default: project_settings
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

@@ -154,6 +154,37 @@ paths:
       - Team Settings
 components:
   schemas:
+    TeamInvitationSettings:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
     TeamSettingsChanges:
       type: object
       properties:
@@ -167,22 +198,202 @@ components:
           $ref: '#/components/schemas/TeamInvitationSettingsChanges'
         teamSharingPolicySettings:
           $ref: '#/components/schemas/TeamSharingPolicySettingsChanges'
-    TeamCollaborationSettings:
+    TeamSharingPolicySettings:
       type: object
       properties:
-        coOwnerRole:
+        allowListedDomains:
+          type: array
+          description: Allow listed domains
+          items:
+            type: string
+            description: Allow listed domains
+        createAssetAccessLevel:
           type: string
           description: '
 
-            * "enabled": Enable Co-owner role on boards and projects
+            * "company_admins": Only company admins can create assets in a team
 
-            * "disabled": Disabled Co-owner role on boards and projects
+            * "admins": Both team and company admins can create assets in a team.
+
+            * "all_members": all_members
+
+            '
+          enum:
+          - company_admins
+          - admins
+          - all_members
+        defaultBoardAccess:
+          type: string
+          description: '
+
+            Default board access
+
+            * "private": Only board owners can access
+
+            * "view":    Anyone in the team can view
+
+            * "comment": Anyone in the team can comment
+
+            * "edit":    Anyone in the team can edit
+
+            '
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+        defaultBoardSharingAccess:
+          type: string
+          description: '
+
+            Indicates who can change board access and invite users to boards in this team, by default.
+
+            * "team_members_with_editing_rights": Any team member with editing rights on the board.
+
+            * "owner_and_coowners":               Only the owner and co-owners of the board.
+
+            '
+          enum:
+          - team_members_with_editing_rights
+          - owner_and_coowners
+        defaultOrganizationAccess:
+          type: string
+          description: '
+
+            Default organization access
+
+            * "private": Only board owners can access
+
+            * "view":    Anyone in the team can view
+
+            * "comment": Anyone in the team can comment
+
+            * "edit":    Anyone in the team can edit
+
+            '
+          enum:
+          - private
+          - view
+          - comment
+          - edit
+        defaultProjectAccess:
+          type: string
+          description: '
+
+            Default project access
+
+            * "private": Only board owners can access
+
+            * "view":    Anyone in the team can view
+
+            '
+          enum:
+          - private
+          - view
+        moveBoardToAccount:
+          type: string
+          description: '
+
+            * "allowed": Allow move board to team
+
+            * "not_allowed": Not allow move board to team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        restrictAllowedDomains:
+          type: string
+          description: '
+
+            * "enabled": Enabled. Restrict to listed domain.
+
+            * "disabled": Disabled. No domain restriction.
+
+            * "enabled_with_external_user_access": Enabled. Restrict to listed domain but allows external users to access.
 
             '
           enum:
           - enabled
+          - enabled_with_external_user_access
           - disabled
-      description: Team collaboration settings
+        sharingOnAccount:
+          type: string
+          description: '
+
+            * "allowed": Allow sharing on team
+
+            * "not_allowed": Not allow sharing on team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        sharingOnOrganization:
+          type: string
+          description: '
+
+            * "allowed": Allow sharing on organization
+
+            * "allowed_with_editing": Allow sharing with editing on organization
+
+            * "not_allowed": Not allow sharing on organization
+
+            '
+          enum:
+          - allowed
+          - allowed_with_editing
+          - not_allowed
+        sharingViaPublicLink:
+          type: string
+          description: '
+
+            * "allowed": Allow sharing via public link
+
+            * "allowed_with_editing": Allow sharing with editing via public link
+
+            * "not_allowed": Not allow sharing via public link
+
+            '
+          enum:
+          - allowed
+          - allowed_with_editing
+          - not_allowed
+      description: Team sharing policy settings
+    TeamCopyAccessLevelSettings:
+      type: object
+      properties:
+        copyAccessLevel:
+          type: string
+          description: '
+
+            * "anyone":       Anyone with the board access can copy board content on newly created boards.
+
+            * "team_members": Team members can copy board content on newly created boards.
+
+            * "team_editors": Team members with editing rights can copy board content on newly created boards.
+
+            * "board_owner":  Board owners only can copy board content on newly created boards.
+
+            '
+          enum:
+          - anyone
+          - team_members
+          - team_editors
+          - board_owner            -
+        copyAccessLevelLimitation:
+          type: string
+          description: '
+
+            * "anyone":       Team members and users outside team can be given permission to copy board content.
+
+            * "team_members": Only team members can be given permission to copy board content.
+
+            '
+          enum:
+          - anyone
+          - team_members
+      description: Team copy access settings
     TeamAccountDiscoverySettings:
       type: object
       properties:
@@ -202,6 +413,62 @@ components:
           - request
           - join
       description: Team account discovery settings
+    TeamSettings:
+      type: object
+      properties:
+        organizationId:
+          type: string
+          description: Organization id
+          example: '3074457345618265000'
+        teamAccountDiscoverySettings:
+          $ref: '#/components/schemas/TeamAccountDiscoverySettings'
+        teamCollaborationSettings:
+          $ref: '#/components/schemas/TeamCollaborationSettings'
+        teamCopyAccessLevelSettings:
+          $ref: '#/components/schemas/TeamCopyAccessLevelSettings'
+        teamId:
+          type: string
+          description: Team id
+          example: '3074457345618265000'
+        teamInvitationSettings:
+          $ref: '#/components/schemas/TeamInvitationSettings'
+        teamSharingPolicySettings:
+          $ref: '#/components/schemas/TeamSharingPolicySettings'
+        type:
+          type: string
+          description: Type of the object returned.
+          default: team-settings
+    TeamInvitationSettingsChanges:
+      type: object
+      properties:
+        inviteExternalUsers:
+          type: string
+          description: '
+
+            * "allowed": Allow non-team collaborators for team
+
+            * "not_allowed": Not Allow non-team collaborators for team
+
+            '
+          enum:
+          - allowed
+          - not_allowed
+        whoCanInvite:
+          type: string
+          description: '
+
+            * "only_org_admins": Company admins only can invite
+
+            * "admins":          Company admins and team admins can invite
+
+            * "all_members":     All team members can invite
+
+            '
+          enum:
+          - only_org_admins
+          - admins
+          - all_members
+      description: Team invitation settings
     TeamCopyAccessLevelSettingsChanges:
       type: object
       properties:
@@ -236,6 +503,22 @@ components:
           - anyone
           - team_members
       description: Team copy access settings
+    TeamCollaborationSettingsChanges:
+      type: object
+      properties:
+        coOwnerRole:
+          type: string
+          description: '
+
+            * "enabled": Enable Co-owner role on boards and projects
+
+            * "disabled": Disabled Co-owner role on boards and projects
+
+            '
+          enum:
+          - enabled
+          - disabled
+      description: Team collaboration settings
     TeamSharingPolicySettingsChanges:
       type: object
       properties:
@@ -399,7 +682,7 @@ components:
           - allowed_with_editing
           - not_allowed
       description: Team sharing policy settings
-    TeamCollaborationSettingsChanges:
+    TeamCollaborationSettings:
       type: object
       properties:
         coOwnerRole:
@@ -434,289 +717,6 @@ components:
           - request
           - join
       description: Team account discovery settings
-    TeamInvitationSettingsChanges:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
-    TeamSettings:
-      type: object
-      properties:
-        organizationId:
-          type: string
-          description: Organization id
-          example: '3074457345618265000'
-        teamAccountDiscoverySettings:
-          $ref: '#/components/schemas/TeamAccountDiscoverySettings'
-        teamCollaborationSettings:
-          $ref: '#/components/schemas/TeamCollaborationSettings'
-        teamCopyAccessLevelSettings:
-          $ref: '#/components/schemas/TeamCopyAccessLevelSettings'
-        teamId:
-          type: string
-          description: Team id
-          example: '3074457345618265000'
-        teamInvitationSettings:
-          $ref: '#/components/schemas/TeamInvitationSettings'
-        teamSharingPolicySettings:
-          $ref: '#/components/schemas/TeamSharingPolicySettings'
-        type:
-          type: string
-          description: Type of the object returned.
-          default: team-settings
-    TeamInvitationSettings:
-      type: object
-      properties:
-        inviteExternalUsers:
-          type: string
-          description: '
-
-            * "allowed": Allow non-team collaborators for team
-
-            * "not_allowed": Not Allow non-team collaborators for team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        whoCanInvite:
-          type: string
-          description: '
-
-            * "only_org_admins": Company admins only can invite
-
-            * "admins":          Company admins and team admins can invite
-
-            * "all_members":     All team members can invite
-
-            '
-          enum:
-          - only_org_admins
-          - admins
-          - all_members
-      description: Team invitation settings
-    TeamCopyAccessLevelSettings:
-      type: object
-      properties:
-        copyAccessLevel:
-          type: string
-          description: '
-
-            * "anyone":       Anyone with the board access can copy board content on newly created boards.
-
-            * "team_members": Team members can copy board content on newly created boards.
-
-            * "team_editors": Team members with editing rights can copy board content on newly created boards.
-
-            * "board_owner":  Board owners only can copy board content on newly created boards.
-
-            '
-          enum:
-          - anyone
-          - team_members
-          - team_editors
-          - board_owner            -
-        copyAccessLevelLimitation:
-          type: string
-          description: '
-
-            * "anyone":       Team members and users outside team can be given permission to copy board content.
-
-            * "team_members": Only team members can be given permission to copy board content.
-
-            '
-          enum:
-          - anyone
-          - team_members
-      description: Team copy access settings
-    TeamSharingPolicySettings:
-      type: object
-      properties:
-        allowListedDomains:
-          type: array
-          description: Allow listed domains
-          items:
-            type: string
-            description: Allow listed domains
-        createAssetAccessLevel:
-          type: string
-          description: '
-
-            * "company_admins": Only company admins can create assets in a team
-
-            * "admins": Both team and company admins can create assets in a team.
-
-            * "all_members": all_members
-
-            '
-          enum:
-          - company_admins
-          - admins
-          - all_members
-        defaultBoardAccess:
-          type: string
-          description: '
-
-            Default board access
-
-            * "private": Only board owners can access
-
-            * "view":    Anyone in the team can view
-
-            * "comment": Anyone in the team can comment
-
-            * "edit":    Anyone in the team can edit
-
-            '
-          enum:
-          - private
-          - view
-          - comment
-          - edit
-        defaultBoardSharingAccess:
-          type: string
-          description: '
-
-            Indicates who can change board access and invite users to boards in this team, by default.
-
-            * "team_members_with_editing_rights": Any team member with editing rights on the board.
-
-            * "owner_and_coowners":               Only the owner and co-owners of the board.
-
-            '
-          enum:
-          - team_members_with_editing_rights
-          - owner_and_coowners
-        defaultOrganizationAccess:
-          type: string
-          description: '
-
-            Default organization access
-
-            * "private": Only board owners can access
-
-            * "view":    Anyone in the team can view
-
-            * "comment": Anyone in the team can comment
-
-            * "edit":    Anyone in the team can edit
-
-            '
-          enum:
-          - private
-          - view
-          - comment
-          - edit
-        defaultProjectAccess:
-          type: string
-          description: '
-
-            Default project access
-
-            * "private": Only board owners can access
-
-            * "view":    Anyone in the team can view
-
-            '
-          enum:
-          - private
-          - view
-        moveBoardToAccount:
-          type: string
-          description: '
-
-            * "allowed": Allow move board to team
-
-            * "not_allowed": Not allow move board to team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        restrictAllowedDomains:
-          type: string
-          description: '
-
-            * "enabled": Enabled. Restrict to listed domain.
-
-            * "disabled": Disabled. No domain restriction.
-
-            * "enabled_with_external_user_access": Enabled. Restrict to listed domain but allows external users to access.
-
-            '
-          enum:
-          - enabled
-          - enabled_with_external_user_access
-          - disabled
-        sharingOnAccount:
-          type: string
-          description: '
-
-            * "allowed": Allow sharing on team
-
-            * "not_allowed": Not allow sharing on team
-
-            '
-          enum:
-          - allowed
-          - not_allowed
-        sharingOnOrganization:
-          type: string
-          description: '
-
-            * "allowed": Allow sharing on organization
-
-            * "allowed_with_editing": Allow sharing with editing on organization
-
-            * "not_allowed": Not allow sharing on organization
-
-            '
-          enum:
-          - allowed
-          - allowed_with_editing
-          - not_allowed
-        sharingViaPublicLink:
-          type: string
-          description: '
-
-            * "allowed": Allow sharing via public link
-
-            * "allowed_with_editing": Allow sharing with editing via public link
-
-            * "not_allowed": Not allow sharing via public link
-
-            '
-          enum:
-          - allowed
-          - allowed_with_editing
-          - not_allowed
-      description: Team sharing policy settings
   parameters:
     pathOrgId:
       name: org_id

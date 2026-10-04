@@ -802,14 +802,36 @@ components:
       - id
       - name
       - type
-    PageLimit:
+    Pagination:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
+
+            '
+          format: int32
+          example: 1
+        total:
+          $ref: '#/components/schemas/PageTotal'
+        cursor:
+          $ref: '#/components/schemas/PageCursor'
+        limit:
+          $ref: '#/components/schemas/PageLimit'
+          description: 'The maximum number of results to return per call. If the number of items in the response is
+
+            greater than the limit specified, the response returns the cursor parameter with a value.
+
+            '
+        type:
+          type: string
+          description: Type of the response, in this case it's always 'cursor-list'.
+          default: cursor-list
+    PageTotal:
       type: integer
+      description: Total number of results in the collection.
       format: int32
-      minimum: 1
-      maximum: 100
-      default: 100
-      example: 100
-      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
+      example: 15
     LegalHoldRequest:
       type: object
       properties:
@@ -826,7 +848,45 @@ components:
       required:
       - name
       - scope
-    PaginatedCaseResponse:
+    CaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the case.
+          example: '3074457345619012007'
+        organizationId:
+          type: string
+          pattern: ^[0-9]+$
+          description: Unique identifier of the organization.
+          example: '3074457345618265000'
+        name:
+          type: string
+          description: The name of the case.
+          example: My Case
+        description:
+          type: string
+          description: The description of the case.
+          example: Info about my case
+        createdBy:
+          $ref: '#/components/schemas/User'
+        lastModifiedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedAt:
+          type: string
+          format: date-time
+      required:
+      - createdAt
+      - createdBy
+      - id
+      - lastModifiedAt
+      - name
+      - organizationId
+    PaginatedLegalHoldResponse:
       allOf:
       - $ref: '#/components/schemas/Pagination'
       - type: object
@@ -834,20 +894,17 @@ components:
           data:
             type: array
             items:
-              $ref: '#/components/schemas/CaseResponse'
-    LegalHoldRequestScope:
-      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants. The request must always include a list of all users to be placed under hold, whether it's for a new legal hold or an update to an existing one. You can have up to 200 users per legal hold, including users added in legal hold updates.
-      oneOf:
-      - $ref: '#/components/schemas/LegalHoldRequestScopeUsers'
-    PageCursor:
-      type: string
-      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
-      example: '3074457345821140946'
-    PageTotal:
-      type: integer
-      description: Total number of results in the collection.
-      format: int32
-      example: 15
+              $ref: '#/components/schemas/LegalHoldResponse'
+    PaginatedLegalHoldContentItemsResponse:
+      description: List of content items under legal hold.
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/LegalHoldContentItemsResponse'
     LegalHoldResponse:
       type: object
       properties:
@@ -899,73 +956,26 @@ components:
       - scope
       - scopeValue
       - state
-    LegalHoldResponseScope:
-      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants.
-      oneOf:
-      - $ref: '#/components/schemas/LegalHoldResponseScopeUsers'
-    CaseResponse:
+    LegalHoldResponseScopeUsers:
+      title: Users scope
       type: object
+      description: List of users under legal hold.
       properties:
-        id:
-          type: string
-          pattern: ^[0-9]+$
-          description: Unique identifier of the case.
-          example: '3074457345619012007'
-        organizationId:
-          type: string
-          pattern: ^[0-9]+$
-          description: Unique identifier of the organization.
-          example: '3074457345618265000'
-        name:
-          type: string
-          description: The name of the case.
-          example: My Case
-        description:
-          type: string
-          description: The description of the case.
-          example: Info about my case
-        createdBy:
-          $ref: '#/components/schemas/User'
-        lastModifiedBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedAt:
-          type: string
-          format: date-time
-      required:
-      - createdAt
-      - createdBy
-      - id
-      - lastModifiedAt
-      - name
-      - organizationId
-    User:
-      description: User information.
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the user.
-          example: '3458764517517852417'
-        email:
-          type: string
-          description: User email.
-          example: john.smith@example.com
-        firstName:
-          type: string
-          description: First name of the user.
-          example: John
-        lastName:
-          type: string
-          description: Last name of the user.
-          example: Smith
-      required:
-      - id
-      - email
-      - firstName
-      - lastName
+        users:
+          type: array
+          minItems: 1
+          maxItems: 200
+          items:
+            $ref: '#/components/schemas/User'
+    PaginatedCaseResponse:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/CaseResponse'
     PaginatedCaseExportJobsResponse:
       description: Board export job for a case.
       properties:
@@ -1000,6 +1010,75 @@ components:
                 description: Unique identifier of the board export job.
                 format: uuid
                 example: 92343229-c532-446d-b8cb-2f155bedb807
+    LegalHoldState:
+      type: string
+      description: 'The state of the legal hold. Legal holds could take up to 24 hours to be processed and the state could be one of the following:
+
+        - `PROCESSING`: the legal hold is being created and content items are being processed.
+
+        - `ACTIVE`: the legal hold has been created and all content items have been processed.
+
+        - `DELETING`: the legal hold is being deleted and content items are being processed.
+
+        '
+      enum:
+      - PROCESSING
+      - ACTIVE
+      - DELETING
+    PageCursor:
+      type: string
+      description: Indicator of the position of the next page of the result. To retrieve the next page, make another query setting its cursor field to the value returned by the current query. If the value is empty, there are no more pages to fetch.
+      example: '3074457345821140946'
+    User:
+      description: User information.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user.
+          example: '3458764517517852417'
+        email:
+          type: string
+          description: User email.
+          example: john.smith@example.com
+        firstName:
+          type: string
+          description: First name of the user.
+          example: John
+        lastName:
+          type: string
+          description: Last name of the user.
+          example: Smith
+      required:
+      - id
+      - email
+      - firstName
+      - lastName
+    LegalHoldRequestScope:
+      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants. The request must always include a list of all users to be placed under hold, whether it's for a new legal hold or an update to an existing one. You can have up to 200 users per legal hold, including users added in legal hold updates.
+      oneOf:
+      - $ref: '#/components/schemas/LegalHoldRequestScopeUsers'
+    CaseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the case.
+          example: My Case
+        description:
+          type: string
+          description: The description of the case.
+          example: Info about my case
+      required:
+      - name
+    PageLimit:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 100
+      default: 100
+      example: 100
+      description: The maximum number of results to return per call. If the number of project in the response is greater than the limit specified, the response returns the cursor parameter with a value.
     LegalHoldRequestScopeUsers:
       title: Users
       type: object
@@ -1017,99 +1096,11 @@ components:
             - email
       required:
       - user
-    PaginatedLegalHoldResponse:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/LegalHoldResponse'
-    Pagination:
-      type: object
-      properties:
-        size:
-          type: integer
-          description: 'Number of results returned in the response considering the cursor and the limit values sent in the request. For example, if there are 20 results, the request does not have a cursor value, and the limit set to 10, the size of the results will be 10. In this example, the response will also return a cursor value that can be used to retrieve the next set of 10 remaining results in the collection.
-
-            '
-          format: int32
-          example: 1
-        total:
-          $ref: '#/components/schemas/PageTotal'
-        cursor:
-          $ref: '#/components/schemas/PageCursor'
-        limit:
-          $ref: '#/components/schemas/PageLimit'
-          description: 'The maximum number of results to return per call. If the number of items in the response is
-
-            greater than the limit specified, the response returns the cursor parameter with a value.
-
-            '
-        type:
-          type: string
-          description: Type of the response, in this case it's always 'cursor-list'.
-          default: cursor-list
-    CaseRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the case.
-          example: My Case
-        description:
-          type: string
-          description: The description of the case.
-          example: Info about my case
-      required:
-      - name
-    PaginatedLegalHoldContentItemsResponse:
-      description: List of content items under legal hold.
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/LegalHoldContentItemsResponse'
-    LegalHoldResponseScopeUsers:
-      title: Users scope
-      type: object
-      description: List of users under legal hold.
-      properties:
-        users:
-          type: array
-          minItems: 1
-          maxItems: 200
-          items:
-            $ref: '#/components/schemas/User'
-    LegalHoldState:
-      type: string
-      description: 'The state of the legal hold. Legal holds could take up to 24 hours to be processed and the state could be one of the following:
-
-        - `PROCESSING`: the legal hold is being created and content items are being processed.
-
-        - `ACTIVE`: the legal hold has been created and all content items have been processed.
-
-        - `DELETING`: the legal hold is being deleted and content items are being processed.
-
-        '
-      enum:
-      - PROCESSING
-      - ACTIVE
-      - DELETING
+    LegalHoldResponseScope:
+      description: The legal hold scope determines the criteria used to put content items under hold. The variants of this field might get extended in the future, although the most common use case is to put users under hold. Currently only the `users` scope is supported. However, the parsing of this field must ignore unexpected variants.
+      oneOf:
+      - $ref: '#/components/schemas/LegalHoldResponseScopeUsers'
   parameters:
-    queryPageCursor:
-      in: query
-      name: cursor
-      description: 'An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.
-
-        '
-      schema:
-        type: string
-      example: MTY2OTg4NTIwMDAwMHwxMjM=
     queryPageLimit:
       in: query
       name: limit
@@ -1121,6 +1112,15 @@ components:
         default: 100
         format: int32
       example: 10
+    queryPageCursor:
+      in: query
+      name: cursor
+      description: 'An indicator of the position of a page in the full set of results. To obtain the first page leave it empty. To obtain subsequent pages set it to the value returned in the cursor field of the previous request.
+
+        '
+      schema:
+        type: string
+      example: MTY2OTg4NTIwMDAwMHwxMjM=
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2

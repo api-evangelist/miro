@@ -199,6 +199,158 @@ paths:
       - Card items
 components:
   schemas:
+    CardCreateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CardData'
+        style:
+          $ref: '#/components/schemas/CardStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    CardStyle:
+      type: object
+      description: Contains information about the style of a card item, such as the card theme.
+      properties:
+        cardTheme:
+          type: string
+          description: 'Hex value of the border color of the card.
+
+            Default: `#2d9bf0`.'
+          example: '#2d9bf0'
+    SelfLink:
+      type: object
+      description: Contains applicable links for the current object.
+      properties:
+        self:
+          type: string
+          description: Link to obtain more information about the current object.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+    ParentLinksEnvelope:
+      type: object
+      description: Contains information about the parent frame for the item.
+      properties:
+        id:
+          type: string
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
+        links:
+          $ref: '#/components/schemas/SelfLink'
+    Position:
+      type: object
+      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      properties:
+        origin:
+          type: string
+          default: center
+          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
+
+            Currently, only one option is supported.'
+          enum:
+          - center
+        relativeTo:
+          type: string
+          enum:
+          - canvas_center
+          - parent_top_left
+        x:
+          type: number
+          format: double
+          description: 'X-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+        y:
+          type: number
+          format: double
+          description: 'Y-axis coordinate of the location of the item on the board.
+
+            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
+
+            The center point of the board has `x: 0` and `y: 0` coordinates.'
+          example: 100
+    CardUpdateRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CardData'
+        style:
+          $ref: '#/components/schemas/UpdateCardStyle'
+        position:
+          $ref: '#/components/schemas/PositionChange'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        parent:
+          $ref: '#/components/schemas/Parent'
+    UpdateCardStyle:
+      type: object
+      description: Contains information about the style of a card item, such as the card theme.
+      properties:
+        cardTheme:
+          type: string
+          description: Hex value of the border color of the card.
+          example: '#2d9bf0'
+    modifiedBy:
+      type: object
+      description: Contains information about the user who last modified the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    createdBy:
+      type: object
+      description: Contains information about the user who created the item.
+      properties:
+        id:
+          type: string
+          description: Unique identifier (ID) of the user.
+          example: '3458764517517852417'
+        type:
+          type: string
+          description: Indicates the type of object returned. In this case, `type` returns `user`.
+          example: user
+    Geometry:
+      type: object
+      description: Contains geometrical information about the item, such as its width or height.
+      properties:
+        height:
+          type: number
+          format: double
+          description: Height of the item, in pixels.
+          example: 60
+        rotation:
+          type: number
+          format: double
+          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
+        width:
+          type: number
+          format: double
+          description: Width of the item, in pixels.
+          example: 320
+    WidgetLinks:
+      type: object
+      description: Contains applicable links for the item.
+      properties:
+        related:
+          type: string
+          description: Link to obtain information about the child items related to the frame.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
+        self:
+          type: string
+          description: Link to obtain information about the current item.
+          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
     CardItem:
       type: object
       properties:
@@ -239,52 +391,6 @@ components:
       required:
       - id
       - type
-    createdBy:
-      type: object
-      description: Contains information about the user who created the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
-    CardStyle:
-      type: object
-      description: Contains information about the style of a card item, such as the card theme.
-      properties:
-        cardTheme:
-          type: string
-          description: 'Hex value of the border color of the card.
-
-            Default: `#2d9bf0`.'
-          example: '#2d9bf0'
-    ParentLinksEnvelope:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-        links:
-          $ref: '#/components/schemas/SelfLink'
-    CardUpdateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CardData'
-        style:
-          $ref: '#/components/schemas/UpdateCardStyle'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
     CardData:
       type: object
       description: Contains card item data, such as the title, description, due date, or assignee ID.
@@ -307,92 +413,15 @@ components:
           type: string
           description: A short text header for the card.
           example: sample card item
-    Position:
+    Parent:
       type: object
-      description: Contains location information about the item, such as its x coordinate, y coordinate, and the origin of the x and y coordinates.
+      description: Contains information about the parent frame for the item.
       properties:
-        origin:
+        id:
           type: string
-          default: center
-          description: 'Area of the item that is referenced by its x and y coordinates. For example, an item with a center origin will have its x and y coordinates point to its center. The center point of the board has x: 0 and y: 0 coordinates.
-
-            Currently, only one option is supported.'
-          enum:
-          - center
-        relativeTo:
-          type: string
-          enum:
-          - canvas_center
-          - parent_top_left
-        x:
-          type: number
-          format: double
-          description: 'X-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-        y:
-          type: number
-          format: double
-          description: 'Y-axis coordinate of the location of the item on the board.
-
-            By default, all items have absolute positioning to the board, not the current viewport. Default: 0.
-
-            The center point of the board has `x: 0` and `y: 0` coordinates.'
-          example: 100
-    CardCreateRequest:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CardData'
-        style:
-          $ref: '#/components/schemas/CardStyle'
-        position:
-          $ref: '#/components/schemas/PositionChange'
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        parent:
-          $ref: '#/components/schemas/Parent'
-    WidgetLinks:
-      type: object
-      description: Contains applicable links for the item.
-      properties:
-        related:
-          type: string
-          description: Link to obtain information about the child items related to the frame.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/items?parent_item_id=307445734914369434&limit=10&cursor=
-        self:
-          type: string
-          description: Link to obtain information about the current item.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/item/3074457349143649487
-    Geometry:
-      type: object
-      description: Contains geometrical information about the item, such as its width or height.
-      properties:
-        height:
-          type: number
-          format: double
-          description: Height of the item, in pixels.
-          example: 60
-        rotation:
-          type: number
-          format: double
-          description: Rotation angle of an item, in degrees, relative to the board. You can rotate items clockwise (right) and counterclockwise (left) by specifying positive and negative values, respectively.
-        width:
-          type: number
-          format: double
-          description: Width of the item, in pixels.
-          example: 320
-    SelfLink:
-      type: object
-      description: Contains applicable links for the current object.
-      properties:
-        self:
-          type: string
-          description: Link to obtain more information about the current object.
-          example: http://api.miro.com/v2/boards/o9J_koQspF4=/object_type/3074457349143649487
+          format: int64
+          description: Unique identifier (ID) of the parent frame for the item.
+          example: '3074457362577955300'
     PositionChange:
       type: object
       description: Contains information about the item's position on the board, such as its `x` coordinate, `y` coordinate, and the origin of the `x` and `y` coordinates.
@@ -417,35 +446,6 @@ components:
             The center point of the board has `x: 0` and `y: 0` coordinates.'
           default: 0
           example: 100
-    UpdateCardStyle:
-      type: object
-      description: Contains information about the style of a card item, such as the card theme.
-      properties:
-        cardTheme:
-          type: string
-          description: Hex value of the border color of the card.
-          example: '#2d9bf0'
-    Parent:
-      type: object
-      description: Contains information about the parent frame for the item.
-      properties:
-        id:
-          type: string
-          format: int64
-          description: Unique identifier (ID) of the parent frame for the item.
-          example: '3074457362577955300'
-    modifiedBy:
-      type: object
-      description: Contains information about the user who last modified the item.
-      properties:
-        id:
-          type: string
-          description: Unique identifier (ID) of the user.
-          example: '3458764517517852417'
-        type:
-          type: string
-          description: Indicates the type of object returned. In this case, `type` returns `user`.
-          example: user
   securitySchemes:
     oAuth2AuthCode:
       type: oauth2
