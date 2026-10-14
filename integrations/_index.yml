@@ -39,3 +39,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: miro-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Security - Automation (SOAR)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Miro
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
