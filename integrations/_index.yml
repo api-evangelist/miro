@@ -15,3 +15,27 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: miro-github-marketplace-apps
+  label: GitHub Marketplace (apps)
+  partner: github
+  partner_name: GitHub Marketplace (apps)
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  evidence: https://github.com/marketplace/miro-agent-app
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: miro-atlassian-marketplace
+  label: Atlassian Marketplace
+  partner: atlassian
+  partner_name: Atlassian Marketplace
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  evidence: https://marketplace.atlassian.com/vendors/1213323/miro-the-innovation-workspace
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
