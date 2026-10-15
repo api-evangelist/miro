@@ -96,7 +96,7 @@
     builder: unknown (not in the directory record)
     other_apps:
     - miro-insights
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: miro-pipedream
   label: Pipedream
@@ -122,5 +122,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
