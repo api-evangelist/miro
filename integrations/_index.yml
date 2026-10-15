@@ -39,6 +39,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: miro-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Security - Automation (SOAR)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Miro
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: miro-mcp-registry
   label: MCP Registry
   partner: mcp
@@ -55,19 +68,59 @@
     registered_name: io.github.miroapp/mcp-server
     register_id: io.github.miroapp/mcp-server
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-14'
+    detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
-- slug: miro-microsoft-sentinel-own
-  label: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_name: Microsoft Sentinel (own)
-  category: Security - Automation (SOAR)
+- slug: miro-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
   type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Miro
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/miro/integrations
   source: edge
-  relationship: platform-app
-  status: not-a-workflow
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Miro
+    matched_domain: miro.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: miro
+    beta: false
+    builder: unknown (not in the directory record)
+    other_apps:
+    - miro-insights
+  status: pending-generation
+  arazzo: null
+- slug: miro-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/miro_custom_app
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: miro custom app
+    matched_domain: miro.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: miro_custom_app
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  status: pending-generation
   arazzo: null
