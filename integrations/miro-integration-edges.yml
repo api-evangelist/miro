@@ -30,7 +30,19 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/suppliers
 - https://www.crowncommercial.gov.uk/agreements
 - https://www.ncsc.gov.uk/cyberessentials/search
-marketplace_apps: []
+- https://miro.com/marketplace/
+- https://miro.com/sitemap.xml
+- https://miro.com/sitemaps/manually-generated/en-us.xml
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: miro
+  url: https://miro.com/marketplace/
+  app_count: 282
+  adapter: sweep-miro-marketplace.py:marketplace __NEXT_DATA__ (developer website / contact / support / privacy)
+    + sitemap-only app pages
+  listed: 37
+  note: 282 listings read; only domain-linked builders are written
 edges:
 - partner_name: Microsoft Azure Marketplace
   partner: microsoft-azure
@@ -418,6 +430,1009 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-uk-g-cloud-suppliers.py
   first_seen: '2026-10-21'
+- partner_name: Amazon Web Services
+  app: AWS AppFabric
+  partner: amazon-web-services
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/aws-appfabric/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Amazon Web Services
+    matched_domain: amazon.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - AWS AppFabric
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Atlassian
+  app: Atlassian Rovo
+  partner: atlassian
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/atlassian-rovo/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Atlassian
+    matched_domain: atlassian.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Atlassian Rovo
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: BetterCloud
+  app: BetterCloud
+  partner: bettercloud
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/bettercloud/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: BetterCloud
+    matched_domain: bettercloud.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - BetterCloud
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: ClickUp
+  app: ClickUp (Legacy)
+  partner: clickup
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/clickup/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: ClickUp
+    matched_domain: clickup.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ClickUp (Legacy)
+    - ClickUp (Miro Embed)
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Dialpad
+  app: Dialpad Meetings
+  partner: dialpad
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/dialpad-embed/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Dialpad
+    matched_domain: dialpad.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Dialpad Meetings
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Drata
+  app: Drata
+  partner: drata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/drata/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Drata
+    matched_domain: drata.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Drata
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Dropbox
+  app: Dropbox Dash
+  partner: dropbox
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/dropbox-dash/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Dropbox
+    matched_domain: dropbox.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Dropbox Dash
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Favro
+  app: Favro
+  partner: favro
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/favro/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Favro
+    matched_domain: favro.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Favro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: GoTo
+  app: GoTo
+  partner: gotowebinar
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/goto/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: GoTo
+    matched_domain: goto.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - GoTo
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Guru
+  app: Guru
+  partner: guru
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/guru/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Guru
+    matched_domain: getguru.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Guru
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: HYCU
+  app: HYCU for Miro
+  partner: hycu
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/hycu/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: HYCU
+    matched_domain: hycu.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - HYCU for Miro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Icons8
+  app: 'Icons8 '
+  partner: icons8
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/icons8-graphics/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Icons8
+    matched_domain: icons8.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - 'Icons8 '
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Latenode
+  app: Latenode
+  partner: latenode
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/latenode/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Latenode
+    matched_domain: latenode.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Latenode
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Microsoft
+  app: Microsoft Defender for Cloud Apps
+  partner: microsoft
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/microsoft-sentinel/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Microsoft
+    matched_domain: microsoft.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Microsoft Defender for Cloud Apps
+    - Miro for Microsoft Sentinel
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Netskope
+  app: Netskope One for Miro Data Security
+  partner: netskope
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/netskope/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Netskope
+    matched_domain: netskope.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Netskope One for Miro Data Security
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Nifty
+  app: Nifty
+  partner: nifty
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/nifty/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Nifty
+    matched_domain: niftypm.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Nifty
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Nuclino
+  app: Nuclino
+  partner: nuclino
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/nuclino/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Nuclino
+    matched_domain: nuclino.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Nuclino
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Picsart
+  app: Picsart
+  partner: picsart
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/picsart/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Picsart
+    matched_domain: picsart.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Picsart
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Procore
+  app: Procore Platform
+  partner: procore
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/procore-embed/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Procore
+    matched_domain: procore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Procore Platform
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Productboard
+  app: Productboard (Miro Embed)
+  partner: productboard
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/productboard-embed/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Productboard
+    matched_domain: productboard.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Productboard (Miro Embed)
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Productiv
+  app: Productiv
+  partner: productiv
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/productiv/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Productiv
+    matched_domain: productiv.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Productiv
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Quantive
+  app: Quantive Results
+  partner: quantive
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/quantive/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Quantive
+    matched_domain: quantive.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Quantive Results
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Raycast
+  app: Raycast
+  partner: raycast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/raycast/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Raycast
+    matched_domain: raycast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Raycast
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: EMEA
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Red Hat
+  app: BPMN Tool
+  partner: red-hat
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/bpmn-tool/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Red Hat
+    matched_domain: redhat.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - BPMN Tool
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: Czechia
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Rewind Inc.
+  app: Rewind Backups for Miro
+  partner: rewind
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/rewind/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Rewind Inc.
+    matched_domain: rewind.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Rewind Backups for Miro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Slab
+  app: Slab
+  partner: slab
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/slab/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Slab
+    matched_domain: slab.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Slab
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: null
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Storylane
+  app: Storylane
+  partner: storylane
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/storylane/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Storylane
+    matched_domain: storylane.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Storylane
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Sumo Logic
+  app: Sumo Logic app for Miro
+  partner: sumo-logic
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/sumo-logic/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Sumo Logic
+    matched_domain: sumologic.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Sumo Logic app for Miro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Superhuman
+  app: Superhuman for Miro
+  partner: superhuman
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/superhuman-docs/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Superhuman
+    matched_domain: superhuman.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Superhuman Docs (Miro Embed)
+    - Superhuman for Miro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Theta Lake
+  app: Theta Lake for Miro
+  partner: theta-lake
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/theta-lake/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Theta Lake
+    matched_domain: thetalake.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Theta Lake for Miro
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Truto
+  app: Truto
+  partner: truto
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/truto/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Truto
+    matched_domain: truto.one
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Truto
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Unito
+  app: Unito
+  partner: unito
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/unito/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Unito
+    matched_domain: unito.io
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Unito
+    - Wrike Sync by Unito
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Whereby
+  app: Whereby
+  partner: whereby
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/whereby/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Whereby
+    matched_domain: whereby.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Whereby
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: null
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Zluri
+  app: Zluri
+  partner: zluri
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/zluri/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Zluri
+    matched_domain: zluri.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Zluri
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Zylo
+  app: Zylo
+  partner: zylo
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://miro.com/marketplace/zylo/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-app
+    registered_name: Zylo
+    matched_domain: zylo.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Zylo
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: North America
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: Adobe Express
+  app: Adobe Express
+  partner: adobe
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://miro.com/marketplace/adobe-express/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-provider-built-app
+    registered_name: Miro
+    matched_domain: adobe.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Adobe Express
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
+- partner_name: IBM QRadar
+  app: IBM QRadar
+  partner: qradar
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://miro.com/marketplace/ibm-q-radar/
+  category: Miro app
+  contract_reference:
+    register: Miro Marketplace (miro.com/marketplace/ __NEXT_DATA__ + app pages; sitemap enumeration)
+    spec_file: null
+    role: miro-provider-built-app
+    registered_name: Miro
+    matched_domain: ibm.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - IBM QRadar
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-miro-marketplace.py
+    detected: '2026-10-22'
+    developer_country: United States
+  detected_by: sweep-miro-marketplace.py
+  detected: '2026-10-22'
 source:
 - https://github.com/marketplace?type=apps
 - https://marketplace.atlassian.com/
